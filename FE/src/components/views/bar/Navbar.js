@@ -33,7 +33,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             
           </Typography>
-          <Link to="/signup" style={{ textDecoration: 'none', color:'inherit' }}>
+          <Link to="/login" style={{ textDecoration: 'none', color:'inherit' }}>
             <Button color="inherit">로그인</Button>
           </Link>
         </Toolbar>

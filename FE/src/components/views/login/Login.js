@@ -31,9 +31,9 @@ function Login(props) {
     const onPasswordHandler = (event) => {
         setPasswordError("")
         setPassword(event.currentTarget.value)
-        if (isPassword(Password) == 1) {
-            setPasswordError("길이가 짧습니다")
-        }
+        // if (isPassword(Password) == 1) {
+        //     setPasswordError("길이가 짧습니다")
+        // }
     }
 
     const isEmail = (Email) => {
@@ -41,13 +41,13 @@ function Login(props) {
         return emailRegex.test(Email);
     };
 
-    const isPassword = (Password) => {
+    // const isPassword = (Password) => {
 
-        if (Password.length < 7) {
-            return 1;
-          }
-        return 0;
-    };
+    //     if (Password.length < 7) {
+    //         return 1;
+    //       }
+    //     return 0;
+    // };
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
