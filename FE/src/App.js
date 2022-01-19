@@ -10,6 +10,7 @@ import {
 import MainPage from './components/views/contents/dandda/dandda';
 import LoginPage from './components/views/login/Login';
 import Navbar from './components/views/bar/Navbar';
+import JoinEnd from './JoinEnd';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<MainPage/>} />
         <Route exact={true} path="/login" element={<LoginPage/>} />
+        <Route exact={true} path="/joinend" element={<JoinEnd/>} />
       </Routes>
     </BrowserRouter>
   );
