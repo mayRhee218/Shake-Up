@@ -1,12 +1,25 @@
-
 import './App.css';
-import Dandda from './components/views/contents/dandda/dandda';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  BrowserRouter
+} from "react-router-dom";
+
+import MainPage from './components/views/contents/dandda/dandda';
+import LoginPage from './components/views/login/Login';
+import Navbar from './components/views/bar/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <Dandda/>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route exact={true} path="/" element={<MainPage/>} />
+        <Route exact={true} path="/login" element={<LoginPage/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
