@@ -10,8 +10,11 @@ import {
 import MainPage from './components/views/contents/dandda/dandda';
 import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
-import Navbar from './components/views/bar/Navbar';
 import JoinEnd from './components/views/Signup/JoinEnd';
+import Navbar from './components/views/bar/Navbar';
+import Find from './components/views/find/Find';
+import FindId from './components/views/find/FindId';
+import FindPassword from './components/views/find/FindPassword';
 
 function App() {
   return (
@@ -20,8 +23,11 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<MainPage/>} />
         <Route exact={true} path="/login" element={<LoginPage/>} />
-        <Route exact={true} path="/joinend" element={<JoinEnd/>} />
+        <Route exact={true} path="/find" element={<Find/>} />
+        <Route exact={true} path="/find_id" element={<FindId/>} />
+        <Route exact={true} path="/find_password" element={<FindPassword/>} />
         <Route exact={true} path="/signup" element={<SignUp/>} />
+        <Route exact={true} path="/joinend" element={<JoinEnd/>} />
       </Routes>
     </BrowserRouter>
   );
