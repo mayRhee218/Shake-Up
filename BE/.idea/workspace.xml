@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="">
+    <list default="true" id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/config/123" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/123" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/model/123" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/123" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/123" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +49,14 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -61,7 +76,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="23uVQGC57bMYgK8FXCiIIXZJ50Q" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -77,12 +94,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="프로젝트" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -132,6 +149,13 @@
       <workItem from="1642584030957" duration="2706000" />
       <workItem from="1642639839528" duration="1764000" />
       <workItem from="1642645446315" duration="1071000" />
+      <workItem from="1642653782423" duration="2472000" />
+      <workItem from="1642656589851" duration="2876000" />
+      <workItem from="1642659495817" duration="478000" />
+      <workItem from="1642659983464" duration="463000" />
+      <workItem from="1642660457876" duration="1251000" />
+      <workItem from="1642661726213" duration="116000" />
+      <workItem from="1642661849434" duration="4930000" />
     </task>
     <servers>
       <JIRA url="https://jira.ssafy.com">
