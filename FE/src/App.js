@@ -11,7 +11,7 @@ import MainPage from './components/views/contents/dandda/dandda';
 import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
 import Navbar from './components/views/bar/Navbar';
-import JoinEnd from './JoinEnd';
+import JoinEnd from './components/views/Signup/JoinEnd';
 
 function App() {
   return (
