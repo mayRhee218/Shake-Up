@@ -7,12 +7,10 @@
     <list default="true" id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/config/123" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/123" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/model/123" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/123" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/123" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/model/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RunManager" selected="Spring Boot.ShakeupApplication">
     <configuration name="BE" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -156,6 +154,10 @@
       <workItem from="1642660457876" duration="1251000" />
       <workItem from="1642661726213" duration="116000" />
       <workItem from="1642661849434" duration="4930000" />
+      <workItem from="1642670048057" duration="23000" />
+      <workItem from="1642728623055" duration="263000" />
+      <workItem from="1642729116339" duration="13234000" />
+      <workItem from="1642748106146" duration="6736000" />
     </task>
     <servers>
       <JIRA url="https://jira.ssafy.com">
@@ -178,5 +180,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
