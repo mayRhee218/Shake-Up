@@ -1,3 +1,12 @@
+/**
+ * 아이디/비밀번호 찾기 메인 페이지 
+ * 
+ * @author 명성
+ * @version 1.0.0
+ * 작성일 : 2022-01-21
+ * 
+ **/
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'

@@ -14,7 +14,9 @@ import JoinEnd from './components/views/Signup/JoinEnd';
 import Navbar from './components/views/bar/Navbar';
 import Find from './components/views/find/Find';
 import FindId from './components/views/find/FindId';
+import FindIdComplete from './components/views/find/FindIdComplete';
 import FindPassword from './components/views/find/FindPassword';
+import FindPasswordComplete from './components/views/find/FindPasswordComplete';
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
         <Route exact={true} path="/login" element={<LoginPage/>} />
         <Route exact={true} path="/find" element={<Find/>} />
         <Route exact={true} path="/find_id" element={<FindId/>} />
+        <Route exact={true} path="/find_id_ok" element={<FindIdComplete/>} />
         <Route exact={true} path="/find_password" element={<FindPassword/>} />
+        <Route exact={true} path="/find_password_ok" element={<FindPasswordComplete/>} />
         <Route exact={true} path="/signup" element={<SignUp/>} />
         <Route exact={true} path="/joinend" element={<JoinEnd/>} />
       </Routes>
