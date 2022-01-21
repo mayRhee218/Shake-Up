@@ -56,7 +56,7 @@ function FindPassword(props) {
 
 
   const findPassword = (data) => {
-    axios.post(`/users/sendpw`, data)
+    axios.post(`http://114.129.238.28/user/sendpw`, data)
     .then(res => {
       console.log(res)
       navigate('/find_password_ok')
