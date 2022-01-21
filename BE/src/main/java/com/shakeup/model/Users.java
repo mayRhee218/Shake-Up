@@ -1,16 +1,16 @@
 package com.shakeup.model;
 
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "users")
-public class User {
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long uid;
@@ -21,4 +21,5 @@ public class User {
     private String name;
     private String profile;
     private String date;
+
 }
