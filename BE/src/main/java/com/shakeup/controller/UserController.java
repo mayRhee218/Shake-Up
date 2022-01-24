@@ -2,9 +2,14 @@ package com.shakeup.controller;
 
 
 import com.shakeup.model.Users;
+import com.shakeup.repository.UserRepository;
+import com.shakeup.request.UserChangeInfoRequest;
 import com.shakeup.request.UserResetPwdRequest;
 import com.shakeup.request.UserSendpwRequest;
 import com.shakeup.service.UserService;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping(value = "/{email}")
     public ResponseEntity<String> getId(@PathVariable("email") String email) {
@@ -47,4 +54,30 @@ public class UserController {
         }
         return new ResponseEntity<>("변경 성공", HttpStatus.OK);
     }
+
+
+    @ApiOperation(value = "회원 정보 수정", notes = "회원의 정보를 수정한다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+    @PutMapping
+    public ResponseEntity<String> modifyUser(@RequestBody UserChangeInfoRequest request) {
+        logger.info("modifyUser - 호출");
+        String res = userService.changeinfo(request);
+
+        if (res.equals("fail")) {
+            return new ResponseEntity<>("변경 실패", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("변경 성공", HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "회원 탈퇴", notes = "id에 해당하는 회원의 정보를 삭제한다.(그와 동시에 회원이 적은 게시글들의 id가 '탈퇴한 회원'으로 바뀐다.) 그리고 DB삭제 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
+        logger.info("deleteUser - 호출");
+        String res = userService.deleteUser(id);
+
+        if (res.equals("fail")) {
+            return new ResponseEntity<>("계정 삭제 실패", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("계정 삭제 성공", HttpStatus.OK);
+    }
+
 }
