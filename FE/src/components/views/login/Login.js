@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Axios from 'axios';
+// import { useDispatch } from 'react-redux'
+// import { loginUser} from '../../../_actions/user_action';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,56 +18,63 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props) {
 
-
-    const [Email, setEmail] = useState("")
-    const [EmailError, setEmailError] = useState("")
+    
+    // const dispatch = useDispatch();
+    const [Id, setId] = useState("")
+    const [IdError, setIdError] = useState("")
     const [Password, setPassword] = useState("")
     const [PasswordError, setPasswordError] = useState("")
 
-    const onEmailHandler = (event) => {
-        setEmailError("")
-        setEmail(event.currentTarget.value)
-        if (!isEmail(Email)) {
-            setEmailError("이메일을 형식에 맞게 작성해주세요.")
-        }
+
+    const onIdHandler = (event) => {
+        setIdError("")
+        setId(event.currentTarget.value)
     }
 
     const onPasswordHandler = (event) => {
         setPasswordError("")
         setPassword(event.currentTarget.value)
-        // if (isPassword(Password) == 1) {
-        //     setPasswordError("길이가 짧습니다")
-        // }
     }
 
-    const isEmail = (Email) => {
-        const emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
-        return emailRegex.test(Email);
-    };
-
-    // const isPassword = (Password) => {
-
-    //     if (Password.length < 7) {
-    //         return 1;
-    //       }
-    //     return 0;
-    // };
 
     const onSubmitHandler = (event) => {
+        
+        //페이지 리프레쉬 방지
         event.preventDefault();
 
-        if (Email === "") {
-            setEmailError("이메일을 입력해야 합니다.")
+        if (Id === "") {
+            setIdError("이메일을 입력해야 합니다.")
         }
-        if (Password === "") {
+        else if (Password === "") {
             setPasswordError("비밀번호를 입력해야 합니다.")
         }
-        if (isEmail(Email)) {
-            console.log('로그인 정보')
-            console.log('Email', Email)
-            console.log('Password', Password)
+        else {
+            // console.log('로그인 정보')
+            // console.log('Id', Id)
+            // console.log('Password', Password)
+            // 서버에 보내기
+            let body = {
+                id : Id,
+                password : Password
+            }
+
+            Axios.post('http://114.129.238.28/user/login', body)
+            .then(response => {
+        
+            })
+            // dispatch(loginUser(body))
+      		// // 로그인되면 /(index페이지)로 이동
+            // .then(response => {
+            //     if (response.payload.loginSuccess) {
+            //         props.history.push('/')
+            //     } else {
+            //         alert('Error')
+            //     }
+            // })
         }
     }
+
+    
 
     
     const classes = useStyles();
@@ -78,17 +89,14 @@ function Login(props) {
                 onSubmit={onSubmitHandler} className={classes.root} autoComplete='off'
             >
                 <h1>로그인</h1>
-                <TextField id="standard-basic-email" label="Email" onChange={onEmailHandler} helperText={EmailError} autoCapitalize='off' />
+                <TextField id="standard-basic-id" label="Id" onChange={onIdHandler} helperText={IdError} autoCapitalize='off' />
                 <TextField id="standard-basic-password" type='password' label="Password" onChange={onPasswordHandler} helperText={PasswordError} />
                 <br />
-                <Link to="/404" style={{ textDecoration: 'none', color:'inherit' }}>
-                <Button style={{  width: '100%' }} variant="contained" color="primary" type="submit" disabled={Email === "" || Password === "" || !isEmail(Email)  ? true : false}>
+                {/* <Link to="/404" style={{ textDecoration: 'none', color:'inherit' }}> */}
+                <Button style={{  width: '100%' }} variant="contained" color="primary" type="submit" disabled={Id === "" || Password === ""  ? true : false}>
                     로그인
                 </Button>
-                {/* <Button style={{  width: '100%' }} variant="contained" color="primary" type="submit" disabled={Email === "" || Password === ""   ? true : false}>
-                    Login
-                </Button> */}
-                </Link>
+                {/* </Link> */}
                 <Link to="/signup" style={{ textDecoration: 'none', color:'inherit' }}>
                 <Button style={{  width: '100%' }} variant="contained" color="primary" type="button">
                     회원가입

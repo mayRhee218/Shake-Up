@@ -48,7 +48,7 @@ function FindId(props) {
 
 
   const findEmail = (email) => {
-    axios.get(`/users/email/${email}`)
+    axios.get(`http://114.129.238.28/user/${email}`)
     .then(res => {
       console.log(res)
       navigate('/find_id_ok')

@@ -56,14 +56,14 @@ function FindPassword(props) {
 
 
   const findPassword = (data) => {
-    axios.post(`/users/sendpw`, data)
+    axios.post(`http://114.129.238.28/user/sendpw`, data)
     .then(res => {
       console.log(res)
       navigate('/find_password_ok')
       
     })
     .catch(err => {
-      if(err.response.status === 404) {
+      if(err.response.status === 400) {
         console.log('올바르지 않은 정보입니다.')
       }
     });

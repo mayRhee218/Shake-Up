@@ -10,8 +10,10 @@ import {
 import MainPage from './components/views/contents/dandda/dandda';
 import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
-import JoinEnd from './components/views/Signup/JoinEnd';
+import SignUpNext from './components/views/Signup/SignupNext';
 import Navbar from './components/views/bar/Navbar';
+
+import JoinEnd from './components/views/Signup/JoinEnd';
 import Find from './components/views/find/Find';
 import FindId from './components/views/find/FindId';
 import FindIdComplete from './components/views/find/FindIdComplete';
@@ -32,6 +34,7 @@ function App() {
         <Route exact={true} path="/find_password_ok" element={<FindPasswordComplete/>} />
         <Route exact={true} path="/signup" element={<SignUp/>} />
         <Route exact={true} path="/joinend" element={<JoinEnd/>} />
+        <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
       </Routes>
     </BrowserRouter>
   );
