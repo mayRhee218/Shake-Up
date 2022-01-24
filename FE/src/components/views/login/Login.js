@@ -23,22 +23,21 @@ function Login(props) {
     const [Password, setPassword] = useState("")
     const [PasswordError, setPasswordError] = useState("")
 
-    
 
-    
-
-    const onIdHandler = (event) => {
-        setIdError("")
-        setId(event.currentTarget.value)
-        // if (!isEmail(Email)) {
-        //     setEmailError("이메일을 형식에 맞게 작성해주세요.")
-        // }
+    const onEmailHandler = (event) => {
+        setEmailError("")
+        setEmail(event.currentTarget.value)
+        if (!isEmail(Email)) {
+            console.log(Email)
+            setEmailError("이메일을 형식에 맞게 작성해주세요.")
+        }
     }
 
     const onPasswordHandler = (event) => {
         setPasswordError("")
         setPassword(event.currentTarget.value)
     }
+
 
     const onSubmitHandler = (event) => {
         
