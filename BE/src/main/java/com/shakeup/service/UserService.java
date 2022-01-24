@@ -4,6 +4,7 @@ import com.shakeup.model.Users;
 import com.shakeup.repository.UserRepository;
 import com.shakeup.request.UserResetPwdRequest;
 import com.shakeup.request.UserSendpwRequest;
+import com.shakeup.request.UserSignUpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -87,5 +88,31 @@ public class UserService {
         checkUid.get().setPassword(tempuser.getPassword());
         userRepository.save(checkUid.get());
         return "success";
+    }
+
+    public String signUp(UserSignUpRequest userSignUpRequest) {
+        Users tempuser = userSignUpRequest.toEntity();
+        userRepository.save(tempuser);
+        return "success";
+    }
+
+    public String checkId(String id) {
+        Optional<Users> user = userRepository.findById(id);
+        System.out.println(user);
+        if (user.isPresent()) {
+            return "fail";
+        } else {
+            return "success";
+        }
+    }
+
+    public String checkName(String name) {
+        Optional<Users> user = userRepository.findByName(name);
+        System.out.println(user);
+        if (user.isPresent()) {
+            return "fail";
+        } else {
+            return "success";
+        }
     }
 }
