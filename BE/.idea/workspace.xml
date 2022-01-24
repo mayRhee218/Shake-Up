@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5da42e11-5e56-4784-bb2a-4342bc95c978" name="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다." comment="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-    </list>
-    <list id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="변경" />
-=======
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" afterDir="false" />
     </list>
     <list id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="update feature/BE/signup" />
->>>>>>> feature/BE/signup
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,13 +102,9 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-<<<<<<< HEAD
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
-=======
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="start.from.branch" value="origin/develop" />
     <property name="tasks.open.task.update.state.enabled" value="false" />
->>>>>>> feature/BE/signup
   </component>
   <component name="RunManager" selected="Spring Boot.ShakeupApplication">
     <configuration name="BE" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -171,12 +162,10 @@
       <workItem from="1642660457876" duration="1251000" />
       <workItem from="1642661726213" duration="116000" />
       <workItem from="1642661849434" duration="4930000" />
-<<<<<<< HEAD
       <workItem from="1642670048057" duration="23000" />
       <workItem from="1642728623055" duration="263000" />
       <workItem from="1642729116339" duration="13234000" />
       <workItem from="1642748106146" duration="6736000" />
-=======
       <workItem from="1642667997875" duration="14178000" />
       <workItem from="1642755007145" duration="6000" />
     </task>
@@ -192,7 +181,6 @@
       <updated>1642755012568</updated>
       <workItem from="1642751000435" duration="2543000" />
       <workItem from="1642755013153" duration="7954000" />
->>>>>>> feature/BE/signup
     </task>
     <task id="LOCAL-00002" summary="update feature/BE/signup">
       <created>1642990034904</created>
@@ -226,7 +214,10 @@
       </map>
     </option>
   </component>
-<<<<<<< HEAD
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update feature/BE/signup" />
+    <option name="LAST_COMMIT_MESSAGE" value="update feature/BE/signup" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -236,10 +227,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-=======
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="update feature/BE/signup" />
-    <option name="LAST_COMMIT_MESSAGE" value="update feature/BE/signup" />
->>>>>>> feature/BE/signup
   </component>
 </project>
