@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux'
-import { loginUser} from '../../../_actions/user_action';
+import Axios from 'axios';
+// import { useDispatch } from 'react-redux'
+// import { loginUser} from '../../../_actions/user_action';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,20 +19,16 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
 
     
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [Id, setId] = useState("")
     const [IdError, setIdError] = useState("")
     const [Password, setPassword] = useState("")
     const [PasswordError, setPasswordError] = useState("")
 
 
-    const onEmailHandler = (event) => {
-        setEmailError("")
-        setEmail(event.currentTarget.value)
-        if (!isEmail(Email)) {
-            console.log(Email)
-            setEmailError("이메일을 형식에 맞게 작성해주세요.")
-        }
+    const onIdHandler = (event) => {
+        setIdError("")
+        setId(event.currentTarget.value)
     }
 
     const onPasswordHandler = (event) => {

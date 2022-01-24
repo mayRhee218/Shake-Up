@@ -14,7 +14,6 @@ import SignUpNext from './components/views/Signup/SignupNext';
 import Navbar from './components/views/bar/Navbar';
 
 import JoinEnd from './components/views/Signup/JoinEnd';
-import Navbar from './components/views/bar/Navbar';
 import Find from './components/views/find/Find';
 import FindId from './components/views/find/FindId';
 import FindIdComplete from './components/views/find/FindIdComplete';
