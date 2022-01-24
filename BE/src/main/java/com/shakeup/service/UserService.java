@@ -2,6 +2,7 @@ package com.shakeup.service;
 
 import com.shakeup.model.Users;
 import com.shakeup.repository.UserRepository;
+import com.shakeup.request.UserChangeInfoRequest;
 import com.shakeup.request.UserResetPwdRequest;
 import com.shakeup.request.UserSendpwRequest;
 import com.shakeup.request.UserSignUpRequest;
@@ -115,4 +116,28 @@ public class UserService {
             return "success";
         }
     }
+
+    public String changeinfo(UserChangeInfoRequest userChangeInfoRequest) {
+        Users tempuser = userChangeInfoRequest.toEntity();
+        Optional<Users> checkUid = userRepository.findById(tempuser.getId());
+        if (!checkUid.isPresent() || checkUid.get().getPassword().equals(tempuser.getPassword())) {
+            return "fail";
+        }
+        checkUid.get().setName(tempuser.getName());
+        checkUid.get().setProfile(tempuser.getProfile());
+        userRepository.save(checkUid.get());
+        return "success";
+    }
+
+    public String deleteUser(String id) {
+        Optional<Users> user = userRepository.findById(id);
+
+        if (user.isPresent()) {
+            userRepository.deleteById(user.get().getUid());
+            return "success";
+        }
+        return "fail";
+    }
 }
+
+
