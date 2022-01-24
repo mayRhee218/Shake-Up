@@ -6,7 +6,7 @@ import{
 export function loginUser(dataTosubmit) {
     // 서버에서 받은 data를 request에 저장
     const request =
-        axios.post('http://114.129.238.28/users/login', dataTosubmit)
+        axios.post('https://www.mecallapi.com/api/login', dataTosubmit)
         .then(response => 
             response.data);
     return {

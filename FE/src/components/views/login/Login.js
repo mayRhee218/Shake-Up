@@ -1,11 +1,18 @@
+/**
+ *
+ * @author 최성석
+ * @version 1.0.0
+ * 작성일 2022-01-24
+**/
+
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Axios from 'axios';
-// import { useDispatch } from 'react-redux'
-// import { loginUser} from '../../../_actions/user_action';
+// import Axios from 'axios';
+import { useDispatch } from 'react-redux'
+import { loginUser} from '../../../_actions/user_action';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
 
     
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const [Id, setId] = useState("")
     const [IdError, setIdError] = useState("")
     const [Password, setPassword] = useState("")
@@ -54,23 +61,26 @@ function Login(props) {
             // console.log('Password', Password)
             // 서버에 보내기
             let body = {
-                id : Id,
-                password : Password
+                username : Id,
+                password: Password
+                
             }
 
-            Axios.post('http://114.129.238.28/user/login', body)
-            .then(response => {
-        
-            })
-            // dispatch(loginUser(body))
-      		// // 로그인되면 /(index페이지)로 이동
+            // Axios.post('http://114.129.238.28/user/login', body)
             // .then(response => {
-            //     if (response.payload.loginSuccess) {
-            //         props.history.push('/')
-            //     } else {
-            //         alert('Error')
-            //     }
+                
             // })
+            dispatch(loginUser(body))
+      		// 로그인되면 /(index페이지)로 이동
+            .then(response => {
+                if (response.payload.status == "ok") {
+                    console.log(response)
+                    alert('성공')
+                } else {
+                    console.log(response)
+                    alert('실패')
+                }
+            })
         }
     }
 
