@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="변경">
+    <list default="true" id="5da42e11-5e56-4784-bb2a-4342bc95c978" name="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다." comment="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" afterDir="false" />
+    </list>
+    <list id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="update feature/BE/signup">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserSignUpRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
@@ -187,6 +192,22 @@
       <workItem from="1642667997875" duration="14178000" />
       <workItem from="1642755007145" duration="6000" />
     </task>
+    <task active="true" id="S06P12D103-113" summary="아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다.">
+      <branch name="feature/BE/signup" repository="C:\ssafy\PJT\Sub_PJT_2\ssafy_dance_PJT" />
+      <changelist id="5da42e11-5e56-4784-bb2a-4342bc95c978" name="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다." comment="" />
+      <created>1642654039000</created>
+      <option name="issue" value="true" />
+      <url>https://jira.ssafy.com/browse/S06P12D103-113</url>
+      <option name="number" value="113" />
+      <option name="presentableId" value="S06P12D103-113" />
+      <option name="project" value="S06P12D103" />
+      <updated>1642755012568</updated>
+      <workItem from="1642751000435" duration="2543000" />
+      <workItem from="1642755013153" duration="7257000" />
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <option name="createBranch" value="false" />
+    <option name="useBranch" value="true" />
     <servers>
       <JIRA url="https://jira.ssafy.com">
         <option name="apiType" value="REST_2_0" />
@@ -208,5 +229,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update feature/BE/signup" />
+    <option name="LAST_COMMIT_MESSAGE" value="update feature/BE/signup" />
   </component>
 </project>
