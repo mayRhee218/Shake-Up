@@ -7,12 +7,8 @@
     <list default="true" id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" afterDir="false" />
-    <list default="true" id="a7283c03-a7a3-4374-b4cb-31bf47553886" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/model/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/model/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserSignUpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserSignUpRequest.java" afterDir="false" />
+    </list>
+    <list id="a7283c03-a7a3-4374-b4cb-31bf47553886" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,6 +149,7 @@
     <task id="Default" summary="디폴트 작업">
       <branch name="feature/BE/signup" repository="C:\ssafy\PJT\Sub_PJT_2\ssafy_dance_PJT" original="true" />
       <changelist id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="" />
+      <changelist id="a7283c03-a7a3-4374-b4cb-31bf47553886" name="Changes" comment="" />
       <created>1642583942036</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -181,7 +178,6 @@
     </task>
     <task active="true" id="S06P12D103-113" summary="아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다.">
       <branch name="feature/BE/signup" repository="C:\ssafy\PJT\Sub_PJT_2\ssafy_dance_PJT" />
-      <changelist id="5da42e11-5e56-4784-bb2a-4342bc95c978" name="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다." comment="" />
       <created>1642654039000</created>
       <option name="issue" value="true" />
       <url>https://jira.ssafy.com/browse/S06P12D103-113</url>
@@ -193,6 +189,8 @@
       <workItem from="1642755013153" duration="7954000" />
       <workItem from="1642911086001" duration="6753000" />
       <workItem from="1642950877404" duration="3655000" />
+      <workItem from="1643007644723" duration="61000" />
+      <workItem from="1643007766236" duration="924000" />
     </task>
     <task id="LOCAL-00002" summary="update feature/BE/signup">
       <created>1642990034904</created>
