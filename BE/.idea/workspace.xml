@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5da42e11-5e56-4784-bb2a-4342bc95c978" name="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다." comment="S06P12D103-113 아이디, 이메일, 비밀번호, 비밀번호 확인을 입력 받는다.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" afterDir="false" />
->>>>>>> feature/BE/changeinfo
->>>>>>> ffca1907e448a90f764eb357237acac639c89936
     </list>
     <list id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="update feature/BE/signup" />
     <option name="SHOW_DIALOG" value="false" />
@@ -174,13 +168,10 @@
       <workItem from="1642728623055" duration="263000" />
       <workItem from="1642729116339" duration="13234000" />
       <workItem from="1642748106146" duration="6736000" />
-<<<<<<< HEAD
       <workItem from="1642756091974" duration="857000" />
       <workItem from="1642764150752" duration="9123000" />
       <workItem from="1642989638010" duration="157000" />
       <workItem from="1642991296355" duration="1117000" />
-=======
-<<<<<<< HEAD
       <workItem from="1642667997875" duration="14178000" />
       <workItem from="1642755007145" duration="6000" />
     </task>
@@ -196,10 +187,8 @@
       <updated>1642755012568</updated>
       <workItem from="1642751000435" duration="2543000" />
       <workItem from="1642755013153" duration="7954000" />
-=======
       <workItem from="1642911086001" duration="6753000" />
       <workItem from="1642950877404" duration="3655000" />
->>>>>>> feature/BE/changeinfo
     </task>
     <task id="LOCAL-00002" summary="update feature/BE/signup">
       <created>1642990034904</created>
@@ -207,7 +196,6 @@
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1642990034904</updated>
->>>>>>> ffca1907e448a90f764eb357237acac639c89936
     </task>
     <option name="localTasksCounter" value="3" />
     <option name="createBranch" value="false" />
