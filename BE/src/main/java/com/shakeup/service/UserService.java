@@ -22,6 +22,7 @@ public class UserService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+
     public Optional<Users> findByEmail(String email) {
         Optional<Users> user = userRepository.findByEmail(email);
         return user;
