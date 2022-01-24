@@ -24,6 +24,7 @@ function Login(props) {
         setEmailError("")
         setEmail(event.currentTarget.value)
         if (!isEmail(Email)) {
+            console.log(Email)
             setEmailError("이메일을 형식에 맞게 작성해주세요.")
         }
     }
@@ -37,6 +38,7 @@ function Login(props) {
     }
 
     const isEmail = (Email) => {
+        console.log(Email)
         const emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
         return emailRegex.test(Email);
     };
