@@ -15,18 +15,20 @@ public class UserSignUpRequest {
     String email;
     @NotNull
     String password;
-    String profile;
-    @NotNull
-    String date;
 
-    public Users toEntity(){
+//    String profile;
+//    @NotNull
+//
+//    String date;
+
+    public Users toEntity() {
         return Users.builder()
                 .id(id)
                 .name(name)
                 .email(email)
                 .password(password)
-                .profile(profile)
-                .date(date)
+//                .profile(profile)
+//                .date(date)
                 .build();
     }
 }

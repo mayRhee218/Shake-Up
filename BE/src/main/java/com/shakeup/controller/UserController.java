@@ -85,7 +85,7 @@ public class UserController {
     public ResponseEntity<String> checkId(@PathVariable("id") String id) {
         String result = userService.checkId(id);
         if (result.equals("fail")) {
-            return new ResponseEntity<>("실패", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("fail", HttpStatus.OK);
         }
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
