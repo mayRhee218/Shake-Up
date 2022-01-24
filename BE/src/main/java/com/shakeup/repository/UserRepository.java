@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     Optional<Users> findById(String id);    // 유저 아이디로 검색
     Optional<Users> findByUid(Long uid);
     Optional<Users> findByName(String name);    // 채널명 검색
+
+    Optional<Users> findUserByIdAndPassword(String id, String password);
 }

@@ -1,5 +1,6 @@
 package com.shakeup.controller;
 
+import com.shakeup.model.BasicResponse;
 import com.shakeup.model.Users;
 import com.shakeup.repository.UserRepository;
 import com.shakeup.request.UserChangeInfoRequest;
@@ -26,6 +27,20 @@ public class UserController {
     private UserService userService;
 
     public static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    @ApiOperation(value = "로그인")
+    @GetMapping(value = "/login")
+    public Object login(@RequestParam(required = true) String id,
+                        @RequestParam(required = true) String password) {
+        BasicResponse res = userService.login(id, password);
+
+        if (res.data.equals("success")) {
+            return new ResponseEntity<>(res, HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+
+    }
 
     @GetMapping(value = "/{email}")
     public ResponseEntity<String> getId(@PathVariable("email") String email) {
