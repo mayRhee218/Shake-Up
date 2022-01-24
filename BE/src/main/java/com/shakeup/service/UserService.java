@@ -25,8 +25,7 @@ public class UserService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-<<<<<<< HEAD
-    public  BasicResponse login(String id, String password){
+    public BasicResponse login(String id, String password) {
         Optional<Users> userOpt = userRepository.findUserByIdAndPassword(id, password);
 
         if (userOpt.isPresent()) {
@@ -37,8 +36,6 @@ public class UserService {
         }
         return null;
     }
-=======
->>>>>>> 609cb4937946ac617ca9a91d3f1cfb925b697404
 
     public Optional<Users> findByEmail(String email) {
         Optional<Users> user = userRepository.findByEmail(email);
