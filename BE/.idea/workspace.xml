@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="변경">
+    <list default="true" id="37205570-a686-4212-bd78-3176fb1a5e85" name="Changes" comment="update feature/BE/signup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/config/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/controller/UserController.java" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/repository/UserRepository.java" afterDir="false" />
     <list default="true" id="a7283c03-a7a3-4374-b4cb-31bf47553886" name="Changes" comment="">
@@ -18,6 +20,12 @@
     </list>
     <list id="a7283c03-a7a3-4374-b4cb-31bf47553886" name="Changes" comment="">
 >>>>>>> c8c53a1f0c1e5aa624834643f85d08ea7703362e
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserChangeInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/request/user/UserChangeInfoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserResetPwdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/request/user/UserResetPwdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserSendpwRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/request/user/UserSendpwRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/request/UserSignUpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/request/user/UserSignUpRequest.java" afterDir="false" />
+>>>>>>> feature/BE/board
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shakeup/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,8 +165,7 @@
   <component name="TaskManager">
     <task id="Default" summary="디폴트 작업">
       <branch name="feature/BE/signup" repository="C:\ssafy\PJT\Sub_PJT_2\ssafy_dance_PJT" original="true" />
-      <changelist id="5e99c122-0754-422f-acb4-753f875337b5" name="변경" comment="" />
-      <changelist id="a7283c03-a7a3-4374-b4cb-31bf47553886" name="Changes" comment="" />
+      <changelist id="37205570-a686-4212-bd78-3176fb1a5e85" name="Changes" comment="update feature/BE/signup" />
       <created>1642583942036</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -200,6 +207,8 @@
       <workItem from="1642950877404" duration="3655000" />
       <workItem from="1643007644723" duration="61000" />
       <workItem from="1643007766236" duration="924000" />
+      <workItem from="1643090921071" duration="443000" />
+      <workItem from="1643091387246" duration="3674000" />
     </task>
     <task id="LOCAL-00002" summary="update feature/BE/signup">
       <created>1642990034904</created>

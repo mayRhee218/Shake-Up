@@ -3,13 +3,11 @@ package com.shakeup.service;
 import com.shakeup.model.BasicResponse;
 import com.shakeup.model.Users;
 import com.shakeup.repository.UserRepository;
-import com.shakeup.request.UserChangeInfoRequest;
-import com.shakeup.request.UserResetPwdRequest;
-import com.shakeup.request.UserSendpwRequest;
-import com.shakeup.request.UserSignUpRequest;
+import com.shakeup.request.user.UserChangeInfoRequest;
+import com.shakeup.request.user.UserResetPwdRequest;
+import com.shakeup.request.user.UserSendpwRequest;
+import com.shakeup.request.user.UserSignUpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -25,11 +23,9 @@ public class UserService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-<<<<<<< HEAD
-    public  BasicResponse login(String id, String password){
-=======
+
     public BasicResponse login(String id, String password) {
->>>>>>> c8c53a1f0c1e5aa624834643f85d08ea7703362e
+
         Optional<Users> userOpt = userRepository.findUserByIdAndPassword(id, password);
 
         if (userOpt.isPresent()) {

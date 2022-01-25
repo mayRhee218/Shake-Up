@@ -1,4 +1,4 @@
-package com.shakeup.request;
+package com.shakeup.request.user;
 
 import com.shakeup.model.Users;
 import com.sun.istack.NotNull;
