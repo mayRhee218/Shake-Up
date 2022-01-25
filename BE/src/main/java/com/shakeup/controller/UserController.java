@@ -2,10 +2,10 @@ package com.shakeup.controller;
 
 import com.shakeup.model.BasicResponse;
 import com.shakeup.model.Users;
-import com.shakeup.request.UserChangeInfoRequest;
-import com.shakeup.request.UserResetPwdRequest;
-import com.shakeup.request.UserSendpwRequest;
-import com.shakeup.request.UserSignUpRequest;
+import com.shakeup.request.user.UserChangeInfoRequest;
+import com.shakeup.request.user.UserResetPwdRequest;
+import com.shakeup.request.user.UserSendpwRequest;
+import com.shakeup.request.user.UserSignUpRequest;
 import com.shakeup.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -41,6 +41,7 @@ public class UserController {
 
     }
 
+    @ApiOperation(value = "이메일로 유저 정보 가져오기")
     @GetMapping(value = "/{email}")
     public ResponseEntity<String> getId(@PathVariable("email") String email) {
         Optional<Users> user = userService.findByEmail(email);
@@ -50,6 +51,7 @@ public class UserController {
         return new ResponseEntity<String>(user.get().getId(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "아이디 찾기")
     @PostMapping(value = "/sendpw")
     public ResponseEntity<String> sendId(@RequestBody UserSendpwRequest userSendpwRequest) {
         String check = "값 없음.";
@@ -60,6 +62,7 @@ public class UserController {
         return new ResponseEntity<>(userService.sendPw(userSendpwRequest), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "새로운 비밀번호 받기")
     @PostMapping(value = "/resetpw")
     public ResponseEntity<String> ResetPw(@RequestBody UserResetPwdRequest userResetPwdRequest) {
         String res = userService.resetPw(userResetPwdRequest);
@@ -71,6 +74,7 @@ public class UserController {
 
 
     // 날짜 => 프론트에서
+    @ApiOperation(value = "회원가입")
     @PostMapping(value = "/signup")
     public ResponseEntity<String> signUp(@RequestBody UserSignUpRequest request) {
         String user = userService.signUp(request);
@@ -80,6 +84,7 @@ public class UserController {
         return new ResponseEntity<>("회원가입 성공", HttpStatus.OK);
     }
 
+    @ApiOperation(value = "아이디 중복 확인")
     @GetMapping(value = "/idcheck/{id}")
     public ResponseEntity<String> checkId(@PathVariable("id") String id) {
         String result = userService.checkId(id);
@@ -89,6 +94,7 @@ public class UserController {
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
 
+    @ApiOperation(value = "채널명 중복 확인")
     @GetMapping(value = "/name/{name}")
     public ResponseEntity<String> checkName(@PathVariable("name") String name) {
         String result = userService.checkName(name);
