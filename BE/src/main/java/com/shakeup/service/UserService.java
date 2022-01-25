@@ -25,7 +25,11 @@ public class UserService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+<<<<<<< HEAD
     public  BasicResponse login(String id, String password){
+=======
+    public BasicResponse login(String id, String password) {
+>>>>>>> c8c53a1f0c1e5aa624834643f85d08ea7703362e
         Optional<Users> userOpt = userRepository.findUserByIdAndPassword(id, password);
 
         if (userOpt.isPresent()) {
