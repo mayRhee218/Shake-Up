@@ -20,6 +20,8 @@ import FindPassword from './components/views/find/FindPassword';
 import FindPasswordComplete from './components/views/find/FindPasswordComplete';
 import PutCredentials from './components/views/login/PutCredentials';
 import Auth from './hoc/auth';
+import ArticleDetail from './components/views/community/ArticleDetail';
+
 
 function App() {
 
@@ -42,6 +44,8 @@ function App() {
         <Route exact={true} path="/joinend" element={<JoinEnd/>}  />
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
         <Route exact={true} path="/user/sujeong" element={<PutCredentials/>} />
+        <Route exact={true} path="/community/:id" element={<ArticleDetail/>} />
+
       </Routes>
     </BrowserRouter>
   );
