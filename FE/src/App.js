@@ -12,20 +12,25 @@ import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
 import SignUpNext from './components/views/Signup/SignupNext';
 import Navbar from './components/views/bar/Navbar';
-
 import JoinEnd from './components/views/Signup/JoinEnd';
 import Find from './components/views/find/Find';
 import FindId from './components/views/find/FindId';
 import FindIdComplete from './components/views/find/FindIdComplete';
 import FindPassword from './components/views/find/FindPassword';
 import FindPasswordComplete from './components/views/find/FindPasswordComplete';
+import Auth from './hoc/auth';
 
 function App() {
+
+  const temp = Auth(MainPage, null);
+  console.log(temp);
+
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route exact={true} path="/" element={<MainPage/>} />
+        {/* <Route exact={true} path="/" element={<PrivateRoute component={Auth(MainPage)}/>}  /> */}
+        <Route exact={true} path="/" element={<MainPage/>}  />
         <Route exact={true} path="/login" element={<LoginPage/>} />
         <Route exact={true} path="/find" element={<Find/>} />
         <Route exact={true} path="/find_id" element={<FindId/>} />
@@ -33,7 +38,7 @@ function App() {
         <Route exact={true} path="/find_password" element={<FindPassword/>} />
         <Route exact={true} path="/find_password_ok" element={<FindPasswordComplete/>} />
         <Route exact={true} path="/signup" element={<SignUp/>} />
-        <Route exact={true} path="/joinend" element={<JoinEnd/>} />
+        <Route exact={true} path="/joinend" element={<JoinEnd/>}  />
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
       </Routes>
     </BrowserRouter>

@@ -5,6 +5,7 @@
  * 작성일 2022-01-24
 **/
 
+import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
 
     
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [Id, setId] = useState("")
     const [IdError, setIdError] = useState("")
@@ -56,26 +58,31 @@ function Login(props) {
             setPasswordError("비밀번호를 입력해야 합니다.")
         }
         else {
-            // console.log('로그인 정보')
-            // console.log('Id', Id)
-            // console.log('Password', Password)
             // 서버에 보내기
             let body = {
-                username : Id,
+                id : Id,      //데이터에 맞게 수정
+                // username : Id,      //데이터에 맞게 수정
                 password: Password
                 
             }
-
-            // Axios.post('http://114.129.238.28/user/login', body)
-            // .then(response => {
-                
-            // })
             dispatch(loginUser(body))
       		// 로그인되면 /(index페이지)로 이동
-            .then(response => {
-                if (response.payload.status == "ok") {
-                    console.log(response)
+                .then(response => {
+                    // console.log(response)
+                //토큰 값이 들어간 payload값이 존재하면 로그인 성공
+                    if (response.payload) {
+                    //로컬 스토리지에 토큰값 저장
+                        console.log("로컬 저장 전 : ",localStorage.getItem('IsLogin'));
+                        console.log(response);
+                        localStorage.setItem('AccessToken', response.payload);   //백엔드용
+                        // localStorage.setItem('AccessToken', response.payload.accessToken);   //MECALL API용
+                        localStorage.setItem('IsLogin', "true");
+                        
+                        console.log("로컬 저장 후 : ", localStorage.getItem('IsLogin'));
+                        navigate('/');
                     alert('성공')
+
+                //아니면 로그인 실패
                 } else {
                     console.log(response)
                     alert('실패')
