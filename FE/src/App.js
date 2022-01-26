@@ -12,13 +12,13 @@ import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
 import SignUpNext from './components/views/Signup/SignupNext';
 import Navbar from './components/views/bar/Navbar';
-
 import JoinEnd from './components/views/Signup/JoinEnd';
 import Find from './components/views/find/Find';
 import FindId from './components/views/find/FindId';
 import FindIdComplete from './components/views/find/FindIdComplete';
 import FindPassword from './components/views/find/FindPassword';
 import FindPasswordComplete from './components/views/find/FindPasswordComplete';
+import PutCredentials from './components/views/login/PutCredentials';
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
         <Route exact={true} path="/signup" element={<SignUp/>} />
         <Route exact={true} path="/joinend" element={<JoinEnd/>} />
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
+        <Route exact={true} path="/user/sujeong" element={<PutCredentials/>} />
       </Routes>
     </BrowserRouter>
   );
