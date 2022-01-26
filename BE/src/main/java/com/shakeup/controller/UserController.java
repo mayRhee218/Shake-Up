@@ -1,11 +1,10 @@
 package com.shakeup.controller;
 
+import com.shakeup.config.JwtTokenProvider;
 import com.shakeup.model.BasicResponse;
 import com.shakeup.model.Users;
-import com.shakeup.request.UserChangeInfoRequest;
-import com.shakeup.request.UserResetPwdRequest;
-import com.shakeup.request.UserSendpwRequest;
-import com.shakeup.request.UserSignUpRequest;
+import com.shakeup.repository.UserRepository;
+import com.shakeup.request.*;
 import com.shakeup.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -13,8 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -25,20 +26,27 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
     public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @ApiOperation(value = "로그인")
-    @GetMapping(value = "/login")
-    public Object login(@RequestParam(required = true) String id,
-                        @RequestParam(required = true) String password) {
-        BasicResponse res = userService.login(id, password);
-
-        if (res.data.equals("success")) {
-            return new ResponseEntity<>(res, HttpStatus.OK);
-
+    @PostMapping(value = "/login")
+    public String login(@RequestBody UserLoginRequest userLoginRequest) {
+        Users member = userRepository.findById(userLoginRequest.getId())
+                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 ID 입니다."));
+        System.out.println("test : " + member.toString());
+        if (!passwordEncoder.matches(userLoginRequest.getPassword(), member.getPassword())) {
+            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
-        return new ResponseEntity<>("fail", HttpStatus.OK);
-
+        return jwtTokenProvider.createToken(member, member.getRoles());
     }
 
     @GetMapping(value = "/{email}")

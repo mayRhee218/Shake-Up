@@ -12,30 +12,37 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public BasicResponse login(String id, String password) {
-        Optional<Users> userOpt = userRepository.findUserByIdAndPassword(id, password);
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-        if (userOpt.isPresent()) {
-            final BasicResponse result = new BasicResponse();
-            result.status = true;
-            result.data = "success";
-            return result;
-        }
-        return null;
-    }
+//    public BasicResponse login(String id, String password) {
+//        Optional<Users> userOpt = userRepository.findUserByIdAndPassword(id, password);
+//
+//        if (userOpt.isPresent()) {
+//            final BasicResponse result = new BasicResponse();
+//            result.status = true;
+//            result.data = "success";
+//            return result;
+//        }
+//        return null;
+//    }
 
     public Optional<Users> findByEmail(String email) {
         Optional<Users> user = userRepository.findByEmail(email);
@@ -108,6 +115,7 @@ public class UserService {
 
     public String signUp(UserSignUpRequest userSignUpRequest) {
         Users tempuser = userSignUpRequest.toEntity();
+        tempuser.setPassword("{noop}"+tempuser.getPassword()); // gwan 추가 => Security ver5 부터 명칭 해줘야하기 떄문에...
         userRepository.save(tempuser);
         return "success";
     }
@@ -152,6 +160,11 @@ public class UserService {
             return "success";
         }
         return "fail";
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
     }
 }
 
