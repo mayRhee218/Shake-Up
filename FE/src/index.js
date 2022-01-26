@@ -11,6 +11,9 @@ import Reducer from './_reducers';
 import axios from 'axios'
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
+axios.defaults.baseURL = "http://114.129.238.28";
+// axios.defaults.baseURL = "https://www.mecallapi.com/";
+axios.defaults.withCredentials = false;
 
 ReactDOM.render(
   <Provider
