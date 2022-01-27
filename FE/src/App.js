@@ -11,7 +11,7 @@ import MainPage from './components/views/contents/dandda/dandda';
 import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
 import SignUpNext from './components/views/Signup/SignupNext';
-import Navbar from './components/views/bar/Navbar';
+import Sidebar from './components/views/bar/Sidebar';
 import JoinEnd from './components/views/Signup/JoinEnd';
 import Find from './components/views/find/Find';
 import FindId from './components/views/find/FindId';
@@ -20,7 +20,7 @@ import FindPassword from './components/views/find/FindPassword';
 import FindPasswordComplete from './components/views/find/FindPasswordComplete';
 import PutCredentials from './components/views/login/PutCredentials';
 import Auth from './hoc/auth';
-import ArticleDetail from './components/views/community/ArticleDetail';
+// import ArticleDetail from './components/views/community/ArticleDetail';
 
 
 function App() {
@@ -29,8 +29,9 @@ function App() {
   console.log(temp);
 
   return (
+    <>
     <BrowserRouter>
-      <Navbar />
+      <Sidebar />
       <Routes>
         {/* <Route exact={true} path="/" element={<PrivateRoute component={Auth(MainPage)}/>}  /> */}
         <Route exact={true} path="/" element={<MainPage/>}  />
@@ -44,10 +45,10 @@ function App() {
         <Route exact={true} path="/joinend" element={<JoinEnd/>}  />
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
         <Route exact={true} path="/user/sujeong" element={<PutCredentials/>} />
-        <Route exact={true} path="/community/:id" element={<ArticleDetail/>} />
-
+        {/* <Route exact={true} path="/community/:id" element={<ArticleDetail/>} /> */}
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 
