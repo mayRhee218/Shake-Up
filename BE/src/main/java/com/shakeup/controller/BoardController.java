@@ -60,7 +60,7 @@ public class BoardController {
 
 
     @ApiOperation(value = "게시판 삭제", notes = "게시판 bid로 삭제,게시판 삭제 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다", response = String.class)
-    @DeleteMapping(value = "/{bid}")
+    @DeleteMapping(value = "/delete/{bid}")
     public ResponseEntity<String> deleteBoard(@PathVariable("bid") long bid){
         String res = boardService.deleteBoard(bid);
 

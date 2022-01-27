@@ -45,6 +45,7 @@ public class BoardService {
         return "fail";
     }
 
+    //카테리고별로 읽어 온다.
     public Optional<Board> readBoard(BoardReadRequest boardReadRequest) {
         Board tempboard = boardReadRequest.toEntity();
 
