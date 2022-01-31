@@ -21,6 +21,7 @@ import FindPasswordComplete from './components/views/find/FindPasswordComplete';
 import PutCredentials from './components/views/login/PutCredentials';
 import Auth from './hoc/auth';
 import ArticleDetail from './components/views/community/ArticleDetail';
+import DanddaMain from './components/views/dandda/DanddaMain';
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
         <Route exact={true} path="/user/sujeong" element={<PutCredentials/>} />
         <Route exact={true} path="/community/:id" element={<ArticleDetail/>} />
-
+        <Route exact={true} path="/dandda" element={<DanddaMain/>} />
       </Routes>
     </BrowserRouter>
   );

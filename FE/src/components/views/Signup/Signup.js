@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import {TextField, Button} from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
-import Overlap from './Overlap'
+import Overlap from './OverLap'
 import Email from './Email'
 
 function Signup() {
