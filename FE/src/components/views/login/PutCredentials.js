@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Overlap from '../Signup/Overlap';
+import Overlap from '../Signup/OverLap';
 import Email from '../Signup/Email';
 import { Button, TextField } from '@material-ui/core';
 

@@ -80,7 +80,7 @@ function Login(props) {
                         
                         console.log("로컬 저장 후 : ", localStorage.getItem('IsLogin'));
                         navigate('/');
-                    alert('성공')
+                        alert('성공');
 
                 //아니면 로그인 실패
                 } else {
@@ -105,7 +105,7 @@ function Login(props) {
             <form style={{ display: 'flex', flexDirection: 'column' }}
                 onSubmit={onSubmitHandler} className={classes.root} autoComplete='off'
             >
-                <h1>로그인</h1>
+                <h1>로그인</h1> 
                 <TextField id="standard-basic-id" label="Id" onChange={onIdHandler} helperText={IdError} autoCapitalize='off' />
                 <TextField id="standard-basic-password" type='password' label="Password" onChange={onPasswordHandler} helperText={PasswordError} />
                 <br />

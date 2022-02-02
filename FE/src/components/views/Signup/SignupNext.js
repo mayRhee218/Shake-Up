@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {Button} from '@material-ui/core';
-import Overlap from './Overlap'
+import Overlap from './OverLap'
 import axios from 'axios';
 
 function SignupNext() {

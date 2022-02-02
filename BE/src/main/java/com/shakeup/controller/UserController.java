@@ -1,8 +1,8 @@
 package com.shakeup.controller;
 
 import com.shakeup.config.JwtTokenProvider;
-import com.shakeup.model.BasicResponse;
 import com.shakeup.model.Users;
+
 import com.shakeup.request.user.UserChangeInfoRequest;
 import com.shakeup.request.user.UserResetPwdRequest;
 import com.shakeup.request.user.UserSendpwRequest;
@@ -19,7 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -41,6 +40,7 @@ public class UserController {
 
     public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    // 승관 부분
     @ApiOperation(value = "로그인")
     @PostMapping(value = "/login")
     public String login(@RequestBody UserLoginRequest userLoginRequest) {
@@ -85,6 +85,7 @@ public class UserController {
     }
 
 
+    // 다은 부분
     // 날짜 => 프론트에서
     @ApiOperation(value = "회원가입")
     @PostMapping(value = "/signup")
@@ -116,7 +117,18 @@ public class UserController {
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
 
+    @GetMapping(value = "/emailcheck/{email}")  // TODO 이메일 인증번호 가져오기
+    public ResponseEntity<String> emailCheck(@PathVariable("email") String email){
+        System.out.println("1");
+        String result = userService.checkEmail(email);
 
+        System.out.println("emailCheck 실행");
+
+        return new ResponseEntity<>("result", HttpStatus.OK);
+    }
+
+
+    // 기태 부분
     @ApiOperation(value = "회원 정보 수정", notes = "회원의 정보를 수정한다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
     @PutMapping
     public ResponseEntity<String> modifyUser(@RequestBody UserChangeInfoRequest request) {

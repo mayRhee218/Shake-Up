@@ -8,6 +8,13 @@ import java.util.Optional;
 
 public interface VideoRepository extends JpaRepository<Videos, Long> {
     Optional<Videos> findVideosByVid(long vid);
+
     Optional<Videos> findVideosByVidAndCategory(long vid, int category);
 
+<<<<<<< HEAD
+=======
+    Optional<Videos> findByVidAndUid(long vid, int uid);
+
+    Videos findByVid(Long vid);
+>>>>>>> 35923cf2cbf89f709c3a6bfa3f1800fb12c34cbf
 }
