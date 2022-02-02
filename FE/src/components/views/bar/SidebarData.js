@@ -2,23 +2,23 @@ import React from 'react';
 
 export const SidebarData = [
   {
-    title:'Home',
+    title:'로그인',
     path: '/login',
     icon: '',
   },
   {
-    title:'이용내역',
-    path: '/',
+    title:'회원가입',
+    path: '/signup',
     icon: '',
   },
   {
-    title:'내 리뷰',
-    path: '/',
+    title:'수정',
+    path: '/user/sujeong',
     icon: '',
   },
   {
-    title:'수익금',
-    path: '/',
+    title:'댄따',
+    path: '/dandda',
     icon: '',
   },
   {
