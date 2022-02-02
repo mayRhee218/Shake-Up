@@ -7,7 +7,7 @@ import {
   BrowserRouter
 } from "react-router-dom";
 
-import MainPage from './components/views/contents/dandda/dandda';
+import DanddaMain from './components/views/dandda/danddamain/DanddaMain';
 import LoginPage from './components/views/login/Login';
 import SignUp from './components/views/Signup/Signup';
 import SignUpNext from './components/views/Signup/SignupNext';
@@ -21,12 +21,13 @@ import FindPasswordComplete from './components/views/find/FindPasswordComplete';
 import PutCredentials from './components/views/login/PutCredentials';
 import Auth from './hoc/auth';
 import ArticleDetail from './components/views/community/ArticleDetail';
-import DanddaMain from './components/views/dandda/DanddaMain';
+import DanddaResult from './components/views/dandda/danddaresult/DanddaResult';
+import DanddaUpload from './components/views/dandda/danddaupload/DanddaUpload';
 
 
 function App() {
 
-  const temp = Auth(MainPage, null);
+  const temp = Auth(DanddaMain, null);
   console.log(temp);
 
   return (
@@ -35,7 +36,7 @@ function App() {
       <Sidebar />
       <Routes>
         {/* <Route exact={true} path="/" element={<PrivateRoute component={Auth(MainPage)}/>}  /> */}
-        <Route exact={true} path="/" element={<MainPage/>}  />
+        <Route exact={true} path="/" element={<DanddaMain/>}  />
         <Route exact={true} path="/login" element={<LoginPage/>} />
         <Route exact={true} path="/find" element={<Find/>} />
         <Route exact={true} path="/find_id" element={<FindId/>} />
@@ -47,7 +48,8 @@ function App() {
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
         <Route exact={true} path="/user/sujeong" element={<PutCredentials/>} />
         <Route exact={true} path="/community/:id" element={<ArticleDetail/>} />
-        <Route exact={true} path="/dandda" element={<DanddaMain/>} />
+        <Route exact={true} path="/:id" element={<DanddaResult/>} />
+        <Route exact={true} path="/:id/upload" element={<DanddaUpload/>} />
       </Routes>
     </BrowserRouter>
     </>

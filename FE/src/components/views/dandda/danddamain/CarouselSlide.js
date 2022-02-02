@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, makeStyles } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
+import { Route, Link } from 'react-router-dom';
 
 export default function CarouselSlide(props) {
-    const { backgroundImage, title, profile_name, profile_src } = props.content;
+    const { backgroundImage, title, profile_name, profile_src, id } = props.content;
 
     const useStyles = makeStyles(() => ({
         card: {
@@ -34,9 +35,11 @@ export default function CarouselSlide(props) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.card}>
-            <Avatar className={classes.profile} alt={profile_name} src={profile_src}/>
-            <h1 className={classes.title}>{title}</h1>
-        </Card>
+        <Link to={{pathname:`/${id}`, state:{alt:{profile_name}, src:{profile_src}} }}>
+            <Card className={classes.card}>
+                <Avatar className={classes.profile} alt={profile_name} src={profile_src}/>
+                <h1 className={classes.title}>{title}</h1>
+            </Card>
+        </Link>
     );
 }
