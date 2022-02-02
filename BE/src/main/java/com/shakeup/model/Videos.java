@@ -28,6 +28,8 @@ public class Videos {
     private int category;//0 : 일반 영상, 1 : 댄스 따라하기 영상, 2: 유저가 따라한 영상
     private String thumbnail; //사진 url
     private LocalDateTime date;
+    private int comment;
+    private int score;
 
     @PrePersist
     public void createAt() {

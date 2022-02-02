@@ -1,5 +1,6 @@
 package com.shakeup.controller;
 
+import com.shakeup.model.Videos;
 import com.shakeup.request.video.VideoCreateRequest;
 import com.shakeup.request.video.VideoUpdateRequest;
 import com.shakeup.service.VideoService;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin("*")
 @RequestMapping("/video")
@@ -53,4 +57,5 @@ public class VideoController {
         }
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
+
 }

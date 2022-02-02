@@ -8,6 +8,8 @@ import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,6 +56,7 @@ public class VideoService {
         }
         return "fail";
     }
+
 
 
     //Read를 하는데..... 어떡하지 그냥 카테고리만 입력 받고 하면 될려나?

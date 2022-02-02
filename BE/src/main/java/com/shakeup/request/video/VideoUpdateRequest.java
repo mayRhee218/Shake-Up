@@ -15,6 +15,7 @@ public class VideoUpdateRequest {
 
     int show;
     String thumbnail;
+    int comment;
 
     public Videos toEntity(){
         return  Videos.builder()
@@ -23,6 +24,7 @@ public class VideoUpdateRequest {
                 .category(category)
                 .show(show)
                 .thumbnail(thumbnail)
+                .comment(comment)
                 .build();
 
     }

@@ -14,9 +14,10 @@ public class VideoCreateRequest {
     String url;
     @NotNull
     int category;
-
     int show;
     String thumbnail;
+    int comment;
+
     public Videos toEntity(){
         return  Videos.builder()
                 .uid(uid)
@@ -25,6 +26,7 @@ public class VideoCreateRequest {
                 .category(category)
                 .show(show)
                 .thumbnail(thumbnail)
+                .comment(comment)
                 .build();
 
     }
