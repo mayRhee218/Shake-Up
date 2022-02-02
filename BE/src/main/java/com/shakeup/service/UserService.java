@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -115,6 +116,54 @@ public class UserService {
         } else {
             return "success";
         }
+    }
+
+    public String checkEmail(String email){
+
+        // 이메일 인증번호 생성
+        String tempEmailCheck = getRamdomPassword(10);
+
+        // 수신 대상을 담을 ArrayList 생성
+        ArrayList<String> toUserList = new ArrayList<>();
+
+        System.out.println("2");
+
+        // 수신 대상 추가
+        toUserList.add(email);
+
+        System.out.println("2");
+
+        // 수신 대상 개수
+        int toUserSize = toUserList.size();
+
+        System.out.println("3");
+
+        // SimpleMailMessage (단순 텍스트 구성 메일 메시지 생성할 때 이용)
+        SimpleMailMessage simpleMessage = new SimpleMailMessage();
+
+        System.out.println("4");
+
+        // 수신자 설정
+        simpleMessage.setTo((String[]) toUserList.toArray(new String[toUserSize]));
+
+        System.out.println("5");
+
+        // 메일 제목
+        simpleMessage.setSubject("[이메일 인증번호 안내] 단람쥐와 도토리들 입니다.");
+
+        System.out.println("6");
+
+        // 메일 내용
+        simpleMessage.setText("해당 10자리 이메일 인증번호는 " + tempEmailCheck + "입니다.");
+
+        System.out.println("7");
+
+        // 메일 발송
+        javaMailSender.send(simpleMessage);
+
+        System.out.println("8");
+
+        return tempEmailCheck;
     }
 
     public String changeinfo(UserChangeInfoRequest userChangeInfoRequest) {

@@ -4,6 +4,8 @@ import com.shakeup.model.Users;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 public class UserSignUpRequest {
 
@@ -16,8 +18,6 @@ public class UserSignUpRequest {
     @NotNull
     String password;
     String profile;
-    @NotNull
-    String date;
 
     public Users toEntity(){
         return Users.builder()
@@ -26,7 +26,6 @@ public class UserSignUpRequest {
                 .email(email)
                 .password(password)
                 .profile(profile)
-                .date(date)
                 .build();
     }
 }

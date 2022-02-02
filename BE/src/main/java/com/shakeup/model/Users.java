@@ -4,6 +4,7 @@ package com.shakeup.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -20,6 +21,9 @@ public class Users {
     private String email;
     private String name;
     private String profile;
-    private String date;
-
+    private LocalDateTime date;
+    @PrePersist
+    public void createAt() {
+        this.date = LocalDateTime.now();
+    }
 }
