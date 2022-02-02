@@ -8,7 +8,7 @@
  **/
 
 import React, { useState } from 'react';
-import { useNavigate, useHistory } from "react-router-dom";
+import { Link, useNavigate, useHistory } from "react-router-dom";
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -50,13 +50,11 @@ function FindId(props) {
   const findEmail = (email) => {
     axios.get(`http://114.129.238.28/user/${email}`)
     .then(res => {
-      console.log(res)
-      navigate('/find_id_ok')
+      console.log(res.data)
+      navigate('/find_id_ok', {state: {userId: res.data}})
     })
     .catch(err => {
-      if(err.response.status === 404) {
-        setEmailError('회원정보에 등록된 이메일이 아닙니다.')
-      }
+      setEmailError('회원정보에 등록된 이메일이 아닙니다.')
     });
   }
 

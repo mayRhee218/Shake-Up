@@ -64,7 +64,7 @@ function FindPassword(props) {
     })
     .catch(err => {
       if(err.response.status === 400) {
-        console.log('올바르지 않은 정보입니다.')
+        setEmailError('올바르지 않은 정보입니다.')
       }
     });
   }

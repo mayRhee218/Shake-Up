@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,9 +20,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+function ButtonAppBar() {
   const classes = useStyles();
-
+  const navigate = useNavigate();
+  const loginBtn = () => {
+    navigate('/login');
+  }
+  const logoutBtn = () => {
+    localStorage.removeItem('IsLogin');
+    console.log(localStorage.getItem('IsLogin'));
+    navigate('/');
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -33,11 +41,14 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             
           </Typography>
-          <Link to="/login" style={{ textDecoration: 'none', color:'inherit' }}>
-            <Button color="inherit">로그인</Button>
-          </Link>
+          {/* <Link to="/login" style={{ textDecoration: 'none', color:'inherit' }}> */}
+            <Button color="inherit" onClick={loginBtn}>로그인</Button>
+          {/* </Link> */}
+          <Button color="inherit" onClick = {logoutBtn}>로그아웃</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+export default ButtonAppBar;

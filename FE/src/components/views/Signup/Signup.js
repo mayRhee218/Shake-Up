@@ -7,41 +7,24 @@
 import React, { useState } from 'react';
 import {TextField, Button} from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
-import OverLap from './OverLap'
+import Overlap from './OverLap'
 import Email from './Email'
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-  }));
 
 function Signup() {
   const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
   const [confirmPassword, setConfirmPassword] = useState('')
   const [check, setCheck] = useState({
     id: false,
     email: false,
     pw: false
   })
-  const [idErrorMsg, setIdErrorMsg] = useState('')
   const [pwErrorMsg, setPwErrorMsg] = useState('')
   const [cpwErrorMsg, setCpwErrorMsg] = useState('')
   
   const navigate = useNavigate()
-
-  const onIdHandler = ({target: {value}}) => {
-    setId(value)
-    if (value.length > 3 && !/^[a-z0-9]{6,12}$/i.test(value)){      
-      setIdErrorMsg('아이디 문제있네')
-    } else {
-      setIdErrorMsg('')
-    }
-  }
 
   // 패스워드
   const onPwdHandler = ({target: {value}}) => {
@@ -63,18 +46,21 @@ function Signup() {
     }
   }
   //이메일 인증
-  const isRight = (isSame) => {
-    if (isSame) {
+  const isEmail = (props) => {
+    setEmail(props)
+    if (props) {
       setCheck({...check, email:true})
     } else {
-      
+      setCheck({...check, email:false})
     }
   }
   // 아이디 중복검사
-  const propOverlap = (isUnique) => {
-    console.log(isUnique)
-    if (isUnique) {
+  const propOverlap = (props) => {
+    setId(props)
+    if (props) {
       setCheck({...check, id:true})
+    } else {
+      setCheck({...check, id:false})
     }
   }
   // 다음 버튼
@@ -82,52 +68,39 @@ function Signup() {
     navigate('/signup/next', {
       state: {
         id,
+        email,
         password
       },
     });
   }
-  const classes = useStyles();
-
   // --------------------------------------------------------------------
-
   return (
     <div style={{
       display: 'flex', justifyContent: 'center', alignItems: 'flex-start' 
       , width: '100%', height: '88vh'
     }}>
-      <form style={{ display: 'flex', flexDirection: 'column' }}
-        className={classes.root} autoComplete='off'>
-          <TextField
-            name='id' 
-            label="아이디"
-            type='text'
-            variant="standard"
-            onChange={onIdHandler}
-            value={id}
-            error={idErrorMsg ? true:false}
-            helperText={idErrorMsg}
-          />
-          
-          <OverLap 
-            url='idcheck'
-            value={id}
-            propFunction={propOverlap}
-          ></OverLap>
-          {/* axios로 보내면 응답이 이메일의 해쉬값이 오고, 저장해놨다가 같은값인지 확인*/}
-          <Email 
-            propFunction={isRight}
-          ></Email>
-          <TextField
-            name='password'
-            label="비밀번호"
-            type='password'
-            variant="standard"
-            autoComplete="new-password"
-            onChange={onPwdHandler}
-            value={password}
-            error={pwErrorMsg ? true:false}
-            helperText={pwErrorMsg}
-            />
+      <form style={{ display: 'flex', flexDirection: 'column' }} autoComplete='off'>
+        <Overlap 
+          type='idcheck'
+          value=''
+          propFunction={propOverlap}
+        ></Overlap>
+        {/* axios로 보내면 응답이 이메일의 해쉬값이 오고, 저장해놨다가 같은값인지 확인*/}
+        
+        <Email
+          email=''
+          propFunction={isEmail}
+        ></Email>
+        <TextField
+          name='password'
+          label="비밀번호"
+          type='password'
+          variant="standard"
+          autoComplete="new-password"
+          onChange={onPwdHandler}
+          value={password}
+          helperText={pwErrorMsg}
+        />
         <TextField
           name="confirmPassword"
           label="비밀번호 확인"
@@ -136,9 +109,8 @@ function Signup() {
           variant="standard"
           onChange={onConPwdHandler}
           value={confirmPassword}
-          error={cpwErrorMsg ? true:false}
           helperText={cpwErrorMsg}
-          />
+        />
         <Button
           type="button" 
           variant="contained"
