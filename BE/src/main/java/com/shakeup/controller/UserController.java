@@ -55,12 +55,12 @@ public class UserController {
 
     @ApiOperation(value = "이메일로 유저 정보 가져오기")
     @GetMapping(value = "/{email}")
-    public ResponseEntity<String> getId(@PathVariable("email") String email) {
+    public ResponseEntity<Users> getId(@PathVariable("email") String email) {
         Optional<Users> user = userService.findByEmail(email);
         if (!user.isPresent()) {
-            return new ResponseEntity<String>("찾는 데이터가 없습니다.", HttpStatus.OK);
+            return null;
         }
-        return new ResponseEntity<String>(user.get().getId(), HttpStatus.OK);
+        return new ResponseEntity<Users>(user.get(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "아이디 찾기")

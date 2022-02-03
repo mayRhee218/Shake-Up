@@ -14,7 +14,7 @@ public class VideoCreateRequest {
     String url;
     @NotNull
     int category;
-    int show;
+    int isshow;
     String thumbnail;
     int comment;
 
@@ -24,7 +24,7 @@ public class VideoCreateRequest {
                 .title(title)
                 .url(url)
                 .category(category)
-                .show(show)
+                .isshow(isshow)
                 .thumbnail(thumbnail)
                 .comment(comment)
                 .build();

@@ -7,22 +7,25 @@ import lombok.Getter;
 @Getter
 public class VideoUpdateRequest {
     @NotNull
+    int vid;
+    @NotNull
     String title;
     @NotNull
     String url;
     @NotNull
     int category;
 
-    int show;
+    int isshow;
     String thumbnail;
     int comment;
 
     public Videos toEntity(){
         return  Videos.builder()
+                .vid(vid)
                 .title(title)
                 .url(url)
                 .category(category)
-                .show(show)
+                .isshow(isshow)
                 .thumbnail(thumbnail)
                 .comment(comment)
                 .build();
