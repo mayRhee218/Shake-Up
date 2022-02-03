@@ -4,8 +4,8 @@ import { ref, uploadBytesResumable, getDownloadURL,
 
 // Create 업로드
 export async function uploadFile(file, fileName) {
-  const imagesRef = ref(storage, 'images/'+fileName);
-  const uploadTask = uploadBytesResumable(imagesRef, file);
+  const filesRef = ref(storage, 'videos/'+fileName);
+  const uploadTask = uploadBytesResumable(filesRef, file);
 
   uploadTask.on('state_changed',
   null,
@@ -16,12 +16,13 @@ export async function uploadFile(file, fileName) {
   () => {
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
       console.log('File available at', downloadURL);
+      // axios로 post 요청??
       });
     }
   );
 }
 
-// Read 읽어오기
+// Read 읽어오기 => 쓸 일 없을듯
 export async function getFile(pk) {
   const dataRef = ref(storage, 'videos/'+pk)
   getDownloadURL(dataRef).then(res => {
@@ -30,11 +31,11 @@ export async function getFile(pk) {
 }
 
 // Delete 삭제
-export async function deleteFile(pk) {
-  const deleteRef = ref(storage, 'videos/'+ pk)
-
+export async function deleteFile(videoId) {
+  const deleteRef = ref(storage, 'videos/'+ videoId)
+  
   deleteObject(deleteRef).then(() => {
-    console.log(pk, '삭제완료')
+    console.log(videoId, '삭제완료')
   }).catch((err) => {
     console.log(err)
   })

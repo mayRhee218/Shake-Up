@@ -24,6 +24,8 @@ import ArticleDetail from './components/views/community/ArticleDetail';
 import DanddaResult from './components/views/dandda/danddaresult/DanddaResult';
 import DanddaUpload from './components/views/dandda/danddaupload/DanddaUpload';
 import DanddaUploadComplete from './components/views/dandda/danddaupload/DanddaUploadComplete';
+import FirebaseTest from './components/views/firebase/uploadtest'
+import Mypage from './components/views/mypage/MyPage'
 
 
 function App() {
@@ -52,6 +54,8 @@ function App() {
         <Route exact={true} path="/:id" element={<DanddaResult/>} />
         <Route exact={true} path="/:id/upload" element={<DanddaUpload/>} />
         <Route exact={true} path="/:id/upload/complete" element={<DanddaUploadComplete/>} />
+        <Route exact={true} path="/firebase" element={<FirebaseTest/>} />
+        <Route exact={true} path="/mypage" element={<Mypage/>} />
       </Routes>
     </BrowserRouter>
     </>
