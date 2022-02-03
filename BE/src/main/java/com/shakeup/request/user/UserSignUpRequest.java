@@ -17,10 +17,7 @@ public class UserSignUpRequest {
     String email;
     @NotNull
     String password;
-<<<<<<< HEAD:BE/src/main/java/com/shakeup/request/UserSignUpRequest.java
     String profile;
-=======
->>>>>>> 8b73a4dbe918dd13490931d75c9f32684c589df0:BE/src/main/java/com/shakeup/request/user/UserSignUpRequest.java
 
 //    String profile;
 
@@ -30,11 +27,7 @@ public class UserSignUpRequest {
                 .name(name)
                 .email(email)
                 .password(password)
-<<<<<<< HEAD:BE/src/main/java/com/shakeup/request/UserSignUpRequest.java
                 .profile(profile)
-=======
-//                .profile(profile)
->>>>>>> 8b73a4dbe918dd13490931d75c9f32684c589df0:BE/src/main/java/com/shakeup/request/user/UserSignUpRequest.java
                 .build();
     }
 }

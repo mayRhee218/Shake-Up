@@ -13,7 +13,7 @@ public class VideoUpdateRequest {
     @NotNull
     int category;
 
-    int show;
+    boolean isshow;
     String thumbnail;
     int comment;
 
@@ -22,9 +22,9 @@ public class VideoUpdateRequest {
                 .title(title)
                 .url(url)
                 .category(category)
-                .show(show)
+                .isshow(isshow)
                 .thumbnail(thumbnail)
-                .comment(comment)
+//                .comment(comment)
                 .build();
 
     }

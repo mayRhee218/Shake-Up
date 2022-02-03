@@ -21,6 +21,7 @@ public class VideoService {
     //영상 DB저장
     public String createVideo(VideoCreateRequest videoCreateRequest) {
         Videos tempvideo = videoCreateRequest.toEntity();
+        System.out.println(videoCreateRequest.getTag());
         try {
             videoRepository.save(tempvideo);
             return "success";
@@ -38,7 +39,7 @@ public class VideoService {
             video.get().setTitle(tempvideo.getTitle());
             video.get().setUrl(tempvideo.getUrl());
             video.get().setCategory(tempvideo.getCategory());
-            video.get().setShow(tempvideo.getShow());
+            video.get().setIsshow(tempvideo.isIsshow());
             video.get().setThumbnail(tempvideo.getThumbnail());
 
             videoRepository.save(video.get());
@@ -47,16 +48,16 @@ public class VideoService {
         }
         return "fail";
     }
-    public String deleteVideos(long vid){
+
+    public String deleteVideos(long vid) {
         Optional<Videos> video = videoRepository.findVideosByVid(vid);
 
-        if(video.isPresent()){
+        if (video.isPresent()) {
             videoRepository.deleteById(video.get().getVid());
             return "success";
         }
         return "fail";
     }
-
 
 
     //Read를 하는데..... 어떡하지 그냥 카테고리만 입력 받고 하면 될려나?

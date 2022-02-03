@@ -13,7 +13,7 @@ public class TagSerachRequest {
     private int like;
     private int views;
     private String url;
-    private int show;
+    private boolean isshow;
     private int category;
     private LocalDateTime date;
 
