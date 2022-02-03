@@ -15,7 +15,11 @@ public class VideoUpdateRequest {
     @NotNull
     int category;
 
+<<<<<<< HEAD
     int isshow;
+=======
+    boolean isshow;
+>>>>>>> feature/BE/axiostest
     String thumbnail;
     int comment;
 
@@ -27,7 +31,7 @@ public class VideoUpdateRequest {
                 .category(category)
                 .isshow(isshow)
                 .thumbnail(thumbnail)
-                .comment(comment)
+//                .comment(comment)
                 .build();
 
     }

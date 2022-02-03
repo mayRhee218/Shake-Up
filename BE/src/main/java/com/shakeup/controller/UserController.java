@@ -3,10 +3,7 @@ package com.shakeup.controller;
 import com.shakeup.config.JwtTokenProvider;
 import com.shakeup.model.Users;
 
-import com.shakeup.request.user.UserChangeInfoRequest;
-import com.shakeup.request.user.UserResetPwdRequest;
-import com.shakeup.request.user.UserSendpwRequest;
-import com.shakeup.request.user.UserSignUpRequest;
+import com.shakeup.request.user.*;
 import com.shakeup.repository.UserRepository;
 import com.shakeup.request.*;
 import com.shakeup.service.UserService;
@@ -19,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -43,14 +43,19 @@ public class UserController {
     // 승관 부분
     @ApiOperation(value = "로그인")
     @PostMapping(value = "/login")
-    public String login(@RequestBody UserLoginRequest userLoginRequest) {
+    public Object login(@RequestBody UserLoginRequest userLoginRequest) {
         Users member = userRepository.findById(userLoginRequest.getId())
                 .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 ID 입니다."));
         System.out.println("test : " + member.toString());
         if (!passwordEncoder.matches(userLoginRequest.getPassword(), member.getPassword())) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
-        return jwtTokenProvider.createToken(member, member.getRoles());
+
+        UserLoginResponse userLoginResponse = new UserLoginResponse();
+        userLoginResponse.setUser(member);
+        userLoginResponse.setToken(jwtTokenProvider.createToken(member, member.getRoles()));
+
+        return userLoginResponse;
     }
 
     @ApiOperation(value = "이메일로 유저 정보 가져오기")
@@ -118,7 +123,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/emailcheck/{email}")  // TODO 이메일 인증번호 가져오기
-    public ResponseEntity<String> emailCheck(@PathVariable("email") String email){
+    public ResponseEntity<String> emailCheck(@PathVariable("email") String email) {
         System.out.println("1");
         String result = userService.checkEmail(email);
 

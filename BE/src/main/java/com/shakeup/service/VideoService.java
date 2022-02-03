@@ -22,6 +22,7 @@ public class VideoService {
     //영상 DB저장
     public String createVideo(VideoCreateRequest videoCreateRequest) {
         Videos temp = videoCreateRequest.toEntity();
+        System.out.println(videoCreateRequest.getTag());
         try {
             videoRepository.save(temp);
             return "success";
@@ -39,7 +40,7 @@ public class VideoService {
             video.get().setTitle(temp.getTitle());
             video.get().setUrl(temp.getUrl());
             video.get().setCategory(temp.getCategory());
-            video.get().setIsshow(temp.getIsshow());
+            video.get().setIsshow(temp.isIsshow());
             video.get().setThumbnail(temp.getThumbnail());
 
             videoRepository.save(video.get());
@@ -48,10 +49,11 @@ public class VideoService {
         }
         return "fail";
     }
-    public String deleteVideos(long vid){
+
+    public String deleteVideos(long vid) {
         Optional<Videos> video = videoRepository.findVideosByVid(vid);
 
-        if(video.isPresent()){
+        if (video.isPresent()) {
             videoRepository.deleteById(video.get().getVid());
             return "success";
         }
@@ -59,56 +61,57 @@ public class VideoService {
     }
 
     //전체 영상 가져오기
-    public List<Videos> readAllVideo(){
+    public List<Videos> readAllVideo() {
         try {
             List<Videos> video = videoRepository.findAll();
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
     }
+
     public List<Videos> readCategoryVideo(int category) {
         try {
             List<Videos> video = videoRepository.findVideosByCategory(category);
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
 
     }
+
     public Optional<Videos> readOneVideo(long vid) {
         try {
             Optional<Videos> video = videoRepository.findVideosByVid(vid);
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
-
     }
 
-    public  List<Videos>  readMyVideo(int uid) {
+    public List<Videos> readMyVideo(int uid) {
         try {
             List<Videos> video = videoRepository.findVideosByUid(uid);
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
 
     }
-    public  List<Videos>  readMylikeVideo(UserlikeCreateRequest userlikeCreateRequest) {
+
+    public List<Videos> readMylikeVideo(UserlikeCreateRequest userlikeCreateRequest) {
 
 
-       return null;
+        return null;
     }
-
     //Read를 하는데..... 어떡하지 그냥 카테고리만 입력 받고 하면 될려나?
 
 }

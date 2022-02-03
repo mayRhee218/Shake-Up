@@ -40,7 +40,7 @@ public class TagController {
             tagSerachRequest.setUid(tag1.getVideos().getUid());
             tagSerachRequest.setCategory(tag1.getVideos().getCategory());
             tagSerachRequest.setLike(tag1.getVideos().getLikecnt());
-            tagSerachRequest.setShow(tag1.getVideos().getIsshow());
+            tagSerachRequest.setIsshow(tag1.getVideos().isIsshow());
             tagSerachRequest.setTitle(tag1.getVideos().getTitle());
             tagSerachRequest.setUrl(tag1.getVideos().getUrl());
             tagSerachRequest.setViews(tag1.getVideos().getViews());
@@ -64,7 +64,7 @@ public class TagController {
         }
 
         for (int i = 0; i < tagCreateRequest.getTname().size(); i++) {
-            tagRepository.save(Tag.builder().tname(tagCreateRequest.getTname().get(i)).videos(videoRepository.findByVid(tagCreateRequest.getVid())).build());
+            tagRepository.save(Tag.builder().tname(tagCreateRequest.getTname().get(i)).videos(videoRepository.findByVid(tagCreateRequest.getVid()).get()).build());
         }
 
         // 성공 실패 반환 후 끝.
