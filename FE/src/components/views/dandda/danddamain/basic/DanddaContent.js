@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CarouselSlide from '../CarouselSlide';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { SLIDE_INFO } from './constants';
+import { FaAndroid, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Slide from '@material-ui/core/Slide';
 import img1 from './img/1.png'
 import img2 from './img/2.png'
@@ -52,6 +53,10 @@ function DanddaContent() {
             setSlideIn(true);
         }, 500);
     };
+    const movecamera = (e) => {
+        // window.Android.moveCamera();
+        window.Android.showToast('카메라 실행');
+    };
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -88,7 +93,7 @@ function DanddaContent() {
 
     return (
         <div className='DanddaMain'>
-            <div className='Carousel'>
+            <div className='Carousel' onClick={movecamera}>
                 <Arrow
                     direction='left'
                     clickFunction={() => onArrowClick('left')}

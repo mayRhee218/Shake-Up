@@ -35,11 +35,11 @@ export default function CarouselSlide(props) {
     const classes = useStyles();
 
     return (
-        <Link to={{pathname:`/${id}`, state:{alt:{profile_name}, src:{profile_src}} }}>
+        //<Link to={{pathname:`/${id}`, state:{alt:{profile_name}, src:{profile_src}} }}>
             <Card className={classes.card}>
                 <Avatar className={classes.profile} alt={profile_name} src={profile_src}/>
                 <h1 className={classes.title}>{title}</h1>
             </Card>
-        </Link>
+        //</Link>
     );
 }
