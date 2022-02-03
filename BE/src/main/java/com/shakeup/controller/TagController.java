@@ -3,13 +3,11 @@ package com.shakeup.controller;
 import com.shakeup.model.Tag;
 import com.shakeup.model.Videos;
 import com.shakeup.repository.TagRepository;
-import com.shakeup.repository.UserRepository;
 import com.shakeup.repository.VideoRepository;
 import com.shakeup.request.tag.TagCreateRequest;
 import com.shakeup.request.tag.TagDeleteRequest;
 import com.shakeup.request.tag.TagSerachRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.query.DefaultJpaQueryMethodFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -42,8 +39,8 @@ public class TagController {
             TagSerachRequest tagSerachRequest = new TagSerachRequest();
             tagSerachRequest.setUid(tag1.getVideos().getUid());
             tagSerachRequest.setCategory(tag1.getVideos().getCategory());
-            tagSerachRequest.setLike(tag1.getVideos().getLike());
-            tagSerachRequest.setShow(tag1.getVideos().getShow());
+            tagSerachRequest.setLike(tag1.getVideos().getLikecnt());
+            tagSerachRequest.setShow(tag1.getVideos().getIsshow());
             tagSerachRequest.setTitle(tag1.getVideos().getTitle());
             tagSerachRequest.setUrl(tag1.getVideos().getUrl());
             tagSerachRequest.setViews(tag1.getVideos().getViews());
