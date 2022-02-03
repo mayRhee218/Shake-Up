@@ -1,3 +1,13 @@
+/**
+ * 점수 확인 페이지
+ * 
+ * @author 명성
+ * @version 1.0.0
+ * 작성일 : 2022-02-02
+ * 
+ **/
+
+
 import React from 'react';
 import './DanddaResult.css';
 import Avatar from '@material-ui/core/Avatar';
@@ -8,6 +18,8 @@ import kakao from './images/kakao.jpg'
 import insta from './images/instagram.jpg'
 import face from './images/facebook.png'
 import Button from '@material-ui/core/Button';
+import { getFile, deleteFile } from '../../firebase/db'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,10 +59,11 @@ function DanddaResult(props) {
       </div>
       <br/>
       <div className={classes.root} style={{ textAlign:'center' }}>
+        <p>이 영상을 내 채널에 업로드 하시겠습니까?</p>
         <Link to='./upload'>
-        <Button variant="contained">이 영상을 내 채널에 올리기</Button>
+          <Button color="primary" variant="contained">네</Button>
         </Link>
-        <Button variant="contained">다른 사람이 춘 영상 보기</Button>
+        <Button color="secondary" variant="contained" onClick={deleteFile(0)}>아니오</Button>
       </div>
     </div>
   );

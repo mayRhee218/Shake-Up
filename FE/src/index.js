@@ -15,6 +15,8 @@ axios.defaults.baseURL = "http://114.129.238.28";
 // axios.defaults.baseURL = "https://www.mecallapi.com/";
 axios.defaults.withCredentials = false;
 
+window.Kakao.init("2da0aa7248170ff536df9379623c9469")
+
 ReactDOM.render(
   <Provider
     store={createStoreWithMiddleware(Reducer,
