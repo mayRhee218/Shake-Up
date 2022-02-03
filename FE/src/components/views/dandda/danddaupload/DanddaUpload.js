@@ -1,12 +1,26 @@
-import React, {useState} from 'react';
+/**
+ * 채널에 따라하기 영상 업로드
+ * 
+ * @author 명성
+ * @version 1.0.0
+ * 작성일 : 2022-02-02
+ * 
+ **/
+
+
+import React, {useState, useEffect} from 'react';
+import { Link, useNavigate, useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import kakao from './images/kakao.jpg' 
 import insta from './images/instagram.jpg'
-import face from './images/facebook.png'
+import facebook from './images/facebook.png'
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
+import ReactTagInput from "@pathofdev/react-tag-input";
+import "@pathofdev/react-tag-input/build/index.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 function DanddaUpload(props) {
+
+  const navigate = useNavigate();
   const classes = useStyles();
   const [state, setState] = React.useState({
     comments: false,
@@ -29,21 +45,47 @@ function DanddaUpload(props) {
   function onSubmit(event) {
     event.preventDefault();
     console.log(event.target[0].value)
-    console.log(event.target[1].checked)
-    console.log(event.target[2].checked)
+    console.log(tags)
     console.log(event.target[3].checked)
+    console.log(event.target[4].checked)
+    console.log(event.target[5].checked)
+    navigate('./complete')
   }
-  
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
+
+  // 공유하기
+  useEffect(() => {
+	  window.Kakao.Link.createScrapButton({
+	    container: '#kakao-share', // id=kakao-share 부분을 찾아 그 부분에 렌더링합니다. 
+	    requestUrl: window.location.href,
+	  })
+	}, []);
+
+  const [tags, setTags] = React.useState(["댄따"])
+  function addTags(newTags){
+    setTags(newTags)
+  }
+
+
 // 폼그룹 => textfield, 해쉬태그, 스위치 일괄 submit
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}
+    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' 
+    , width: '100%', height: '88vh'}}>
     <FormGroup role="form">
-      <TextField/>      
+      <h1>여기 썸네일</h1>
+      <TextField id="outlined-basic" variant="outlined"/>
+      <br/>
+      <ReactTagInput 
+      tags={tags} 
+      onChange={addTags}
+      placeholder='태그를 입력해주세요'
+      />
+      <br/>      
       <FormControlLabel
         control={
           <Switch
@@ -77,7 +119,27 @@ function DanddaUpload(props) {
         }
         label="영상 비공개"
       />
-      <button type='submit'>제출</button>
+      <br/>
+      <p>영상 소셜 공유하기</p>
+        <div style={{ display:'flex', flexDirection:'row' }}>
+          <Button id="kakao-share" className="share-wrapper">
+            <div className='circle'>
+              <img className="kakao shareicon" src={kakao} />
+            </div>
+          </Button>
+          <div className='circle'>
+            <img src= {insta} />
+          </div>
+          <div className='circle'>
+          <button className="share-wrapper" onClick={() => {
+            window.open(`https://www.facebook.com/sharer/sharer.php?href=${window.location.href}`, '페이스북 공유하기', 'width=600,height=800,location=no,status=no,scrollbars=yes');
+          }}>
+            <img className="facebook shareicon" src={facebook} />
+          </button>
+          </div>
+        </div>
+      <br/> 
+      <Button variant="contained" type="submit">제출</Button>
     </FormGroup>
     </form>
   );
