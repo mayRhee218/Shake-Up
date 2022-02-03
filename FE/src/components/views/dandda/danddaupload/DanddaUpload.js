@@ -21,6 +21,8 @@ import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
+import axios from 'axios';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,14 +44,44 @@ function DanddaUpload(props) {
     show: false,
   });
 
+  // const uid = localStorage.getItem('user')
+
   function onSubmit(event) {
     event.preventDefault();
     console.log(event.target[0].value)
     console.log(tags)
-    console.log(event.target[3].checked)
-    console.log(event.target[4].checked)
-    console.log(event.target[5].checked)
-    navigate('./complete')
+    setState({
+      comments: event.target[3].checked,
+      score: event.target[4].checked,
+      show: event.target[5].checked
+    })
+    console.log(state.comments)
+    console.log(state.show)
+
+    const credentials = {
+      category: 0,
+      iscomment: state.comments,
+      content: "new_vid_content",
+      score: 100,
+      tag: [
+        {
+          tname: tags
+        }
+      ],
+      isshow: state.show,
+      thumbnail: "new_vid_thumbnail",
+      title: "new_vid_title",
+      uid: 2,
+      url: "new_vid_url"      
+    }
+
+    axios.post(`/video/create`, credentials)
+    .then(res => {
+      console.log(res.data)      
+    })
+    .catch(err => {
+      console.log('영상 생성 실패')
+    });
   }
 
   const handleChange = (event) => {
