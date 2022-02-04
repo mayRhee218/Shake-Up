@@ -19,21 +19,21 @@ function Video({data}) {
     subtitle: {
     }
   }))
-
+  const {title, likecnt, views, url, score} = data
+  console.log(url)
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <div className={classes.video}>
-        <video src='' controls />
+        <video src={url} controls />
       </div>
       <div className={classes.title}>
-        <p>K-POP 따라하기</p>
+        <p>{title}</p>
       </div>
       <div className={classes.subtitle}>
-        <span>조회수</span>
-        <span>좋아요</span>
-        <span>성공동작</span>
+        <span>조회수 {views}</span>
+        <span>좋아요 {likecnt}</span>
+        <span>성공동작 {score}</span>
       </div>
     </div>
   );
