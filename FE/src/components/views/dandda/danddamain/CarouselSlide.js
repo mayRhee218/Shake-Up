@@ -20,16 +20,18 @@ export default function CarouselSlide(props) {
             display: 'flex',
             flexDirection: 'column', 
         },
-        profile: {
-            width: '10vw',
-            height:'6vh',
-            textAlign:'right'
-        },
 
         title: {
             justifyContent:'center',
             alignSelf:'center'
+        },
+
+        circle: {
+            width: '15px',
+            height: '15px',
+            borderRadius:'50%'
         }
+
     }));
 
     const classes = useStyles();
@@ -37,7 +39,9 @@ export default function CarouselSlide(props) {
     return (
         <Link to={{pathname:`/${id}`, state:{alt:{profile_name}, src:{profile_src}} }}>
             <Card className={classes.card}>
-                <Avatar className={classes.profile} alt={profile_name} src={profile_src}/>
+                <div className={classes.circle} >
+                    <Avatar alt={profile_name} src={profile_src}/>
+                </div>
                 <h1 className={classes.title}>{title}</h1>
             </Card>
         </Link>

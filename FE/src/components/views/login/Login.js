@@ -74,9 +74,10 @@ function Login(props) {
                     //로컬 스토리지에 토큰값 저장
                         console.log("로컬 저장 전 : ",localStorage.getItem('IsLogin'));
                         console.log(response);
-                        localStorage.setItem('AccessToken', response.payload);   //백엔드용
+                        localStorage.setItem('AccessToken', response.payload.token);   //백엔드용
                         // localStorage.setItem('AccessToken', response.payload.accessToken);   //MECALL API용
-                        localStorage.setItem('IsLogin', "true");
+                        localStorage.setItem('UserId', response.payload.uid);
+                        localStorage.setItem('IsLogin', true);
                         
                         console.log("로컬 저장 후 : ", localStorage.getItem('IsLogin'));
                         navigate('/');
