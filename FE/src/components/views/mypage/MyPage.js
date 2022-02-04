@@ -2,6 +2,7 @@ import { Tabs, Tab } from '@material-ui/core';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { TabPanel, a11yProps } from './TabPanel';
+import Video from './Video';
 import Videos from './Videos';
 
 function MyPage() {
@@ -65,7 +66,7 @@ function MyPage() {
           <h2>쓰리</h2>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <h2>포</h2>
+          <Video />
         </TabPanel>
         <TabPanel value={value} index={4}>
           <h2>파입</h2>
