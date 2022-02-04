@@ -20,12 +20,8 @@ public class VideoCreateRequest {
     String url;
     @NotNull
     int category;
-<<<<<<< HEAD
-    int isshow;
-=======
     boolean isshow;
     String content;
->>>>>>> feature/BE/axiostest
     String thumbnail;
     boolean iscomment;
     int score;
@@ -38,10 +34,7 @@ public class VideoCreateRequest {
                 .url(url)
                 .category(category)
                 .isshow(isshow)
-<<<<<<< HEAD
-=======
                 .content(content)
->>>>>>> feature/BE/axiostest
                 .thumbnail(thumbnail)
                 .iscomment(iscomment)
                 .score(score)
