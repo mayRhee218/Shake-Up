@@ -5,6 +5,7 @@ import com.shakeup.model.Videos;
 import com.shakeup.repository.VideoRepository;
 import com.shakeup.request.userlike.UserlikeCreateRequest;
 import com.shakeup.request.video.VideoCreateRequest;
+import com.shakeup.request.video.VideoMyCategoryRequest;
 import com.shakeup.request.video.VideoUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -95,9 +96,10 @@ public class VideoService {
         }
     }
 
-    public List<Videos> readMyVideo(int uid) {
+    public List<Videos> readMyCategoryVideo(VideoMyCategoryRequest videoMyCategoryRequest) {
+        Videos temp = videoMyCategoryRequest.toEntity();
         try {
-            List<Videos> video = videoRepository.findVideosByUid(uid);
+            List<Videos> video = videoRepository.findVideosByUidAndCategory(temp.getUid(),temp.getCategory());
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
         } catch (Exception e) {

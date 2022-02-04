@@ -8,6 +8,7 @@ import com.shakeup.repository.UserRepository;
 import com.shakeup.repository.VideoRepository;
 import com.shakeup.request.video.VideoCreateRequest;
 import com.shakeup.request.video.VideoFindResponse;
+import com.shakeup.request.video.VideoMyCategoryRequest;
 import com.shakeup.request.video.VideoUpdateRequest;
 import com.shakeup.service.VideoService;
 import io.swagger.annotations.ApiOperation;
@@ -75,7 +76,7 @@ public class VideoController {
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "카테고리 별 영상 가져오기", notes = "영상 정보를 받는다.", response = String.class)
+    @ApiOperation(value = "전체 영상 카테고리 별  가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/category/{category}")
     public ResponseEntity<List<Videos>> readCategoryVideo(@PathVariable("category") int category){
         List<Videos> res = videoService.readCategoryVideo(category);
@@ -90,10 +91,10 @@ public class VideoController {
 
         return new ResponseEntity<Videos>(res.get(), HttpStatus.OK);
     }
-    @ApiOperation(value = "나의 영상 가져오기", notes = "영상 정보를 받는다.", response = String.class)
-    @PostMapping(value = "/read/my/{uid}")
-    public ResponseEntity<List<Videos>> readMyVideo(@PathVariable("uid") int uid){
-        List<Videos> res = videoService.readMyVideo(uid);
+    @ApiOperation(value = "나의 영상 카테고리별로 가져오기", notes = "영상 정보를 받는다.", response = String.class)
+    @PostMapping(value = "/read/mycategory")
+    public ResponseEntity<List<Videos>> readMyCategoryVideo(@RequestBody VideoMyCategoryRequest videoMyCategoryRequest){
+        List<Videos> res = videoService.readMyCategoryVideo(videoMyCategoryRequest);
 
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
     }
