@@ -12,7 +12,6 @@ function Video({data}) {
     },
     video: {
       width: '90vw',
-
     },
     title: {
     },

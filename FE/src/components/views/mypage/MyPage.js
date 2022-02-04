@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { TabPanel, a11yProps } from './TabPanel';
 import Video from './Video';
 import Videos from './Videos';
+import Board1 from './board/Board1'
 
 function MyPage() {
   const [value, setValue] = useState(1)
@@ -58,6 +59,7 @@ function MyPage() {
         </div>
         <TabPanel value={value} index={0}>
           <h1>헤이</h1>
+          <Board1 />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <h1>투</h1>
