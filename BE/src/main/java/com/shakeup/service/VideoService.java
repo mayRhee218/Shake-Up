@@ -1,13 +1,17 @@
 package com.shakeup.service;
 
+import com.shakeup.model.Tag;
 import com.shakeup.model.Userlike;
 import com.shakeup.model.Videos;
+import com.shakeup.repository.TagRepository;
 import com.shakeup.repository.VideoRepository;
 import com.shakeup.request.userlike.UserlikeCreateRequest;
 import com.shakeup.request.video.VideoCreateRequest;
 import com.shakeup.request.video.VideoUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,13 +22,21 @@ public class VideoService {
 
     @Autowired
     private VideoRepository videoRepository;
+    @Autowired
+    private TagRepository tagRepository;
 
     //영상 DB저장
     public String createVideo(VideoCreateRequest videoCreateRequest) {
         Videos temp = videoCreateRequest.toEntity();
         System.out.println(videoCreateRequest.getTag());
         try {
-            videoRepository.save(temp);
+            long vid = videoRepository.save(temp).getVid();
+
+
+            for (int i = 0; i < videoCreateRequest.getTag().get(0).getTname().size(); i++) {
+                tagRepository.save(Tag.builder().tname(videoCreateRequest.getTag().get(0).getTname().get(i)).videos(videoRepository.findByVid(vid).get()).build());
+            }
+
             return "success";
         } catch (Exception e) {
             return "fail";

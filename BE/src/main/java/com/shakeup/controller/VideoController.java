@@ -106,6 +106,7 @@ public class VideoController {
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "영상 하나 가져오기 -> axios 테스트 완료 버전", notes = "영상 정보를 받는다.", response = String.class)
     @GetMapping(value = "/find/{vid}")
     public ResponseEntity<?> findVideo(@PathVariable("vid") int vid) {
 

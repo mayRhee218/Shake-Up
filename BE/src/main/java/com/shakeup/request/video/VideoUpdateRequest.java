@@ -14,12 +14,7 @@ public class VideoUpdateRequest {
     String url;
     @NotNull
     int category;
-
-<<<<<<< HEAD
-    int isshow;
-=======
     boolean isshow;
->>>>>>> feature/BE/axiostest
     String thumbnail;
     int comment;
 
