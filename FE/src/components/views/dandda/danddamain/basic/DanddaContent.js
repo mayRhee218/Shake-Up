@@ -25,7 +25,7 @@ function DanddaContent() {
     const [vid, setVid] = useState("")
 
     const SLIDE_INFO = [
-        { backgroundImage: `${dancerthumbnail}`, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:9 },
+        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:9 },
         { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id:3 },
         { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id:4 },
         // { backgroundImage: '#ffe084', title: 'Slide 4' },
