@@ -1,6 +1,6 @@
 import { Tabs, Tab } from '@material-ui/core';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TabPanel, a11yProps } from './TabPanel';
 import Video from './Video';
 import Videos from './Videos';
@@ -32,6 +32,23 @@ function MyPage() {
         console.log(err)
       })
   }
+  const data = {
+    category: '',
+    content: '',
+    iscomment: '',
+    isshow: '',
+    score: 0,
+    thumbnail: '',
+    uid: 1,
+    url: '',
+  }
+  axios.post('/video/create', data)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   return (
     <div className='mypage'>
       <div className='user'>
@@ -68,7 +85,7 @@ function MyPage() {
           <h2>쓰리</h2>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <Video />
+          <Videos />
         </TabPanel>
         <TabPanel value={value} index={4}>
           <h2>파입</h2>

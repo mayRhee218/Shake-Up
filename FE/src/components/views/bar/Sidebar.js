@@ -6,7 +6,7 @@ import seong from './seong.png'
 
 
 function Sidebar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const [search, setSearch] = useState(false)
   return (
     <>

@@ -6,16 +6,16 @@ function Upload() {
   const [now, setNow] = useState(Date.now())
   
   const onFileChange = (event) => {
+    const nowImageUrl = URL.createObjectURL(event.target.files[0])
+    console.log(nowImageUrl)
     setFile(event.target.files[0])
   }
   
   const onSubmit = async (event) => {
     event.preventDefault()
     try {
-      console.log(now)
-      await setNow(Date.now())
-      console.log(now)
-      await uploadFile(file, now)
+      setNow(Date.now())
+      await uploadFile(file, Date.now())
     } 
     catch (error) {
       console.log(error)

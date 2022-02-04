@@ -14,6 +14,7 @@ export async function uploadFile(file, fileName) {
     console.error('실패사유는', error);
   },
   () => {
+    // 얘를 넘겨주면될거같음 downloadURL => .js로
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
       console.log('File available at', downloadURL);
       // axios로 post 요청??
@@ -23,8 +24,8 @@ export async function uploadFile(file, fileName) {
 }
 
 // Read 읽어오기 => 쓸 일 없을듯
-export async function getFile(pk) {
-  const dataRef = ref(storage, 'videos/'+pk)
+export async function getFile(time) {
+  const dataRef = ref(storage, 'videos/'+time)
   getDownloadURL(dataRef).then(res => {
     console.log(res)
   })
@@ -32,7 +33,7 @@ export async function getFile(pk) {
 
 // Delete 삭제
 export async function deleteFile(videoId) {
-  const deleteRef = ref(storage, 'videos/'+ videoId)
+  const deleteRef = ref(storage, 'videos/' + videoId)
   
   deleteObject(deleteRef).then(() => {
     console.log(videoId, '삭제완료')
