@@ -39,55 +39,57 @@ function DanddaUpload(props) {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  // vid 전 페이지에서 제공받음.
-  // const location = useLocation();
-  // const vid = location.state.vid
-
+  const [content, setContent] = useState();
   const [state, setState] = React.useState({
-    comments: false,
-    score: false,
-    show: false,
+    is_comments: false,
+    is_score: false,
+    is_show: false,
   });
 
-  const uid = localStorage.getItem('user')
+  const location = useLocation();
+  const uid = localStorage.getItem('UserId')
+  const original_vid = location.state.vid
 
   function onSubmit(event) {
     event.preventDefault();
     console.log(event.target[0].value)
     console.log(tags)
+    setContent(event.target[0].value);
     setState({
-      comments: event.target[3].checked,
-      score: event.target[4].checked,
-      show: event.target[5].checked
+      is_comments: event.target[3].checked,
+      is_score: event.target[4].checked,
+      is_show: event.target[5].checked
     })
-    console.log(state.comments)
-    console.log(state.show)
+    console.log(state.is_comments)
+    console.log(state.is_show)
 
     const credentials = {
       category: 0,
-      iscomment: state.comments,
-      content: "new_vid_content",
+      iscomment: state.is_comments,
+      content: content,
       score: 100,
       tag: [
         {
           tname: tags
         }
       ],
-      isshow: state.show,
-      thumbnail: "new_vid_thumbnail",
-      title: "new_vid_title",
+      isshow: state.is_comments,
+      thumbnail: "따라하기",
+      title: "소스영상",
       uid: uid,
       url: "new_vid_url",    
       // 따라한 영상의 vid
-      // original_vid: vid  
+      original_vid: original_vid
     }
 
     axios.post(`/video/create`, credentials)
     .then(res => {
-      console.log(res.data)      
-    })
+      console.log(res.data)
+      navigate('./complete')
+    }) 
     .catch(err => {
       console.log('영상 생성 실패')
+
     });
   }
 
@@ -124,7 +126,8 @@ function DanddaUpload(props) {
       onChange={addTags}
       placeholder='태그를 입력해주세요'
       />
-      <br/>      
+      <br/>
+      <p>{original_vid}</p>      
       <FormControlLabel
         control={
           <Switch

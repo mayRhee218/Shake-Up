@@ -88,7 +88,7 @@ function DanddaContent() {
         .catch(err => {
           console.log('댄서 정보 받아오기 실패')
         });
-    }, [vid])
+    }, [])
 
 
     return (

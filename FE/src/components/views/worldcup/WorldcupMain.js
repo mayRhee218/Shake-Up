@@ -20,7 +20,6 @@ function WorldcupMain(props) {
       <br/>
       <Button color="primary" variant="contained">지난 월드컵 보러가기</Button>
 
-      
     </div>
   );
 }

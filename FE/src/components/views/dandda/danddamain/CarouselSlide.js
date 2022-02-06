@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, makeStyles } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, useNavigate } from 'react-router-dom';
 
 export default function CarouselSlide(props) {
     const { backgroundImage, title, profile_name, profile_src, id } = props.content;
@@ -35,15 +35,18 @@ export default function CarouselSlide(props) {
     }));
 
     const classes = useStyles();
+    const navigate = useNavigate();
+
+    const onClick = () => {
+        navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
+    }
 
     return (
-        <Link to={{pathname:`/${id}`, state:{alt:profile_name, src:profile_src, vid:id}}}>
-            <Card className={classes.card}>
-                <div className={classes.circle} >
-                    <Avatar alt={profile_name} src={profile_src}/>
-                </div>
-                <h1 className={classes.title}>{title}</h1>
-            </Card>
-        </Link>
+        <Card className={classes.card} onClick={onClick}>
+            <div className={classes.circle} >
+                <Avatar alt={profile_name} src={profile_src}/>
+            </div>
+            <h1 className={classes.title}>{title}</h1>
+        </Card>
     );
 }

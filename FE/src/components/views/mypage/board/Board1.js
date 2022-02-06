@@ -17,11 +17,15 @@ function Board1(props) {
   
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
-    const userId = localStorage.getItem('UserId')
-    axios.post(`/video/read/my/${userId}`)
+    const uid = localStorage.getItem('UserId')
+    const credentials = {
+      category : 0,
+      uid:uid
+    }
+    axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
       console.log(res)
-      setVideos()
+      setVideos(res.data)
     })
     .catch(err =>{
       console.log(err)
