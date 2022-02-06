@@ -68,6 +68,7 @@ function DanddaUpload(props) {
         }
       ],
       isshow: state.is_show,
+      isscore: state.is_score,
       thumbnail: "테스트시도1",
       title: "테스트시도1",
       uid: uid,
