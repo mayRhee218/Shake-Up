@@ -21,7 +21,8 @@ function DanddaUploadComplete(props) {
       <h1>영상이 내 채널에</h1>
       <h1>업로드되었습니다!</h1>
       <br/>
-      <Link to=''>
+      {/* 이거 uid가 전달되게 해야할듯 */}
+      <Link to='./mypage'>
         <Button color="primary" variant="contained">영상 보러 가기</Button>
       </Link>
       <br/>

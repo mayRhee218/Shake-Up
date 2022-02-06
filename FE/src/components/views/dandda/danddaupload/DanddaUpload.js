@@ -39,7 +39,7 @@ function DanddaUpload(props) {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  const [content, setContent] = useState();
+  const [content, setContent] = useState("");
   const [state, setState] = React.useState({
     is_comments: false,
     is_score: false,
@@ -50,18 +50,12 @@ function DanddaUpload(props) {
   const uid = localStorage.getItem('UserId')
   const original_vid = location.state.vid
 
+  const contentChange = (event) => {
+    setContent(event.target.value)
+  }
+
   function onSubmit(event) {
     event.preventDefault();
-    console.log(event.target[0].value)
-    console.log(tags)
-    setContent(event.target[0].value);
-    setState({
-      is_comments: event.target[3].checked,
-      is_score: event.target[4].checked,
-      is_show: event.target[5].checked
-    })
-    console.log(state.is_comments)
-    console.log(state.is_show)
 
     const credentials = {
       category: 0,
@@ -73,9 +67,9 @@ function DanddaUpload(props) {
           tname: tags
         }
       ],
-      isshow: state.is_comments,
-      thumbnail: "따라하기",
-      title: "소스영상",
+      isshow: state.is_show,
+      thumbnail: "테스트시도1",
+      title: "테스트시도1",
       uid: uid,
       url: "new_vid_url",    
       // 따라한 영상의 vid
@@ -89,8 +83,8 @@ function DanddaUpload(props) {
     }) 
     .catch(err => {
       console.log('영상 생성 실패')
-
     });
+
   }
 
   const handleChange = (event) => {
@@ -119,7 +113,8 @@ function DanddaUpload(props) {
     , width: '100%', height: '88vh'}}>
     <FormGroup role="form">
       <h1>여기 썸네일</h1>
-      <TextField id="outlined-basic" variant="outlined"/>
+      <TextField id="outlined-basic" variant="outlined"
+      onChange={contentChange}/>
       <br/>
       <ReactTagInput 
       tags={tags} 
@@ -131,9 +126,9 @@ function DanddaUpload(props) {
       <FormControlLabel
         control={
           <Switch
-            checked={state.checkedB}
+            checked={state.checked}
             onChange={handleChange}
-            name="comments"
+            name="is_comments"
             color="primary"
           />
         }
@@ -142,9 +137,9 @@ function DanddaUpload(props) {
       <FormControlLabel
         control={
           <Switch
-            checked={state.checkedB}
+            checked={state.checked}
             onChange={handleChange}
-            name="score"
+            name="is_score"
             color="primary"
           />
         }
@@ -153,9 +148,9 @@ function DanddaUpload(props) {
       <FormControlLabel
         control={
           <Switch
-            checked={state.checkedB}
+            checked={state.checked}
             onChange={handleChange}
-            name="show"
+            name="is_show"
             color="primary"
           />
         }
