@@ -17,6 +17,7 @@ public class VideoUpdateRequest {
     boolean isshow;
     String thumbnail;
     int comment;
+    boolean iscomment;
 
     public Videos toEntity(){
         return  Videos.builder()
@@ -26,6 +27,7 @@ public class VideoUpdateRequest {
                 .category(category)
                 .isshow(isshow)
                 .thumbnail(thumbnail)
+                .iscomment(iscomment)
 //                .comment(comment)
                 .build();
 
