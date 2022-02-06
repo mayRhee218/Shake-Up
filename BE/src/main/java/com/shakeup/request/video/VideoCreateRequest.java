@@ -25,6 +25,7 @@ public class VideoCreateRequest {
     String thumbnail;
     boolean iscomment;
     int score;
+    boolean isscore;
     List<VideoTagRequest> tag;
 
     public Videos toEntity() {
@@ -38,6 +39,7 @@ public class VideoCreateRequest {
                 .thumbnail(thumbnail)
                 .iscomment(iscomment)
                 .score(score)
+                .isscore(isscore)
                 .build();
 
     }
