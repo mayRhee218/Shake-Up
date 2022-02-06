@@ -36,12 +36,12 @@ function Board1(props) {
 
   return (
     <div>
-      <h1>최고점 획득 댄따</h1>
+      <h1>월드컵 점수 표시</h1>
       
-      <p>댄따 총 참여 회수</p>
+      <p>월드컵 총 참여 회수</p>
       <p>{videos.length}회</p>
       <hr/>
-      <h1>최근 참여 댄따</h1>
+      <h1>최근 참여 월드컵</h1>
       {videos.map((video) => {
         <Thumbnails video={video}/>
       })}
