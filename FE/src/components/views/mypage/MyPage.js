@@ -75,7 +75,6 @@ function MyPage() {
           </Tabs>
         </div>
         <TabPanel value={value} index={0}>
-          <h1>헤이</h1>
           <Board1 />
         </TabPanel>
         <TabPanel value={value} index={1}>

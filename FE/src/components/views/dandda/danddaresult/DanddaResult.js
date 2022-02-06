@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DanddaResult(props) {
-  // const { alt, src } = props.location.state
-  // console.log(alt)
-  // console.log(src)
+    // vid 전 페이지에서 제공받음.
+  // const location = useLocation();
+  // const vid = location.state.vid
   const classes = useStyles();
 
   return (
@@ -40,10 +40,11 @@ function DanddaResult(props) {
       display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center' 
       , width: '100%', height: '88vh'
     }}>
-      <Avatar/>
+      {/* {alt ? <Avatar alt={alt} src={src}/> : <Avatar alt="" src=""/>} */}
       <Progressbar bgcolor="#ff00ff" progress='85'  height={30} />
       <h2>총 n개 동작</h2>
       <h2>맞춘 동작: m개 동작</h2>
+      {/* <p>{vid}</p> */}
       <br/>
       <p>결과를 공유하기</p>
       <div style={{ display:'flex', flexDirection:'row' }}>
@@ -60,6 +61,7 @@ function DanddaResult(props) {
       <br/>
       <div className={classes.root} style={{ textAlign:'center' }}>
         <p>이 영상을 내 채널에 업로드 하시겠습니까?</p>
+        {/* <Link to={{pathname:'./upload', state:{vid:vid}}}> */}
         <Link to='./upload'>
           <Button color="primary" variant="contained">네</Button>
         </Link>

@@ -9,7 +9,7 @@
 
 
 import React, {useState, useEffect} from 'react';
-import { Link, useNavigate, useHistory } from "react-router-dom";
+import { Link, useNavigate, useHistory, useLocation } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import kakao from './images/kakao.jpg' 
@@ -38,13 +38,18 @@ function DanddaUpload(props) {
 
   const navigate = useNavigate();
   const classes = useStyles();
+
+  // vid 전 페이지에서 제공받음.
+  // const location = useLocation();
+  // const vid = location.state.vid
+
   const [state, setState] = React.useState({
     comments: false,
     score: false,
     show: false,
   });
 
-  // const uid = localStorage.getItem('user')
+  const uid = localStorage.getItem('user')
 
   function onSubmit(event) {
     event.preventDefault();
@@ -71,8 +76,10 @@ function DanddaUpload(props) {
       isshow: state.show,
       thumbnail: "new_vid_thumbnail",
       title: "new_vid_title",
-      uid: 2,
-      url: "new_vid_url"      
+      uid: uid,
+      url: "new_vid_url",    
+      // 따라한 영상의 vid
+      // original_vid: vid  
     }
 
     axios.post(`/video/create`, credentials)

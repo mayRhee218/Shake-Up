@@ -52,12 +52,12 @@ function App() {
         <Route exact={true} path="/signup/next" element={<SignUpNext/>} />
         <Route exact={true} path="/user/sujeong" element={<PutCredentials/>} />
         <Route exact={true} path="/community/:id" element={<ArticleDetail/>} />
-        <Route exact={true} path="/:id(\\d+)" element={<DanddaResult/>} />
+        <Route exact={true} path="/:id" element={<DanddaResult/>} />
         <Route exact={true} path="/:id/upload" element={<DanddaUpload/>} />
         <Route exact={true} path="/:id/upload/complete" element={<DanddaUploadComplete/>} />
         <Route exact={true} path="/firebase" element={<FirebaseTest/>} />
         <Route exact={true} path="/mypage" element={<Mypage/>} />
-        <Route exact={true} path="/worldcupmain" element={<WorldcupMain/>} />
+        <Route exact={true} path="/worldcup" element={<WorldcupMain/>} />
       </Routes>
     </BrowserRouter>
     </>
