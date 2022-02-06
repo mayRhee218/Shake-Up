@@ -56,6 +56,7 @@ public class VideoService {
             video.get().setIsshow(temp.isIsshow());
             video.get().setThumbnail(temp.getThumbnail());
             video.get().setIscomment(temp.isIscomment());
+            video.get().setIsscore(temp.isIsscore());
 
             videoRepository.save(video.get());
 

@@ -33,6 +33,7 @@ public class Videos {
     @Column(name = "iscomment", columnDefinition = "TINYINT")
     private boolean iscomment;
     private int score;
+    private boolean isscore;
 
     @PrePersist
     public void createAt() {
