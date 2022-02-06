@@ -1,8 +1,10 @@
 package com.shakeup.service;
 
+import com.shakeup.model.CopyVideo;
 import com.shakeup.model.Tag;
 import com.shakeup.model.Userlike;
 import com.shakeup.model.Videos;
+import com.shakeup.repository.CopyVideoRepository;
 import com.shakeup.repository.TagRepository;
 import com.shakeup.repository.VideoRepository;
 import com.shakeup.request.userlike.UserlikeCreateRequest;
@@ -25,6 +27,8 @@ public class VideoService {
     private VideoRepository videoRepository;
     @Autowired
     private TagRepository tagRepository;
+    @Autowired
+    private CopyVideoRepository copyVideoRepository;
 
     //영상 DB저장
     public String createVideo(VideoCreateRequest videoCreateRequest) {
@@ -35,8 +39,20 @@ public class VideoService {
 
 
             for (int i = 0; i < videoCreateRequest.getTag().get(0).getTname().size(); i++) {
-                tagRepository.save(Tag.builder().tname(videoCreateRequest.getTag().get(0).getTname().get(i)).videos(videoRepository.findByVid(vid).get()).build());
+                tagRepository.save(Tag.builder()
+                        .tname(videoCreateRequest.getTag().get(0).getTname().get(i))
+                        .videos(videoRepository.findByVid(vid).get()).build());
             }
+
+            if (videoCreateRequest.getCategory() == 0) {
+                copyVideoRepository.save(CopyVideo.builder()
+                        .original(videoRepository.findByVid(videoCreateRequest.getOriginal_vid()).get())
+                        .copy(videoRepository.findByVid(vid).get())
+                        .uid(videoCreateRequest.getUid())
+                        .build()
+                );
+            }
+
 
             return "success";
         } catch (Exception e) {
@@ -111,7 +127,7 @@ public class VideoService {
     public List<Videos> readMyCategoryVideo(VideoMyCategoryRequest videoMyCategoryRequest) {
         Videos temp = videoMyCategoryRequest.toEntity();
         try {
-            List<Videos> video = videoRepository.findVideosByUidAndCategory(temp.getUid(),temp.getCategory());
+            List<Videos> video = videoRepository.findVideosByUidAndCategory(temp.getUid(), temp.getCategory());
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
         } catch (Exception e) {

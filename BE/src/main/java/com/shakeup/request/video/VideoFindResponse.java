@@ -1,5 +1,6 @@
 package com.shakeup.request.video;
 
+import com.shakeup.model.Videos;
 import lombok.Data;
 
 @Data

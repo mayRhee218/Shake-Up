@@ -1,7 +1,9 @@
 package com.shakeup.controller;
 
+import com.shakeup.model.CopyVideo;
 import com.shakeup.model.Userlike;
 import com.shakeup.model.Videos;
+import com.shakeup.repository.CopyVideoRepository;
 import com.shakeup.request.userlike.UserlikeCreateRequest;
 import com.shakeup.model.Users;
 import com.shakeup.repository.UserRepository;
@@ -19,6 +21,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +37,8 @@ public class VideoController {
     private VideoRepository videoRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CopyVideoRepository copyVideoRepository;
 
     public static final Logger logger = LoggerFactory.getLogger(VideoController.class);
 
@@ -69,16 +75,17 @@ public class VideoController {
         }
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
+
     @ApiOperation(value = "영상 전체 가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/all")
-    public ResponseEntity<List<Videos>> readAllVideo(){
+    public ResponseEntity<List<Videos>> readAllVideo() {
         List<Videos> res = videoService.readAllVideo();
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
     }
 
     @ApiOperation(value = "전체 영상 카테고리 별  가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/category/{category}")
-    public ResponseEntity<List<Videos>> readCategoryVideo(@PathVariable("category") int category){
+    public ResponseEntity<List<Videos>> readCategoryVideo(@PathVariable("category") int category) {
         List<Videos> res = videoService.readCategoryVideo(category);
 
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
@@ -86,22 +93,43 @@ public class VideoController {
 
     @ApiOperation(value = "영상 하나 가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/one/{vid}")
-    public ResponseEntity<Videos> readOneVideo(@PathVariable("vid") long vid){
+    public ResponseEntity<Videos> readOneVideo(@PathVariable("vid") long vid) {
         Optional<Videos> res = videoService.readOneVideo(vid);
 
         return new ResponseEntity<Videos>(res.get(), HttpStatus.OK);
     }
+
     @ApiOperation(value = "나의 영상 카테고리별로 가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/mycategory")
-    public ResponseEntity<List<Videos>> readMyCategoryVideo(@RequestBody VideoMyCategoryRequest videoMyCategoryRequest){
-        List<Videos> res = videoService.readMyCategoryVideo(videoMyCategoryRequest);
+    public ResponseEntity<List<?>> readMyCategoryVideo(@RequestBody VideoMyCategoryRequest videoMyCategoryRequest) {
+        List<Videos> res = videoService.readMyCategoryVideo(videoMyCategoryRequest); // 나의 영상 가져오기
 
-        return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
+        if (videoMyCategoryRequest.getCategory() == 0) {
+            List<CopyVideo> res2 = copyVideoRepository.findByUid(videoMyCategoryRequest.getUid());
+
+            res2.sort((o1, o2) -> o2.getCopy().getDate().compareTo(o1.getCopy().getDate())); // 최신 날짜 순으로 정렬
+
+            return new ResponseEntity<List<?>>(res2, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<List<?>>(res, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{uid}")
+    public ResponseEntity<?> myBestScore(@PathVariable int uid) {
+        Optional<Videos> res = videoRepository.findFirstByUidOrderByScoreDesc(uid);
+
+        System.out.println(res.get().toString());
+        if (res.isPresent()) {
+            return new ResponseEntity<Videos>(res.get(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<String>("실패", HttpStatus.OK);
     }
 
     @ApiOperation(value = "나의 좋아요 가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/mylike")
-    public ResponseEntity<List<Videos>> readMylikeVideo(@RequestBody UserlikeCreateRequest userlikeCreateRequest){
+    public ResponseEntity<List<Videos>> readMylikeVideo(@RequestBody UserlikeCreateRequest userlikeCreateRequest) {
         List<Videos> res = videoService.readMylikeVideo(userlikeCreateRequest);
 
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);

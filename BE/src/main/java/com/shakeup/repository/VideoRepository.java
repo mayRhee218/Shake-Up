@@ -15,6 +15,8 @@ public interface VideoRepository extends JpaRepository<Videos, Long> {
     List<Videos> findAll();
     List<Videos> findVideosByUidAndCategory(int uid,int category);
 
+    Optional<Videos> findFirstByUidOrderByScoreDesc(int uid);
+
     Optional<Videos> findByUid(int uid);
 
     Optional<Videos> findByVid(long vid);
