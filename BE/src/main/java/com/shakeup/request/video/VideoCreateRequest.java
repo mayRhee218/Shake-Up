@@ -27,6 +27,7 @@ public class VideoCreateRequest {
     int score;
     boolean isscore;
     List<VideoTagRequest> tag;
+    int original_vid;
 
     public Videos toEntity() {
         return Videos.builder()
