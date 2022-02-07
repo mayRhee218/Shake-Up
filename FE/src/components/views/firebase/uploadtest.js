@@ -14,8 +14,15 @@ function Upload() {
   const onSubmit = async (event) => {
     event.preventDefault()
     try {
+<<<<<<< HEAD
       setNow(Date.now())
       await uploadFile(file, Date.now())
+=======
+      console.log(now)
+      await setNow(Date.now())
+      console.log(now)
+      await uploadFile(file, now)
+>>>>>>> feature/FE/video_firebase
     } 
     catch (error) {
       console.log(error)

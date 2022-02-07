@@ -42,11 +42,20 @@ export default function CarouselSlide(props) {
     }
 
     return (
+<<<<<<< HEAD
         <Card className={classes.card} onClick={onClick}>
             <div className={classes.circle} >
                 <Avatar alt={profile_name} src={profile_src}/>
             </div>
             <h1 className={classes.title}>{title}</h1>
         </Card>
+=======
+        // <Link to={{pathname:`/${id}`, state:{alt:{profile_name}, src:{profile_src}} }}>
+            <Card className={classes.card}>
+                <Avatar className={classes.profile} alt={profile_name} src={profile_src}/>
+                <h1 className={classes.title}>{title}</h1>
+            </Card>
+        // </Link>
+>>>>>>> feature/FE/video_firebase
     );
 }
