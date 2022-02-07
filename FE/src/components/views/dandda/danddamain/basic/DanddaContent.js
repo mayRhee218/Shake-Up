@@ -99,7 +99,6 @@ function DanddaContent() {
 
     useEffect(() => {
         axios.get(`/video/find/${SLIDE_INFO[0].id}`)
-<<<<<<< HEAD
         .then(res => {
           console.log(res.data) 
           setDancerthumbnail(res.data.thumbnail)
@@ -112,20 +111,6 @@ function DanddaContent() {
           console.log('댄서 정보 받아오기 실패')
         });
     }, [])
-=======
-            .then(res => {
-                console.log(res.data)
-                setDancerthumbnail(res.data.thumbnail)
-                setProfile(res.data.profile)
-                setVideoUrl(res.data.url)
-                setVid(res.data.vid)
-                console.log(res.data.thumbnail)
-            })
-            .catch(err => {
-                console.log('댄서 정보 받아오기 실패')
-            });
-    }, [vid])
->>>>>>> feature/FE/video_firebase
 
 
     return (
