@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CarouselSlide from '../CarouselSlide';
 import { SLIDE_INFO } from './constants';
+import {useNavigate} from 'react-router-dom';
 import { FaAndroid, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Slide from '@material-ui/core/Slide';
 import img1 from './img/1.png'
@@ -8,6 +9,7 @@ import img2 from './img/2.png'
 import img3 from './img/3.png'
 import profile_src from './img/profile.png'
 import axios from 'axios';
+
 
 
 function Arrow(props) {
@@ -25,19 +27,21 @@ function DanddaContent() {
     const [vid, setVid] = useState("")
 
     const SLIDE_INFO = [
-        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:9 },
-        { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id:3 },
-        { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id:4 },
+        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id: 16 },
+        { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id: 3 },
+        { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id: 4 },
         // { backgroundImage: '#ffe084', title: 'Slide 4' },
         // { backgroundImage: '#d9d9d9', title: 'Slide 5' },
-    ];  
+    ];
 
     const [index, setIndex] = useState(0);
     const content = SLIDE_INFO[index];
-    const numSlides = SLIDE_INFO.length; 
+    const numSlides = SLIDE_INFO.length;
 
     const [slideIn, setSlideIn] = useState(true);
     const [slideDirection, setSlideDirection] = useState('down');
+
+    const navigate = useNavigate();
 
     const onArrowClick = (direction) => {
         const increment = direction === 'left' ? -1 : 1;
@@ -53,10 +57,22 @@ function DanddaContent() {
             setSlideIn(true);
         }, 500);
     };
+
+    //Android Studio의 [showToast] 함수 실행 
     const movecamera = (e) => {
-        // window.Android.moveCamera();
-        window.Android.showToast('카메라 실행');
+        // console.log(videoUrl);
+        //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
+        window.Android.showToast('카메라 실행', videoUrl);
+        
     };
+
+    const loadingPage = () => {
+        navigate('/signup/next', {
+          state: {
+            
+          },
+        });
+      }
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -73,27 +89,29 @@ function DanddaContent() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    },[]);
+    }, []);
 
     useEffect(() => {
         axios.get(`/video/find/${SLIDE_INFO[0].id}`)
-        .then(res => {
-          console.log(res.data) 
-          setDancerthumbnail(res.data.thumbnail)
-          setProfile(res.data.profile)
-          setVideoUrl(res.data.url)
-          setVid(res.data.vid)
-          console.log(res.data.thumbnail)
-        })
-        .catch(err => {
-          console.log('댄서 정보 받아오기 실패')
-        });
+            .then(res => {
+                console.log(res.data)
+                setDancerthumbnail(res.data.thumbnail)
+                setProfile(res.data.profile)
+                setVideoUrl(res.data.url)
+                setVid(res.data.vid)
+                console.log(res.data.thumbnail)
+            })
+            .catch(err => {
+                console.log('댄서 정보 받아오기 실패')
+            });
     }, [vid])
 
 
     return (
         <div className='DanddaMain'>
+            {/* 해당 캐로셀을 클릭 시 카메라 이동 함수 실행 */}
             <div className='Carousel' onClick={movecamera}>
+
                 <Arrow
                     direction='left'
                     clickFunction={() => onArrowClick('left')}
