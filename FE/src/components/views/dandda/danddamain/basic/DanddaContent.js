@@ -27,15 +27,9 @@ function DanddaContent() {
     const [vid, setVid] = useState("")
 
     const SLIDE_INFO = [
-<<<<<<< HEAD
         { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:6 },
         { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id:3 },
         { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id:4 },
-=======
-        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id: 16 },
-        { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id: 3 },
-        { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id: 4 },
->>>>>>> feature/FE/video_firebase
         // { backgroundImage: '#ffe084', title: 'Slide 4' },
         // { backgroundImage: '#d9d9d9', title: 'Slide 5' },
     ];
