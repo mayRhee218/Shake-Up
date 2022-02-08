@@ -77,6 +77,8 @@ function Login(props) {
                         localStorage.setItem('AccessToken', response.payload.token);   //백엔드용
                         // localStorage.setItem('AccessToken', response.payload.accessToken);   //MECALL API용
                         localStorage.setItem('UserId', response.payload.user.uid);
+                        localStorage.setItem('UserName', response.payload.user.name);
+                        localStorage.setItem('UserEmail', response.payload.user.email);
                         localStorage.setItem('IsLogin', true);
                         
                         console.log("로컬 저장 후 : ", localStorage.getItem('IsLogin'));
