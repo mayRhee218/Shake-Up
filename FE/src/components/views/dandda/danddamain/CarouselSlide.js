@@ -39,7 +39,7 @@ export default function CarouselSlide(props) {
   const onClick = () => {
     // navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
     // navigate(`./loading`, { state: { alt: profile_name, src: profile_src, vid: id } });
-    navigate(`./test`, { state: { alt: profile_name, src: profile_src, vid: id } });
+    navigate(`./danddaloadingtest`, { state: { alt: profile_name, src: profile_src, vid: id } });
   };
 
   return (
