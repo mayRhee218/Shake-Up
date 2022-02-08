@@ -12,6 +12,9 @@ function MyPage() {
     setValue(newValue);
   };
 
+  const UserName = localStorage.getItem('UserName')
+  const UserEmail = localStorage.getItem('UserEmail')
+
   const goo = () => {
     const credentials = {
       category: 0,
@@ -54,7 +57,8 @@ function MyPage() {
       <div className='user'>
         <img src='' />
         <div>
-          <p>연쇄댄스마</p>
+          <p>{UserName}</p>
+          <p>{UserEmail}</p>
           <p>구독자수</p>
         </div>
         <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-
+import { Link, useNavigate, useHistory } from "react-router-dom";
 
 function WorldcupMain(props) {
   return (
@@ -14,7 +14,9 @@ function WorldcupMain(props) {
 
       <br/>
 
+      <Link to = './vote'>
       <Button color="primary" variant="contained">투표하러 가기</Button>
+      </Link>
       <br/>
       <Button color="primary" variant="contained">월드컵 참여하기</Button>
       <br/>
