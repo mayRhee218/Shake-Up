@@ -1,3 +1,3 @@
 FROM openjdk:11-jre
-COPY build/lib/shakeup-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/shakeup-0.0.1-*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
