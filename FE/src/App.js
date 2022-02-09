@@ -30,6 +30,7 @@ import WorldcupMain from './components/views/worldcup/WorldcupMain'
 // import FirebaseUpload from './components/views/firebase/uploadtest';
 import Loading from './components/views/dandda/danddaresult/Danddaloading';
 import WorldcupVote from './components/views/worldcup/vote/Vote'
+import WorldcupResult from './components/views/worldcup/WorldcupResult'
 
 
 
@@ -65,6 +66,7 @@ function App() {
           {/* <Route exact={true} path="/firebase/upload" element={<FirebaseUpload/>} /> */}
         <Route exact={true} path="/loading" element={<Loading/>} />
         <Route exact={true} path="/worldcup/vote" element={<WorldcupVote/>} />
+        <Route exact={true} path="/worldcup/vote/result" element={<WorldcupResult/>} />
       </Routes>
     </BrowserRouter>
     </>
