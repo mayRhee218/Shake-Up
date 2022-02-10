@@ -4,68 +4,75 @@
 
 import { useEffect, useState, useRef } from "react";
 import React from "react";
-import "./Danddaloading.css";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 import $ from "jquery";
+import { getFile } from "../../firebase/db";
 
 function TmPose() {
   const [isModelLoading, setIsModelLoading] = useState(false);
-  const [model, setModel] = useState(null);
+  // const [model, setModel] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
   const [results, setResults] = useState([]);
+  const [labels, setLabels] = useState(null);
 
   const videoRef = useRef();
 
-  let labelContainer = "<div>엘리먼트 추가</div>";
+  let model, maxPredictions;
 
   // 모델 로딩 함수
   const loadModel = async () => {
-    const URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/";
+    // Next Level 학습 모델
+    const URL = "https://teachablemachine.withgoogle.com/models/Fwie9ZFvv/";
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
     setIsModelLoading(true);
     try {
-      const model = await tmPose.load(modelURL, metadataURL);
-      const maxPredictions = model.getTotalClasses();
+      model = await tmPose.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
 
-      setModel(model);
+      // setModel(model);
       console.log("모델 로딩 성공");
       setIsModelLoading(false);
 
+      // 클래스 개수만큼 div 추가
+      let label = "";
+      console.log("maxPredictions : " + maxPredictions);
       for (let i = 0; i < maxPredictions; i++) {
-        labelContainer = "<div>엘리먼트 수정</div>";
-        // elements.push(React.createElement("div", null, `엘리먼트 추가`));
+        label += "<div>엘리먼트 수정</div>";
       }
-
-      // let labelContainer = React.createElement("div", { className: "label-container" }, elements);
+      setLabels(label);
     } catch (error) {
       console.log(error);
       setIsModelLoading(false);
     }
   };
 
-  // 비디오 업로드
-  const uploadVideo = (e) => {
-    const { files } = e.target;
-    if (files.length > 0) {
-      const url = URL.createObjectURL(files[0]);
-      setVideoURL(url);
-    } else {
-      setVideoURL(null);
-    }
+  // 파이어 베이스의 video url 가져오기
+  const uploadFirebaseVideo = async () => {
+    const res = await getFile("12345.mp4");
+    setVideoURL(res);
   };
 
   // 인식하기
   const identify = async () => {
-    const results = await model.classify(videoRef.current);
+    console.log("identify 함수 호출");
+
+    const video = document.querySelector(".");
+    console.log("identify 함수 호출2");
+    const { pose, posenetOutput } = await model.estimatePose(videoRef, false);
+    console.log("identify 함수 호출3");
+    const results = await model.predict(posenetOutput);
+    console.log("identify 함수 호출4");
     setResults(results);
+    console.log("result : " + results);
   };
 
   // 모델 로딩
   useEffect(() => {
     loadModel();
+    uploadFirebaseVideo();
   }, []);
 
   // 모델 로딩중일 때
@@ -76,15 +83,6 @@ function TmPose() {
   return (
     <div className="TmPose">
       <h1 className="header">Video Identification</h1>
-      <div className="inputHolder">
-        <input
-          type="file"
-          accept="video/*"
-          capture="camera"
-          className="uploadInput"
-          onChange={uploadVideo}
-        />
-      </div>
       <div className="mainWrapper">
         <div className="mainContent">
           <div className="videoHolder">
@@ -95,10 +93,8 @@ function TmPose() {
                 src={videoURL}
                 width="300"
                 height="300"
-                alt="Upload Preview"
-                crossOrigin="anonymous"
                 ref={videoRef}
-                controls
+                autoPlay
                 muted
               ></video>
             )}
@@ -131,7 +127,7 @@ function TmPose() {
           )}
         </div>
 
-        <div dangerouslySetInnerHTML={{ __html: labelContainer }} className="label-container"></div>
+        <div dangerouslySetInnerHTML={{ __html: labels }} className="label-container"></div>
       </div>
     </div>
   );
