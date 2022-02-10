@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
+import Avatar from '@material-ui/core/Avatar';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,12 +15,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Board1(props) {
+  const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [bestVid, setBestVid] = useState("")
   
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
+    // uid는 링크의 params 값을 main에서 props로 가져와야함.
     const uid = localStorage.getItem('UserId')
+
     const credentials = {
       category : 0,
       uid : uid
@@ -52,17 +57,21 @@ function Board1(props) {
     getBestScore();
   }, []);
 
+  const goOriginal = id =>() => {
+    console.log(id, '클릭')
+    navigate(`/mypage/${id}`)
+  }
+
   const classes = useStyles();
 
   return (
     <div>
       <h1>최고점 획득 댄따</h1>
-      {/* <video src={bestVid.url}/> */}
       <div style={{
           display: 'flex',
           flexDirection:'row'
         }}>
-          <img src={bestVid.url}/>
+          {/* <video src={bestVid.url}/> */}
             <div style={{
           display: 'flex',
           flexDirection:'column'
@@ -78,20 +87,21 @@ function Board1(props) {
       {videos.map((video) => {
         return (
         <div style={{
-          width:'30vw', 
-          display: 'flex',
-          flexDirection:'column',
-        }}>
-          {/* <video src={video.copy.url}/> */}
+            width:'30vw', 
+            display: 'flex',
+            flexDirection:'column',
+          }}>
           {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
-          <div style={{
-          display: 'flex',
-          flexDirection:'row'
-        }}>
+              <div style={{
+              display: 'flex',
+              flexDirection:'row'
+            }}>
           <img src={video.original.thumbnail}/>
+          {/* <video src={video.copy.url}/> */}
+          <Avatar key={video.vid} src={video.profile} onClick={goOriginal(video.original.uid)}/>
             <div style={{
-          display: 'flex',
-          flexDirection:'column'
+              display: 'flex',
+              flexDirection:'column'
             }}>
             <p>{video.name}</p>
             <p>{video.original.title}</p>

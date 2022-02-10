@@ -23,6 +23,22 @@ function Vote(props) {
       res.data.sort(() => Math.random() - 0.5);
       setVideos(res.data);
       setDisplays([res.data[0], res.data[1]]);
+      // 노출했을 때 노출수 올라가게 요청.
+      axios.put(`/video/expose/${res.data[0].vid}`)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+      // 노출했을 때 노출수 올라가게 요청.
+      axios.put(`/video/expose/${res.data[1].vid}`)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
     })
     .catch(err =>{
       console.log(err)
@@ -38,26 +54,63 @@ function Vote(props) {
   }
 
   const clickHandler = video => () => {
+    // 클릭했을 때 클릭수 올라가게 요청.
+    axios.put(`/video/click/${video.vid}`)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+
     if (videos.length <= 2) {
       if (winners.length === 0) {
         setDisplays([video]);
         // 최종 winner
         console.log(video)
         setBest(video)
-        // 지금까지 노출수, 클릭수, 좋아요수에 클릭수 더한 수
-        // axios 비디오 정보 수정하기로 여기서 넘겨줌.
-        
+
       } else {
         let updatedvideo = [...winners, video];
-        setVideos(updatedvideo);
+        setVideos(updatedvideo);        
         setDisplays([updatedvideo[0], updatedvideo[1]]);
-        // updatedvideo[0].likecnt += 1 
-        // console.log()
-        setWinners([]);
+        // 노출했을 때 노출수 올라가게 요청.
+        axios.put(`/video/expose/${updatedvideo[0].vid}`)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(err =>{
+          console.log(err)
+        })
+        // 노출했을 때 노출수 올라가게 요청.
+        axios.put(`/video/expose/${updatedvideo[1].vid}`)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(err =>{
+          console.log(err)
+        })
+      setWinners([]);
       }
     } else if (videos.length > 2) {
       setWinners([...winners, video]);
       setDisplays([videos[2], videos[3]]);
+      // 노출했을 때 노출수 올라가게 요청.
+      axios.put(`/video/expose/${videos[2].vid}`)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+      // 노출했을 때 노출수 올라가게 요청.
+      axios.put(`/video/expose/${videos[3].vid}`)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
       setVideos(videos.slice(2));
     }
   };
@@ -99,11 +152,7 @@ function Vote(props) {
           <Button color="primary" variant="contained" onClick={moveToResult}>전체 결과 보기</Button>
         </div>
         </div>))}</div>)
-    
-    }
-          
-
-          
+    }                 
     </div>
   );
 }

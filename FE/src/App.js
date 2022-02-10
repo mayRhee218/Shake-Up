@@ -61,7 +61,7 @@ function App() {
         <Route exact={true} path="/:id/upload" element={<DanddaUpload/>} />
         <Route exact={true} path="/:id/upload/complete" element={<DanddaUploadComplete/>} />
         <Route exact={true} path="/firebase" element={<FirebaseTest/>} />
-        <Route exact={true} path="/mypage" element={<Mypage/>} />
+        <Route exact={true} path="/mypage/:id" element={<Mypage/>} />
         <Route exact={true} path="/worldcup" element={<WorldcupMain/>} />
           {/* <Route exact={true} path="/firebase/upload" element={<FirebaseUpload/>} /> */}
         <Route exact={true} path="/loading" element={<Loading/>} />
