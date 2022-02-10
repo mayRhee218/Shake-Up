@@ -11,7 +11,6 @@ import { useEffect, useState, useRef } from "react";
 import React from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
-import $ from "jquery";
 import { getFile } from "../../firebase/db";
 
 function TmPose() {
