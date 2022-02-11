@@ -1,19 +1,34 @@
 import { Tabs, Tab } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { TabPanel, a11yProps } from './TabPanel';
 import Video from './Video';
 import Videos from './Videos';
 import Board1 from './board/Board1'
 
-function MyPage() {
+function MyPage({ match }) {
+  const { uid } = useParams();
+  const [user, setUser] = useState({});
   const [value, setValue] = useState(1)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const UserName = localStorage.getItem('UserName')
-  const UserEmail = localStorage.getItem('UserEmail')
+  const getUser = () => {
+    axios.get(`/user/read/${uid}`)
+    .then(res => {
+      setUser(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
 
   const goo = () => {
     const credentials = {
@@ -55,10 +70,10 @@ function MyPage() {
   return (
     <div className='mypage'>
       <div className='user'>
-        <img src='' />
+        <img src={user.profile} />
         <div>
-          <p>{UserName}</p>
-          <p>{UserEmail}</p>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
           <p>구독자수</p>
         </div>
         <div>
@@ -79,7 +94,7 @@ function MyPage() {
           </Tabs>
         </div>
         <TabPanel value={value} index={0}>
-          <Board1 />
+          <Board1 user={user}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <h1>투</h1>

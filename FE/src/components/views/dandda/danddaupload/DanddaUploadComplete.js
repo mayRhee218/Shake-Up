@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 
 
 function DanddaUploadComplete(props) {  
+  const uid = localStorage.getItem('UserId')
   return (
     <div
     style={{ display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center' 
@@ -22,7 +23,7 @@ function DanddaUploadComplete(props) {
       <h1>업로드되었습니다!</h1>
       <br/>
       {/* 이거 uid가 전달되게 해야할듯 */}
-      <Link to='/mypage'>
+      <Link to={`/mypage/${uid}`}>
         <Button color="primary" variant="contained">영상 보러 가기</Button>
       </Link>
       <br/>

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Board1(props) {
+function Board1({user}) {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [bestVid, setBestVid] = useState("")
@@ -22,7 +22,7 @@ function Board1(props) {
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
     // uid는 링크의 params 값을 main에서 props로 가져와야함.
-    const uid = localStorage.getItem('UserId')
+    const uid = user.uid
 
     const credentials = {
       category : 0,
@@ -30,7 +30,7 @@ function Board1(props) {
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(res.data)
+      console.log(uid, res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -57,10 +57,10 @@ function Board1(props) {
     getBestScore();
   }, []);
 
-  const goOriginal = id =>() => {
-    console.log(id, '클릭')
-    navigate(`/mypage/${id}`)
-  }
+  // const goOriginal = id =>() => {
+  //   console.log(id, '클릭')
+  //   navigate(`/mypage/${id}`)
+  // }
 
   const classes = useStyles();
 
@@ -91,19 +91,21 @@ function Board1(props) {
             display: 'flex',
             flexDirection:'column',
           }}>
+            <div style={{
+            display: 'flex',
+            flexDirection:'row'
+          }}>
           {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
-              <div style={{
-              display: 'flex',
-              flexDirection:'row'
-            }}>
-          <img src={video.original.thumbnail}/>
-          {/* <video src={video.copy.url}/> */}
-          <Avatar key={video.vid} src={video.profile} onClick={goOriginal(video.original.uid)}/>
+          <img src={video.original.thumbnail} style={{width:'150px', height:'100px'}}/>
+          <Link to={`/mypage/${video.original.uid}`}>
+            <Avatar key={video.vid} src={video.profile}/>
+          </Link>
             <div style={{
               display: 'flex',
               flexDirection:'column'
             }}>
-            <p>{video.name}</p>
+            <p>{video.copy.vid}</p>
+            <p>{video.origin_name}</p>님의 
             <p>{video.original.title}</p>
             <p>{video.copy.score}점</p>
             </div>
