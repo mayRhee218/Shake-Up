@@ -1,6 +1,7 @@
 package com.shakeup.repository;
 
 import com.shakeup.model.Videos;
+import com.shakeup.model.VideosTwo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,7 +18,7 @@ public interface VideoRepository extends JpaRepository<Videos, Long> {
 
     Optional<Videos> findFirstByUidOrderByScoreDesc(int uid);
 
-    Optional<Videos> findByUid(int uid);
+    List<Videos> findByUid(int uid);
 
     Optional<Videos> findByVid(long vid);
 }

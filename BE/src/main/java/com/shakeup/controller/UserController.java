@@ -122,7 +122,7 @@ public class UserController {
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
 
-    @GetMapping(value = "/emailcheck/{email}")  // TODO 이메일 인증번호 가져오기
+    @GetMapping(value = "/emailcheck/{email}")
     public ResponseEntity<String> emailCheck(@PathVariable("email") String email) {
         System.out.println("1");
         String result = userService.checkEmail(email);
@@ -156,6 +156,18 @@ public class UserController {
             return new ResponseEntity<>("계정 삭제 실패", HttpStatus.OK);
         }
         return new ResponseEntity<>("계정 삭제 성공", HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "uid로 회원 정보 읽어오기", notes = "해당 유저 정보 읽어오기", response = String.class)
+    @GetMapping("/read/{uid}")
+    public ResponseEntity<?> readUser(@PathVariable int uid) {
+        Optional<Users> checkUser = userRepository.findByUid(uid);
+
+        if (checkUser.isPresent()) {
+            return new ResponseEntity<>(checkUser.get(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("회원 정보가 없습니다.", HttpStatus.BAD_REQUEST);
     }
 
 }

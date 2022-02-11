@@ -1,6 +1,5 @@
 package com.shakeup.model;
 
-import com.shakeup.request.video.CopyVideoResponse;
 import com.shakeup.request.video.VideoAndUidResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,13 +14,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class Videos {
+@Table(name = "videos")
+public class VideosTwo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vid", columnDefinition = "INT")
     private long vid;
 
-    private int uid;
+    @ManyToOne
+    @JoinColumn(name = "uid")
+    private Users users;
     private String title;
     private int likecnt; //좋아요 수
     private int views; //조회 수
@@ -46,8 +48,6 @@ public class Videos {
 
     private int clickcnt;
     private int exposecnt;
-    @Column(name = "t_url")
-    private String turl;
 
     @PrePersist
     public void createAt() {
@@ -57,7 +57,7 @@ public class Videos {
     public VideoAndUidResponse toEntity() {
         return VideoAndUidResponse.builder()
                 .vid(vid)
-                .uid(uid)
+//                .uid(uid)
                 .score(score)
                 .title(title)
                 .iscomment(iscomment)

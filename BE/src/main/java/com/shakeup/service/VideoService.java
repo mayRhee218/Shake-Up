@@ -6,6 +6,7 @@ import com.shakeup.model.Userlike;
 import com.shakeup.model.Videos;
 import com.shakeup.repository.CopyVideoRepository;
 import com.shakeup.repository.TagRepository;
+import com.shakeup.repository.UserRepository;
 import com.shakeup.repository.VideoRepository;
 import com.shakeup.request.userlike.UserlikeCreateRequest;
 import com.shakeup.request.video.VideoCreateRequest;
@@ -29,6 +30,8 @@ public class VideoService {
     private TagRepository tagRepository;
     @Autowired
     private CopyVideoRepository copyVideoRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     //영상 DB저장
     public String createVideo(VideoCreateRequest videoCreateRequest) {
@@ -73,6 +76,8 @@ public class VideoService {
             video.get().setThumbnail(temp.getThumbnail());
             video.get().setIscomment(temp.isIscomment());
             video.get().setIsscore(temp.isIsscore());
+            video.get().setClickcnt(temp.getClickcnt());
+            video.get().setExposecnt(temp.getExposecnt());
 
             videoRepository.save(video.get());
 
@@ -106,6 +111,10 @@ public class VideoService {
     public List<Videos> readCategoryVideo(int category) {
         try {
             List<Videos> video = videoRepository.findVideosByCategory(category);
+            for (Videos v : video
+            ) {
+                v.setName(userRepository.findByUid(v.getUid()).get().getName());
+            }
             System.out.println("DB에서 영상 정보 가져오기 성공");
             return video;
         } catch (Exception e) {

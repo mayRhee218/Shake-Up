@@ -14,6 +14,7 @@ import java.util.List;
 public class VideoCreateRequest {
     @NotNull
     int uid;
+    String name;
     @NotNull
     String title;
     @NotNull
