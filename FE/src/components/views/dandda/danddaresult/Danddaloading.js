@@ -192,7 +192,7 @@ function Danddaloading() {
             }}
           >
             {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
-            <ClipLoader color={color} loading={loading} css={override} size={150} />
+            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
           </div>
 
           <div className="videoHolder" style={{ visibility: "hidden" }}>

@@ -63,9 +63,31 @@ function DanddaContent () {
     
 
    const SLIDE_INFO = []
-//    if (bool === true) {
-//        {}
-//    }
+   if (bool === true) {
+    SLIDE_INFO = [
+        {
+            backgroundImage: videos[3].thumbnail,
+            title: videos[3].title,
+            profile_name: "seoyoung",
+            // profile_src: profile_src,
+            id: videos[3].vid,
+          },
+        {
+            backgroundImage: videos[2].thumbnail,
+            title: videos[2].title,
+            profile_name: "seoyoung",
+            // profile_src: profile_src,
+            id: videos[2].vid,
+          },
+        {
+            backgroundImage: videos[1].thumbnail,
+            title: videos[1].title,
+            profile_name: "seoyoung",
+            // profile_src: profile_src,
+            id: videos[1].vid,
+          },
+    ]
+   }
 
     const [index, setIndex] = useState(0);
     const content = SLIDE_INFO[index];
