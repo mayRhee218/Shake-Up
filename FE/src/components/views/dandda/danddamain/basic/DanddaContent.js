@@ -91,14 +91,18 @@ function DanddaContent () {
         }, 500);
     };
 
-    //Android Studio의 [showToast] 함수 실행 
-    const movecamera = (e) => {
-        // console.log(videoUrl);
-        //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-        // console.log("비디오 링크 : " + videoUrl);
-        // window.Android.showToast('카메라 실행', videoUrl);
-        
-    };
+    //Android Studio의 [showToast] 함수 실행
+  const movecamera = (e) => {
+    // console.log(videoUrl);
+    //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
+    window.Android.showToast("카메라 실행", videoUrl);
+  };
+
+  const loadingPage = () => {
+    navigate("/signup/next", {
+      state: {},
+    });
+  };
 
     return (
         <div className='DanddaMain'>
