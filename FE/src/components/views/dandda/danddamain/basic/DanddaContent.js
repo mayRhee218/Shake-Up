@@ -92,17 +92,18 @@ function DanddaContent () {
     };
 
     //Android Studio의 [showToast] 함수 실행
-  const movecamera = (e) => {
-    // console.log(videoUrl);
-    //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-    window.Android.showToast("카메라 실행", videoUrl);
-  };
+    const movecamera = (e) => {
+        // console.log(videoUrl);
+        //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
+        window.Android.showToast("카메라 실행", videoUrl);
+    };
 
-  const loadingPage = () => {
-    navigate("/signup/next", {
-      state: {},
-    });
-  };
+    const loadingPage = () => {
+        //이동할 페이지 작성
+        navigate("/danddaloading", {
+            state: {},
+        });
+    };
 
     return (
         <div className='DanddaMain'>
