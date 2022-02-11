@@ -1,22 +1,42 @@
 import React, { useState } from 'react';
 import { SidebarData, UndetbarData } from './SidebarData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css'
-import seong from './seong.png'
+import { Avatar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 
+const useStyles = makeStyles(() => ({
+  nav: {
+    width: '100vw',
+    position: 'fixed',
+    bottom: 0,
+  }
+}))
 
 function Sidebar() {
   const [open, setOpen] = useState(true)
   const [search, setSearch] = useState(false)
+  const [value, setValue] = React.useState('recents');
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const userName = localStorage.getItem('userId')
+  const userEmail = localStorage.getItem('userEmail')
+  const navigate = useNavigate()
+  const onNext = (path) => {
+    console.log(path)
+    navigate(`${path}`)
+  }
+  const classes = useStyles()
   return (
     <>
     <nav className='navbar'>
-
       <img src='/favicon/menu.png' onClick={() => setOpen(!open)}></img>
       <img src='/favicon/logo.png' className='logo'></img>
-      {/* <div className={search ? 'searchbar active' : 'searchbar'}></div> */}
       <img src='/favicon/search.png'></img>
     </nav>
+    <div className='block'></div>
     <div className={open ? 'sidebar active': 'sidebar'}>
       <div className='nav-menu'>
         <div className='alarm'>
@@ -28,15 +48,13 @@ function Sidebar() {
         </div>
         <hr/>
         <div className='user'>
-          <img src={seong} onClick={() => setOpen(!open)}></img>
+          <Avatar src="/broken-image.jpg"></Avatar>
           <div className='user-info'>
             <span>nickname</span>
             <span>email</span>
           </div>
           <div>
-            <Link to='/signup'>
-              <img src='/favicon/right.png'></img>
-            </Link>
+            흐에
           </div>
         </div>
         <hr/>
@@ -47,7 +65,7 @@ function Sidebar() {
           {SidebarData.map((item, index) => {
             return(
               <Link to={item.path} className='nav-link'>
-                <li key={index} className='nav-text'>
+                <li key={index} className='nav-text' onClick={() => setOpen(!open)}>
                   {item.title}
                 </li>
               </Link>
@@ -57,18 +75,16 @@ function Sidebar() {
       </div>
     </div>
     <footer className='underbar'>
-      <div className='underbar-menu-items'>
-        {UndetbarData.map((item, index) => {
-          return(
-            <Link to={item.path} className='under-link' key={index}>
+      {UndetbarData.map((item, index) => {
+        return(
+          <div className='underbar-menu-items' key={index} onClick={() => onNext(item.path)}>
               <img src={item.icon}></img>
               <span className='under-text'>
-                {item.title}
+                  {item.title}
               </span>
-            </Link>
+          </div>
           );
         })}
-      </div>
     </footer>
     </>
   );

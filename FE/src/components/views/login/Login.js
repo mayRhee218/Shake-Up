@@ -22,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
       },
     },
+    div : {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '88vh',
+        marginTop: '-10vh'
+    }
   }));
 
 function Login(props) {
@@ -100,10 +108,7 @@ function Login(props) {
     const classes = useStyles();
 
     return (
-        <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center' 
-            , width: '100%', height: '88vh'
-        }}>
+        <div className={classes.div}>
             
             <form style={{ display: 'flex', flexDirection: 'column' }}
                 onSubmit={onSubmitHandler} className={classes.root} autoComplete='off'

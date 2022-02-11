@@ -9,6 +9,24 @@ import {TextField, Button} from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
 import Overlap from './OverLap'
 import Email from './Email'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      
+    },
+  },
+  div: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '88vh',
+    marginTop: '-10vh'
+  }
+}));
 
 function Signup() {
   const [id, setId] = useState('')
@@ -25,6 +43,8 @@ function Signup() {
   const [cpwErrorMsg, setCpwErrorMsg] = useState('')
   
   const navigate = useNavigate()
+
+
 
   // 패스워드
   const onPwdHandler = ({target: {value}}) => {
@@ -73,13 +93,12 @@ function Signup() {
       },
     });
   }
+  const classes = useStyles();
   // --------------------------------------------------------------------
   return (
-    <div style={{
-      display: 'flex', justifyContent: 'center', alignItems: 'flex-start' 
-      , width: '100%', height: '88vh'
-    }}>
-      <form style={{ display: 'flex', flexDirection: 'column' }} autoComplete='off'>
+    <div className={classes.div}>
+      <form style={{ display: 'flex', flexDirection: 'column' }} autoComplete='off'
+        className={classes.root}>
         <Overlap 
           type='idcheck'
           value=''
@@ -117,7 +136,7 @@ function Signup() {
           color="primary"
           disabled={!(check.id && check.email && check.pw)}
           onClick={onNext}
-          >다음단계
+        >다음단계
         </Button>
       </form>
     </div>
