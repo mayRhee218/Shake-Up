@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   BrowserRouter
 } from "react-router-dom";
 
@@ -27,11 +26,10 @@ import DanddaUploadComplete from './components/views/dandda/danddaupload/DanddaU
 import FirebaseTest from './components/views/firebase/uploadtest'
 import Mypage from './components/views/mypage/MyPage'
 import WorldcupMain from './components/views/worldcup/WorldcupMain'
-// import FirebaseUpload from './components/views/firebase/uploadtest';
 import Loading from './components/views/dandda/danddaresult/Danddaloading';
 import WorldcupVote from './components/views/worldcup/vote/Vote'
 import WorldcupResult from './components/views/worldcup/WorldcupResult'
-
+import VideoDetail from './components/views/VideoDetail/VideoDetail';
 
 
 function App() {
@@ -67,6 +65,7 @@ function App() {
         <Route exact={true} path="/loading" element={<Loading/>} />
         <Route exact={true} path="/worldcup/vote" element={<WorldcupVote/>} />
         <Route exact={true} path="/worldcup/vote/result" element={<WorldcupResult/>} />
+        <Route exact={true} path="/video/:vid" element={<VideoDetail/>} />
       </Routes>
     </BrowserRouter>
     </>

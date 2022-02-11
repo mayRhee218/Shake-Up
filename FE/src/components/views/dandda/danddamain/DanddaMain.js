@@ -12,7 +12,7 @@ import React from 'react';
 import './DanddaMain.css';
 import DanddaContent1 from './basic/DanddaContent';
 import DanddaContent2 from './swp/DanddaContent';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 

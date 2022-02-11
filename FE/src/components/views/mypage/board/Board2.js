@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
-import Thumbnails from '../Thumbnails'
+// import Thumbnails from '../Thumbnails'
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,9 +42,9 @@ function Board1(props) {
       <p>{videos.length}회</p>
       <hr/>
       <h1>최근 참여 월드컵</h1>
-      {videos.map((video) => {
+      {/* {videos.map((video) => {
         <Thumbnails video={video}/>
-      })}
+      })} */}
     </div>
   );
 }

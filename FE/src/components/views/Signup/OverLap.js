@@ -8,6 +8,13 @@ import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import Vaildate from './Vaildate';
 import axios from 'axios'
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: '10px 0 0 0'
+  }
+}));
 
 function Overlap({type, value, propFunction}) {
   const [inputVal, setInputVal] = useState(value)
@@ -65,6 +72,8 @@ function Overlap({type, value, propFunction}) {
     propFunction('')
   }, [inputVal])
 
+  const classes = useStyles();
+
   return (
     <div>
       <TextField
@@ -82,6 +91,7 @@ function Overlap({type, value, propFunction}) {
         variant="contained" 
         onClick={overlapTest} 
         disabled={pass}
+        className={classes.button}
       >
         중복검사
       </Button>
