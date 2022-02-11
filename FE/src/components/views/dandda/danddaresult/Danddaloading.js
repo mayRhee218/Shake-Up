@@ -16,11 +16,12 @@ import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getDatabase, ref, onValue } from "firebase/database";
 // Can be a string as well. Need to ensure each key-value pair ends with ;
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+
+// const override = css`
+//     display: block;
+//     margin: 0 auto;
+//     border-color: red;
+// `;
 
 function Danddaloading() {
   // 로딩중
@@ -190,6 +191,7 @@ function Danddaloading() {
               height: "88vh",
             }}
           >
+            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
             <ClipLoader color={color} loading={loading} css={override} size={150} />
           </div>
 
@@ -210,6 +212,17 @@ function Danddaloading() {
               ></video>
             )}
           </div>
+{/* =======
+    
+    
+    return (
+        <div className="sweet-loading" style={{
+            display: 'flex', justifyContent: 'center', alignItems: 'center' 
+            , width: '100%', height: '88vh'
+        }}>
+            
+            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
+{/* feature/FE/danddamain */} 
         </div>
 
         {/* <div className="identify-container">

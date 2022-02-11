@@ -14,8 +14,6 @@ import DanddaContent1 from './basic/DanddaContent';
 import DanddaContent2 from './swp/DanddaContent';
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-
-
 function DanddaMain() {
     return (
         <div className='DanddaMain'>
