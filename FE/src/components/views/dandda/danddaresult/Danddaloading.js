@@ -7,15 +7,35 @@
  *
  **/
 
-import { useEffect, useState, useRef } from "react";
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { css } from "@emotion/react";
 import "./Danddaloading.css";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 import { getFile } from "../../firebase/db";
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
+import { getDatabase, ref, onValue } from "firebase/database";
+// Can be a string as well. Need to ensure each key-value pair ends with ;
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
-function TmPose() {
+function Danddaloading() {
+  // 로딩중
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
+  const database = getDatabase();
+
+  const message = ref(database, "message");
+  onValue(message, (snapshot) => {
+    const data = snapshot.val();
+    console.log("데이터베이스안의 값 : " + data);
+  });
+  // 로딩중 끝
+
   const [isModelLoading, setIsModelLoading] = useState(false);
   const [model, setModel] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
@@ -203,8 +223,20 @@ function TmPose() {
           </div>
         </div>
       </div>
+
+      <div
+        className="sweet-loading"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "88vh",
+        }}
+      >
+        <ClipLoader color={color} loading={loading} css={override} size={150} />
+      </div>
     </div>
   );
 }
-
-export default TmPose;
+export default Danddaloading;

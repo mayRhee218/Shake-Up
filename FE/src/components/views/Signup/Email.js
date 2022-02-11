@@ -8,7 +8,13 @@ import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import axios from 'axios'
 import Vaildate from './Vaildate';
+import { makeStyles } from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+  botton: {
+    margin: '10px 0 0 0'
+  },
+}));
 function Email({email, propFunction}) {
   // axios에서 받을 해쉬값
   let hash = ''
@@ -81,6 +87,10 @@ function Email({email, propFunction}) {
     setVerify(false)
     propFunction('')
   }, [inputEmail])
+
+  
+  const classes = useStyles();
+
   return (
     <>
       <div>
@@ -98,6 +108,7 @@ function Email({email, propFunction}) {
           onClick={sendAuthEmail} 
           variant='contained'
           color='primary'
+          className={classes.botton}
         >
           {hash ? '인증번호 재발송':'인증번호 발송'}
         </Button>
@@ -119,6 +130,7 @@ function Email({email, propFunction}) {
           color='primary' 
           onClick={isHash} 
           disabled={verify}
+          className={classes.botton}
         >인증
         </Button>
       </div>

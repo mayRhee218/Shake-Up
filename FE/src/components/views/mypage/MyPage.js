@@ -1,68 +1,48 @@
 import { Tabs, Tab } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { TabPanel, a11yProps } from './TabPanel';
-import Video from './Video';
-import Videos from './Videos';
 import Board1 from './board/Board1'
+import Board2 from './board/Board2'
+import Board3 from './board/Board3'
+import Board4 from './board/Board4'
+import Board5 from './board/Board5'
 
-function MyPage() {
+function MyPage({ match }) {
+  const { uid } = useParams();
+  const [user, setUser] = useState({});
   const [value, setValue] = useState(1)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const UserName = localStorage.getItem('UserName')
-  const UserEmail = localStorage.getItem('UserEmail')
-
-  const goo = () => {
-    const credentials = {
-      category: 0,
-      comment: 'gwanigwani',
-      content: 'hi',
-      score: 100,
-      isshow: 0,
-      thumbnail: 'thumbnail',
-      title: 'title',
-      uid: 2,
-      url: 'hi'
-    }
-    axios.post(`video/create`, credentials)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  const data = {
-    category: '',
-    content: '',
-    iscomment: '',
-    isshow: '',
-    score: 0,
-    thumbnail: '',
-    uid: 1,
-    url: '',
-  }
-  axios.post('/video/create', data)
+  const getUser = () => {
+    axios.get(`/user/read/${uid}`)
     .then(res => {
-      console.log(res)
+      setUser(res.data)
     })
     .catch(err => {
       console.log(err)
     })
+  }
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+
   return (
     <div className='mypage'>
       <div className='user'>
-        <img src='' />
+        <img src={user.profile} />
         <div>
-          <p>{UserName}</p>
-          <p>{UserEmail}</p>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
           <p>구독자수</p>
         </div>
         <div>
-          <button onClick={goo}>팔로우</button>
+          <button>팔로우</button>
         </div>
       </div>
       <div>
@@ -70,33 +50,29 @@ function MyPage() {
           <Tabs 
             value={value} onChange={handleChange} aria-label='secondary tabs example'
             indicatorColor="secondary" textColor="inherit" variant="fullWidth"
-          >  
-            <Tab icon={<img src='/favicon/left.png'/>} {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Thr" {...a11yProps(2)} />
-            <Tab label="Item Thr" {...a11yProps(3)} />
-            <Tab label="Item Thr" {...a11yProps(4)} />
+          > 
+            <Tab label='댄따' {...a11yProps(0)} />
+            <Tab label="월드컵" {...a11yProps(1)} />
+            <Tab label="업로드영상" {...a11yProps(2)} />
+            <Tab label="구독" {...a11yProps(3)} />
+            <Tab label="좋아요영상" {...a11yProps(4)} />
           </Tabs>
         </div>
         <TabPanel value={value} index={0}>
-          <Board1 />
+          <Board1 user={user}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <h1>투</h1>
+          <Board2 />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <h2>쓰리</h2>
+          <Board3 />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <Videos />
+          <Board4 />
         </TabPanel>
         <TabPanel value={value} index={4}>
-          <h2>파입</h2>
+          <Board5 />
         </TabPanel>
-      </div>
-      {/* 탭 */}
-      <div>
-        {/* <Videos/> */}
       </div>
     </div>
   );

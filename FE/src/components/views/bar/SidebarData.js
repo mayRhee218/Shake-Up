@@ -12,23 +12,23 @@ export const SidebarData = [
     icon: '',
   },
   {
-    title:'수정',
+    title:'회원정보 수정',
     path: '/user/sujeong',
     icon: '',
   },
   {
-    title:'댄따',
+    title:'댄스 따라하기',
     path: '/dandda',
     icon: '',
   },
   {
-    title:'내 모습은 귀여워',
-    path: '/',
+    title:'댄스 월드컵',
+    path: '/worldcup',
     icon: '',
   },
   {
-    title:'쿠폰',
-    path: '/',
+    title:'마이페이지',
+    path: '/mypage',
     icon: '',
   },
 ]
@@ -41,18 +41,7 @@ export const UndetbarData = [
   },
   {
     title: '월드컵',
-    path: '/',
+    path: '/worldcup',
     icon: '/favicon/trophy.png',
   },
-  {
-    title: '구독',
-    path: '/',
-    icon: '/favicon/sub.png',
-  },
-  {
-    title: '커뮤니티',
-    path: '/',
-    icon: '/favicon/communication.png',
-  }
-
 ]
