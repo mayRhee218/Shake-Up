@@ -24,7 +24,7 @@ import Mypage from "./components/views/mypage/MyPage";
 import WorldcupMain from "./components/views/worldcup/WorldcupMain";
 // import FirebaseUpload from './components/views/firebase/uploadtest';
 import Loading from "./components/views/dandda/danddaresult/Danddaloading";
-import DanddaloadingTest from "./components/views/dandda/danddaresult/DanddaloadingTest";
+import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading";
 
 function App() {
   const temp = Auth(DanddaMain, null);
@@ -56,7 +56,7 @@ function App() {
           <Route exact={true} path="/worldcup" element={<WorldcupMain />} />
           {/* <Route exact={true} path="/firebase/upload" element={<FirebaseUpload/>} /> */}
           <Route exact={true} path="/loading" element={<Loading />} />
-          <Route exact={true} path="/danddaloadingtest" element={<DanddaloadingTest />} />
+          <Route exact={true} path="/danddaloading" element={<Danddaloading />} />
         </Routes>
       </BrowserRouter>
     </>

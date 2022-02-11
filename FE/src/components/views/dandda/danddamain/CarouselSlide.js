@@ -4,7 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { Route, Link, useNavigate } from "react-router-dom";
 
 export default function CarouselSlide(props) {
-  const { backgroundImage, title, profile_name, profile_src, id } = props.content;
+  const { backgroundImage, title, profile_name, profile_src, id, url } = props.content;
 
   const useStyles = makeStyles(() => ({
     card: {
@@ -39,7 +39,7 @@ export default function CarouselSlide(props) {
   const onClick = () => {
     // navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
     // navigate(`./loading`, { state: { alt: profile_name, src: profile_src, vid: id } });
-    navigate(`./danddaloadingtest`, { state: { alt: profile_name, src: profile_src, vid: id } });
+    navigate(`./danddaloading`, { state: { modelUrl: url, vid: id } });
   };
 
   return (

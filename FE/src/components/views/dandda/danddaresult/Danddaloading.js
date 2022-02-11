@@ -1,159 +1,210 @@
 /**
- * 댄따 결과 로딩 페이지
+ * 모델 인식 결과 페이지
  *
  * @author 다은
  * @version 1.0.0
- * 작성일 : 2022-02-07
+ * 작성일 : 2022-02-11
  *
  **/
+
+import { useEffect, useState, useRef } from "react";
 import React from "react";
 import "./Danddaloading.css";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
-import $ from "jquery";
+import { getFile } from "../../firebase/db";
+import axios from "axios";
 
-function Danddaloading() {
-  // 다은이가 만든 함수들
-  const URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/";
-  var predictVideo;
-  let model, modelLoadContainer, labelContainer, maxPredictions, checkPause, checkNotLoadedVideo;
-  var video = document.getElementById("video");
+function TmPose() {
+  const [isModelLoading, setIsModelLoading] = useState(false);
+  const [model, setModel] = useState(null);
+  const [videoURL, setVideoURL] = useState(null);
+  const [results, setResults] = useState([]);
+  const [labels, setLabels] = useState(null);
+  const [maxPredictions, setMaxPredictions] = useState(null);
+  const [animationFrame, setAnimationFrame] = useState(null);
+  const [correctCount, setCorrectCount] = useState(0);
 
-  async function init() {
+  const videoRef = useRef();
+
+  // 모델 로딩 함수
+  const loadModel = async () => {
+    // Next Level 학습 모델
+    const URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/"; // 넘어올 값
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
-    model = await tmPose.load(modelURL, metadataURL);
-    maxPredictions = model.getTotalClasses();
+    setIsModelLoading(true);
+    try {
+      const model = await tmPose.load(modelURL, metadataURL);
 
-    // append/get elements to the DOM
-    labelContainer = document.getElementById("label-container");
+      const maxPredictions = model.getTotalClasses();
+
+      setModel(model);
+      setMaxPredictions(maxPredictions);
+      setIsModelLoading(false);
+
+      console.log("모델 로딩 성공");
+
+      // 클래스 개수만큼 div 추가
+      let label = "";
+      for (let i = 0; i < maxPredictions; i++) {
+        label += "<div>클래스 이름 : 정확도</div>";
+      }
+
+      setLabels(label);
+    } catch (error) {
+      console.log(error);
+      setIsModelLoading(false);
+    }
+  };
+
+  // 파이어 베이스의 realtime video url 가져오기
+  const uploadFirebaseVideo = () => {
+    const url = "https://dance-704a8-default-rtdb.firebaseio.com/message.json";
+    axios
+      .get(url)
+      .then(async (res) => {
+        const tmp = await getFile(res.data);
+        setVideoURL(tmp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // 인식하기
+  let cnt = 0; // 맞춘 개수
+  let startTimeSeconds; // 시작 시간 가져오기
+  let curTimeSeconds; // 현재 시간 가져오기
+  let timeSeconds; // (현재 시간 - 시작 시간) => 경과한 시간(초) 구하기
+  let checkCount0 = false,
+    checkCount1 = false,
+    checkCount2 = false; // 동작이 맞았는지 체크
+
+  const identify = async () => {
+    const labelContainer = document.querySelector(".label-container");
+    const { pose, posenetOutput } = await model.estimatePose(videoRef.current, false);
+    const results = await model.predict(posenetOutput);
+
+    setResults(results);
+
+    // 경과 시간 구하기
+    curTimeSeconds = new Date().getSeconds();
+    timeSeconds = curTimeSeconds - startTimeSeconds;
+
+    // 인식
     for (let i = 0; i < maxPredictions; i++) {
-      // and class labels
-      labelContainer.appendChild(document.createElement("div"));
+      // 클래스 이름 : 정확도 innerHTML로 넣기
+      const prediction = results[i].className + ": " + results[i].probability.toFixed(2);
+      labelContainer.childNodes[i].innerHTML = prediction;
+
+      // left
+      if (results[0].probability.toFixed(2) > 0.9) {
+        if (timeSeconds >= 0 && timeSeconds <= 2) {
+          if (!checkCount0) {
+            console.log(results[i].className + " 인식 => 경과 시간 : " + timeSeconds + "초");
+            checkCount0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
+            setCorrectCount(++cnt);
+          }
+        }
+      }
+      // right
+      else if (results[1].probability.toFixed(2) > 0.9) {
+        if (timeSeconds >= 3 && timeSeconds <= 4) {
+          if (!checkCount1) {
+            console.log(results[i].className + " 인식 => 경과 시간 : " + timeSeconds + "초");
+            checkCount1 = true;
+            setCorrectCount(++cnt);
+          }
+        }
+      }
+      // default
+      // else if (results[2].probability.toFixed(2) > 0.9) {
+      //   if (!checkCount2) {
+      //     checkCount2 = true;
+      //     setCorrectCount(++cnt);
+      //   }
+      // }
     }
+  };
 
-    modelLoadContainer = document.getElementById("model-load-container");
-    modelLoadContainer.innerHTML = "모델 로딩 성공!";
+  // 동영상 인식 반복 호출
+  const loop = async () => {
+    await identify();
+    setAnimationFrame(window.requestAnimationFrame(loop));
+  };
+
+  // loop 함수 호출하기 (이 함수는 한번만 실행, startTime을 구하기 위해 사용)
+  const startLoop = () => {
+    startTimeSeconds = new Date().getSeconds();
+    loop();
+  };
+
+  // 모델 로딩
+  useEffect(() => {
+    loadModel();
+    uploadFirebaseVideo();
+  }, []);
+
+  // 모델 로딩중일 때
+  if (isModelLoading) {
+    return <h2>Model Loading...</h2>;
   }
 
-  async function predict() {
-    // 일시정지 버튼 클릭 시 predict 함수 리턴
-    if (checkPause) return;
-
-    console.log("predict 함수 호출");
-
-    const { pose, posenetOutput } = await model.estimatePose(video, false);
-    // Prediction 2: run input through teachable machine classification model
-    const prediction = await model.predict(posenetOutput);
-
-    for (let i = 0; i < maxPredictions; i++) {
-      const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-      labelContainer.childNodes[i].innerHTML = classPrediction;
-    }
-  }
-
-  async function loop(timestamp) {
-    await predict();
-    window.requestAnimationFrame(loop);
-  }
-
-  // 비디오가 로딩 되었을 때
-  video.addEventListener("loadeddata", (event) => {
-    console.log("비디오 로딩 시작");
-  });
-
-  // 비디오가 끝났을 때
-  video.addEventListener("ended", (event) => {
-    console.log("비디오 end");
-  });
-
-  // 비디오 재생 버튼 클릭 시 호출
-  video.addEventListener("play", (event) => {
-    console.log("비디오 play");
-    checkPause = false;
-    predictVideo = window.requestAnimationFrame(loop);
-  });
-
-  // 비디오 일시정지 버튼 클릭 시 호출 => predict 함수 리턴
-  video.addEventListener("pause", (event) => {
-    console.log("비디오 pause");
-    checkPause = true;
-    window.cancelAnimationFrame(predictVideo);
-  });
-
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        $(".video-upload-wrap").hide();
-
-        $(".file-upload-video").attr("src", e.target.result);
-        $(".file-upload-content").show();
-
-        $(".video-title").html(input.files[0].name);
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      removeUpload();
-    }
-  }
-
-  function removeUpload() {
-    $(".file-upload-input").replaceWith($(".file-upload-input").clone());
-    $(".file-upload-content").hide();
-    $(".video-upload-wrap").show();
-  }
-  $(".video-upload-wrap").bind("dragover", function () {
-    $(".video-upload-wrap").addClass("video-dropping");
-  });
-  $(".video-upload-wrap").bind("dragleave", function () {
-    $(".video-upload-wrap").removeClass("video-dropping");
-  });
+  // 비디오가 끝나면 인식 멈춤
+  const myCallback = () => {
+    return window.cancelAnimationFrame(animationFrame);
+  };
 
   return (
-    <>
-      <div>Teachable Machine Pose Model</div>
-      <button type="button" onclick="init()">
-        Start
-      </button>
-      <div class="file-upload">
-        <button
-          class="file-upload-btn"
-          type="button"
-          onclick="$('.file-upload-input').trigger( 'click' )"
-        >
-          Add Video
-        </button>
-
-        <div class="video-upload-wrap">
-          <input class="file-upload-input" type="file" onchange="readURL(this);" accept="video/*" />
-          <div class="drag-text">
-            <h3>Drag and drop a file or select add Video</h3>
+    <div className="TmPose" style={{ textAlign: "center" }}>
+      <h1 className="header" style={{ textAlign: "center" }}>
+        Video Identification
+      </h1>
+      <div className="mainWrapper">
+        <div className="mainContent">
+          <div className="videoHolder">
+            {videoURL && (
+              <video
+                id="video"
+                className="file-upload-video"
+                src={videoURL}
+                width="300"
+                height="300"
+                crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
+                ref={videoRef}
+                autoPlay
+                // controls
+                muted
+                onPlay={startLoop}
+                onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
+              ></video>
+            )}
           </div>
         </div>
-        <div class="file-upload-content">
-          <video
-            id="video"
-            class="file-upload-video"
-            src="#"
-            width="300"
-            height="300"
-            controls
-            muted
-          ></video>
-          <div class="video-title-wrap">
-            <button type="button" onclick="removeUpload()" class="remove-video">
-              Remove <span class="video-title">Uploaded Video</span>
+
+        {/* <div className="identify-container">
+          {videoURL && (
+            <button className="button" onClick={startLoop}>
+              인식 버튼을 눌러주세용
             </button>
+          )}
+        </div>
+        <br></br> */}
+
+        <div className="label-container" dangerouslySetInnerHTML={{ __html: labels }}></div>
+        <br></br>
+        <div className="result-container">
+          맞춘 동작 개수
+          {/* 몇 개 맞췄는지 결과 내기 */}
+          <div className="resultContent">
+            {correctCount} / {maxPredictions}
           </div>
         </div>
       </div>
-      <div id="model-load-container"></div>
-      <div id="label-container"></div>
-    </>
+    </div>
   );
 }
-export default Danddaloading;
+
+export default TmPose;
