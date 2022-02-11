@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CarouselSlide from '../CarouselSlide';
-import { SLIDE_INFO } from './constants';
 import {useNavigate} from 'react-router-dom';
 import { FaAndroid, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Slide from '@material-ui/core/Slide';
