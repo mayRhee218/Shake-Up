@@ -4,14 +4,12 @@ import com.shakeup.model.CopyVideo;
 import com.shakeup.model.Userlike;
 import com.shakeup.model.Videos;
 import com.shakeup.repository.CopyVideoRepository;
+import com.shakeup.repository.UserlikeRepository;
 import com.shakeup.request.userlike.UserlikeCreateRequest;
 import com.shakeup.model.Users;
 import com.shakeup.repository.UserRepository;
 import com.shakeup.repository.VideoRepository;
-import com.shakeup.request.video.VideoCreateRequest;
-import com.shakeup.request.video.VideoFindResponse;
-import com.shakeup.request.video.VideoMyCategoryRequest;
-import com.shakeup.request.video.VideoUpdateRequest;
+import com.shakeup.request.video.*;
 import com.shakeup.service.VideoService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -39,6 +37,8 @@ public class VideoController {
     private UserRepository userRepository;
     @Autowired
     private CopyVideoRepository copyVideoRepository;
+    @Autowired
+    private UserlikeRepository userlikeRepository;
 
     public static final Logger logger = LoggerFactory.getLogger(VideoController.class);
 
@@ -54,8 +54,9 @@ public class VideoController {
 
     }
 
+    // TODO 클릭수, likecnt 컬럼 추가
     @ApiOperation(value = "영상 수정", notes = "영상 정보를 받는다. 게시판 수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
-    @PostMapping(value = "/update")
+    @PutMapping(value = "/update")
     public ResponseEntity<String> updateVideo(@RequestBody VideoUpdateRequest videoUpdateRequest) {
         String res = videoService.upadateVideo(videoUpdateRequest);
 
@@ -76,6 +77,7 @@ public class VideoController {
         return new ResponseEntity<>("성공", HttpStatus.OK);
     }
 
+
     @ApiOperation(value = "영상 전체 가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/all")
     public ResponseEntity<List<Videos>> readAllVideo() {
@@ -83,20 +85,13 @@ public class VideoController {
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
     }
 
+    // TODO 클릭수추가 및 uid의 name(채널명) 추가
     @ApiOperation(value = "전체 영상 카테고리 별  가져오기", notes = "영상 정보를 받는다.", response = String.class)
     @PostMapping(value = "/read/category/{category}")
     public ResponseEntity<List<Videos>> readCategoryVideo(@PathVariable("category") int category) {
         List<Videos> res = videoService.readCategoryVideo(category);
 
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "영상 하나 가져오기", notes = "영상 정보를 받는다.", response = String.class)
-    @PostMapping(value = "/read/one/{vid}")
-    public ResponseEntity<Videos> readOneVideo(@PathVariable("vid") long vid) {
-        Optional<Videos> res = videoService.readOneVideo(vid);
-
-        return new ResponseEntity<Videos>(res.get(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "나의 영상 카테고리별로 가져오기", notes = "영상 정보를 받는다.", response = String.class)
@@ -106,6 +101,12 @@ public class VideoController {
 
         if (videoMyCategoryRequest.getCategory() == 0) {
             List<CopyVideo> res2 = copyVideoRepository.findByUid(videoMyCategoryRequest.getUid());
+
+            for (CopyVideo temp : res2) {
+                Users user_temp = userRepository.findByUid(temp.getOriginal().getUid()).get();
+                temp.setOrigin_name(user_temp.getName());
+                temp.setOrigin_profile(user_temp.getProfile());
+            }
 
             res2.sort((o1, o2) -> o2.getCopy().getDate().compareTo(o1.getCopy().getDate())); // 최신 날짜 순으로 정렬
 
@@ -118,13 +119,22 @@ public class VideoController {
     @GetMapping(value = "/{uid}")
     public ResponseEntity<?> myBestScore(@PathVariable int uid) {
         Optional<Videos> res = videoRepository.findFirstByUidOrderByScoreDesc(uid);
+        VideoAndUidResponse videoAndUidResponse = res.get().toEntity();
+        videoAndUidResponse.setName(userRepository.findByUid(uid).get().getName());
 
-        System.out.println(res.get().toString());
         if (res.isPresent()) {
-            return new ResponseEntity<Videos>(res.get(), HttpStatus.OK);
+            return new ResponseEntity<>(videoAndUidResponse, HttpStatus.OK);
         }
 
-        return new ResponseEntity<String>("실패", HttpStatus.OK);
+        return new ResponseEntity<>("실패", HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "해당 유저의 uid로 영상 전체 가져오기", notes = "영상 정보를 받는다.", response = String.class)
+    @GetMapping(value = "/read/all/{uid}")
+    public ResponseEntity<?> readMyAllVideo(@PathVariable int uid) {
+        List<Videos> temp = videoRepository.findByUid(uid);
+
+        return new ResponseEntity<List<Videos>>(temp, HttpStatus.OK);
     }
 
     @ApiOperation(value = "나의 좋아요 가져오기", notes = "영상 정보를 받는다.", response = String.class)
@@ -135,12 +145,11 @@ public class VideoController {
         return new ResponseEntity<List<Videos>>(res, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "영상 하나 가져오기 -> axios 테스트 완료 버전", notes = "영상 정보를 받는다.", response = String.class)
-    @GetMapping(value = "/find/{vid}")
-    public ResponseEntity<?> findVideo(@PathVariable("vid") int vid) {
+    @ApiOperation(value = "영상 하나 가져오기", notes = "curuid -> 현재 로그인한 유저 id, vid -> 찾고자 하는 영상", response = String.class)
+    @GetMapping(value = "/read/{curuid}/{vid}")
+    public ResponseEntity<?> readVideo(@PathVariable("vid") int vid, @PathVariable int curuid) {
 
         Optional<Videos> temp = videoRepository.findByVid(vid);
-        System.out.println("test");
         Users users = userRepository.findByUid(temp.get().getUid()).get();
         if (temp.isPresent()) {
             Videos videos = temp.get();
@@ -150,10 +159,40 @@ public class VideoController {
             videoFindResponse.setThumbnail(videos.getThumbnail());
             videoFindResponse.setUrl(videos.getUrl());
             videoFindResponse.setProfile(users.getProfile());
+            if (userlikeRepository.findByUidAndVideosVid(curuid, vid).isPresent()) {
+                videoFindResponse.setIslike(true);
+            }
+            temp.get().setViews(temp.get().getViews() + 1);
+            videoRepository.save(temp.get());
             return new ResponseEntity<VideoFindResponse>(videoFindResponse, HttpStatus.OK);
         }
 
         return new ResponseEntity<>("fail", HttpStatus.OK);
     }
 
+    @ApiOperation(value = "해당 vid의 click 수를 +1 해주는 api")
+    @PutMapping(value = "/click/{vid}")
+    public ResponseEntity<?> plusClick(@PathVariable long vid) {
+        Optional<Videos> videos = videoRepository.findByVid(vid);
+        if (videos.isPresent()) {
+            Videos temp = videos.get();
+            temp.setClickcnt(temp.getClickcnt() + 1);
+            videoRepository.save(temp);
+            return new ResponseEntity<>("click+1 성공", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
+    }
+
+    @ApiOperation(value = "해당 vid의 expose 수를 +1 해주는 api")
+    @PutMapping(value = "/expose/{vid}")
+    public ResponseEntity<?> plusExpose(@PathVariable long vid) {
+        Optional<Videos> videos = videoRepository.findByVid(vid);
+        if (videos.isPresent()) {
+            Videos temp = videos.get();
+            temp.setExposecnt(temp.getExposecnt() + 1);
+            videoRepository.save(temp);
+            return new ResponseEntity<>("expose+1 성공", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
+    }
 }

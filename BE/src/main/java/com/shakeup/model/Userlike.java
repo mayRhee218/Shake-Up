@@ -1,5 +1,6 @@
 package com.shakeup.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class Userlike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ulid",columnDefinition = "INT")
+    @JsonIgnore
     private long ulid;
 
     private int uid;

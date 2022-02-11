@@ -1,10 +1,7 @@
 package com.shakeup.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Comparator;
@@ -28,6 +25,10 @@ public class CopyVideo {
     @JoinColumn(name = "copy_vid")
     private Videos copy;
 
+    private String origin_profile;
+    private String origin_name;
+
     private int uid;
+
 
 }

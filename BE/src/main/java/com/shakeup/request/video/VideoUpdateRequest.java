@@ -19,6 +19,9 @@ public class VideoUpdateRequest {
     int comment;
     boolean iscomment;
     boolean isscore;
+    int exposecnt;
+    int clickcnt;
+
     public Videos toEntity(){
         return  Videos.builder()
                 .vid(vid)
