@@ -37,12 +37,12 @@ export default function CarouselSlide(props) {
     const classes = useStyles();
     const navigate = useNavigate();
 
-    const onClick = () => {
-        navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
-    }
+    // const onClick = () => {
+    //     navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
+    // }
 
     return (
-        <Card className={classes.card} onClick={onClick}>
+        <Card className={classes.card} >
             <div className={classes.circle} >
                 <Avatar alt={profile_name} src={profile_src}/>
             </div>

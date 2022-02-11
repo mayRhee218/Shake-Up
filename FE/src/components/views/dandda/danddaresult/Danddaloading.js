@@ -1,42 +1,38 @@
 import React ,{ useState, useEffect } from "react";
 // import { css } from "@emotion/react";
 import { useScript } from "../../../../hooks";
+import ClipLoader from "react-spinners/ClipLoader";
+import { getDatabase, ref, onValue} from "firebase/database";
 // Can be a string as well. Need to ensure each key-value pair ends with ;
-// const override = css`
-//     display: block;
-//     margin: 0 auto;
-//     border-color: red;
-// `;
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+`;
 
 
 
 function Danddaloading() {
-    // let [loading, setLoading] = useState(true);
-    // let [color, setColor] = useState("#ffffff");
-    const status = useScript("https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js");
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#ffffff");
+    const database = getDatabase();
 
-    //다은이가 만든 함수들
+    const message = ref(database, 'message');
+    onValue(message, (snapshot) => {
+        const data = snapshot.val();
+        console.log("데이터베이스안의 값 : " + data);
+    });
+
     
-    useEffect(() => {
-		if(status === "ready"){
-				// sdk 초기화하기
-				window.SomeThingSDK();
-		}
-	})
-
+    
     return (
-        <div></div>
-        // <div className="sweet-loading">
-        //     <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
-        //     <input
-        //         value={color}
-        //         onChange={(input) => setColor(input.target.value)}
-        //         placeholder="Color of the loader"
-        //     />
+        <div className="sweet-loading" style={{
+            display: 'flex', justifyContent: 'center', alignItems: 'center' 
+            , width: '100%', height: '88vh'
+        }}>
             
-
-        //     <ClipLoader color={color} loading={loading} css={override} size={150} />
-        // </div>
+            <ClipLoader color={color} loading={loading} css={override} size={150} />
+        </div>
     );
 }
 export default Danddaloading;
