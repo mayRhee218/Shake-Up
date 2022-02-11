@@ -10,7 +10,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { css } from "@emotion/react";
 import "./Danddaloading.css";
-import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 import { getFile } from "../../firebase/db";
 import axios from "axios";
@@ -32,7 +31,7 @@ function Danddaloading() {
   const message = ref(database, "message");
   onValue(message, (snapshot) => {
     const data = snapshot.val();
-    console.log("데이터베이스안의 값 : " + data);
+    // console.log("데이터베이스안의 값 : " + data);
   });
   // 로딩중 끝
 
@@ -69,7 +68,7 @@ function Danddaloading() {
       // 클래스 개수만큼 div 추가
       let label = "";
       for (let i = 0; i < maxPredictions; i++) {
-        label += "<div>클래스 이름 : 정확도</div>";
+        label += "<div></div>";
       }
 
       setLabels(label);
@@ -179,12 +178,22 @@ function Danddaloading() {
 
   return (
     <div className="TmPose" style={{ textAlign: "center" }}>
-      <h1 className="header" style={{ textAlign: "center" }}>
-        Video Identification
-      </h1>
       <div className="mainWrapper">
         <div className="mainContent">
-          <div className="videoHolder">
+          <div
+            className="sweet-loading"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "88vh",
+            }}
+          >
+            <ClipLoader color={color} loading={loading} css={override} size={150} />
+          </div>
+
+          <div className="videoHolder" style={{ visibility: "hidden" }}>
             {videoURL && (
               <video
                 id="video"
@@ -195,7 +204,6 @@ function Danddaloading() {
                 crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
                 ref={videoRef}
                 autoPlay
-                // controls
                 muted
                 onPlay={startLoop}
                 onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
@@ -213,28 +221,19 @@ function Danddaloading() {
         </div>
         <br></br> */}
 
-        <div className="label-container" dangerouslySetInnerHTML={{ __html: labels }}></div>
+        <div
+          className="label-container"
+          style={{ visibility: "hidden" }}
+          dangerouslySetInnerHTML={{ __html: labels }}
+        ></div>
         <br></br>
-        <div className="result-container">
+        <div className="result-container" style={{ visibility: "hidden" }}>
           맞춘 동작 개수
           {/* 몇 개 맞췄는지 결과 내기 */}
           <div className="resultContent">
             {correctCount} / {maxPredictions}
           </div>
         </div>
-      </div>
-
-      <div
-        className="sweet-loading"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "88vh",
-        }}
-      >
-        <ClipLoader color={color} loading={loading} css={override} size={150} />
       </div>
     </div>
   );
