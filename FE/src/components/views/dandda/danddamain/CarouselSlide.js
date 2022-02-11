@@ -4,11 +4,11 @@ import Avatar from '@material-ui/core/Avatar';
 import { Route, Link, useNavigate } from 'react-router-dom';
 
 export default function CarouselSlide(props) {
-    const { backgroundImage, title, profile_name, profile_src, id } = props.content;
+    // const { backgroundImage, title, profile_name, id } = props.content;
 
     const useStyles = makeStyles(() => ({
         card: {
-            backgroundImage,
+            // backgroundImage,
             backgroundRepeat: 'no-repeat',
             backgroundSize:'cover',
             borderRadius: 5,
@@ -44,9 +44,9 @@ export default function CarouselSlide(props) {
     return (
         <Card className={classes.card} >
             <div className={classes.circle} >
-                <Avatar alt={profile_name} src={profile_src}/>
+                {/* <Avatar alt={profile_name} src={profile_src}/> */}
             </div>
-            <h1 className={classes.title}>{title}</h1>
+            {/* <h1 className={classes.title}>{title}</h1> */}
         </Card>
     );
 }

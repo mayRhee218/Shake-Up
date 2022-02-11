@@ -4,11 +4,11 @@ import { useScript } from "../../../../hooks";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getDatabase, ref, onValue} from "firebase/database";
 // Can be a string as well. Need to ensure each key-value pair ends with ;
-const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-`;
+// const override = css`
+//     display: block;
+//     margin: 0 auto;
+//     border-color: red;
+// `;
 
 
 
@@ -31,7 +31,7 @@ function Danddaloading() {
             , width: '100%', height: '88vh'
         }}>
             
-            <ClipLoader color={color} loading={loading} css={override} size={150} />
+            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
         </div>
     );
 }

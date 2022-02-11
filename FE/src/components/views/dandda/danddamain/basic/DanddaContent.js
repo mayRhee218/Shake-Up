@@ -18,22 +18,59 @@ function Arrow(props) {
     return <div onClick={clickFunction}>{icon}</div>;
 }
 
-function DanddaContent() {
-    // axios로 댄서 이미지, 섬네일, 정보 받아오기
-    const [dancerthumbnail, setDancerthumbnail] = useState("")
-    const [profile, setProfile] = useState("")
-    const [videoUrl, setVideoUrl] = useState("")
-    const [vid, setVid] = useState("")
+let bool = false
 
+function DanddaContent () {
+    // axios로 댄서 이미지, 섬네일, 정보 받아오기
+    const [videos, setVideos] = useState([]);
+
+    const getVideos = () => {
+        const credentials = {
+            category:2
+        }
+        axios.post(`/video/read/category/${2}`, credentials)
+        .then(res => {
+          console.log(res.data) 
+          const result = res.data.filter(video => video.uid === 2)
+          setVideos(result)
+          if (videos.length > 0) {
+              bool = true
+              console.log(videos)
+          }    
+        })
+        .catch(err => {
+          console.log('댄서 정보 받아오기 실패')
+        });
+    } 
+
+    useEffect(() => {
+        getVideos();
+        const handleKeyDown = (e) => {
+            if (e.keyCode === 39) {
+                onArrowClick('right');
+            }
+            if (e.keyCode === 37) {
+                onArrowClick('left');
+            }
+        }
+    
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
     
 
-    const SLIDE_INFO = [
-        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:6 },
-        { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id:3 },
-        { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id:4 },
-        // { backgroundImage: '#ffe084', title: 'Slide 4' },
-        // { backgroundImage: '#d9d9d9', title: 'Slide 5' },
-    ];
+   const SLIDE_INFO = []
+
+   if (bool === true) {
+    SLIDE_INFO = [
+    { backgroundImage: videos[3].thumbnail, title: videos[3].title, profile_name: 'seoyoung', id:videos[3].vid },
+    { backgroundImage: videos[2].thumbnail, title: videos[2].title, profile_name: 'seoyoung', id:videos[2].vid },
+    { backgroundImage: videos[1].thumbnail, title: videos[1].title, profile_name: 'seoyoung', id:videos[1].vid }    
+    ]
+   }
 
     const [index, setIndex] = useState(0);
     const content = SLIDE_INFO[index];
@@ -63,50 +100,15 @@ function DanddaContent() {
     const movecamera = (e) => {
         // console.log(videoUrl);
         //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-        console.log("비디오 링크 : " + videoUrl);
-        window.Android.showToast('카메라 실행', videoUrl);
+        // console.log("비디오 링크 : " + videoUrl);
+        // window.Android.showToast('카메라 실행', videoUrl);
         
     };
-
-
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.keyCode === 39) {
-                onArrowClick('right');
-            }
-            if (e.keyCode === 37) {
-                onArrowClick('left');
-            }
-        }
-    
-        window.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, []);
-
-    useEffect(() => {
-        axios.get(`/video/read/1/${SLIDE_INFO[0].id}`)
-        .then(res => {
-          console.log(res.data) 
-          setDancerthumbnail(res.data.thumbnail)
-          setProfile(res.data.profile)
-          setVideoUrl(res.data.url)
-          setVid(res.data.vid)
-          console.log(res.data.thumbnail)
-        })
-        .catch(err => {
-          console.log('댄서 정보 받아오기 실패')
-        });
-    }, [])
-
 
     return (
         <div className='DanddaMain'>
             {/* 해당 캐로셀을 클릭 시 카메라 이동 함수 실행 */}
             <div className='Carousel' onClick={movecamera}>
-
                 <Arrow
                     direction='left'
                     clickFunction={() => onArrowClick('left')}
