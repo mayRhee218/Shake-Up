@@ -26,16 +26,12 @@ function DanddaContent() {
     const [videoUrl, setVideoUrl] = useState("")
     const [vid, setVid] = useState("")
 
+    
+
     const SLIDE_INFO = [
-<<<<<<< HEAD
-        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:6 },
+        { backgroundImage: { dancerthumbnail }, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id:74 },
         { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id:3 },
         { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id:4 },
-=======
-        { backgroundImage: dancerthumbnail, title: 'Slide 1', profile_name: 'seoyoung', profile_src: profile, id: 16 },
-        { backgroundImage: `url(${img2})`, title: 'Slide 2', profile_name: 'seoyoung', profile_src: profile_src, id: 3 },
-        { backgroundImage: `url(${img3})`, title: 'Slide 3', profile_name: 'seoyoung', profile_src: profile_src, id: 4 },
->>>>>>> feature/FE/video_firebase
         // { backgroundImage: '#ffe084', title: 'Slide 4' },
         // { backgroundImage: '#d9d9d9', title: 'Slide 5' },
     ];
@@ -68,17 +64,11 @@ function DanddaContent() {
     const movecamera = (e) => {
         // console.log(videoUrl);
         //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
+        console.log("비디오 링크 : " + videoUrl);
         window.Android.showToast('카메라 실행', videoUrl);
         
     };
 
-    const loadingPage = () => {
-        navigate('/signup/next', {
-          state: {
-            
-          },
-        });
-      }
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -98,7 +88,7 @@ function DanddaContent() {
     }, []);
 
     useEffect(() => {
-        axios.get(`/video/find/${SLIDE_INFO[0].id}`)
+        axios.get(`/video/read/1/${SLIDE_INFO[0].id}`)
         .then(res => {
           console.log(res.data) 
           setDancerthumbnail(res.data.thumbnail)
