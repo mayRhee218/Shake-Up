@@ -47,8 +47,6 @@ export default function CarouselSlide(props) {
 
   const onClick = () => {
     movecamera(url)
-    navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
-    navigate(`./loading`, { state: { alt: profile_name, src: profile_src, vid: id, url:url, modelUrl:turl } });
     navigate(`./danddaloading`, { state: { modelUrl: turl, vid: id, url:url} });
   };
 
