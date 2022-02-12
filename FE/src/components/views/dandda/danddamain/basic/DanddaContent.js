@@ -18,33 +18,10 @@ function Arrow(props) {
     return <div onClick={clickFunction}>{icon}</div>;
 }
 
-const bool = false
-
 function DanddaContent () {
     // axios로 댄서 이미지, 섬네일, 정보 받아오기
-    const [videos, setVideos] = useState([]);
-
-    const getVideos = () => {
-        const credentials = {
-            category:2
-        }
-        axios.post(`/video/read/category/${2}`, credentials)
-        .then(res => {
-          console.log(res.data) 
-          const result = res.data.filter(video => video.uid === 2)
-          setVideos(result)
-          if (videos.length > 0) {
-              bool = true
-              console.log(videos)
-          }    
-        })
-        .catch(err => {
-          console.log('댄서 정보 받아오기 실패')
-        });
-    } 
 
     useEffect(() => {
-        getVideos();
         const handleKeyDown = (e) => {
             if (e.keyCode === 39) {
                 onArrowClick('right');
@@ -62,32 +39,35 @@ function DanddaContent () {
     }, []);
     
 
-   const SLIDE_INFO = []
-   if (bool === true) {
-    SLIDE_INFO = [
+const SLIDE_INFO = [
         {
-            backgroundImage: videos[3].thumbnail,
-            title: videos[3].title,
+            backgroundImage: `url(${img1})`,
+            title: '바운스',
             profile_name: "seoyoung",
-            // profile_src: profile_src,
-            id: videos[3].vid,
+            profile_src: profile_src,
+            id: '바운스vid',
+            url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
+            turl: ''
           },
         {
-            backgroundImage: videos[2].thumbnail,
-            title: videos[2].title,
+            backgroundImage: `url(${img2})`,
+            title: '피치스',
             profile_name: "seoyoung",
-            // profile_src: profile_src,
-            id: videos[2].vid,
+            profile_src: profile_src,
+            id: '피치스vid',
+            url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644628771425?alt=media&token=11872f38-890f-4c3e-8ba0-b938aed11a42',
+            turl: ''
           },
         {
-            backgroundImage: videos[1].thumbnail,
-            title: videos[1].title,
+            backgroundImage: `url(${img3})`,
+            title: '아이솔레이션',
             profile_name: "seoyoung",
-            // profile_src: profile_src,
-            id: videos[1].vid,
+            profile_src: profile_src,
+            id: '아이솔레이션',
+            url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
+            turl: ''
           },
     ]
-   }
 
     const [index, setIndex] = useState(0);
     const content = SLIDE_INFO[index];
@@ -114,23 +94,25 @@ function DanddaContent () {
     };
 
     //Android Studio의 [showToast] 함수 실행
-    const movecamera = (e) => {
-        // console.log(videoUrl);
-        //토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-        window.Android.showToast("카메라 실행", videoUrl);
-    };
+    // const movecamera = (e) => {
+    //     console.log(videoUrl);
+    //     // 토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
+    //     window.Android.showToast("카메라 실행", videoUrl);
+    // };
 
-    const loadingPage = () => {
-        //이동할 페이지 작성
-        navigate("/danddaloading", {
-            state: {},
-        });
-    };
+    // const loadingPage = () => {
+    //     //이동할 페이지 작성
+    //     navigate("/danddaloading", {
+    //         state: {},
+    //     });
+    // };
 
     return (
         <div className='DanddaMain'>
             {/* 해당 캐로셀을 클릭 시 카메라 이동 함수 실행 */}
-            <div className='Carousel' onClick={movecamera}>
+            <div className='Carousel' 
+            // onClick={movecamera}
+            >
                 <Arrow
                     direction='left'
                     clickFunction={() => onArrowClick('left')}

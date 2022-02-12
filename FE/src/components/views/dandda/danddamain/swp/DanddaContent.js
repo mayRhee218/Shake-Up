@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import CarouselSlide from '../CarouselSlide';
-import { SLIDE_INFO } from './constants';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom';
+import { FaAndroid, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Slide from '@material-ui/core/Slide';
+import img1 from './img/1.png'
+import img2 from './img/2.jpg'
+import img3 from './img/3.png'
+import profile1 from './img/profile1.jpg'
+import profile2 from './img/profile2.jpg'
+import profile3 from './img/profile3.jpg'
+import axios from 'axios';
+
+
 
 function Arrow(props) {
     const { direction, clickFunction } = props;
@@ -11,13 +20,65 @@ function Arrow(props) {
     return <div onClick={clickFunction}>{icon}</div>;
 }
 
-function DanddaContent() {
+function DanddaContent () {
+    // axios로 댄서 이미지, 섬네일, 정보 받아오기
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.keyCode === 39) {
+                onArrowClick('right');
+            }
+            if (e.keyCode === 37) {
+                onArrowClick('left');
+            }
+        }
+    
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+    
+
+const SLIDE_INFO = [
+    { 
+        backgroundImage: `url(${img3})`, 
+        title: '넥스트레벨', 
+        profile_name: '리정', 
+        profile_src: profile3, 
+        id: 1,
+        url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644628887913?alt=media&token=353a4404-0b62-405c-b2f7-6fa7b0c77b66',
+        turl: 'https://teachablemachine.withgoogle.com/models/BVupLxFSj/'
+      },
+      { 
+        backgroundImage: `url(${img2})`, 
+        title: '허니제이힙합', 
+        profile_name: '허니제이', 
+        profile_src: profile2,
+        id: '바운스vid',
+        url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
+        turl: ''
+      },
+      { 
+        backgroundImage: `url(${img1})`, 
+        title: '비보잉댄스', 
+        profile_name: '예리', 
+        profile_src: profile1,
+        id: '바운스vid',
+        url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
+        turl: ''
+      },
+    ]
+
     const [index, setIndex] = useState(0);
     const content = SLIDE_INFO[index];
     const numSlides = SLIDE_INFO.length;
 
     const [slideIn, setSlideIn] = useState(true);
     const [slideDirection, setSlideDirection] = useState('down');
+
+    const navigate = useNavigate();
 
     const onArrowClick = (direction) => {
         const increment = direction === 'left' ? -1 : 1;
@@ -34,26 +95,19 @@ function DanddaContent() {
         }, 500);
     };
 
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.keyCode === 39) {
-                onArrowClick('right');
-            }
-            if (e.keyCode === 37) {
-                onArrowClick('left');
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    });
+    // const loadingPage = () => {
+    //     //이동할 페이지 작성
+    //     navigate("/danddaloading", {
+    //         state: {},
+    //     });
+    // };
 
     return (
         <div className='DanddaMain'>
-            <div className='Carousel'>
+            {/* 해당 캐로셀을 클릭 시 카메라 이동 함수 실행 */}
+            <div className='Carousel' 
+            // onClick={movecamera}
+            >
                 <Arrow
                     direction='left'
                     clickFunction={() => onArrowClick('left')}
