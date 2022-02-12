@@ -57,7 +57,7 @@ const SLIDE_INFO = [
         profile_name: '허니제이', 
         profile_src: profile2,
         id: '바운스vid',
-        url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
+        url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644629343168?alt=media&token=fd565c13-cefd-4262-abfa-3b581ad3aa22',
         turl: ''
       },
       { 

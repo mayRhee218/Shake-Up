@@ -38,15 +38,15 @@ export default function CarouselSlide(props) {
   const navigate = useNavigate();
 
     // Android Studio의 [showToast] 함수 실행
-  const movecamera = (e) => {
-      console.log(e);
+  const movecamera = () => {
+      console.log(url);
       // console.log(url);
       // 토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
       window.Android.showToast("카메라 실행", url);
   };
 
-  const onClick = (e) => {
-    movecamera(e)
+  const onClick = () => {
+    movecamera(url)
     navigate(`./${id}`, {state: {alt: profile_name, src: profile_src, vid: id}})
     navigate(`./loading`, { state: { alt: profile_name, src: profile_src, vid: id, url:url, modelUrl:turl } });
     navigate(`./danddaloading`, { state: { modelUrl: turl, vid: id, url:url} });
