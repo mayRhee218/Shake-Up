@@ -42,8 +42,8 @@
 }
 .user {
   display: flex;
-  padding: 5px;
-  justify-content: space-between;
+  margin: 10px;
+  justify-content: flex-start;
   align-items: center;
 }
 .user > img {
@@ -54,10 +54,14 @@
 }
 
 .user-info {
+  margin: 0px 20px;
   display: flex;
   flex-direction: column;
 }
 
+.user-info > span {
+  font-size: 0.8rem;
+}
 .navbar {
   display: flex;
   width: 100vw;

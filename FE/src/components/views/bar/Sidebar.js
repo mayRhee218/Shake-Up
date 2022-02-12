@@ -1,34 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SidebarData, UndetbarData } from './SidebarData';
 import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css'
 import { Avatar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-
-const useStyles = makeStyles(() => ({
-  nav: {
-    width: '100vw',
-    position: 'fixed',
-    bottom: 0,
-  }
-}))
 
 function Sidebar() {
   const [open, setOpen] = useState(true)
-  const [search, setSearch] = useState(false)
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = useState('recents');
+  const [auth, setAuth] = useState({
+    userName : localStorage.getItem('UserName'),
+    userId : localStorage.getItem('UserId'),
+    userEmail : localStorage.getItem('UserEmail'),
+    isLogin : localStorage.getItem('IsLogin')
+  })
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const userName = localStorage.getItem('userId')
-  const userEmail = localStorage.getItem('userEmail')
   const navigate = useNavigate()
   const onNext = (path) => {
     console.log(path)
     navigate(`${path}`)
   }
-  const classes = useStyles()
+  const logout = () => {
+    localStorage.clear()
+    setAuth({})
+  }
+  useEffect(()=> {
+    setAuth(
+      {
+    userName : localStorage.getItem('UserName'),
+    userId : localStorage.getItem('UserId'),
+    userEmail : localStorage.getItem('UserEmail'),
+    isLogin : localStorage.getItem('IsLogin')
+  }
+    )
+  }, [auth])
   return (
     <>
     <nav className='navbar'>
@@ -48,13 +54,10 @@ function Sidebar() {
         </div>
         <hr/>
         <div className='user'>
-          <Avatar src="/broken-image.jpg"></Avatar>
+          <Avatar src="/broken-image.jpg" ></Avatar>
           <div className='user-info'>
-            <span>nickname</span>
-            <span>email</span>
-          </div>
-          <div>
-            흐에
+            <span>{auth.isLogin ? auth.userName : "로그인해주세요"}</span>
+            <span>{auth.userEmail}</span>
           </div>
         </div>
         <hr/>
@@ -62,6 +65,23 @@ function Sidebar() {
           <p>배너영역</p>
         </div>
         <ul className='nav-menu-items'>
+          {auth.isLogin ? 
+            <li className='nav-text' onClick={logout}>
+                로그아웃
+            </li> : 
+            <>
+            <Link to='/login' className='nav-link'>
+              <li  className='nav-text' onClick={() => setOpen(!open)}>
+                로그인
+              </li>
+            </Link>
+            <Link to='/signup' className='nav-link'>
+              <li className='nav-text' onClick={() => setOpen(!open)}>
+                회원가입
+              </li>
+            </Link>
+          </>
+          }
           {SidebarData.map((item, index) => {
             return(
               <Link to={item.path} className='nav-link'>
