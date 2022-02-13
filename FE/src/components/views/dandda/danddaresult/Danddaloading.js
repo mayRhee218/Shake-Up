@@ -8,6 +8,7 @@
  **/
 
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import "./Danddaloading.css";
 import * as tmPose from "@teachablemachine/pose";
@@ -28,6 +29,7 @@ function Danddaloading() {
   const [isModelLoading, setIsModelLoading] = useState(false);
   const [model, setModel] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
+  const [checkTurl, setCheckTurl] = useState(false);
   const [turl, setTurl] = useState(null);
   const [results, setResults] = useState([]);
   const [labels, setLabels] = useState(null);
@@ -37,11 +39,30 @@ function Danddaloading() {
 
   const videoRef = useRef();
 
+  const navigate = useNavigate();
+
+  let cnt = 0; // 맞춘 개수
+  let startTimeSeconds; // 시작 시간 가져오기
+  let curTimeSeconds; // 현재 시간 가져오기
+  let timeSeconds; // (현재 시간 - 시작 시간) => 경과한 시간(초) 구하기
+  let checkCount0 = false,
+    checkCount1 = false; // 동작이 맞았는지 체크
+  let URL;
+
+  // 모델 URL 값이 세팅 되었을 때, 모델 로딩 함수 실행
+  const getTurl = () => {
+    URL = turl;
+
+    if (!checkTurl) loadModel();
+    else return;
+  };
+
   // 모델 로딩 함수
-  const loadModel = async (data) => {
-    // const URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/"; // 넘어올 값
-    const URL = data; // 넘어올 값
-    console.log("URL : " + URL);
+  const loadModel = async () => {
+    // URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/"; // 넘어올 값
+
+    setCheckTurl(true);
+
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
@@ -56,7 +77,7 @@ function Danddaloading() {
       setIsModelLoading(false);
 
       console.log("모델 로딩 성공");
-      console.log("loadModel 함수의 trul : " + URL);
+      console.log("loadModel 함수의 turl : " + URL);
 
       // 클래스 개수만큼 div 추가
       let label = "";
@@ -75,41 +96,26 @@ function Danddaloading() {
   const downloadFirebaseVideo = () => {
     const database = getDatabase();
 
+    // 영상 url 가져오기
     const message = ref(database, "message");
     onValue(message, async (snapshot) => {
       const data = snapshot.val();
       const videoUrl = await getFile(data);
       setVideoURL(videoUrl);
     });
-    console.log("downloadFirebaseVideo의 videoURL : " + videoURL);
 
+    // 모델 url (turl) 가져오기
     const turlTmp = ref(database, "turl");
-    let data;
     onValue(turlTmp, async (snapshot) => {
-      data = await snapshot.val();
-      console.log("data : " + data);
+      const data = await snapshot.val();
       setTurl(data);
     });
-
-    console.log("downloadFirebaseVideo의 turl : " + turl);
-
-    loadModel(data);
   };
 
   // 인식하기
-  let cnt = 0; // 맞춘 개수
-  let startTimeSeconds; // 시작 시간 가져오기
-  let curTimeSeconds; // 현재 시간 가져오기
-  let timeSeconds; // (현재 시간 - 시작 시간) => 경과한 시간(초) 구하기
-  let checkCount0 = false,
-    checkCount1 = false; // 동작이 맞았는지 체크
-
   const identify = async () => {
     const labelContainer = document.querySelector(".label-container");
-    const { pose, posenetOutput } = await model.estimatePose(
-      videoRef.current,
-      false
-    );
+    const { pose, posenetOutput } = await model.estimatePose(videoRef.current, false);
     const results = await model.predict(posenetOutput);
 
     setResults(results);
@@ -121,20 +127,14 @@ function Danddaloading() {
     // 인식
     for (let i = 0; i < maxPredictions; i++) {
       // 클래스 이름 : 정확도 innerHTML로 넣기
-      const prediction =
-        results[i].className + ": " + results[i].probability.toFixed(2);
+      const prediction = results[i].className + ": " + results[i].probability.toFixed(2);
       labelContainer.childNodes[i].innerHTML = prediction;
 
       // left
       if (results[0].probability.toFixed(2) > 0.9) {
         if (timeSeconds >= 0 && timeSeconds <= 2) {
           if (!checkCount0) {
-            console.log(
-              results[0].className +
-                " 인식 => 경과 시간 : " +
-                timeSeconds +
-                "초"
-            );
+            console.log(results[0].className + " 인식 => 경과 시간 : " + timeSeconds + "초");
             checkCount0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
             setCorrectCount(++cnt);
           }
@@ -144,12 +144,7 @@ function Danddaloading() {
       else if (results[1].probability.toFixed(2) > 0.9) {
         if (timeSeconds >= 3 && timeSeconds <= 4) {
           if (!checkCount1) {
-            console.log(
-              results[1].className +
-                " 인식 => 경과 시간 : " +
-                timeSeconds +
-                "초"
-            );
+            console.log(results[1].className + " 인식 => 경과 시간 : " + timeSeconds + "초");
             checkCount1 = true;
             setCorrectCount(++cnt);
           }
@@ -170,11 +165,9 @@ function Danddaloading() {
     loop();
   };
 
-  // 모델 로딩
+  // 파이어베이스 업로드
   useEffect(() => {
     downloadFirebaseVideo();
-    // setTimeout(loadModel(), 3000);
-    // loadModel();
   }, []);
 
   // 모델 로딩중일 때
@@ -184,7 +177,13 @@ function Danddaloading() {
 
   // 비디오가 끝나면 인식 멈춤
   const myCallback = () => {
-    return window.cancelAnimationFrame(animationFrame);
+    navigate("/:id", {
+      state: {
+        maxPredictions: maxPredictions,
+        correctCount: correctCount,
+      },
+    });
+    // return window.cancelAnimationFrame(animationFrame);
   };
 
   return (
@@ -201,12 +200,7 @@ function Danddaloading() {
               height: "88vh",
             }}
           >
-            <ClipLoader
-              color={color}
-              loading={loading}
-              css={override}
-              size={150}
-            />
+            <ClipLoader color={color} loading={loading} css={override} size={150} />
           </div> */}
 
           <div
@@ -218,8 +212,8 @@ function Danddaloading() {
                 id="video"
                 className="file-upload-video"
                 src={videoURL}
-                width="300"
-                height="300"
+                width="auto"
+                height="auto"
                 crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
                 ref={videoRef}
                 autoPlay
@@ -240,11 +234,14 @@ function Danddaloading() {
           className="result-container"
           // style={{ visibility: "hidden" }}
         >
-          맞춘 동작 개수
           {/* 몇 개 맞췄는지 결과 내기 */}
-          <div className="resultContent">
-            {correctCount} / {maxPredictions}
-          </div>
+          {turl && (
+            <div className="getTurl">
+              맞춘 동작 개수<br></br>
+              {correctCount} / {maxPredictions}
+              {getTurl()}
+            </div>
+          )}
         </div>
       </div>
     </div>

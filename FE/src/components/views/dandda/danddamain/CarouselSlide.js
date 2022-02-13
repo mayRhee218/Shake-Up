@@ -6,8 +6,7 @@ import { FaAndroid, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { getDatabase, ref, set } from "firebase/database";
 
 export default function CarouselSlide(props) {
-  const { backgroundImage, title, profile_src, profile_name, id, url, turl } =
-    props.content;
+  const { backgroundImage, title, profile_src, profile_name, id, url, turl } = props.content;
 
   const useStyles = makeStyles(() => ({
     card: {
@@ -52,12 +51,12 @@ export default function CarouselSlide(props) {
     navigate(`/danddaloading`); // 안드로이드에서 이동함, 지금은 테스트
   };
 
-  // realtime DB 에 영상 제목, turl 넣기
+  // realtime DB 에 turl 넣기
   const uploadModelUrl = () => {
     const database = getDatabase();
 
     set(ref(database), {
-      message: "daeun_test.mp4",
+      message: "daeun_test.mp4", // 안드로이드에서 녹화한 영상이 들어감
       turl: turl,
     });
   };

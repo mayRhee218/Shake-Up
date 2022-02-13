@@ -82,8 +82,8 @@ body {
 }
 
 .file-upload-video {
-  max-height: 200px;
-  max-width: 200px;
+  max-height: 500px;
+  max-width: 340px;
   margin: auto;
   padding: 20px;
 }

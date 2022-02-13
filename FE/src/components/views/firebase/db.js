@@ -1,10 +1,5 @@
 import { storage } from "./firebase";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 
 // Create 업로드
 export async function uploadFile(file, fileName) {
@@ -32,7 +27,7 @@ export async function uploadFile(file, fileName) {
 export async function getFile(time) {
   const dataRef = ref(storage, "videos/" + time);
   const downloadURL = await getDownloadURL(dataRef);
-  console.log("영상 URL : " + downloadURL);
+  // console.log("영상 URL : " + downloadURL);
   return downloadURL;
 }
 
