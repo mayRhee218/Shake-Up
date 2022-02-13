@@ -12,7 +12,7 @@ import axios from 'axios';
 
 function Arrow(props) {
     const { direction, clickFunction } = props;
-    const icon = direction === 'left' ? <FaChevronLeft /> : <FaChevronRight />;
+    const icon = direction === 'left' ? <FaChevronLeft  style={{color: '6200EE'}}/> : <FaChevronRight  style={{color: '6200EE'}}/>;
 
     return <div onClick={clickFunction}>{icon}</div>;
 }
