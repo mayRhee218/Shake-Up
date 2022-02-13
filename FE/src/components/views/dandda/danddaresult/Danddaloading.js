@@ -3,7 +3,7 @@
  *
  * @author 다은
  * @version 1.0.0
- * 작성일 : 2022-02-11
+ * 작성일 : 2022-02-12
  *
  **/
 
@@ -11,34 +11,24 @@ import React, { useEffect, useState, useRef } from "react";
 import { css } from "@emotion/react";
 import "./Danddaloading.css";
 import * as tmPose from "@teachablemachine/pose";
-import { getFile } from "../../firebase/db";
-import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { getFile } from "../../firebase/db";
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
-// const override = css`
-//     display: block;
-//     margin: 0 auto;
-//     border-color: red;
-// `;
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function Danddaloading() {
-  // 로딩중
-  let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
-  const database = getDatabase();
-
-  const message = ref(database, "message");
-  onValue(message, (snapshot) => {
-    const data = snapshot.val();
-    // console.log("데이터베이스안의 값 : " + data);
-  });
-  // 로딩중 끝
-
+  const [loading, setLoading] = useState(true);
+  const [color, setColor] = useState("#ffffff");
   const [isModelLoading, setIsModelLoading] = useState(false);
   const [model, setModel] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
+  const [turl, setTurl] = useState(null);
   const [results, setResults] = useState([]);
   const [labels, setLabels] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(null);
@@ -48,13 +38,14 @@ function Danddaloading() {
   const videoRef = useRef();
 
   // 모델 로딩 함수
-  const loadModel = async () => {
-    // Next Level 학습 모델
-    const URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/"; // 넘어올 값
+  const loadModel = async (data) => {
+    // const URL = "https://teachablemachine.withgoogle.com/models/8a2i874rC/"; // 넘어올 값
+    const URL = data; // 넘어올 값
+    console.log("URL : " + URL);
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
-    setIsModelLoading(true);
+    setIsModelLoading(true); // 모델 로딩중...
     try {
       const model = await tmPose.load(modelURL, metadataURL);
 
@@ -65,6 +56,7 @@ function Danddaloading() {
       setIsModelLoading(false);
 
       console.log("모델 로딩 성공");
+      console.log("loadModel 함수의 trul : " + URL);
 
       // 클래스 개수만큼 div 추가
       let label = "";
@@ -80,17 +72,28 @@ function Danddaloading() {
   };
 
   // 파이어 베이스의 realtime video url 가져오기
-  const uploadFirebaseVideo = () => {
-    const url = "https://dance-704a8-default-rtdb.firebaseio.com/message.json";
-    axios
-      .get(url)
-      .then(async (res) => {
-        const tmp = await getFile(res.data);
-        setVideoURL(tmp);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const downloadFirebaseVideo = () => {
+    const database = getDatabase();
+
+    const message = ref(database, "message");
+    onValue(message, async (snapshot) => {
+      const data = snapshot.val();
+      const videoUrl = await getFile(data);
+      setVideoURL(videoUrl);
+    });
+    console.log("downloadFirebaseVideo의 videoURL : " + videoURL);
+
+    const turlTmp = ref(database, "turl");
+    let data;
+    onValue(turlTmp, async (snapshot) => {
+      data = await snapshot.val();
+      console.log("data : " + data);
+      setTurl(data);
+    });
+
+    console.log("downloadFirebaseVideo의 turl : " + turl);
+
+    loadModel(data);
   };
 
   // 인식하기
@@ -99,12 +102,14 @@ function Danddaloading() {
   let curTimeSeconds; // 현재 시간 가져오기
   let timeSeconds; // (현재 시간 - 시작 시간) => 경과한 시간(초) 구하기
   let checkCount0 = false,
-    checkCount1 = false,
-    checkCount2 = false; // 동작이 맞았는지 체크
+    checkCount1 = false; // 동작이 맞았는지 체크
 
   const identify = async () => {
     const labelContainer = document.querySelector(".label-container");
-    const { pose, posenetOutput } = await model.estimatePose(videoRef.current, false);
+    const { pose, posenetOutput } = await model.estimatePose(
+      videoRef.current,
+      false
+    );
     const results = await model.predict(posenetOutput);
 
     setResults(results);
@@ -116,14 +121,20 @@ function Danddaloading() {
     // 인식
     for (let i = 0; i < maxPredictions; i++) {
       // 클래스 이름 : 정확도 innerHTML로 넣기
-      const prediction = results[i].className + ": " + results[i].probability.toFixed(2);
+      const prediction =
+        results[i].className + ": " + results[i].probability.toFixed(2);
       labelContainer.childNodes[i].innerHTML = prediction;
 
       // left
       if (results[0].probability.toFixed(2) > 0.9) {
         if (timeSeconds >= 0 && timeSeconds <= 2) {
           if (!checkCount0) {
-            console.log(results[i].className + " 인식 => 경과 시간 : " + timeSeconds + "초");
+            console.log(
+              results[0].className +
+                " 인식 => 경과 시간 : " +
+                timeSeconds +
+                "초"
+            );
             checkCount0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
             setCorrectCount(++cnt);
           }
@@ -133,19 +144,17 @@ function Danddaloading() {
       else if (results[1].probability.toFixed(2) > 0.9) {
         if (timeSeconds >= 3 && timeSeconds <= 4) {
           if (!checkCount1) {
-            console.log(results[i].className + " 인식 => 경과 시간 : " + timeSeconds + "초");
+            console.log(
+              results[1].className +
+                " 인식 => 경과 시간 : " +
+                timeSeconds +
+                "초"
+            );
             checkCount1 = true;
             setCorrectCount(++cnt);
           }
         }
       }
-      // default
-      // else if (results[2].probability.toFixed(2) > 0.9) {
-      //   if (!checkCount2) {
-      //     checkCount2 = true;
-      //     setCorrectCount(++cnt);
-      //   }
-      // }
     }
   };
 
@@ -163,8 +172,9 @@ function Danddaloading() {
 
   // 모델 로딩
   useEffect(() => {
-    loadModel();
-    uploadFirebaseVideo();
+    downloadFirebaseVideo();
+    // setTimeout(loadModel(), 3000);
+    // loadModel();
   }, []);
 
   // 모델 로딩중일 때
@@ -181,7 +191,7 @@ function Danddaloading() {
     <div className="TmPose" style={{ textAlign: "center" }}>
       <div className="mainWrapper">
         <div className="mainContent">
-          <div
+          {/* <div
             className="sweet-loading"
             style={{
               display: "flex",
@@ -191,11 +201,18 @@ function Danddaloading() {
               height: "88vh",
             }}
           >
-            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
-            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
-          </div>
+            <ClipLoader
+              color={color}
+              loading={loading}
+              css={override}
+              size={150}
+            />
+          </div> */}
 
-          <div className="videoHolder" style={{ visibility: "hidden" }}>
+          <div
+            className="videoHolder"
+            // style={{ visibility: "hidden" }}
+          >
             {videoURL && (
               <video
                 id="video"
@@ -212,35 +229,17 @@ function Danddaloading() {
               ></video>
             )}
           </div>
-{/* =======
-    
-    
-    return (
-        <div className="sweet-loading" style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center' 
-            , width: '100%', height: '88vh'
-        }}>
-            
-            {/* <ClipLoader color={color} loading={loading} css={override} size={150} /> */}
-{/* feature/FE/danddamain */} 
         </div>
-
-        {/* <div className="identify-container">
-          {videoURL && (
-            <button className="button" onClick={startLoop}>
-              인식 버튼을 눌러주세용
-            </button>
-          )}
-        </div>
-        <br></br> */}
-
         <div
           className="label-container"
-          style={{ visibility: "hidden" }}
+          // style={{ visibility: "hidden" }}
           dangerouslySetInnerHTML={{ __html: labels }}
         ></div>
         <br></br>
-        <div className="result-container" style={{ visibility: "hidden" }}>
+        <div
+          className="result-container"
+          // style={{ visibility: "hidden" }}
+        >
           맞춘 동작 개수
           {/* 몇 개 맞췄는지 결과 내기 */}
           <div className="resultContent">

@@ -1,5 +1,10 @@
 import { storage } from "./firebase";
-import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 
 // Create 업로드
 export async function uploadFile(file, fileName) {
@@ -23,10 +28,11 @@ export async function uploadFile(file, fileName) {
   );
 }
 
-// Read 읽어오기 => firebase URL 을 DanddaloadingTest.js에 return
+// Read 읽어오기 => firebase URL 을 Danddaloading.js에 return
 export async function getFile(time) {
   const dataRef = ref(storage, "videos/" + time);
   const downloadURL = await getDownloadURL(dataRef);
+  console.log("영상 URL : " + downloadURL);
   return downloadURL;
 }
 
