@@ -15,7 +15,7 @@ import axios from 'axios';
 
 function Arrow(props) {
     const { direction, clickFunction } = props;
-    const icon = direction === 'left' ? <FaChevronLeft /> : <FaChevronRight />;
+    const icon = direction === 'left' ? <FaChevronLeft style={{color: '6200EE'}}/> : <FaChevronRight style={{color: '6200EE'}} />;
 
     return <div onClick={clickFunction}>{icon}</div>;
 }
@@ -44,7 +44,7 @@ function DanddaContent () {
 const SLIDE_INFO = [
     { 
         backgroundImage: `url(${img3})`, 
-        title: '넥스트레벨', 
+        title: '리정쌤한테 배우는 넥스트레벨', 
         profile_name: '리정', 
         profile_src: profile3, 
         id: 1,
