@@ -49,7 +49,7 @@ function DanddaContent() {
       profile_src: profile_src,
       id: "바운스vid",
       url: "https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209",
-      turl: "",
+      turl: "https://teachablemachine.withgoogle.com/models/NuAS299xH/",
     },
     {
       backgroundImage: `url(${img2})`,
@@ -58,7 +58,7 @@ function DanddaContent() {
       profile_src: profile_src,
       id: "피치스vid",
       url: "https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644628771425?alt=media&token=11872f38-890f-4c3e-8ba0-b938aed11a42",
-      turl: "",
+      turl: "https://teachablemachine.withgoogle.com/models/h3cg54y28/",
     },
     {
       backgroundImage: `url(${img3})`,
