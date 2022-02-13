@@ -64,6 +64,7 @@ export default function CarouselSlide(props) {
     const database = getDatabase();
 
     set(ref(database), {
+      // message: "bounce_daeun.mp4", // 안드로이드에서 녹화한 영상이 들어감
       message: "daeun_test.mp4", // 안드로이드에서 녹화한 영상이 들어감
       turl: turl,
     });

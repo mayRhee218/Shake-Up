@@ -321,8 +321,8 @@ function Danddaloading() {
                 id="video"
                 className="file-upload-video"
                 src={videoURL}
-                width="auto"
-                height="auto"
+                width="300"
+                height="300"
                 crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
                 ref={videoRef}
                 autoPlay
@@ -335,7 +335,7 @@ function Danddaloading() {
         </div>
         <div
           className="label-container"
-          // style={{ visibility: "hidden" }}
+          style={{ visibility: "hidden" }}
           dangerouslySetInnerHTML={{ __html: labels }}
         ></div>
         <br></br>
