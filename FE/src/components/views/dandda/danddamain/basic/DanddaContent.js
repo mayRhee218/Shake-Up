@@ -10,7 +10,6 @@ import profile_src from './img/profile.png'
 import axios from 'axios';
 
 
-
 function Arrow(props) {
     const { direction, clickFunction } = props;
     const icon = direction === 'left' ? <FaChevronLeft /> : <FaChevronRight />;
@@ -64,7 +63,7 @@ const SLIDE_INFO = [
             profile_name: "seoyoung",
             profile_src: profile_src,
             id: '아이솔레이션',
-            url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
+            url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644500263394?alt=media&token=b922bd00-e620-40ff-ad79-7817e0d19a12',
             turl: ''
           },
     ]
