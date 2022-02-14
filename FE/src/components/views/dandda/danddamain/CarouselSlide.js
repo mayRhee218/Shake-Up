@@ -7,7 +7,7 @@ import { FaAndroid, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import zIndex from "@material-ui/core/styles/zIndex";
 
 export default function CarouselSlide(props) {
-    const { backgroundImage, title, profile_src, profile_name, id, uid, url, turl } = props.content;
+  const { backgroundImage, title, profile_src, profile_name, id, uid, url, turl } = props.content;
 
   const useStyles = makeStyles(() => ({
     card: {
@@ -48,16 +48,16 @@ export default function CarouselSlide(props) {
   // Android Studio의 [showToast] 함수 실행
   const movecamera = () => {
     // uploadModelUrl
-    const database = getDatabase();
+    // const database = getDatabase();
 
-    set(ref(database), {
-      message: "", // 안드로이드에서 녹화한 영상이 들어감
-      turl: turl,
-    });
+    // set(ref(database), {
+    //   message: "", // 안드로이드에서 녹화한 영상이 들어감
+    //   turl: turl,
+    // });
 
     console.log(url);
     // 토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-    window.Android.showToast("카메라 실행", url);
+    window.Android.showToast("카메라 실행", url, turl);
     return "arr";
   };
 
@@ -66,16 +66,17 @@ export default function CarouselSlide(props) {
     movecamera(url);
   };
 
-  // realtime DB 에 turl 넣기
-  const uploadModelUrl = () => {};
+  // // realtime DB 에 turl 넣기
+  // const uploadModelUrl = () => {};
 
   const goTomypage = () => {
-    navigate(`/mypage/${uid}`)
-  }
-    return (
-      <div style={{ 
-        display: 'flex',
-        flexDirection: 'column',
+    navigate(`/mypage/${uid}`);
+  };
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
       }}
     >
