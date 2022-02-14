@@ -29,8 +29,8 @@ import VideoDetail from "./components/views/VideoDetail/VideoDetail";
 import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading";
 
 function App() {
-  // const temp = Auth(DanddaMain, null);
-  // console.log(temp);
+  const temp = Auth(DanddaMain, null);
+  console.log(temp);
 
   return (
     <>
