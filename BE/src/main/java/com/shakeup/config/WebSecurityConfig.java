@@ -25,6 +25,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsUtils;
 
 @Configuration
 @EnableWebSecurity
@@ -47,10 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().disable() // rest api 이므로 기본설정 사용안해서 disable 적용. -> enable시 사용지 비 인증시 로그인 vue 폼 페이지가 뜬다.
+                .cors().and()
                 .csrf().disable() // rest api에서 csrf 보안이 필요 없으므로 disable처리.
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //jwt token인증 방식이므로 세션은 필요없다.
                 .and()
                 .authorizeRequests() // 아래 Matchers에 해당되는 사용권한 체크 -> 여기서도 권한이 없으면 vue form 로그인 페이지로 이어진다.
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .antMatchers("/user/**").permitAll() // 회원관리에 대한 주소는 누구나 접근 가능.
 //                .antMatchers("/board/**").hasAnyRole("USER") // 이렇게 사용시 게시판관련 api는 유저 인증된 사람만 가능.
                 .and()
