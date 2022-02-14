@@ -44,8 +44,6 @@ function Signup() {
   
   const navigate = useNavigate()
 
-
-
   // 패스워드
   const onPwdHandler = ({target: {value}}) => {
     setPassword(value)
