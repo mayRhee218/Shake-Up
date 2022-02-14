@@ -88,13 +88,13 @@ function Danddaloading() {
       console.log("모델 로딩 성공");
       console.log("loadModel 함수의 turl : " + URL);
 
-      // 클래스 개수만큼 div 추가
-      let label = "";
-      for (let i = 0; i < maxPredictions; i++) {
-        label += "<div></div>";
-      }
-
-      setLabels(label);
+      // // 클래스 개수만큼 div 추가
+      // let label = "";
+      // for (let i = 0; i < maxPredictions; i++) {
+      //   label += "<div></div>";
+      // }
+      //
+      // setLabels(label);
     } catch (error) {
       console.log(error);
       setIsModelLoading(false);
@@ -141,8 +141,8 @@ function Danddaloading() {
     if (turl === "https://teachablemachine.withgoogle.com/models/NuAS299xH/") {
       for (let i = 0; i < maxPredictions; i++) {
         // 클래스 이름 : 정확도 innerHTML로 넣기
-        const prediction = results[i].className + ": " + results[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = prediction;
+        // const prediction = results[i].className + ": " + results[i].probability.toFixed(2);
+        // labelContainer.childNodes[i].innerHTML = prediction;
 
         // side_up
         if (results[0].probability.toFixed(2) > 0.9) {
@@ -158,6 +158,9 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m0c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -174,6 +177,9 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m0c1 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -184,6 +190,9 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m0c2 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -199,6 +208,9 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m0c3 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -209,6 +221,9 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m0c4 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -219,6 +234,9 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m0c5 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -229,6 +247,9 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m0c6 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -239,6 +260,9 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m0c7 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -249,6 +273,9 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m0c8 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -259,6 +286,9 @@ function Danddaloading() {
               console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
               m0c9 = true;
               setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
+              labelContainer.innerHTML = "";
             }
           }
         }
@@ -331,17 +361,16 @@ function Danddaloading() {
                 ref={videoRef}
                 // autoPlay
                 controls
-                muted
                 onPlay={startLoop}
                 onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
               ></video>
             )}
           </div>
         </div>
+
         <div
-          className="label-container"
-          style={{ visibility: "hidden" }}
-          dangerouslySetInnerHTML={{ __html: labels }}
+          className="label-container" // style={{ visibility: "hidden" }}
+          // dangerouslySetInnerHTML={{ __html: labels }}
         ></div>
         <br></br>
         <div
