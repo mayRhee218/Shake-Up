@@ -47,7 +47,8 @@ const SLIDE_INFO = [
         title: '리정쌤한테 배우는 넥스트레벨', 
         profile_name: '리정', 
         profile_src: profile3, 
-        id: 1,
+        id: 5,
+        uid: 3,
         url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644628887913?alt=media&token=353a4404-0b62-405c-b2f7-6fa7b0c77b66',
         turl: 'https://teachablemachine.withgoogle.com/models/BVupLxFSj/'
       },
@@ -56,7 +57,8 @@ const SLIDE_INFO = [
         title: '허니제이힙합', 
         profile_name: '허니제이', 
         profile_src: profile2,
-        id: '바운스vid',
+        id: 6,
+        uid: 4,
         url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644629343168?alt=media&token=fd565c13-cefd-4262-abfa-3b581ad3aa22',
         turl: ''
       },
@@ -65,7 +67,8 @@ const SLIDE_INFO = [
         title: '비보잉댄스', 
         profile_name: '예리', 
         profile_src: profile1,
-        id: '바운스vid',
+        id: 7,
+        uid: 5,
         url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
         turl: ''
       },

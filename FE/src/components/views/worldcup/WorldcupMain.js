@@ -18,7 +18,9 @@ function WorldcupMain(props) {
       <Button color="primary" variant="contained">투표하러 가기</Button>
       </Link>
       <br/>
+      <Link to = './participation'>
       <Button color="primary" variant="contained">월드컵 참여하기</Button>
+      </Link>
       <br/>
       <Button color="primary" variant="contained">지난 월드컵 보러가기</Button>
 

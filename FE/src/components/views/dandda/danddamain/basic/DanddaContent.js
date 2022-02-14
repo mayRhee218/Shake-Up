@@ -18,8 +18,6 @@ function Arrow(props) {
 }
 
 function DanddaContent () {
-    // axios로 댄서 이미지, 섬네일, 정보 받아오기
-
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.keyCode === 39) {
@@ -44,16 +42,18 @@ const SLIDE_INFO = [
             title: '바운스',
             profile_name: "seoyoung",
             profile_src: profile_src,
-            id: '바운스vid',
+            id: 4,
+            uid:2,
             url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
-            turl: ''
+            turl: '',
           },
         {
             backgroundImage: `url(${img2})`,
             title: '피치스',
             profile_name: "seoyoung",
             profile_src: profile_src,
-            id: '피치스vid',
+            id: 2,
+            uid:2,
             url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644628771425?alt=media&token=11872f38-890f-4c3e-8ba0-b938aed11a42',
             turl: ''
           },
@@ -62,7 +62,8 @@ const SLIDE_INFO = [
             title: '아이솔레이션',
             profile_name: "seoyoung",
             profile_src: profile_src,
-            id: '아이솔레이션',
+            id: 3,
+            uid:2,
             url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644500263394?alt=media&token=b922bd00-e620-40ff-ad79-7817e0d19a12',
             turl: ''
           },
