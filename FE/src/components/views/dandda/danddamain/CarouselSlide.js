@@ -47,6 +47,14 @@ export default function CarouselSlide(props) {
 
   // Android Studio의 [showToast] 함수 실행
   const movecamera = () => {
+    // uploadModelUrl
+    const database = getDatabase();
+
+    set(ref(database), {
+      message: "", // 안드로이드에서 녹화한 영상이 들어감
+      turl: turl,
+    });
+
     console.log(url);
     // 토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
     window.Android.showToast("카메라 실행", url);
@@ -54,19 +62,12 @@ export default function CarouselSlide(props) {
   };
 
   const onClick = () => {
-    uploadModelUrl();
+    // uploadModelUrl();
     movecamera(url);
   };
 
   // realtime DB 에 turl 넣기
-  const uploadModelUrl = () => {
-    const database = getDatabase();
-
-    set(ref(database), {
-      message: "", // 안드로이드에서 녹화한 영상이 들어감
-      turl: turl,
-    });
-  };
+  const uploadModelUrl = () => {};
 
   const goTomypage = () => {
     // navigate(`/mypage/${uid}`)
