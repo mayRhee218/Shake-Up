@@ -63,7 +63,7 @@ export default function CarouselSlide(props) {
 
   const onClick = () => {
     // uploadModelUrl();
-    movecamera(url);
+    movecamera();
   };
 
   // // realtime DB 에 turl 넣기
