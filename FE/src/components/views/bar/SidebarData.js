@@ -9,7 +9,7 @@ export const SidebarData = [
   },
   {
     title:'댄스 따라하기',
-    path: '/dandda',
+    path: '/',
     icon: '',
   },
   {
