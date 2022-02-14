@@ -17,6 +17,7 @@ package com.shakeup.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -55,6 +56,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // 아래 Matchers에 해당되는 사용권한 체크 -> 여기서도 권한이 없으면 vue form 로그인 페이지로 이어진다.
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .antMatchers("/user/**").permitAll() // 회원관리에 대한 주소는 누구나 접근 가능.
+                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/**").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/**").permitAll()
+                .antMatchers(HttpMethod.PUT,"/**").permitAll()
 //                .antMatchers("/board/**").hasAnyRole("USER") // 이렇게 사용시 게시판관련 api는 유저 인증된 사람만 가능.
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
