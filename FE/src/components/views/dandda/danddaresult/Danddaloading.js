@@ -377,8 +377,8 @@ function Danddaloading() {
           className="result-container"
           // style={{ visibility: "hidden" }}
         >
-          <div className="checkvideoURL">videoURL 없을 때 :{videoURL}</div>
-          {videoURL && <div className="checkvideoURL">videoURL 있을 때 :{videoURL}</div>}
+          {/* <div className="checkvideoURL">videoURL 없을 때 :{videoURL}</div> */}
+          {/* {videoURL && <div className="checkvideoURL">videoURL 있을 때 :{videoURL}</div>} */}
           {/* 몇 개 맞췄는지 결과 내기 */}
           {turl && (
             <div className="getTurl">
