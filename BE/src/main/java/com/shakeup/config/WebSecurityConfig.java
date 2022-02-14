@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE,"/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/**").permitAll()
                 .antMatchers(HttpMethod.PUT,"/**").permitAll()
-//                .antMatchers("/board/**").hasAnyRole("USER") // 이렇게 사용시 게시판관련 api는 유저 인증된 사람만 가능.
+                .antMatchers("/board/**").hasAnyRole("USER") // 이렇게 사용시 게시판관련 api는 유저 인증된 사람만 가능.
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
                         UsernamePasswordAuthenticationFilter.class);

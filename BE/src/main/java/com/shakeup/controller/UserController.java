@@ -68,7 +68,7 @@ public class UserController {
         return new ResponseEntity<Users>(user.get(), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "아이디 찾기")
+    @ApiOperation(value = "비밀번호 찾기")
     @PostMapping(value = "/sendpw")
     public ResponseEntity<String> sendId(@RequestBody UserSendpwRequest userSendpwRequest) {
         String check = "값 없음.";
@@ -129,7 +129,7 @@ public class UserController {
 
         System.out.println("emailCheck 실행");
 
-        return new ResponseEntity<>("result", HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 
