@@ -329,7 +329,8 @@ function Danddaloading() {
                 height="300"
                 crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
                 ref={videoRef}
-                autoPlay
+                // autoPlay
+                controls
                 muted
                 onPlay={startLoop}
                 onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
