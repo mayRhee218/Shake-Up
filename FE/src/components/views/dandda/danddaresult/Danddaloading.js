@@ -315,7 +315,20 @@ function Danddaloading() {
 
   // 모델 로딩중일 때
   if (isModelLoading) {
-    return <h2>Model Loading...</h2>;
+    return (
+      <div
+        className="sweet-loading"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "88vh",
+        }}
+      >
+        <ClipLoader color={color} loading={loading} css={override} size={150} />
+      </div>
+    );
   }
 
   // 비디오가 끝나면 인식 멈춤
@@ -333,19 +346,6 @@ function Danddaloading() {
     <div className="TmPose" style={{ textAlign: "center" }}>
       <div className="mainWrapper">
         <div className="mainContent">
-          {/* <div
-            className="sweet-loading"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "88vh",
-            }}
-          >
-            <ClipLoader color={color} loading={loading} css={override} size={150} />
-          </div> */}
-
           <div
             className="videoHolder"
             // style={{ visibility: "hidden" }}
