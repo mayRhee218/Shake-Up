@@ -25,6 +25,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -73,20 +75,53 @@ public class MainActivity extends AppCompatActivity {
         // ViewPort meta tag를 활성화 여부
         mws.setUseWideViewPort(true);
         // 줌 컨트롤 사용 여부
-        mws.setDisplayZoomControls(false);
+//        mws.setDisplayZoomControls(false);
         // 사용자 제스처를 통한 줌 기능 활성화 여부
-        mws.setSupportZoom(false);
+//        mws.setSupportZoom(false);
         // TextEncoding 이름 정의
         mws.setDefaultTextEncodingName("UTF-8");
-
+        // 웹뷰에 동영상을 바로 실행시키기 위함.
+        mws.setMediaPlaybackRequiresUserGesture(true);
+        // 뷰 가속 - 가속하지 않으면 영상실행 안됨, 소리만 나온다
+        mwv.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        mws.setSupportMultipleWindows(true);
         // Setting Local Storage
         mws.setDatabaseEnabled(true);
         mws.setDomStorageEnabled(true);
+        mws.setAllowContentAccess(true);
+        mws.setAllowFileAccess(true);
+//        mws.setAllowFileAccessFromFileURLs(true);
+//        mws.setAllowUniversalAccessFromFileURLs(true);
+        mws.getAllowContentAccess();
+        mws.getAllowFileAccess();
+        mws.getAllowFileAccessFromFileURLs();
+        mws.getAllowUniversalAccessFromFileURLs();
+        mws.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+
+        // 웹을 더 쾌적하게 돌리기 위한 세팅
+        mwv.setWebChromeClient(new WebChromeClient());
+        mwv.setWebViewClient(new WebViewClient());
 
         // 캐쉬 사용 방법을 정의
-        mws.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        mwv.loadUrl("http://121.159.4.37:3000/");
+        mws.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        mwv.clearCache(true);
+        mwv.loadUrl("http://119.202.146.251/");
     }
+
+//    private class WebViewClientClass extends WebViewClient {
+//
+//        @Override
+//        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//            super.onPageStarted(view, url, favicon);
+//        }
+//
+//        @Override
+//        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//            Toast t = Toast.makeText(MainActivity.this, "작동!", Toast.LENGTH_SHORT);
+//            t.show();
+//            return true;
+//        }
+//    }
 
 
     public class WebAppInterface {
@@ -99,12 +134,13 @@ public class MainActivity extends AppCompatActivity {
 
         /** Show a toast from the web page */
         @JavascriptInterface
-        public void showToast(String toast, String url) {
+        public void showToast(String url, String modelUrl) {
             //토스트 메시지 보여주기
-//            Toast.makeText(mContext, toast , Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, modelUrl , Toast.LENGTH_LONG).show();
             //카메라 실행
             Intent intent = new Intent(MainActivity.this, CAMERA2_Activity.class);
             intent.putExtra("동영상링크",url);
+            intent.putExtra("모델링크",modelUrl);
             startActivityResult.launch(intent);
         }
 
@@ -115,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == RESULT_OK) {
 //                            Toast.makeText(mContext, "로딩 페이지 작동 성공", Toast.LENGTH_LONG).show();
-                            mwv.loadUrl("http://121.159.4.37:3000/loading");
+                            mwv.loadUrl("http://i6d103.p.ssafy.io/danddaloading");
                             //http://121.159.4.37:3000/
                             System.out.println("이전에 실행됨 ");
                             
@@ -161,5 +197,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 
 }
