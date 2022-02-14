@@ -1,16 +1,7 @@
 import React from 'react';
 
+const uid = localStorage.getItem('UserId')
 export const SidebarData = [
-  {
-    title:'로그인',
-    path: '/login',
-    icon: '',
-  },
-  {
-    title:'회원가입',
-    path: '/signup',
-    icon: '',
-  },
   {
     title:'회원정보 수정',
     path: '/user/sujeong',
@@ -28,7 +19,7 @@ export const SidebarData = [
   },
   {
     title:'마이페이지',
-    path: '/mypage',
+    path: `/mypage/${uid}`,
     icon: '',
   },
 ]

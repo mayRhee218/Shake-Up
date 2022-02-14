@@ -10,7 +10,7 @@ import ReduxThunk from "redux-thunk";
 import Reducer from "./_reducers";
 import axios from "axios";
 
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 axios.defaults.withCredentials = false;
 axios.defaults.baseURL = "http://52.78.97.122:8181/";
 
