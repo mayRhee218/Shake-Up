@@ -55,7 +55,7 @@ export default function CarouselSlide(props) {
 
   const onClick = () => {
     uploadModelUrl();
-    // movecamera(url);
+    movecamera(url);
     navigate(`/danddaloading`); // 안드로이드에서 이동함, 지금은 테스트
   };
 
