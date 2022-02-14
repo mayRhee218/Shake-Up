@@ -7,8 +7,7 @@ function Board4(props) {
   const [videos, setVideos] = useState([]);
   
   const getVideos = () => {
-    // const userId = localStorage.getItem('UserId')
-    const userId = 1
+    const userId = localStorage.getItem('UserId')
     axios.post(`/userlike/read/${userId}`)
     .then(res => {
       setVideos(res.data)

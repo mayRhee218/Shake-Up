@@ -3,8 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Video from './Video';
 
 function Board3() {
-  // const userId = localStorage.getItem('UserId')
-  const userId = 1
+  const userId = localStorage.getItem('UserId')
   
   const [videos, setVideos] = useState([]);
   const getVideos = () => {

@@ -32,17 +32,20 @@ const useStyles = makeStyles(() => ({
 function Video({data, propFunction, key, index}) {
   const [dialog, setDialog] = useState(false)
   const {vid, uid, title, likecnt, views, url, score} = data
-  // const userId = localStorage.getItem('userId')
-  const userId = 1
-  const deleteVideo = async () => {
-    await deleteFile(vid)
-    axios.post(`video/delete/${vid}`)
-      .then(res => {
-        console.log(vid)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  const userId = localStorage.getItem('userId')
+  const deleteVideo = () => {
+    try {
+      deleteFile(vid)
+      axios.post(`video/delete/${vid}`)
+        .then(res => {
+          console.log(vid)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    } catch (err) {
+      console.log(err)
+    }
   }
   const onOpen = (event) => {
     setDialog(true)
@@ -52,7 +55,7 @@ function Video({data, propFunction, key, index}) {
     propFunction(index)
   }
   const onDelete = async() => {
-    // await deleteVideo()
+    deleteVideo()
     setDialog(false)
   }
   const classes = useStyles();

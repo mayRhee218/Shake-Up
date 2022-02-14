@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
 
@@ -30,7 +30,13 @@ import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading"
 
 function App() {
   const temp = Auth(DanddaMain, null);
-  console.log(temp);
+  function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  useEffect(() => {
+    setScreenSize();
+  });
 
   return (
     <>

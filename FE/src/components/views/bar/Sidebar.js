@@ -13,10 +13,10 @@ function Sidebar() {
     userEmail : localStorage.getItem('UserEmail'),
     isLogin : localStorage.getItem('IsLogin')
   })
+  const navigate = useNavigate()
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const navigate = useNavigate()
   const onNext = (path) => {
     console.log(path)
     navigate(`${path}`)
@@ -24,6 +24,9 @@ function Sidebar() {
   const logout = () => {
     localStorage.clear()
     setAuth({})
+  }
+  const goHome = () => {
+    navigate('/')
   }
   useEffect(()=> {
     setAuth(
@@ -39,7 +42,7 @@ function Sidebar() {
     <>
     <nav className='navbar'>
       <img src='/favicon/menu.png' onClick={() => setOpen(!open)}></img>
-      <img src='/favicon/logo.png' className='logo'></img>
+      <img src='/favicon/logo.png' className='logo' onClick={goHome}></img>
       <img src='/favicon/search.png'></img>
     </nav>
     <div className='block'></div>
