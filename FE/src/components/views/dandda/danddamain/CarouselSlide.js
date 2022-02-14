@@ -7,7 +7,7 @@ import { FaAndroid, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import zIndex from "@material-ui/core/styles/zIndex";
 
 export default function CarouselSlide(props) {
-  const { backgroundImage, title, profile_src, profile_name, id, url, turl } = props.content;
+    const { backgroundImage, title, profile_src, profile_name, id, uid, url, turl } = props.content;
 
   const useStyles = makeStyles(() => ({
     card: {
@@ -70,14 +70,12 @@ export default function CarouselSlide(props) {
   const uploadModelUrl = () => {};
 
   const goTomypage = () => {
-    // navigate(`/mypage/${uid}`)
-    navigate(`/mypage/1`);
-  };
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
+    navigate(`/mypage/${uid}`)
+  }
+    return (
+      <div style={{ 
+        display: 'flex',
+        flexDirection: 'column',
         justifyContent: "center",
       }}
     >
