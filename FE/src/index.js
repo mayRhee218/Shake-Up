@@ -11,8 +11,8 @@ import Reducer from "./_reducers";
 import axios from "axios";
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
-axios.defaults.baseURL = "http://i6d103.p.ssafy.io/";
 axios.defaults.withCredentials = false;
+axios.defaults.baseURL = "http://i6d103.p.ssafy.io/";
 
 window.Kakao.init("2da0aa7248170ff536df9379623c9469");
 
