@@ -29,15 +29,16 @@ function Sidebar() {
     navigate('/')
   }
   useEffect(()=> {
-    setAuth(
-      {
-    userName : localStorage.getItem('UserName'),
-    userId : localStorage.getItem('UserId'),
-    userEmail : localStorage.getItem('UserEmail'),
-    isLogin : localStorage.getItem('IsLogin')
-  }
-    )
-  }, [auth])
+    const uid = localStorage.getItem('UserId')
+    if (uid) {
+      setAuth({
+        userName : localStorage.getItem('UserName'),
+        userId : localStorage.getItem('UserId'),
+        userEmail : localStorage.getItem('UserEmail'),
+        isLogin : localStorage.getItem('IsLogin')
+      })
+    }
+  }, [])
   return (
     <>
     <nav className='navbar'>
