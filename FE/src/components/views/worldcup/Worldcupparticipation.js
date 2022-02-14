@@ -4,7 +4,7 @@ import Video from './Video';
 
 
 function Worldcupparticipation(props) {
-  const userId = 1
+  const userId = localStorage.getItem('UserId')
   
   const [videos, setVideos] = useState([]);
   const getVideos = () => {
