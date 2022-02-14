@@ -109,14 +109,18 @@ function Danddaloading() {
     const message = ref(database, "message");
     onValue(message, async (snapshot) => {
       const data = snapshot.val();
+      // console.log("videoUrl 전 : " + videoUrl);
       const videoUrl = await getFile(data);
+      console.log("videoUrl 후 : " + videoUrl);
       setVideoURL(videoUrl);
     });
 
     // 모델 url (turl) 가져오기
     const turlTmp = ref(database, "turl");
     onValue(turlTmp, async (snapshot) => {
+      // console.log("turl 전 : " + data);
       const data = await snapshot.val();
+      console.log("turl 후 : " + data);
       setTurl(data);
     });
   };
