@@ -57,7 +57,7 @@ export default function CarouselSlide(props) {
 
     console.log(url);
     // 토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-    window.Android.showToast("카메라 실행", url, turl);
+    window.Android.showToast(url, turl);
     return "arr";
   };
 
