@@ -8,7 +8,7 @@ function WorldcupResult(props) {
   const [rankers, setRankers] = useState([]);
 
   useEffect(() => {
-    axios.get(`/cup/list/${2}`)
+    axios.get(`/cup/list/${1}`)
     .then(res => {
       console.log(res.data)
       setRankers(res.data)
