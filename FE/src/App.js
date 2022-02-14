@@ -25,6 +25,7 @@ import WorldcupMain from "./components/views/worldcup/WorldcupMain";
 // import FirebaseUpload from './components/views/firebase/uploadtest';
 import WorldcupVote from "./components/views/worldcup/vote/Vote";
 import WorldcupResult from "./components/views/worldcup/WorldcupResult";
+import Worldcupparticipation from "./components/views/worldcup/Worldcupparticipation";
 import VideoDetail from "./components/views/VideoDetail/VideoDetail";
 import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading";
 
@@ -56,6 +57,7 @@ function App() {
           <Route exact={true} path="/firebase" element={<FirebaseTest />} />
           <Route exact={true} path="/mypage/:id" element={<Mypage />} />
           <Route exact={true} path="/worldcup" element={<WorldcupMain />} />
+          <Route exact={true} path="/worldcup/participation" element={<Worldcupparticipation />} />
           {/* <Route exact={true} path="/firebase/upload" element={<FirebaseUpload/>} /> */}
           <Route exact={true} path="/worldcup/vote" element={<WorldcupVote />} />
           <Route exact={true} path="/worldcup/vote/result" element={<WorldcupResult />} />
