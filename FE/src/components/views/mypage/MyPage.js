@@ -1,4 +1,5 @@
-import { Tabs, Tab } from '@material-ui/core';
+import { Tabs, Tab, Typography } from '@material-ui/core';
+import Button from '@mui/material/Button';
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
@@ -9,17 +10,33 @@ import Board3 from './board/Board3'
 import Board4 from './board/Board4'
 import Board5 from './board/Board5'
 import { UserContext } from '../../../App'
+import { makeStyles } from '@material-ui/core';
+import { flexbox } from '@mui/system';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),   
+    },
+  },
+  user: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  Btn: {
+    variant: "contained"
+  }
+}))
 function MyPage() {
   const { id } = useParams()
   const [value, setValue] = useState(0)
   const [user, setUser] = useState({})
   const { auth } = useContext(UserContext)
   const [following, setFollowing] = useState(false)
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log('id', id, auth)
   const getUser = () => {
     axios.get(`/user/read/${id}`)
     .then(res => {
@@ -35,7 +52,6 @@ function MyPage() {
       targetuid: id
     })
       .then((res) => {
-        console.log(auth.id, id, res.data)
         setFollowing(res.data)
       })
   }
@@ -68,22 +84,25 @@ function MyPage() {
     await isFollow();
   }, []); 
   
-
+  const classes = useStyles();
   return (
     <div className='mypage'>
       <div className='user'>
         <img src={user.profile} />
-        <div>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-          <p>구독자수</p>
+        <div >
+          <Typography>{user.name}</Typography>
+          <Typography>{user.email}</Typography>
+          <Typography>구독자수</Typography>
         </div>
-        <div>
+        {auth.id === id ?
+          <></> : 
+          <div>
           {following ? 
-            <button onClick={unfollowHandler}>팔로우 취소</button>
-            : <button onClick={followHandler}>팔로우</button>
+            <Button onClick={unfollowHandler} variant='contained'>팔로우 취소</Button>
+            : <Button onClick={followHandler} variant='contained'>팔로우</Button>
           }
         </div>
+        }
       </div>
       <div>
         <div>

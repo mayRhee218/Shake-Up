@@ -71,18 +71,25 @@ function Sidebar() {
   }
   const logout = () => {
     localStorage.clear()
+    setAuth({
+      name: '',
+      id: '',
+      email: ''
+    })
+    setSideMenu([...anonyData, ...SidebarData])
   }
   const goHome = () => {
     navigate('/')
   }
 
   useEffect(()=> {
+    console.log(auth)
     if (auth.id) {
-      setSideMenu([...loginData, ...SidebarData])
+      setSideMenu([...SidebarData, ...loginData])
     } else {
       setSideMenu([...anonyData, ...SidebarData])
     }
-  }, [])
+  }, [auth])
   return (
     <>
     <nav className='navbar'>
@@ -113,32 +120,22 @@ function Sidebar() {
           <p>배너영역</p>
         </div>
         <ul className='nav-menu-items'>
-          {auth.id ? 
-            <li className='nav-text' onClick={logout}>
-                로그아웃
-            </li> : 
-            <>
-            <Link to='/login' className='nav-link'>
-              <li  className='nav-text' onClick={() => setOpen(!open)}>
-                로그인
-              </li>
-            </Link>
-            <Link to='/signup' className='nav-link'>
-              <li className='nav-text' onClick={() => setOpen(!open)}>
-                회원가입
-              </li>
-            </Link>
-          </>
-          }
-          {SidebarData.map((item, index) => {
+          {sideMenu.map((item, index) => {
             return(
-              <Link to={item.path} className='nav-link'>
-                <li key={index} className='nav-text' onClick={() => setOpen(!open)}>
+              <Link to={item.path} className='nav-link' key={index}>
+                <li className='nav-text' onClick={() => setOpen(!open)}>
                   {item.title}
                 </li>
               </Link>
             );
           })}
+          {auth.id ? 
+            <li className='nav-text' onClick={logout}>
+                로그아웃
+            </li> : 
+            <>
+            </>
+          }
         </ul>
       </div>
     </div>

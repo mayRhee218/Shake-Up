@@ -37,11 +37,11 @@ function Danddaloading() {
   const [maxPredictions, setMaxPredictions] = useState(null);
   const [animationFrame, setAnimationFrame] = useState(null);
   const [correctCount, setCorrectCount] = useState(0);
-
+  const [fade, setFade] = useState('fade-out')
   const videoRef = useRef();
 
   const navigate = useNavigate();
-
+  
   let cnt = 0; // 맞춘 개수
   let startTimeSeconds; // 시작 시간 가져오기
   let curTimeSeconds; // 현재 시간 가져오기
@@ -313,7 +313,15 @@ function Danddaloading() {
   useEffect(() => {
     downloadFirebaseVideo();
   }, []);
-
+  useEffect(() => {
+    setTimeout(() => {
+      if (fade === 'fade-in') {
+        setFade('fade-out')
+      } else {
+        setFade('fade-in')
+      }
+    }, 2000); 
+  }, [correctCount])
   // 모델 로딩중일 때
   if (isModelLoading) {
     return (
@@ -342,16 +350,8 @@ function Danddaloading() {
     });
     // return window.cancelAnimationFrame(animationFrame);
   };
-  const [fade, setFade] = useState('fade-out')
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (fade === 'fade-in') {
-        setFade('fade-out')
-      } else {
-        setFade('fade-in')
-      }
-    }, 2000); 
-  }, [correctCount])
+  
+
   return (
     <div className="TmPose" style={{ textAlign: "center" }}>
       <div className="mainWrapper">
