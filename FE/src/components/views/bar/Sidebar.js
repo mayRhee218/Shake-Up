@@ -102,7 +102,7 @@ function Sidebar() {
         </div>
         <hr/>
         <div className='user'>
-          <Avatar src="/broken-image.jpg" ></Avatar>
+          {/* <Avatar src="/broken-image.jpg" ></Avatar> */}
           <div className='user-info'>
             <span>{auth.name ? auth.name : "로그인해주세요"}</span>
             <span>{auth.email}</span>

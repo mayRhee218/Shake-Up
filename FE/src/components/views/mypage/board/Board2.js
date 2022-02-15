@@ -12,16 +12,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Board1(props) {
+function Board2({user}) {
   const [videos, setVideos] = useState([]);
-  
+  const uid = user.uid
+
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
-    const userId = localStorage.getItem('UserId')
-    axios.post(`/video/read/my/${userId}`)
+    // uid는 링크의 params 값을 main에서 props로 가져와야함.
+    
+    const credentials = {
+      category : 1,
+      uid : uid
+    }
+    axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(res)
-      setVideos()
+      console.log(uid, res.data)
+      setVideos(res.data)
     })
     .catch(err =>{
       console.log(err)
@@ -42,11 +48,11 @@ function Board1(props) {
       <p>{videos.length}회</p>
       <hr/>
       <h1>최근 참여 월드컵</h1>
-      {/* {videos.map((video) => {
-        <Thumbnails video={video}/>
-      })} */}
+      {videos.map((video) => {
+        <video src={video.url}/>
+      })}
     </div>
   );
 }
 
-export default Board1;
+export default Board2;

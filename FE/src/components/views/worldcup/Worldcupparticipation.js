@@ -1,44 +1,117 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import Video from './Video';
+import { useNavigate} from "react-router-dom";
+import Button from '@material-ui/core/Button';
+// import Video from './Video';
 
 
 function Worldcupparticipation(props) {
   const userId = localStorage.getItem('UserId')
+  const navigate = useNavigate();
+  const [state, setState] = useState({ videos:[], checklist:[] });
+
+  const Emoji = (props) => (
+    <span
+      className="emoji"
+      role="img"
+      aria-label={props.label ? props.label : ""}
+      aria-hidden={props.label ? "false" : "true"}
+    >
+      {props.symbol}
+    </span>
+  )
   
-  const [videos, setVideos] = useState([]);
+
   const getVideos = () => {
     axios.get(`/video/read/all/${userId}`)
     .then(res => {
-      setVideos(res.data)
+      console.log(res.data)
+      setState({
+      videos: res.data,
+      checklist: new Array(res.data.length).fill(false)
+      })
     })
     .catch(err =>{
       console.log(err)
     })
   }
-  const go = (idx) => {
-    videos.splice(idx, 1)
-    setVideos(videos)
-  }
+
   useEffect(() => {
-    getVideos()
+    getVideos();  
   }, [])
 
+  const onClick = video => () => { 
+    if (video.category != 1){
+      alert(`${video.title}가 월드컵 영상으로 참여되었습니다.`)
+      let credentials = {
+        category: 1,
+        clickcnt: video.clickcnt,
+        comment: video.comment,
+        exposecnt: video.exposecnt,
+        iscomment: video.iscomment,
+        isscore: video.isscore,
+        isshow: video.isshow,
+        thumbnail: video.thumbnail,
+        title: video.title,
+        url: video.url,
+        vid: video.vid
+      }
+      axios.put('/video/update/', credentials)
+      .then(res => {
+        console.log(res)
+        const data = {
+          cup_id: 1,
+          cup_name: "코믹댄스 최강자, 나야나!",
+          vid: [
+            video.vid
+          ] 
+        }
+        axios.post('/cup/create/', data)
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    } else {
+     alert("이미 월드컵에 등록된 영상입니다.")
+    }
+  }
+
+  const moveToVote = () => {
+    navigate(`/worldcup/vote`)
+  }
+
+  
   return (
     <div style={{
       display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center' 
       , width: '100%', height: '88vh'
     }}>
       <p>2월 2주차 월드컵: 코믹댄스 최강자, 나야나</p>  
-      <div>
-        <h1>{videos}</h1>
-        <h1>{videos.length}</h1>
-        {videos.map((item, index) => {
-          return (
-              <Video key={index} data={item} propFunction={go} index={index}/>
-            );
-        })}
-      </div>
+      <p>내 채널의 영상으로 참여하기</p>  
+      <br/>
+      
+        <h1>현재 채널에 있는 영상: {state.videos.length}개</h1>
+        <br/>
+        {state.videos.map((video, index) => {
+        return (
+          <div style={{ display: 'flex', flexDirection:'row',  justifyContent:'center', width: '100%'}}
+          onClick={onClick(video)}>
+            <video 
+            style={{width:'70px', height:'70px',  marginRight:'40px'}} 
+            src={video.url}/>
+            <p>{video.title}</p>
+          </div>
+        );
+      })}
+      <br/>
+      <br/>
+       <Button color="primary" variant="contained" onClick={moveToVote}>투표하러 가기</Button>
     </div>
   );
 }

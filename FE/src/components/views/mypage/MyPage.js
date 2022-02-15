@@ -102,7 +102,7 @@ function MyPage() {
           <Board1 user={user}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Board2 user= {user}/>
+          <Board2 user={user} />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Board3 user= {user}/>
