@@ -19,10 +19,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -53,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //하단바 숨기기
+//        getWindow().getInsetsController().hide(WindowInsets.Type.navigationBars());
+
+        getWindow().getDecorView().getWindowInsetsController().hide(WindowInsets.Type.navigationBars());
+
         setContentView(R.layout.activity_main);
 //        setContentView(R.layout.camera_test);
         mContext = this.getApplicationContext();
@@ -105,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         // 캐쉬 사용 방법을 정의
         mws.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mwv.clearCache(true);
-        mwv.loadUrl("http://119.202.146.251/");
+        mwv.loadUrl("http://i6d103.p.ssafy.io/");
     }
 
 //    private class WebViewClientClass extends WebViewClient {
