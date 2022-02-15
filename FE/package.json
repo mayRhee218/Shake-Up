@@ -68,5 +68,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://52.78.97.122:8181/"
 }
