@@ -1,5 +1,6 @@
 HELP.md
 .gradle
+bulid
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -25,6 +26,12 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
 ### VS Code ###
 .vscode/
