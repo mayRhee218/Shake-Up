@@ -15,6 +15,7 @@ import * as tmPose from "@teachablemachine/pose";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { getFile } from "../../firebase/db";
+import { Typography } from "@material-ui/core";
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
 const override = css`
@@ -341,7 +342,16 @@ function Danddaloading() {
     });
     // return window.cancelAnimationFrame(animationFrame);
   };
-
+  const [fade, setFade] = useState('fade-out')
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (fade === 'fade-in') {
+        setFade('fade-out')
+      } else {
+        setFade('fade-in')
+      }
+    }, 2000); 
+  }, [correctCount])
   return (
     <div className="TmPose" style={{ textAlign: "center" }}>
       <div className="mainWrapper">
@@ -382,8 +392,9 @@ function Danddaloading() {
           {/* 몇 개 맞췄는지 결과 내기 */}
           {turl && (
             <div className="getTurl">
-              맞춘 동작 개수<br></br>
-              {correctCount} / {maxPredictions}
+              <Typography className={fade}>맞췄습니다 🔥</Typography>
+              <Typography>맞춘 동작 개수</Typography>
+              <Typography>{correctCount} / {maxPredictions}</Typography>
               {getTurl()}
             </div>
           )}

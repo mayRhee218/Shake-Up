@@ -4,7 +4,7 @@
  * @version 1.0.0
  * 작성일 2022-01-24
 **/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import axios from 'axios'
 import Vaildate from './Vaildate';
@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Email({email, propFunction}) {
   // axios에서 받을 해쉬값
-  let hash = ''
+  const [hash, setHash]  = useState(Date.now())
   // 이메일 입력, 검증, 에러메시지
   const [inputEmail, setInputEmail] = useState(email) // 입력
   const [vaildPass, setValidPass] = useState(false) // 검증
   const [errorMsg, setErrorMsg] = useState('') // 에러메시지
   // 인증번호 입력, 검증
-  const [inputHash, setInputHash] = useState('')
+  const inputHash = useRef(Date.now())
   const [verify, setVerify] = useState(false)
   // 타이머
   const [restTime, setRestTime] = useState('')
@@ -32,17 +32,12 @@ function Email({email, propFunction}) {
 
   // 인증메일 보내기
   const sendAuthEmail = async () => {
-    // 보내기전에 중복검사 해야함
-    // axios.get('/user/email')
-    // 이메일 유알엘이 뭐지
-    axios.get(`/user/${inputEmail}`)
-    .then(res => {
-      console.log(res)
-      hash = res.data
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    // 중복검사 
+    const emailDouble = await axios.get(`user/${email}`)
+    if (!emailDouble) {
+      const hash = await axios.get(`/user/emailcheck/${inputEmail}`)
+      setHash(hash)
+    }
   }
 
   const onEmailHandler = ({target: {value}}) => {
@@ -118,12 +113,11 @@ function Email({email, propFunction}) {
       <div>
         <TextField
           label="인증번호"
-          value={inputHash}
-          onChange={({target: {value}})=> {setInputHash(value)}}
+          ref={inputHash}
           disabled={verify}
         />
         {!hash ? '':
-          <p>{min}:{sec < 10 ? '0'+sec : sec}</p>
+          <p>{min}:{sec < 10 ? '0'+ sec : sec}</p>
         }
         <Button 
           variant='contained'
