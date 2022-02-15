@@ -6,7 +6,7 @@
 **/
 
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import Axios from 'axios';
 import { useDispatch } from 'react-redux'
 import { loginUser} from '../../../_actions/user_action';
-
+import { UserContext } from "../../../App";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Login(props) {
-
+    const {auth, setAuth} = useContext(UserContext)
     
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -88,7 +88,12 @@ function Login(props) {
                         localStorage.setItem('UserName', response.payload.user.name);
                         localStorage.setItem('UserEmail', response.payload.user.email);
                         localStorage.setItem('IsLogin', true);
-                        
+                        setAuth({
+                            id: response.payload.user.uid,
+                            name: response.payload.user.name,
+                            email: response.payload.user.email
+                        })
+                        console.log('response.payload.user.uid', response.payload.user.uid)
                         console.log("로컬 저장 후 : ", localStorage.getItem('IsLogin'));
                         navigate('/');
                         alert('성공');

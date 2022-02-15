@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, createContext, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
 
@@ -29,7 +29,18 @@ import Worldcupparticipation from "./components/views/worldcup/Worldcupparticipa
 import VideoDetail from "./components/views/VideoDetail/VideoDetail";
 import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading";
 
+export const UserContext = createContext();
+
 function App() {
+  const [auth, setAuth] = useState({
+    id: '',
+    name: '',
+    email: ''
+  })
+  const value = {
+    auth: auth,
+    setAuth: setAuth
+  }
   const temp = Auth(DanddaMain, null);
   function setScreenSize() {
     let vh = window.innerHeight * 0.01;
@@ -37,10 +48,17 @@ function App() {
   }
   useEffect(() => {
     setScreenSize();
-  });
+    if (localStorage.getItem('UserId')) {
+      setAuth({
+        id: localStorage.getItem('UserId'),
+        name: localStorage.getItem('UserName'),
+        email: localStorage.getItem('UserEmail')
+      })
+    }
+  }, []);
 
   return (
-    <>
+    <UserContext.Provider value={value}>
       <BrowserRouter>
         <Sidebar />
         <Routes>
@@ -71,7 +89,7 @@ function App() {
           <Route exact={true} path="/video/:vid" element={<VideoDetail />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </UserContext.Provider>
   );
 }
 

@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-function Video({data, propFunction, key, index}) {
+function Video({data, propFunction, index}) {
   const [dialog, setDialog] = useState(false)
   const {vid, uid, title, likecnt, views, url, score} = data
   const userId = localStorage.getItem('userId')

@@ -1,6 +1,7 @@
-import { Tabs, Tab } from '@material-ui/core';
+import { Tabs, Tab, Typography } from '@material-ui/core';
+import Button from '@mui/material/Button';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { TabPanel, a11yProps } from './TabPanel';
 import Board1 from './board/Board1'
@@ -8,17 +9,36 @@ import Board2 from './board/Board2'
 import Board3 from './board/Board3'
 import Board4 from './board/Board4'
 import Board5 from './board/Board5'
+import { UserContext } from '../../../App'
+import { makeStyles } from '@material-ui/core';
+import { flexbox } from '@mui/system';
 
-function MyPage({ match }) {
-  const { uid } = useParams();
-  const [user, setUser] = useState({});
-  const [value, setValue] = useState(1)
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),   
+    },
+  },
+  user: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  Btn: {
+    variant: "contained"
+  }
+}))
+function MyPage() {
+  const { id } = useParams()
+  const [value, setValue] = useState(0)
+  const [user, setUser] = useState({})
+  const { auth } = useContext(UserContext)
+  const [following, setFollowing] = useState(false)
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   const getUser = () => {
-    axios.get(`/user/read/${uid}`)
+    axios.get(`/user/read/${id}`)
     .then(res => {
       setUser(res.data)
     })
@@ -26,24 +46,63 @@ function MyPage({ match }) {
       console.log(err)
     })
   }
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
-
+  const isFollow = () => {
+    axios.post('sub/isfollow', {
+      curuid: auth.id,
+      targetuid: id
+    })
+      .then((res) => {
+        setFollowing(res.data)
+      })
+  }
+  // 빨로우 요청 axios
+  const followHandler =  () => {
+    axios.post('sub/follow/', {
+      curuid: auth.id,
+      targetuid: id
+    })
+      .then(res => {
+        if (res.data === '성공') {
+          setFollowing(true)
+        }
+      })
+  }
+  const unfollowHandler = () => {
+    axios.delete(`/sub/unfollow/${auth.id}/${id}`)
+      .then(res => {
+        if (res.data === '성공') {
+          setFollowing(false)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+  
+  useEffect( async () => {
+    await getUser();
+    await isFollow();
+  }, []); 
+  
+  const classes = useStyles();
   return (
     <div className='mypage'>
       <div className='user'>
         <img src={user.profile} />
-        <div>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-          <p>구독자수</p>
+        <div >
+          <Typography>{user.name}</Typography>
+          <Typography>{user.email}</Typography>
+          <Typography>구독자수</Typography>
         </div>
-        <div>
-          <button>팔로우</button>
+        {auth.id === id ?
+          <></> : 
+          <div>
+          {following ? 
+            <Button onClick={unfollowHandler} variant='contained'>팔로우 취소</Button>
+            : <Button onClick={followHandler} variant='contained'>팔로우</Button>
+          }
         </div>
+        }
       </div>
       <div>
         <div>
@@ -62,16 +121,16 @@ function MyPage({ match }) {
           <Board1 user={user}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Board2 />
+          <Board2 user={user} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Board3 />
+          <Board3 user= {user}/>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <Board4 />
+          <Board4 user= {user}/>
         </TabPanel>
         <TabPanel value={value} index={4}>
-          <Board5 />
+          <Board5 user= {user}/>
         </TabPanel>
       </div>
     </div>

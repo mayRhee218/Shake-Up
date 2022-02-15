@@ -18,19 +18,19 @@ function Board1({user}) {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [bestVid, setBestVid] = useState("")
-  
+  const uid = user.uid
+
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
     // uid는 링크의 params 값을 main에서 props로 가져와야함.
-    const uid = user.uid
-
+    
     const credentials = {
       category : 0,
       uid : uid
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(uid, res.data)
+      // console.log(uid, res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -40,7 +40,6 @@ function Board1({user}) {
 
   const getBestScore = () => {
     // category, uid로 video 정보 가져오기
-    const uid = localStorage.getItem('UserId')
     axios.get(`/video/${uid}`)
     .then(res => {
       console.log(res.data)
@@ -93,7 +92,6 @@ function Board1({user}) {
           }}>
             <div style={{
             display: 'flex',
-            flexDirection:'row'
           }}>
           {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
           <img src={video.original.thumbnail} style={{width:'150px', height:'100px'}}/>

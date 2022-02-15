@@ -1,24 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Video from './Video';
 import axios from 'axios';
 
-function Board5(props) {
+function Board5({user}) {
   const [videos, setVideos] = useState([]);
-  
-  const getVideos = () => {
-    // const userId = localStorage.getItem('UserId')
-    const userId = 1
-    axios.post(`/userlike/read/${userId}`)
-    .then(res => {
-      setVideos(res.data)
-    })
-    .catch(err =>{
-      console.log(err)
-    })    
+
+  const getVideos = async () => {
+    const res = await axios.post(`/userlike/read/${user.uid}`)
+    setVideos(res.data)
   }  
-  const Jo = (data) => {
-    console.log(data)
-  }
+
   useEffect(() => {
     getVideos();
   }, []);
@@ -26,7 +17,7 @@ function Board5(props) {
     <div>
       {videos.map((item, index) => {
         return (
-          <Video data={item} key={index} propFunction={Jo}/>
+          <Video data={item} key={index}/>
         );
       })}
     </div>

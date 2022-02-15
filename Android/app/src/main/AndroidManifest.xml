@@ -24,7 +24,9 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:configChanges="orientation|keyboardHidden|screenSize"><!---가로세로 변환시 리로딩 방지-->
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            >  <!---가로세로 변환시 리로딩 방지-->
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

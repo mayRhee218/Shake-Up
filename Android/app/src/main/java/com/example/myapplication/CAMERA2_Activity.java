@@ -65,6 +65,7 @@ public class CAMERA2_Activity extends AppCompatActivity {
     private static final SparseIntArray DEFAULT_ORIENTATIONS = new SparseIntArray();
     private static final SparseIntArray INVERSE_ORIENTATIONS = new SparseIntArray();
     private MotiveVideoView videoview;
+    private String modelUrl;
     private String videoFileName; // 녹화 생성 파일 이름
     private static final String TAG = "Camera2VideoFragment";
     private static final int REQUEST_VIDEO_PERMISSIONS = 1;
@@ -98,7 +99,8 @@ public class CAMERA2_Activity extends AppCompatActivity {
     StorageReference storageRef = storage.getReference();
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    DatabaseReference videoRef = database.getReference("message");
+    DatabaseReference modelRef = database.getReference("turl");
 
 
     /**
@@ -289,6 +291,7 @@ public class CAMERA2_Activity extends AppCompatActivity {
         String videoUrl;
         Intent intent = getIntent();
         videoUrl = intent.getStringExtra("동영상링크");
+        modelUrl = intent.getStringExtra("모델링크");
 
         System.out.println("주소값 : " + videoUrl);
         //Video View에서 보여줄 동영상주소.
@@ -680,29 +683,30 @@ public class CAMERA2_Activity extends AppCompatActivity {
         mMediaRecorder.stop();
         mMediaRecorder.reset();
 
-//        //Firebase Upload
-//        Uri file = Uri.fromFile(mNextVideo);
-//        System.out.println("file : " + file);
-//        //저장할 때 파일명 설정
-//        StorageReference riversRef = storageRef.child("videos/" + file.getLastPathSegment());
-//        System.out.println("file : " + riversRef);
-//        // Register observers to listen for when the download is done or if it fails`
-//        riversRef.putFile(file).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle unsuccessful uploads
-//                System.out.println("실패 : " + exception.toString());
-//            }
-//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-//                // ...
-//                System.out.println("성공 : " + taskSnapshot.toString());
-//                System.out.println("파베_데이터 : " + myRef);
-//                myRef.setValue(file.getLastPathSegment());
-//            }
-//        });
+        //Firebase Upload
+        Uri file = Uri.fromFile(mNextVideo);
+        System.out.println("file : " + file);
+        //저장할 때 파일명 설정
+        StorageReference riversRef = storageRef.child("videos/" + file.getLastPathSegment());
+        System.out.println("file : " + riversRef);
+        // Register observers to listen for when the download is done or if it fails`
+        riversRef.putFile(file).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+                System.out.println("실패 : " + exception.toString());
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                // ...
+                System.out.println("성공 : " + taskSnapshot.toString());
+                System.out.println("파베_데이터 : " + videoRef);
+                videoRef.setValue(file.getLastPathSegment());
+                modelRef.setValue(modelUrl);
+            }
+        });
 
         Intent mediaScanIntent = new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         mediaScanIntent.setData(Uri.fromFile(mNextVideo));
