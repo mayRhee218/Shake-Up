@@ -14,11 +14,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Board1({user}) {
+function Board1({id}) {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [bestVid, setBestVid] = useState("")
-  const uid = user.uid
+  const uid = id
+
+  // 최고 승률을 가져오기
 
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
@@ -37,23 +39,14 @@ function Board1({user}) {
       console.log(err)
     })    
   }  
+  const getRanking = () => {
 
-  const getBestScore = () => {
-    // category, uid로 video 정보 가져오기
-    axios.get(`/video/${uid}`)
-    .then(res => {
-      console.log(res.data)
-      setBestVid(res.data)
-
-    })
-    .catch(err =>{
-      console.log(err)
-    })    
   }
+
 
   useEffect(() => {
     getVideos();
-    getBestScore();
+    getRanking();
   }, []);
 
   // const goOriginal = id =>() => {
