@@ -315,7 +315,20 @@ function Danddaloading() {
 
   // 모델 로딩중일 때
   if (isModelLoading) {
-    return <h2>Model Loading...</h2>;
+    return (
+      <div
+        className="sweet-loading"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "88vh",
+        }}
+      >
+        <ClipLoader color={color} loading={loading} css={override} size={150} />
+      </div>
+    );
   }
 
   // 비디오가 끝나면 인식 멈춤
@@ -333,19 +346,6 @@ function Danddaloading() {
     <div className="TmPose" style={{ textAlign: "center" }}>
       <div className="mainWrapper">
         <div className="mainContent">
-          {/* <div
-            className="sweet-loading"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "88vh",
-            }}
-          >
-            <ClipLoader color={color} loading={loading} css={override} size={150} />
-          </div> */}
-
           <div
             className="videoHolder"
             // style={{ visibility: "hidden" }}
@@ -377,8 +377,8 @@ function Danddaloading() {
           className="result-container"
           // style={{ visibility: "hidden" }}
         >
-          <div className="checkvideoURL">videoURL 없을 때 :{videoURL}</div>
-          {videoURL && <div className="checkvideoURL">videoURL 있을 때 :{videoURL}</div>}
+          {/* <div className="checkvideoURL">videoURL 없을 때 :{videoURL}</div> */}
+          {/* {videoURL && <div className="checkvideoURL">videoURL 있을 때 :{videoURL}</div>} */}
           {/* 몇 개 맞췄는지 결과 내기 */}
           {turl && (
             <div className="getTurl">
