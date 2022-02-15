@@ -37,11 +37,11 @@ function Danddaloading() {
   const [maxPredictions, setMaxPredictions] = useState(null);
   const [animationFrame, setAnimationFrame] = useState(null);
   const [correctCount, setCorrectCount] = useState(0);
-  const [fade, setFade] = useState('fade-out')
+  const [fade, setFade] = useState("fade-out");
   const videoRef = useRef();
 
   const navigate = useNavigate();
-  
+
   let cnt = 0; // 맞춘 개수
   let startTimeSeconds; // 시작 시간 가져오기
   let curTimeSeconds; // 현재 시간 가져오기
@@ -165,7 +165,7 @@ function Danddaloading() {
           }
         }
         // side_down
-        else if (results[1].probability.toFixed(2) > 0.9) {
+        if (results[1].probability.toFixed(2) > 0.9) {
           if (
             (t >= 13 && t <= 15) ||
             (t >= 20 && t <= 22) ||
@@ -183,7 +183,7 @@ function Danddaloading() {
           }
         }
         // basic_up
-        else if (results[2].probability.toFixed(2) > 0.9) {
+        if (results[2].probability.toFixed(2) > 0.9) {
           if ((t >= 37 && t <= 39) || (t >= 42 && t <= 44)) {
             if (!m0c2) {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
@@ -195,7 +195,7 @@ function Danddaloading() {
           }
         }
         // basic_down
-        else if (results[3].probability.toFixed(2) > 0.9) {
+        if (results[3].probability.toFixed(2) > 0.9) {
           if (
             (t >= 35 && t <= 37) ||
             (t >= 44 && t <= 46) ||
@@ -212,7 +212,7 @@ function Danddaloading() {
           }
         }
         // basic_up2
-        else if (results[4].probability.toFixed(2) > 0.9) {
+        if (results[4].probability.toFixed(2) > 0.9) {
           if ((t >= 39 && t <= 41) || (t >= 46 && t <= 48)) {
             if (!m0c4) {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
@@ -224,7 +224,7 @@ function Danddaloading() {
           }
         }
         // basic_down2
-        else if (results[5].probability.toFixed(2) > 0.9) {
+        if (results[5].probability.toFixed(2) > 0.9) {
           if ((t >= 38 && t <= 40) || (t >= 45 && t <= 47)) {
             if (!m0c5) {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
@@ -236,7 +236,7 @@ function Danddaloading() {
           }
         }
         // down3_left
-        else if (results[6].probability.toFixed(2) > 0.9) {
+        if (results[6].probability.toFixed(2) > 0.9) {
           if ((t >= 50 && t <= 52) || (t >= 53 && t <= 55)) {
             if (!m0c6) {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
@@ -248,7 +248,7 @@ function Danddaloading() {
           }
         }
         // down3_right
-        else if (results[7].probability.toFixed(2) > 0.9) {
+        if (results[7].probability.toFixed(2) > 0.9) {
           if ((t >= 48 && t <= 50) || (t >= 51 && t <= 53)) {
             if (!m0c7) {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
@@ -260,7 +260,7 @@ function Danddaloading() {
           }
         }
         // down4_left
-        else if (results[8].probability.toFixed(2) > 0.9) {
+        if (results[8].probability.toFixed(2) > 0.9) {
           if ((t >= 62 && t <= 64) || (t >= 66 && t <= 68)) {
             if (!m0c8) {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
@@ -272,7 +272,7 @@ function Danddaloading() {
           }
         }
         // down4_left
-        else if (results[9].probability.toFixed(2) > 0.9) {
+        if (results[9].probability.toFixed(2) > 0.9) {
           if ((t >= 61 && t <= 63) || (t >= 64 && t <= 66)) {
             if (!m0c9) {
               console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
@@ -316,13 +316,13 @@ function Danddaloading() {
   }, []);
   useEffect(() => {
     setTimeout(() => {
-      if (fade === 'fade-in') {
-        setFade('fade-out')
+      if (fade === "fade-in") {
+        setFade("fade-out");
       } else {
-        setFade('fade-in')
+        setFade("fade-in");
       }
-    }, 2000); 
-  }, [correctCount])
+    }, 2000);
+  }, [correctCount]);
   // 모델 로딩중일 때
   if (isModelLoading) {
     return (
@@ -351,7 +351,6 @@ function Danddaloading() {
     });
     // return window.cancelAnimationFrame(animationFrame);
   };
-  
 
   return (
     <div className="TmPose" style={{ textAlign: "center" }}>
@@ -396,7 +395,9 @@ function Danddaloading() {
             <div className="getTurl">
               <Typography className={fade}>맞췄습니다 🔥</Typography>
               <Typography>맞춘 동작 개수</Typography>
-              <Typography>{correctCount} / {maxPredictions}</Typography>
+              <Typography>
+                {correctCount} / {maxPredictions}
+              </Typography>
               {getTurl()}
             </div>
           )}
