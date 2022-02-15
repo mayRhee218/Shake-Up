@@ -57,6 +57,7 @@ function Danddaloading() {
     m0c8 = false,
     m0c9 = false;
   let URL;
+  let labelContainer;
 
   // 모델 URL 값이 세팅 되었을 때, 모델 로딩 함수 실행
   const getTurl = () => {
@@ -86,7 +87,7 @@ function Danddaloading() {
       setIsModelLoading(false);
 
       console.log("모델 로딩 성공");
-      console.log("loadModel 함수의 turl : " + URL);
+      // console.log("loadModel 함수의 turl : " + URL);
 
       // // 클래스 개수만큼 div 추가
       // let label = "";
@@ -111,7 +112,7 @@ function Danddaloading() {
       const data = snapshot.val();
       // console.log("videoUrl 전 : " + videoUrl);
       const videoUrl = await getFile(data);
-      console.log("videoUrl 후 : " + videoUrl);
+      // console.log("videoUrl 후 : " + videoUrl);
       setVideoURL(videoUrl);
     });
 
@@ -120,14 +121,13 @@ function Danddaloading() {
     onValue(turlTmp, async (snapshot) => {
       // console.log("turl 전 : " + data);
       const data = await snapshot.val();
-      console.log("turl 후 : " + data);
+      // console.log("turl 후 : " + data);
       setTurl(data);
     });
   };
 
   // 인식하기
   const identify = async () => {
-    const labelContainer = document.querySelector(".label-container");
     const { pose, posenetOutput } = await model.estimatePose(videoRef.current, false);
     const results = await model.predict(posenetOutput);
 
@@ -159,8 +159,7 @@ function Danddaloading() {
               m0c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -178,8 +177,7 @@ function Danddaloading() {
               m0c1 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -191,8 +189,7 @@ function Danddaloading() {
               m0c2 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -209,8 +206,7 @@ function Danddaloading() {
               m0c3 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -222,8 +218,7 @@ function Danddaloading() {
               m0c4 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -235,8 +230,7 @@ function Danddaloading() {
               m0c5 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -248,8 +242,7 @@ function Danddaloading() {
               m0c6 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -261,8 +254,7 @@ function Danddaloading() {
               m0c7 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -274,8 +266,7 @@ function Danddaloading() {
               m0c8 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -287,13 +278,20 @@ function Danddaloading() {
               m0c9 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
       }
     }
+  };
+
+  // 맞았습니다!! 표시 함수
+  const correct = () => {
+    labelContainer.innerHTML = "<div>맞았습니다 !!</div>";
+    setTimeout(function () {
+      labelContainer.innerHTML = "";
+    }, 1500);
   };
 
   // 동영상 인식 반복 호출
@@ -305,6 +303,9 @@ function Danddaloading() {
   // loop 함수 호출하기 (이 함수는 한번만 실행, startTime을 구하기 위해 사용)
   const startLoop = () => {
     startTimeSeconds = new Date().getSeconds();
+
+    labelContainer = document.querySelector(".label-container");
+
     loop();
   };
 
@@ -359,7 +360,8 @@ function Danddaloading() {
                 height="300"
                 crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
                 ref={videoRef}
-                // autoPlay
+                // autoplay
+                // muted
                 controls
                 onPlay={startLoop}
                 onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
