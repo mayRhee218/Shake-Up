@@ -18,12 +18,12 @@ function Board1({user}) {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [bestVid, setBestVid] = useState("")
-  
+  const uid = user.uid
+
   const getVideos = () => {
     // category, uid로 video 정보 가져오기
     // uid는 링크의 params 값을 main에서 props로 가져와야함.
-    const uid = user.uid
-
+    
     const credentials = {
       category : 0,
       uid : uid
@@ -40,7 +40,6 @@ function Board1({user}) {
 
   const getBestScore = () => {
     // category, uid로 video 정보 가져오기
-    const uid = localStorage.getItem('UserId')
     axios.get(`/video/${uid}`)
     .then(res => {
       console.log(res.data)

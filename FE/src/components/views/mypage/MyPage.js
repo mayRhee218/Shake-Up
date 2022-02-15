@@ -62,7 +62,7 @@ function MyPage({ match }) {
           <Board1 user={user}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Board2 />
+          <Board2 user={user} />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Board3 />
