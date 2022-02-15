@@ -1,19 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import { SidebarData, UndetbarData } from './SidebarData';
+import React, { useContext, useEffect, useState } from 'react';
+// import { SidebarData, UndetbarData } from './SidebarData';
 import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css'
 import { Avatar } from '@material-ui/core';
+import {UserContext} from '../../../App'
+
+const SidebarData = [
+  {
+    title:'댄스 따라하기',
+    path: '/',
+    icon: '',
+  },
+  {
+    title:'댄스 월드컵',
+    path: '/worldcup',
+    icon: '',
+  },
+]
+
+const UndetbarData = [
+  {
+    title: '댄따',
+    path: '/',
+    icon: '/favicon/music-note.png',
+  },
+  {
+    title: '월드컵',
+    path: '/worldcup',
+    icon: '/favicon/trophy.png',
+  },
+]
+const anonyData = [
+  {
+    title:'로그인',
+    path: '/login',
+    icon: '',
+  },
+  {
+    title:'회원가입',
+    path: '/signup ',
+    icon: '',
+  }
+]
 
 function Sidebar() {
   const [open, setOpen] = useState(true)
   const [value, setValue] = useState('recents');
-  const [auth, setAuth] = useState({
-    userName : localStorage.getItem('UserName'),
-    userId : localStorage.getItem('UserId'),
-    userEmail : localStorage.getItem('UserEmail'),
-    isLogin : localStorage.getItem('IsLogin')
-  })
+  const {auth, setAuth} = useContext(UserContext)
+  const [sideMenu, setSideMenu] = useState([])
   const navigate = useNavigate()
+  
+  const loginData = [
+    {
+      title:'회원정보 수정',
+      path: '/user/sujeong',
+      icon: '',
+    },
+    {
+      title:'마이페이지',
+      path: `/mypage/${auth.id}`,
+      icon: '',
+    },
+  ]
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -23,20 +71,16 @@ function Sidebar() {
   }
   const logout = () => {
     localStorage.clear()
-    setAuth({})
   }
   const goHome = () => {
     navigate('/')
   }
+
   useEffect(()=> {
-    const uid = localStorage.getItem('UserId')
-    if (uid) {
-      setAuth({
-        userName : localStorage.getItem('UserName'),
-        userId : localStorage.getItem('UserId'),
-        userEmail : localStorage.getItem('UserEmail'),
-        isLogin : localStorage.getItem('IsLogin')
-      })
+    if (auth.id) {
+      setSideMenu([...loginData, ...SidebarData])
+    } else {
+      setSideMenu([...anonyData, ...SidebarData])
     }
   }, [])
   return (
@@ -60,8 +104,8 @@ function Sidebar() {
         <div className='user'>
           <Avatar src="/broken-image.jpg" ></Avatar>
           <div className='user-info'>
-            <span>{auth.isLogin ? auth.userName : "로그인해주세요"}</span>
-            <span>{auth.userEmail}</span>
+            <span>{auth.name ? auth.name : "로그인해주세요"}</span>
+            <span>{auth.email}</span>
           </div>
         </div>
         <hr/>
@@ -69,7 +113,7 @@ function Sidebar() {
           <p>배너영역</p>
         </div>
         <ul className='nav-menu-items'>
-          {auth.isLogin ? 
+          {auth.id ? 
             <li className='nav-text' onClick={logout}>
                 로그아웃
             </li> : 

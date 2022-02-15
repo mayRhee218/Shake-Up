@@ -12,7 +12,8 @@ import axios from "axios";
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 axios.defaults.withCredentials = false;
-axios.defaults.baseURL = "http://52.78.97.122:8181/";
+// axios.defaults.baseURL = "http://52.78.97.122:8181/";
+axios.defaults.baseURL = "http://114.129.238.28/";
 
 window.Kakao.init("2da0aa7248170ff536df9379623c9469");
 
@@ -27,7 +28,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-// axios.defaults.baseURL = "http://114.129.238.28/";
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

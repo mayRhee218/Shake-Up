@@ -2,12 +2,11 @@ import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import Video from './Video';
 
-function Board3() {
-  const userId = localStorage.getItem('UserId')
-  
+
+function Board3({user}) {
   const [videos, setVideos] = useState([]);
   const getVideos = () => {
-    axios.get(`/video/read/all/${userId}`)
+    axios.get(`/video/read/all/${user.uid}`)
     .then(res => {
       setVideos(res.data)
     })
@@ -15,7 +14,7 @@ function Board3() {
       console.log(err)
     })
   }
-  const go = (idx) => {
+  const deleteVideo = (idx) => {
     videos.splice(idx, 1)
     setVideos(videos)
   }
@@ -24,11 +23,9 @@ function Board3() {
   }, [])
   return (
     <div>
-      <h1>{videos}</h1>
-      <h1>{videos.length}</h1>
       {videos.map((item, index) => {
         return (
-            <Video key={index} data={item} propFunction={go} index={index}/>
+            <Video key={index} data={item} propFunction={deleteVideo} index={index}/>
           );
       })}
   </div>
