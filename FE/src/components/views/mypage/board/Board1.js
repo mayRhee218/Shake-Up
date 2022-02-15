@@ -30,7 +30,7 @@ function Board1({user}) {
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(uid, res.data)
+      // console.log(uid, res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -92,7 +92,6 @@ function Board1({user}) {
           }}>
             <div style={{
             display: 'flex',
-            flexDirection:'row'
           }}>
           {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
           <img src={video.original.thumbnail} style={{width:'150px', height:'100px'}}/>
