@@ -70,5 +70,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://i6d103.p.ssafy.io/"
+  "proxy": "http://i6d103.p.ssafy.io:8181/"
 }
