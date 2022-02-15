@@ -47,7 +47,7 @@ function DanddaContent() {
       profile_src: profile_src,
       id: 4,
       uid: 2,
-      url: "https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209",
+      url: "https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F%EA%B8%B0%EB%B3%B8%EA%B8%B0_%EB%B0%94%EC%9A%B4%EC%8A%A4.mp4?alt=media&token=5f1808a6-68c4-446a-82c4-9352dcea65d2",
       turl: "https://teachablemachine.withgoogle.com/models/NuAS299xH/",
     },
     {
