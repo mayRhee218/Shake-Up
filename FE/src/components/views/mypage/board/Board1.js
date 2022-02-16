@@ -32,7 +32,6 @@ function Board1({id}) {
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -43,6 +42,7 @@ function Board1({id}) {
   const getBestVid = () => {
     axios.get(`/video/${uid}`)
     .then(res => {
+      console.log(res.data)
       setBestVid(res.data)
     })
     .catch(err =>{
@@ -67,7 +67,8 @@ function Board1({id}) {
         style={{ flexDirection:'column'}}
         >
           <br/>
-          <video style={{width:'100vw', height:'30vh'}} src={bestVid.url}/>
+          {/* <video style={{width:'100vw', height:'30vh'}} src={bestVid.url}/> */}
+          <img style={{width:'100vw', height:'30vh', objectFit:'cover'}} src={bestVid.thumbnail}/>
           <h3 className="name"
           style={{textAlign:'center'}}
           >{bestVid.title}</h3>
@@ -88,7 +89,8 @@ function Board1({id}) {
         }}>
         {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
 
-          <video src={video.copy.url} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}}/>
+          {/* <video src={video.copy.url} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}}/> */}
+          <img src={video.copy.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}} />
           <div style={{ 
           display: 'flex',
           flexDirection:'row',
@@ -101,10 +103,10 @@ function Board1({id}) {
             </div>
           </div>
         <br/>
-        <br/>
       </div>
       )
     })}
+    <br/>
   </div>
   );
 }

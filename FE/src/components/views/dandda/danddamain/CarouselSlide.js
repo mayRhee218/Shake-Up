@@ -70,7 +70,8 @@ export default function CarouselSlide(props) {
   // // realtime DB 에 turl 넣기
   // const uploadModelUrl = () => {};
 
-  const goTomypage = () => {
+  const goTomypage = (event) => {
+    event.stopPropagation();
     navigate(`/mypage/${uid}`);
   };
   return (
@@ -81,8 +82,8 @@ export default function CarouselSlide(props) {
         justifyContent: "center",
       }}
     >
-      <h3 className={classes.title}>{title}</h3>
-      <Card className={classes.card} onClick={onClick}>
+      <h3 className={classes.title} onClick={onClick}>{title}</h3>
+      <Card className={classes.card}>
         <div className={classes.circle} onClick={goTomypage}>
           <Avatar alt={profile_name} src={profile_src} />
         </div>

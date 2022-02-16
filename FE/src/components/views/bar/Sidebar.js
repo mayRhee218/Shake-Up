@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css'
 import { Avatar } from '@material-ui/core';
 import {UserContext} from '../../../App'
+import banner from './banner.png'
 
 const SidebarData = [
   {
@@ -117,7 +118,7 @@ function Sidebar() {
         </div>
         <hr/>
         <div className='banner'>
-          <p>배너영역</p>
+          <img src={banner} style={{width:'100%', height:'100%'}}></img>
         </div>
         <ul className='nav-menu-items'>
           {sideMenu.map((item, index) => {

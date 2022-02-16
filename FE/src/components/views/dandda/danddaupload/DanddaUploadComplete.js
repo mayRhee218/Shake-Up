@@ -23,7 +23,7 @@ function DanddaUploadComplete(props) {
       <h1>업로드되었습니다!</h1>
       <br/>
       {/* 이거 uid가 전달되게 해야할듯 */}
-      <Link to={`/mypage/${uid}`}>
+      <Link to={`/mypage/${uid}`}  style={{textDecoration: 'none'}}>
         <Button color="primary" variant="contained">영상 보러 가기</Button>
       </Link>
       <br/>

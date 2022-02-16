@@ -56,7 +56,7 @@ function SimpleCard1() {
       <div style={{
           display: 'flex', flexDirection:'row-reverse', justifyContent: 'end'
        }}>
-        <Link to={'/find_id'}>
+        <Link to={'/find_id'}  style={{textDecoration: 'none'}}>
           <CardActions>
             <Button size="small" style={{ marginBottom:'0.5rem' }}><ArrowForwardIosIcon/></Button>
           </CardActions>
