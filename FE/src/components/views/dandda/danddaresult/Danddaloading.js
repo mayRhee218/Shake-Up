@@ -8,6 +8,7 @@
  **/
 
 import React, { useEffect, useState, useRef } from "react";
+import "./Danddaloading.css";
 import { useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import "./Danddaloading.css";
@@ -119,6 +120,7 @@ function Danddaloading() {
       setIsModelLoading(false);
 
       console.log("모델 로딩 성공");
+
       // console.log("loadModel 함수의 turl : " + URL);
     } catch (error) {
       console.log(error);
@@ -616,6 +618,7 @@ function Danddaloading() {
       setShake("success");
     }, 1000);
   }, [correctCount]);
+
   // 모델 로딩중일 때
   if (isModelLoading) {
     return (
@@ -640,6 +643,11 @@ function Danddaloading() {
     // return window.cancelAnimationFrame(animationFrame);
   };
 
+  // 비디오 재생
+  const play = () => {
+    videoRef.current.play();
+  };
+
   return (
     <div className="body">
       <div className="videoHolder">
@@ -650,11 +658,16 @@ function Danddaloading() {
             src={videoURL}
             width="300"
             height="300"
+            style={
+              ({ transform: "rotateY(180deg)" },
+              { "-webkit-transform": "rotateY(180deg)" /* Safari and Chrome */ },
+              { "-moz-transform": "rotateY(180deg)" })
+            }
             crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
             ref={videoRef}
-            // autoplay
-            // muted
-            controls
+            // autoplay="autoplay"
+            // muted="muted"
+            // controls
             onPlay={startLoop}
             onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
           ></video>
@@ -666,6 +679,9 @@ function Danddaloading() {
       {/* 몇 개 맞췄는지 결과 내기 */}
       {turl && (
         <div className="getTurl">
+          <button className="play-button" onClick={play}>
+            Play
+          </button>
           <p className={shake} style={{ opacity: 0 }}>
             맞았습니다! 🔥
           </p>
