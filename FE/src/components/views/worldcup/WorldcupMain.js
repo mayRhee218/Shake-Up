@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { Link, useNavigate, useHistory } from "react-router-dom";
-import wetboy from './img/wetboy.jpg'
+// import wetboy from './img/wetboy.jpg'
 
 function WorldcupMain(props) {
   return (
@@ -11,7 +11,7 @@ function WorldcupMain(props) {
     }}>
       <h3>2월 2주차 월드컵: 코믹댄스 최강자, 나야나</h3>
       <br/>
-      <img src={wetboy} style={{ width: '90px', height: '90px' }}/>
+      <img src='https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1645042733893?alt=media&token=dab680ef-9185-4ee0-9374-a380b5738444' style={{ width: '90px', height: '90px' }}/>
       <br/>
       <h4>참여영상 등록 가능 기간: 2022.02.06 ~ 2022.02.13</h4>
 

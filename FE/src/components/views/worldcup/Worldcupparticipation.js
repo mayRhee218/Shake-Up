@@ -88,29 +88,33 @@ function Worldcupparticipation(props) {
 
   
   return (
-    <div style={{
-      display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center' 
-      , width: '100%', height: '88vh'
-    }}>
-      <p>2월 2주차 월드컵: 코믹댄스 최강자, 나야나</p>  
-      <p>내 채널의 영상으로 참여하기</p>  
+    <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignContent:'center' }}>
+      <p style={{textAlign:'center'}}>2월 2주차 월드컵: 코믹댄스 최강자, 나야나</p>  
+      <p style={{textAlign:'center'}}>내 채널의 영상으로 참여하기</p>  
       <br/>
       
-        <h1>현재 채널에 있는 영상: {state.videos.length}개</h1>
+        <h1 style={{textAlign:'center'}}>현재 채널에 있는 영상: {state.videos.length}개</h1>
         <br/>
+        <div style={{ display: 'flex', flexDirection:'row',  justifyContent:'start', flexWrap:'wrap'}}
+          >
         {state.videos.map((video, index) => {
         return (
-          <div style={{ display: 'flex', flexDirection:'row',  justifyContent:'center', width: '100%'}}
-          onClick={onClick(video)}>
-            <video 
-            style={{width:'70px', height:'70px',  marginRight:'40px'}} 
-            src={video.url}/>
-            <p>{video.title}</p>
-          </div>
+            <div style={{ display: 'flex', flexDirection:'column', marginBottom:'20px'}}>            
+              <img onClick={onClick(video)}
+              style={{width:'70px', height:'70px',  marginRight:'40px'}} 
+              src={video.thumbnail}/>
+              {/* <video 
+              style={{width:'70px', height:'70px',  marginRight:'40px'}} 
+              src={video.url}/> */}
+              <p>{video.title}</p>
+            </div>          
         );
       })}
+      </div>
       <br/>
-       <Button style={{ backgroundColor:'#6200EE', width: '40vw' }} color="primary" variant="contained" onClick={moveToVote}>투표하러 가기</Button>
+      <div style={{display:'flex', justifyContent:'center', width:'100%' }}>
+        <Button style={{ backgroundColor:'#6200EE', width: '40vw' }} color="primary" variant="contained" onClick={moveToVote}>투표하러 가기</Button>
+      </div>
     </div>
   );
 }
