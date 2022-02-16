@@ -118,7 +118,7 @@ public class VideoController {
 
     @GetMapping(value = "/{uid}")
     public ResponseEntity<?> myBestScore(@PathVariable int uid) {
-        Optional<Videos> res = videoRepository.findFirstByUidOrderByScoreDesc(uid);
+        Optional<Videos> res = videoRepository.findFirstByUidAndCategoryOrderByScoreDesc(uid, 0);
         VideoAndUidResponse videoAndUidResponse = res.get().toEntity();
         videoAndUidResponse.setName(userRepository.findByUid(uid).get().getName());
 
