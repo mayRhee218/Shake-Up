@@ -26,22 +26,20 @@ function Vote(props) {
       // 노출했을 때 노출수 올라가게 요청.
       axios.put(`/video/expose/${res.data[0].vid}`)
       .then(res => {
-        console.log(res.data)
       })
       .catch(err =>{
-        console.log(err)
+        console.log('노출 에러[res.data[0]]], 최초')
       })
       // 노출했을 때 노출수 올라가게 요청.
       axios.put(`/video/expose/${res.data[1].vid}`)
       .then(res => {
-        console.log(res.data)
       })
       .catch(err =>{
-        console.log(err)
+        console.log('노출 에러[res.data[0]]], 최초')
       })
     })
     .catch(err =>{
-      console.log(err)
+      console.log('아예 월드컵 영상 못끌고옴')
     })    
   }
 
@@ -57,17 +55,15 @@ function Vote(props) {
     // 클릭했을 때 클릭수 올라가게 요청.
     axios.put(`/video/click/${video.vid}`)
     .then(res => {
-      console.log(res.data)
     })
     .catch(err =>{
-      console.log(err)
+      console.log('클릭수 에러')
     })
 
     if (videos.length <= 2) {
-      if (winners.length === 0) {
+      if (winners.length === 1) { // length === 0
         setDisplays([video]);
         // 최종 winner
-        console.log(video)
         setBest(video)
 
       } else {
@@ -77,39 +73,35 @@ function Vote(props) {
         // 노출했을 때 노출수 올라가게 요청.
         axios.put(`/video/expose/${updatedvideo[0].vid}`)
         .then(res => {
-          console.log(res.data)
         })
         .catch(err =>{
-          console.log(err)
+          console.log('노출 에러[0], 2보다 작은데 0보다 클때')
         })
         // 노출했을 때 노출수 올라가게 요청.
         axios.put(`/video/expose/${updatedvideo[1].vid}`)
         .then(res => {
-          console.log(res.data)
         })
         .catch(err =>{
-          console.log(err)
+          console.log('노출 에러[1], 2보다 작은데 0보다 클때')
         })
       setWinners([]);
       }
     } else if (videos.length > 2) {
       setWinners([...winners, video]);
-      setDisplays([videos[2], videos[3]]);
+      setDisplays([videos[1], videos[2]]); // setDisplays([videos[2], videos[3]]
+      // 노출했을 때 노출수 올라가게 요청.
+      axios.put(`/video/expose/${videos[1].vid}`)
+      .then(res => {
+      })
+      .catch(err =>{
+        console.log('노출 에러[videos2], 2보다 클때')
+      })
       // 노출했을 때 노출수 올라가게 요청.
       axios.put(`/video/expose/${videos[2].vid}`)
       .then(res => {
-        console.log(res.data)
       })
       .catch(err =>{
-        console.log(err)
-      })
-      // 노출했을 때 노출수 올라가게 요청.
-      axios.put(`/video/expose/${videos[3].vid}`)
-      .then(res => {
-        console.log(res.data)
-      })
-      .catch(err =>{
-        console.log(err)
+        console.log('노출 에러[videos3], 2보다 클때')
       })
       setVideos(videos.slice(2));
     }
@@ -149,7 +141,7 @@ function Vote(props) {
           <h2>당신이 선택한 댄스는 </h2>
           <h2>{d.title}입니다!</h2>
           <br/>
-          <Button color="primary" variant="contained" onClick={moveToResult}>전체 결과 보기</Button>
+          <Button style={{  backgroundColor:'#6200EE', width: '50vw' }} color="primary" variant="contained" onClick={moveToResult}>전체 결과 보기</Button>
         </div>
         </div>))}</div>)
     }                 

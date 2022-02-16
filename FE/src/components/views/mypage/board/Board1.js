@@ -32,80 +32,74 @@ function Board1({id}) {
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      // console.log(uid, res.data)
+      console.log(res.data)
       setVideos(res.data)
     })
     .catch(err =>{
       console.log(err)
     })    
   }  
-  const getRanking = () => {
 
+  const getBestVid = () => {
+    axios.get(`/video/${uid}`)
+    .then(res => {
+      setBestVid(res.data)
+    })
+    .catch(err =>{
+      console.log(err)
+    }) 
   }
+
 
 
   useEffect(() => {
     getVideos();
-    getRanking();
+    getBestVid();
   }, []);
 
-  // const goOriginal = id =>() => {
-  //   console.log(id, '클릭')
-  //   navigate(`/mypage/${id}`)
-  // }
 
   const classes = useStyles();
 
   return (
     <div>
-      <h1>최고점 획득 댄따</h1>
-      <div style={{
-          display: 'flex',
-          flexDirection:'row'
-        }}>
-          {/* <video src={bestVid.url}/> */}
-            <div style={{
-          display: 'flex',
-          flexDirection:'column'
-            }}>
-            <p>{bestVid.title}</p>
-            </div>
-      </div>
-      
-      <h2>댄따 총 참여 회수</h2>
-      <p>{videos.length}회</p>
-      <hr/>
-      <h1>최근 참여 댄따</h1>
-      {videos.map((video) => {
-        return (
-        <div style={{
-            width:'30vw', 
-            display: 'flex',
-            flexDirection:'column',
-          }}>
-            <div style={{
-            display: 'flex',
-          }}>
-          {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
-          <img src={video.original.thumbnail} style={{width:'150px', height:'100px'}}/>
-          <Link to={`/mypage/${video.original.uid}`}>
-            <Avatar key={video.vid} src={video.profile}/>
-          </Link>
-            <div style={{
-              display: 'flex',
-              flexDirection:'column'
-            }}>
-            <p>{video.copy.vid}</p>
-            <p>{video.origin_name}</p>님의 
-            <p>{video.original.title}</p>
-            <p>{video.copy.score}점</p>
-            </div>
-          </div>
+    <h1>최고점 획득 댄따</h1>
+    <div className="flex-1" 
+        style={{ flexDirection:'column'}}
+        >
           <br/>
-        </div>
-        )
-      })}
-    </div>
+          <video style={{width:'100vw', height:'30vh'}} src={bestVid.url}/>
+          <h3 className="name"
+          style={{textAlign:'center'}}
+          >{bestVid.title}</h3>
+         <br/> 
+        <h2 style={{textAlign:'center'}}>댄따 총 참여 회수</h2>
+        <h3 style={{textAlign:'center'}}>{videos.length}회</h3>
+        <hr/>
+        <br/>
+      </div>
+    <h1>최근 참여 댄따</h1>
+    <br/>
+    {videos.map((video) => {
+      return (
+      <div style={{
+          width:'30vw', 
+          display: 'flex',
+          flexDirection:'column',
+        }}>
+        {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
+
+          <video src={video.copy.url} style={{objectFit:'fill', width:'150px', height:'100px'}}/>
+          <div>
+          <Avatar key={video.copyid} src={video.origin_profile}/>
+            <p>{video.origin_name}님의</p>
+            <p>{video.original.title} </p>
+            <p>{video.copy.score}점</p> 
+          </div>
+        <br/>
+      </div>
+      )
+    })}
+  </div>
   );
 }
 
