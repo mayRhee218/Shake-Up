@@ -86,6 +86,11 @@ function Danddaloading() {
     m3c8 = false,
     m3c9 = false,
     m3c10 = false; // 스우파
+  let m4c0 = false,
+    m4c1 = false,
+    m4c2 = false,
+    m4c3 = false,
+    m4c4 = false; // 롤린
   let URL;
   let labelContainer;
 
@@ -584,6 +589,62 @@ function Danddaloading() {
             if (!m3c10) {
               console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
               m3c10 = true;
+              setCorrectCount(++cnt);
+            }
+          }
+        }
+      }
+    }
+
+    // 롤린
+    if (turl === "https://teachablemachine.withgoogle.com/models/65q3m21WL/") {
+      for (let i = 0; i < maxPredictions; i++) {
+        // pose1
+        if (results[0].probability.toFixed(2) > 0.9) {
+          if (t >= 4 && t <= 8) {
+            if (!m4c0) {
+              console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
+              m4c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
+              setCorrectCount(++cnt);
+            }
+          }
+        }
+        // pose2
+        else if (results[1].probability.toFixed(2) > 0.9) {
+          if (t >= 6 && t <= 9) {
+            if (!m4c1) {
+              console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
+              m4c1 = true;
+              setCorrectCount(++cnt);
+            }
+          }
+        }
+        // pose3
+        else if (results[2].probability.toFixed(2) > 0.9) {
+          if (t >= 8 && t <= 10) {
+            if (!m4c2) {
+              console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
+              m4c2 = true;
+              setCorrectCount(++cnt);
+            }
+          }
+        }
+        // pose4
+        else if (results[3].probability.toFixed(2) > 0.9) {
+          if (t >= 12 && t <= 18) {
+            if (!m4c3) {
+              console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
+              m4c3 = true;
+              setCorrectCount(++cnt);
+            }
+          }
+        }
+        // pose5
+        else if (results[4].probability.toFixed(2) > 0.9) {
+          if (t >= 20 && t <= 29) {
+            if (!m4c4) {
+              console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
+              m4c4 = true;
               setCorrectCount(++cnt);
             }
           }
