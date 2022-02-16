@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Board2({user}) {
   const [videos, setVideos] = useState([]);
+  const [ranks, setRanks] = useState([]);
   const uid = user.uid
 
   const getVideos = () => {
@@ -25,7 +26,7 @@ function Board2({user}) {
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -33,26 +34,46 @@ function Board2({user}) {
     })    
   }  
 
+  const getRanking = () => {
+    axios.get(`/cup/read/${uid}`)
+    .then(res => {
+      console.log(res.data)
+      setRanks(res.data)
+    })
+    .catch(err =>{
+      console.log(err)
+    })  
+  }
+
   useEffect(() => {
     getVideos();
+    getRanking();
   }, []);
 
   const classes = useStyles();
 
   return (
-    <div>
-      <h1>월드컵 점수 표시</h1>      
-      <p>월드컵 총 참여 회수</p>
-      <p>{videos.length}회</p>
+    <div className="flex-1" 
+    style={{ flexDirection:'column'}}
+    >
+      <h1>월드컵 총 참여 회수</h1>
+      <h3>{ranks.length}회</h3>
       <hr/>
       <h1>최근 참여 월드컵</h1>
-      {videos.map((video) => {
+      <br/>
+      {ranks.map((video) => {
         return (
-          <div>
-          <p>{video.title}</p>
-          <video style={{ width:'100px', height:'30vh' }}
-          src={video.url}/>
-          </div>
+        <div style={{
+            display: 'flex',
+            flexDirection:'column',
+            justifyContent:'center',
+          }}>
+          <video src={video.videos2.url} style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/>
+          <h4>{video.cupname}</h4>
+          <h4>{video.videos2.title}</h4>
+          <h4>{(video.videos2.clickcnt / video.videos2.exposecnt).toFixed(2) * 100}%</h4>
+          <br/>
+        </div>
         )
       })}
     </div>
