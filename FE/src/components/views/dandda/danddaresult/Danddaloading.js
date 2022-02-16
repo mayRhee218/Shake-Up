@@ -37,7 +37,7 @@ function Danddaloading() {
   const [maxPredictions, setMaxPredictions] = useState(null);
   const [animationFrame, setAnimationFrame] = useState(null);
   const [correctCount, setCorrectCount] = useState(0);
-  const [shake, setShake] = useState('success');
+  const [shake, setShake] = useState("success");
   const videoRef = useRef();
 
   const navigate = useNavigate();
@@ -73,9 +73,7 @@ function Danddaloading() {
     m2c2 = false,
     m2c3 = false,
     m2c4 = false,
-    m2c5 = false,
-    m2c6 = false,
-    m2c7 = false; // Next Level
+    m2c5 = false; // Next Level
   let m3c0 = false,
     m3c1 = false,
     m3c2 = false,
@@ -184,7 +182,6 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m0c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -201,7 +198,6 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m0c1 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -212,7 +208,6 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m0c2 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -228,7 +223,6 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m0c3 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -239,7 +233,6 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m0c4 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -250,7 +243,6 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m0c5 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -261,7 +253,6 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m0c6 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -272,7 +263,6 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m0c7 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -283,7 +273,6 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m0c8 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -294,7 +283,6 @@ function Danddaloading() {
               console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
               m0c9 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -311,7 +299,6 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m1c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -322,7 +309,6 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m1c1 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -333,7 +319,6 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m1c2 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -344,7 +329,6 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m1c3 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -355,7 +339,6 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m1c4 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -366,7 +349,6 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m1c5 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -377,7 +359,6 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m1c6 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -388,7 +369,6 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m1c7 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -399,7 +379,6 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m1c8 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -410,7 +389,6 @@ function Danddaloading() {
               console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
               m1c9 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -421,7 +399,6 @@ function Danddaloading() {
               console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
               m1c10 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -438,7 +415,6 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m2c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -449,7 +425,6 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m2c1 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -460,18 +435,16 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m2c2 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
         // 감당포즈
         else if (results[3].probability.toFixed(2) > 0.9) {
-          if (t >= 98 && t <= 100) {
+          if (t >= 20 && t <= 22) {
             if (!m2c3) {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m2c3 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -482,29 +455,16 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m2c4 = true;
               setCorrectCount(++cnt);
-              
-            }
-          }
-        }
-        // 뒤도는포즈
-        else if (results[5].probability.toFixed(2) > 0.9) {
-          if (t >= 62 && t <= 64) {
-            if (!m2c5) {
-              console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
-              m2c5 = true;
-              setCorrectCount(++cnt);
-              
             }
           }
         }
         // 랄랄포즈
-        else if (results[6].probability.toFixed(2) > 0.9) {
+        else if (results[5].probability.toFixed(2) > 0.9) {
           if (t >= 69 && t <= 71) {
-            if (!m2c6) {
-              console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
-              m2c6 = true;
+            if (!m2c5) {
+              console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c5 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -521,7 +481,6 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m3c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -532,7 +491,6 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m3c1 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -543,7 +501,6 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m3c2 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -554,7 +511,6 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m3c3 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -565,7 +521,6 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m3c4 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -576,7 +531,6 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m3c5 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -587,7 +541,6 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m3c6 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -598,7 +551,6 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m3c7 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -609,7 +561,6 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m3c8 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -632,7 +583,6 @@ function Danddaloading() {
               console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
               m3c10 = true;
               setCorrectCount(++cnt);
-              
             }
           }
         }
@@ -661,9 +611,9 @@ function Danddaloading() {
   }, []);
 
   useEffect(() => {
-    setShake('shake success')
+    setShake("shake success");
     setTimeout(() => {
-      setShake('success')
+      setShake("success");
     }, 1000);
   }, [correctCount]);
   // 모델 로딩중일 때
@@ -692,9 +642,7 @@ function Danddaloading() {
 
   return (
     <div className="body">
-      <div
-        className="videoHolder"
-      >
+      <div className="videoHolder">
         {videoURL && (
           <video
             id="video"
@@ -718,10 +666,12 @@ function Danddaloading() {
       {/* 몇 개 맞췄는지 결과 내기 */}
       {turl && (
         <div className="getTurl">
-          <p className={shake} style={{opacity:0}}>맞았습니다! 🔥</p>
+          <p className={shake} style={{ opacity: 0 }}>
+            맞았습니다! 🔥
+          </p>
           <p>맞춘 동작 개수</p>
           <p>
-            {correctCount}  /  {maxPredictions}
+            {correctCount} / {maxPredictions}
           </p>
           {getTurl()}
         </div>
