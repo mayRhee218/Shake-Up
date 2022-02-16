@@ -61,7 +61,7 @@ function Vote(props) {
     })
 
     if (videos.length <= 2) {
-      if (winners.length === 1) { // length === 0
+      if (winners.length === 0) { // length === 0
         setDisplays([video]);
         // 최종 winner
         setBest(video)

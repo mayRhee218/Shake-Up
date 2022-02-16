@@ -110,8 +110,7 @@ function Worldcupparticipation(props) {
         );
       })}
       <br/>
-      <br/>
-       <Button color="primary" variant="contained" onClick={moveToVote}>투표하러 가기</Button>
+       <Button style={{ backgroundColor:'#6200EE', width: '40vw' }} color="primary" variant="contained" onClick={moveToVote}>투표하러 가기</Button>
     </div>
   );
 }
