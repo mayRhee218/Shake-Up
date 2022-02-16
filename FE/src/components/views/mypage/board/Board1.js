@@ -82,19 +82,25 @@ function Board1({id}) {
     {videos.map((video) => {
       return (
       <div style={{
-          width:'30vw', 
+          width:'60vw', 
           display: 'flex',
           flexDirection:'column',
         }}>
         {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
 
-          <video src={video.copy.url} style={{objectFit:'fill', width:'150px', height:'100px'}}/>
-          <div>
-          <Avatar key={video.copyid} src={video.origin_profile}/>
-            <p>{video.origin_name}님의</p>
-            <p>{video.original.title} </p>
-            <p>{video.copy.score}점</p> 
+          <video src={video.copy.url} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}}/>
+          <div style={{ 
+          display: 'flex',
+          flexDirection:'row',
+        }}>
+            <Avatar key={video.copyid} src={video.origin_profile} style={{marginRight:'10px'}}/>
+            <div>
+            <h4>{video.origin_name}님의</h4>
+            <h4>{video.original.title}</h4> 
+            <h4>{video.copy.score}점</h4>            
+            </div>
           </div>
+        <br/>
         <br/>
       </div>
       )

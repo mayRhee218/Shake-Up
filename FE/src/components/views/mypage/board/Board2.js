@@ -12,27 +12,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Board2({user}) {
+function Board2({id}) {
   const [videos, setVideos] = useState([]);
   const [ranks, setRanks] = useState([]);
-  const uid = user.uid
+  const uid = id
 
-  const getVideos = () => {
-    // category, uid로 video 정보 가져오기
-    // uid는 링크의 params 값을 main에서 props로 가져와야함.
-    const credentials = {
-      category : 1,
-      uid : uid
-    }
-    axios.post(`/video/read/mycategory`, credentials)
-    .then(res => {
-      // console.log(res.data)
-      setVideos(res.data)
-    })
-    .catch(err =>{
-      console.log(err)
-    })    
-  }  
+  // const getVideos = () => {
+  //   // category, uid로 video 정보 가져오기
+  //   // uid는 링크의 params 값을 main에서 props로 가져와야함.
+  //   const credentials = {
+  //     category : 1,
+  //     uid : uid
+  //   }
+  //   axios.post(`/video/read/mycategory`, credentials)
+  //   .then(res => {
+  //     // console.log(res.data)
+  //     setVideos(res.data)
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })    
+  // }  
 
   const getRanking = () => {
     axios.get(`/cup/read/${uid}`)
@@ -46,7 +46,7 @@ function Board2({user}) {
   }
 
   useEffect(() => {
-    getVideos();
+    // getVideos();
     getRanking();
   }, []);
 
@@ -71,11 +71,13 @@ function Board2({user}) {
           <video src={video.videos2.url} style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/>
           <h4>{video.cupname}</h4>
           <h4>{video.videos2.title}</h4>
-          <h4>{(video.videos2.clickcnt / video.videos2.exposecnt).toFixed(2) * 100}%</h4>
-          <br/>
-        </div>
+          <h4>{(video.videos2.clickcnt / video.videos2.exposecnt).toFixed(1) * 100}%</h4>
+          <hr/>
+          <br/>          
+        </div>        
         )
       })}
+      <br/>
     </div>
   );
 }

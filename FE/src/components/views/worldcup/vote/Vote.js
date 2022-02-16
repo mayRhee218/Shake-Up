@@ -109,7 +109,7 @@ function Vote(props) {
 
   return (
     <div>
-      <h1 className="title">코믹댄스 최강자, 나야나!</h1>
+      <h1 className="title" style={{ textAlign:'center', marginTop:'10px', marginBottom:'15px' }}>코믹댄스 최강자, 나야나!</h1>
       {displays.length > 1 ? 
     ( <div>{displays.map(d => (
       <div className="flex-1" 
