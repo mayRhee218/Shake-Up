@@ -641,7 +641,7 @@ function Danddaloading() {
         }
         // pose5
         else if (results[4].probability.toFixed(2) > 0.9) {
-          if (t >= 20 && t <= 29) {
+          if (t >= 21 && t <= 29) {
             if (!m4c4) {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m4c4 = true;
