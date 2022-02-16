@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
     private JavaMailSender javaMailSender;
 
 
-//    public BasicResponse login(String id, String password) {
+    //    public BasicResponse login(String id, String password) {
 //
 //        Optional<Users> userOpt = userRepository.findUserByIdAndPassword(id, password);
 //
@@ -59,7 +59,7 @@ public class UserService implements UserDetailsService {
 
         String tempPwd = getRamdomPassword(10);
         checkId.ifPresent(selectUser -> {
-            selectUser.setPassword(tempPwd);
+            selectUser.setPassword("{noop}" + tempPwd);
 
             userRepository.save(selectUser);
         });
@@ -84,6 +84,7 @@ public class UserService implements UserDetailsService {
 
         // 메일 내용
         simpleMessage.setText("해당 10자리 임시비밀번호는 " + tempPwd + "입니다.");
+
         // 메일 발송
         javaMailSender.send(simpleMessage);
 
@@ -115,7 +116,7 @@ public class UserService implements UserDetailsService {
 
     public String signUp(UserSignUpRequest userSignUpRequest) {
         Users tempuser = userSignUpRequest.toEntity();
-        tempuser.setPassword("{noop}"+tempuser.getPassword()); // gwan 추가 => Security ver5 부터 명칭 해줘야하기 떄문에...
+        tempuser.setPassword("{noop}" + tempuser.getPassword()); // gwan 추가 => Security ver5 부터 명칭 해줘야하기 떄문에...
         userRepository.save(tempuser);
         return "success";
     }
@@ -140,7 +141,7 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public String checkEmail(String email){
+    public String checkEmail(String email) {
 
         // 이메일 인증번호 생성
         String tempEmailCheck = getRamdomPassword(10);

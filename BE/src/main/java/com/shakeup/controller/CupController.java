@@ -69,7 +69,12 @@ public class CupController {
             List<CupRateResponse> res = new ArrayList<>();
             for (WorldCup wc : temp) {
                 CupRateResponse cupRateResponse = wc.toEntity();
-                cupRateResponse.setRate(((float) cupRateResponse.getVideos2().getClickcnt() / (float) cupRateResponse.getVideos2().getExposecnt()) * 100);
+                float rate = ((float) cupRateResponse.getVideos2().getClickcnt() / (float) cupRateResponse.getVideos2().getExposecnt()) * 100;
+                if (rate == 0) {
+                    cupRateResponse.setRate(0);
+                } else {
+                    cupRateResponse.setRate(rate);
+                }
                 res.add(cupRateResponse);
             }
             res.sort((o1, o2) -> (int) (o2.getRate() - o1.getRate()));
@@ -82,11 +87,11 @@ public class CupController {
 
     @ApiOperation(value = "현재 진행중인 월드컵 List 보기")
     @GetMapping(value = "/list")
-    public ResponseEntity<?> nowCupList(){
+    public ResponseEntity<?> nowCupList() {
 
-        List<CupMapping> res=worldCupRepository.findCupidAndCupname();
+        List<CupMapping> res = worldCupRepository.findCupidAndCupname();
 
-        return new ResponseEntity<>(res,HttpStatus.OK);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 }
