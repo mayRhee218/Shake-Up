@@ -9,6 +9,7 @@ import { Button, TextField } from '@material-ui/core';
 import axios from 'axios'
 import Vaildate from './Vaildate';
 import { makeStyles } from '@material-ui/core';
+import { event } from 'jquery';
 
 const useStyles = makeStyles((theme) => ({
   botton: {
@@ -22,21 +23,23 @@ function Email({email, propFunction}) {
   const [inputEmail, setInputEmail] = useState(email) // 입력
   const [vaildPass, setValidPass] = useState(false) // 검증
   const [errorMsg, setErrorMsg] = useState('') // 에러메시지
+  const [sendFlag, setSendFlag] = useState(false)
   // 인증번호 입력, 검증
-  const inputHash = useRef(Date.now())
+  const [inputHash, setInputHash] = useState('')
   const [verify, setVerify] = useState(false)
   // 타이머
-  const [restTime, setRestTime] = useState('')
-  const [min, setMin] = useState(null)
-  const [sec, setSec] = useState(null)
+  const [timer, setTimer] = useState(300)
 
   // 인증메일 보내기
   const sendAuthEmail = async () => {
     // 중복검사 
     const emailDouble = await axios.get(`user/${email}`)
     if (!emailDouble) {
-      const hash = await axios.get(`/user/emailcheck/${inputEmail}`)
-      setHash(hash)
+      axios.get(`/user/emailcheck/${inputEmail}`)
+        .then((res) => {
+          setHash(res.data)
+          setSendFlag(true)
+        })
     }
   }
 
@@ -65,18 +68,22 @@ function Email({email, propFunction}) {
 
   // 타이머
   useEffect(() => {
-    const stopWatch = setInterval(() => {
-      if (restTime < 0) {
-        clearInterval(stopWatch)
-      } else {
-        setMin(Math.floor(restTime/60))
-        setSec(restTime%60)
+    if (sendFlag) {
+      if (timer >= 0) {
+        const Counter = setInterval(() => {
+          setTimer(prev => prev-1)
+        }, 1000);
+        return () => clearInterval(Counter)
       }
-      setRestTime(prev => prev-1)
-    }, 1000);
-    return () => clearInterval(stopWatch)
-  }, [restTime])
-
+    }
+    if (timer < 0) {
+      alert('인증시간이 만료되었습니다. 메일 인증을 다시 시도해주시기 바랍니다.')
+      setSendFlag(false)
+      setTimer(300)
+      setHash(Date.now())
+    }
+  }, [sendFlag, timer])
+  
   useEffect(() => {
     setValidPass(false)
     setVerify(false)
@@ -105,7 +112,7 @@ function Email({email, propFunction}) {
           color='primary'
           className={classes.botton}
         >
-          {hash ? '인증번호 재발송':'인증번호 발송'}
+          {sendFlag ? '인증번호 재발송':'인증번호 발송'}
         </Button>
       </div>
       <span>이메일 주소로 전송된 </span>
@@ -113,11 +120,12 @@ function Email({email, propFunction}) {
       <div>
         <TextField
           label="인증번호"
-          ref={inputHash}
+          value={inputHash}
+          onChange={(event) => setInputHash(event.target.value)}
           disabled={verify}
         />
-        {!hash ? '':
-          <p>{min}:{sec < 10 ? '0'+ sec : sec}</p>
+        {!sendFlag ? '':
+          <p>{Math.floor(timer/60)}:{timer%60 < 10 ? '0'+ timer%60 : timer%60}</p>
         }
         <Button 
           variant='contained'

@@ -37,7 +37,7 @@ function Danddaloading() {
   const [maxPredictions, setMaxPredictions] = useState(null);
   const [animationFrame, setAnimationFrame] = useState(null);
   const [correctCount, setCorrectCount] = useState(0);
-  const [fade, setFade] = useState("fade-out");
+  const [shake, setShake] = useState('success');
   const videoRef = useRef();
 
   const navigate = useNavigate();
@@ -184,8 +184,7 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m0c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -202,8 +201,7 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m0c1 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -214,8 +212,7 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m0c2 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -231,8 +228,7 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m0c3 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -243,8 +239,7 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m0c4 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -255,8 +250,7 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m0c5 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -267,8 +261,7 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m0c6 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -279,8 +272,7 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m0c7 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -291,8 +283,7 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m0c8 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -303,8 +294,7 @@ function Danddaloading() {
               console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
               m0c9 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -321,8 +311,7 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m1c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -333,8 +322,7 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m1c1 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -345,8 +333,7 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m1c2 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -357,8 +344,7 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m1c3 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -369,8 +355,7 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m1c4 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -381,8 +366,7 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m1c5 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -393,8 +377,7 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m1c6 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -405,8 +388,7 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m1c7 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -417,8 +399,7 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m1c8 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -429,8 +410,7 @@ function Danddaloading() {
               console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
               m1c9 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -441,8 +421,7 @@ function Danddaloading() {
               console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
               m1c10 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -459,8 +438,7 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m2c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -471,8 +449,7 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m2c1 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -483,8 +460,7 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m2c2 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -495,8 +471,7 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m2c3 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -507,8 +482,7 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m2c4 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -519,8 +493,7 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m2c5 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -531,8 +504,7 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m2c6 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -549,8 +521,7 @@ function Danddaloading() {
               console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
               m3c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -561,8 +532,7 @@ function Danddaloading() {
               console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
               m3c1 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -573,8 +543,7 @@ function Danddaloading() {
               console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
               m3c2 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -585,8 +554,7 @@ function Danddaloading() {
               console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
               m3c3 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -597,8 +565,7 @@ function Danddaloading() {
               console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
               m3c4 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -609,8 +576,7 @@ function Danddaloading() {
               console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
               m3c5 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -621,8 +587,7 @@ function Danddaloading() {
               console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
               m3c6 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -633,8 +598,7 @@ function Danddaloading() {
               console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
               m3c7 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -645,8 +609,7 @@ function Danddaloading() {
               console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
               m3c8 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
@@ -669,21 +632,12 @@ function Danddaloading() {
               console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
               m3c10 = true;
               setCorrectCount(++cnt);
-              // 맞았습니다 !! 표시
-              correct();
+              
             }
           }
         }
       }
     }
-  };
-
-  // 맞았습니다!! 표시 함수
-  const correct = () => {
-    labelContainer.innerHTML = "<Typography className={fade}>맞췄습니다 🔥</Typography>";
-    setTimeout(function () {
-      labelContainer.innerHTML = "";
-    }, 1500);
   };
 
   // 동영상 인식 반복 호출
@@ -705,29 +659,22 @@ function Danddaloading() {
   useEffect(() => {
     downloadFirebaseVideo();
   }, []);
+
   useEffect(() => {
+    setShake('shake success')
     setTimeout(() => {
-      if (fade === "fade-in") {
-        setFade("fade-out");
-      } else {
-        setFade("fade-in");
-      }
-    }, 2000);
+      setShake('success')
+    }, 1000);
   }, [correctCount]);
   // 모델 로딩중일 때
   if (isModelLoading) {
     return (
-      <div
-        className="sweet-loading"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "88vh",
-        }}
-      >
-        <ClipLoader color={color} loading={loading} css={override} size={150} />
+      <div className="container">
+        <div className="load-3">
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
       </div>
     );
   }
@@ -744,55 +691,41 @@ function Danddaloading() {
   };
 
   return (
-    <div className="TmPose" style={{ textAlign: "center" }}>
-      <div className="mainWrapper">
-        <div className="mainContent">
-          <div
-            className="videoHolder"
-            // style={{ visibility: "hidden" }}
-          >
-            {videoURL && (
-              <video
-                id="video"
-                className="file-upload-video"
-                src={videoURL}
-                width="300"
-                height="300"
-                crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
-                ref={videoRef}
-                // autoplay
-                // muted
-                controls
-                onPlay={startLoop}
-                onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
-              ></video>
-            )}
-          </div>
-        </div>
-
-        <div
-          className="label-container" // style={{ visibility: "hidden" }}
-          // dangerouslySetInnerHTML={{ __html: labels }}
-        ></div>
-        <br></br>
-        <div
-          className="result-container"
-          // style={{ visibility: "hidden" }}
-        >
-          {/* <div className="checkvideoURL">videoURL 없을 때 :{videoURL}</div> */}
-          {/* {videoURL && <div className="checkvideoURL">videoURL 있을 때 :{videoURL}</div>} */}
-          {/* 몇 개 맞췄는지 결과 내기 */}
-          {turl && (
-            <div className="getTurl">
-              <Typography>맞춘 동작 개수</Typography>
-              <Typography>
-                {correctCount} / {maxPredictions}
-              </Typography>
-              {getTurl()}
-            </div>
-          )}
-        </div>
+    <div className="body">
+      <div
+        className="videoHolder"
+      >
+        {videoURL && (
+          <video
+            id="video"
+            className="file-upload-video"
+            src={videoURL}
+            width="300"
+            height="300"
+            crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
+            ref={videoRef}
+            // autoplay
+            // muted
+            controls
+            onPlay={startLoop}
+            onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
+          ></video>
+        )}
       </div>
+
+      {/* <div className="checkvideoURL">videoURL 없을 때 :{videoURL}</div> */}
+      {/* {videoURL && <div className="checkvideoURL">videoURL 있을 때 :{videoURL}</div>} */}
+      {/* 몇 개 맞췄는지 결과 내기 */}
+      {turl && (
+        <div className="getTurl">
+          <p className={shake} style={{opacity:0}}>맞았습니다! 🔥</p>
+          <p>맞춘 동작 개수</p>
+          <p>
+            {correctCount}  /  {maxPredictions}
+          </p>
+          {getTurl()}
+        </div>
+      )}
     </div>
   );
 }

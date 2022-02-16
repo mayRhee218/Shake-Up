@@ -1,125 +1,113 @@
-body {
-  font-family: sans-serif;
-  background-color: #eeeeee;
-}
-
-.file-upload {
-  background-color: #ffffff;
-  width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.file-upload-btn {
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  background: #1fb264;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #15824b;
-  transition: all 0.2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.file-upload-btn:hover {
-  background: #1aa059;
-  color: #ffffff;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.file-upload-btn:active {
-  border: 0;
-  transition: all 0.2s ease;
-}
-
-.file-upload-content {
-  display: none;
-  text-align: center;
-}
-
-.file-upload-input {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.video-upload-wrap {
-  margin-top: 20px;
-  border: 4px dashed #1fb264;
-  position: relative;
-}
-
-.video-dropping,
-.video-upload-wrap:hover {
-  background-color: #1fb264;
-  border: 4px dashed #ffffff;
-}
-
-.video-title-wrap {
-  padding: 0 15px 15px 15px;
-  color: #222;
-}
-
-.drag-text {
-  text-align: center;
-}
-
-.drag-text h3 {
-  font-weight: 100;
-  text-transform: uppercase;
-  color: #15824b;
-  padding: 60px 0;
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .file-upload-video {
   max-height: 500px;
   max-width: 340px;
-  margin: auto;
+  margin-top: 30px;
+}
+.videoHolder {
   padding: 20px;
 }
-
-.remove-video {
-  width: 200px;
-  margin: 0;
-  color: #fff;
-  background: #cd4535;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #b02818;
-  transition: all 0.2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
+.getTurl{
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.success {
+  margin-bottom: 15px;
+}
+@keyframes shake{
+  0% {
+    opacity: 0.4;
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    opacity: 0.7;
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    opacity: 0.7;
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 
-.remove-video:hover {
-  background: #c13b2a;
-  color: #ffffff;
-  transition: all 0.2s ease;
-  cursor: pointer;
+
+.shake {
+  animation: shake 0.5s infinite linear;
 }
 
-.remove-video:active {
-  border: 0;
-  transition: all 0.2s ease;
+.container{
+  height: 71vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+@keyframes loadingC {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
-
-.fade-in {
-  transition: opacity 0.5s ease;
+.line {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #6200ee;
+  opacity: 0.7;
+  margin: 10px;
+}
+.load-3 .line:nth-last-child(1) {
+  animation: loadingC 0.6s 0.3s infinite linear;
+}
+.load-3 .line:nth-last-child(2) {
+  animation: loadingC 0.6s 0.2s infinite linear;
+}
+.load-3 .line:nth-last-child(3) {
+  animation: loadingC 0.6s 0.1s infinite linear;
 }
