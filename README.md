@@ -12,7 +12,7 @@ __Shake up 이란?__
 
 1. 몸을 흔들다
 
-2. 큰 변화를 일으키다
+2. 큰 변화를 일으키다  
 
 
 
@@ -28,7 +28,7 @@ __Shake up 이란?__
 
 춤을 사랑하는 사람들을 위해 **Shake Up** 을 준비했습니다!
 
-__Shake Up__ 에서 함께 춤을 즐겨보세요!
+__Shake Up__ 에서 함께 춤을 즐겨보세요!  
 
 
 
@@ -36,13 +36,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 - <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" alt="Spring" style="zoom: 80%;" /><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" style="zoom:80%;" /><img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" style="zoom:80%;" /><img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB" style="zoom:80%;" /><img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white" alt="Java" style="zoom:80%;" /><img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" style="zoom:80%;" />
 
-- <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IntelliJ IDEA" style="zoom:80%;" /><img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="Visual Studio Code" style="zoom:80%;" /><img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" alt="Android Studio" style="zoom:80%;" />
+- <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IntelliJ IDEA" style="zoom:80%;" /><img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="Visual Studio Code" style="zoom:80%;" /><img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" alt="Android Studio" style="zoom:80%;" />  
 
 
 
 #### 📅프로젝트 기간 ####
 
-- 2022.01.10 ~ 2022.02.18
+- 2022.01.10 ~ 2022.02.18  
 
 
 
@@ -51,7 +51,7 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 - 코로나 19로 인해 오프라인 위주의 댄스 교육에 참여하기 어려운 아마추어 댄서들이 온라인 상에서 댄스를 배울 수 있다!
 
 - 춤을 추면서 다이어트도 하고 건강해지자!
-- 개발자도, 사용자도 모두 즐거워하는 서비스를 개발하자!
+- 개발자도, 사용자도 모두 즐거워하는 서비스를 개발하자!  
 
 
 
@@ -60,19 +60,19 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 - '스트릿 우먼 파이터' 등 댄스 방송을 통해 사회 전체적으로 국내 댄서에 대한 인식이 높아졌다.
 
 - 일반인들도 유튜브, 틱톡 등 비디오 플랫폼을 보며 댄스에 관심을 갖고, 배우고 싶은 의욕이 높아졌다.
-- __설문조사 실시 결과(2022.01.12 ~ 2022.01.14, 20대 18명 대상)__ : 먼 거리에서 오프라인으로만 이뤄지는 댄스 교육을 받기 어렵고, 올바르게 춤을 추고 있는지 알기 어렵다는 의견이 있었다.
+- __설문조사 실시 결과(2022.01.12 ~ 2022.01.14, 20대 18명 대상)__ : 먼 거리에서 오프라인으로만 이뤄지는 댄스 교육을 받기 어렵고, 올바르게 춤을 추고 있는지 알기 어렵다는 의견이 있었다.  
 
 
 
 #### 📄기획서
 
-- [Shake Up 기획서](https://www.notion.so/D103-PJT-c78a7f3e6bcd47da97c96dcc1298bc27)
+- [Shake Up 기획서](https://www.notion.so/D103-PJT-c78a7f3e6bcd47da97c96dcc1298bc27)  
 
 
 
 #### 🖼와이어프레임
 
-- [Shake_Up_와이어프레임.xd](/uploads/f54a700f6d0c57890a22386027b1d368/Shake_Up_와이어프레임.xd)
+- [Shake_Up_와이어프레임.xd](/uploads/f54a700f6d0c57890a22386027b1d368/Shake_Up_와이어프레임.xd)  
 
   
 
