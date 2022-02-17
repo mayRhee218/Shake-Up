@@ -522,4 +522,4 @@ __최성석__
 
 ## 📌문의
 
-ekdms42132@gmail.com
+eksfkawnl1@gmail.com
