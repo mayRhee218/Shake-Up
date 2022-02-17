@@ -69,8 +69,10 @@ function Board2({id}) {
             flexDirection:'column',
             justifyContent:'center',
           }}>
-          {/* <video src={video.videos2.url} style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/> */}
-          <img src={video.videos2.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/>
+          <video src={video.videos2.url} 
+          poster={video.videos2.thumbnail} 
+          style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/>
+          {/* <img src={video.videos2.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/> */}
           <h4>{video.cupname}</h4>
           <h4>{video.videos2.title}</h4>
           <h4>{(video.videos2.clickcnt / video.videos2.exposecnt).toFixed(1) * 100}%</h4>
