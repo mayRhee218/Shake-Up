@@ -1,10 +1,6 @@
 # 🌈AWS 배포 방법
 
-------
-
 ## ⚡️Version
-
----
 
 - IDE 버전
 
@@ -17,8 +13,6 @@ IntelliJ IDEA 2021.3.1
 
 
 ## 🔗Gradle 의존성
-
----
 
 ```java
 plugins {
@@ -77,8 +71,6 @@ test {
 
 ## 🐬Workbench
 
----
-
 - Hostname : 52.78.97.122
 - Username : ssafy
 - UserPW : ssafy
@@ -87,8 +79,6 @@ test {
 
 
 ## 🌐AWS 접속 방법
-
----
 
 ```bash
 ssh -i I6D103T.pem ubuntu@I6D103.p.ssafy.io
@@ -100,16 +90,12 @@ ssh -i I6D103T.pem ubuntu@I6D103.p.ssafy.io
 
 ## ✨Jenkins ⇔ Gitlab
 
----
-
 - Secret key : b7d25cfc529c1c595346d0e111ac5244
 - Git Access Token : 64Lg41EfHgKMPyq8adjy
 
 
 
 ## ❄️Nginx 설정
-
----
 
 ```bash
 sudo vim /etc/nginx/sites-available/default
@@ -156,8 +142,6 @@ sudo systemctl reload nginx
 
 
 ## ⭐️Jenkins
-
----
 
 - 비밀번호 : af3b7e1b68f64320926a8f7acde2530f
 
