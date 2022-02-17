@@ -99,6 +99,7 @@ function Board1({id}) {
             <div>
             <h4>{video.origin_name}님의</h4>
             <h4>{video.original.title}</h4> 
+            <h4>{video.copy.title}</h4> 
             <h4>{video.copy.score}점</h4>            
             </div>
           </div>
