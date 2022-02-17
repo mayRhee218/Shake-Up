@@ -66,13 +66,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 #### 📄기획서
 
-- [Shake Up 기획서](C:\ssafy\2학기\기획서\구미_D103_공통_PJT기획서.pdf)
+- [Shake Up 기획서](https://www.notion.so/D103-PJT-c78a7f3e6bcd47da97c96dcc1298bc27)
 
 
 
 #### 🖼와이어프레임
 
--  [Shake Up 와이어프레임](C:\ssafy\2학기\기획서\Shake Up 와이어프레임.xd)
+- [Shake_Up_와이어프레임.xd](/uploads/f54a700f6d0c57890a22386027b1d368/Shake_Up_와이어프레임.xd)
 
   
 
