@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props) {
     const {auth, setAuth} = useContext(UserContext)
-    
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [Id, setId] = useState("")
@@ -106,7 +105,9 @@ function Login(props) {
             })
         }
     }
-
+    const onClick = () => {
+        navigate('/signup')
+    }
     
 
     
@@ -127,11 +128,9 @@ function Login(props) {
                     로그인
                 </Button>
                 {/* </Link> */}
-                <Link to="/signup" style={{ textDecoration: 'none', color:'inherit' }}>
-                <Button style={{  width: '100%' }} variant="contained" color="primary" type="button">
+                <Button onClick={onClick} style={{  width: '100%' }} variant="contained" color="primary" type="button">
                     회원가입
                 </Button>
-                </Link>
             </form>
             {/* 소셜계정 로그인 */}
         </div>

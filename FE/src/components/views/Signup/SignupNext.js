@@ -5,7 +5,7 @@
  * 작성일 2022-01-24
 **/
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {Button} from '@material-ui/core';
 import Overlap from './OverLap'
 import axios from 'axios';
@@ -15,6 +15,8 @@ function SignupNext() {
   const {id, email, password} = location.state  
   const [unique, setUnique] = useState(false)
   const [name, setName] = useState('')
+  const navigate = useNavigate()
+
   const onSignUp = () => {
     const credentials = {
       email,
@@ -26,6 +28,7 @@ function SignupNext() {
     axios.post('http://114.129.238.28/user/signup', credentials)
     .then(res => {
       console.log(res)
+      navigate('/login')
     })
     .catch(err => {
       console.log(err)

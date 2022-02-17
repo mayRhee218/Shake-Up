@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
 
 function PutCredentials(props) {
   const [user, setUser] = useState({})
-  const [password, setPassword] = useState('')
   const { auth } = useContext(UserContext)
 
   const getUser = () => {
