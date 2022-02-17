@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Video from './Video';
 import axios from 'axios';
-import { set } from 'firebase/database';
 
 // 구독
 function Board4({user}) {
@@ -25,7 +24,10 @@ function Board4({user}) {
     <div>
       {videos.map((item, index) => {
         return (
-          <Video data={item} key={index} />
+          <>
+            <Video data={item} key={index} />
+            <hr/>
+          </>
         );
       })}
     </div>

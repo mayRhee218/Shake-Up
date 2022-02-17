@@ -25,7 +25,10 @@ function Board3({user}) {
     <div>
       {videos.map((item, index) => {
         return (
+          <>
             <Video key={index} data={item} propFunction={deleteVideo} index={index}/>
+            <hr/>
+          </>  
           );
       })}
   </div>
