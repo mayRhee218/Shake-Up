@@ -33,6 +33,7 @@ function Danddaloading() {
   const [videoURL, setVideoURL] = useState(null);
   const [checkTurl, setCheckTurl] = useState(false);
   const [turl, setTurl] = useState(null);
+  const [vid, setVid] = useState(null);
   const [results, setResults] = useState([]);
   const [labels, setLabels] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(null);
@@ -154,6 +155,13 @@ function Danddaloading() {
       const data = await snapshot.val();
       // console.log("turl 후 : " + data);
       setTurl(data);
+    });
+
+    // vid 값 가져오기
+    const getVid = ref(database, "vid");
+    onValue(getVid, async (snapshot) => {
+      const data = await snapshot.val();
+      setVid(data);
     });
   };
 
@@ -699,8 +707,7 @@ function Danddaloading() {
       state: {
         maxPredictions: maxPredictions,
         correctCount: correctCount,
-        // original_vid: 
-        
+        original_vid: vid,
       },
     });
     // return window.cancelAnimationFrame(animationFrame);
