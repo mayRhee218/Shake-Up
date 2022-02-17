@@ -14,10 +14,8 @@ const useStyles = makeStyles(() => ({
     padding:'5px'
   },
   video: {
-    // width: '200px',
     display: 'flex',
     justifyContent: 'center',
-    zIndex: -1,
     objectFit:'fill', 
     width:'200px', 
     height:'200px'
