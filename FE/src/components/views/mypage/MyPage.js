@@ -11,7 +11,6 @@ import Board4 from './board/Board4'
 import Board5 from './board/Board5'
 import { UserContext } from '../../../App'
 import { makeStyles } from '@material-ui/core';
-import { flexbox } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,10 +20,15 @@ const useStyles = makeStyles((theme) => ({
   },
   user: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'flex-end',
+    marginLeft: '15px'
   },
   Btn: {
     variant: "contained"
+  },
+  follow: {
+    marginLeft: 'auto',
   }
 }))
 function MyPage() {
@@ -82,21 +86,20 @@ function MyPage() {
   useEffect( async () => {
     await getUser();
     await isFollow();
-  }, []); 
+  }, [id]); 
   
   const classes = useStyles();
   return (
     <div className='mypage'>
       <div className='user'>
         <img src={user.profile} />
-        <div >
+        <div className={classes.user}>
           <Typography>{user.name}</Typography>
-          <Typography>{user.email}</Typography>
           <Typography>구독자수</Typography>
         </div>
         {auth.id === id ?
           <></> : 
-          <div>
+          <div className={classes.follow}>
           {following ? 
             <Button onClick={unfollowHandler} variant='contained'>팔로우 취소</Button>
             : <Button onClick={followHandler} variant='contained'>팔로우</Button>

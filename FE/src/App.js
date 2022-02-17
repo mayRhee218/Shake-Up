@@ -22,7 +22,6 @@ import DanddaUploadComplete from "./components/views/dandda/danddaupload/DanddaU
 import FirebaseTest from "./components/views/firebase/uploadtest";
 import Mypage from "./components/views/mypage/MyPage";
 import WorldcupMain from "./components/views/worldcup/WorldcupMain";
-// import FirebaseUpload from './components/views/firebase/uploadtest';
 import WorldcupVote from "./components/views/worldcup/vote/Vote";
 import WorldcupResult from "./components/views/worldcup/WorldcupResult";
 import Worldcupparticipation from "./components/views/worldcup/Worldcupparticipation";

@@ -28,13 +28,12 @@ const useStyles = makeStyles(() => ({
   },
   icon : {
     marginTop: '3px',
-    zIndex: 1
   }
 }))
 
 function Video({data, propFunction, index}) {
   const [dialog, setDialog] = useState(false)
-  const {vid, uid, title, likecnt, views, url, score} = data
+  const {vid, uid, title, likecnt, views, url, score, thumbnail} = data
   const userId = localStorage.getItem('userId')
   const deleteVideo = () => {
     try {
@@ -65,7 +64,7 @@ function Video({data, propFunction, index}) {
   return (
     <div className={classes.root} >
       <div className={classes.video} >
-        <video src={url} />
+        <video src={url} controls/>
       </div>
       <div className={classes.title}>
         <span>{title}</span>

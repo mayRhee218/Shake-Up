@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Video from './Video';
 import axios from 'axios';
+import { set } from 'firebase/database';
 
 // 구독
 function Board4({user}) {
@@ -9,7 +10,8 @@ function Board4({user}) {
   const getVideos = () => {
     axios.get(`/sub/read/follow/${user.uid}`)
     .then(res => {
-      setVideos(res.data)
+      const FV = res.data.map(item => item.video)
+      setVideos(FV)
     })
     .catch(err =>{
       console.log(err)
