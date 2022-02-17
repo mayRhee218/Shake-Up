@@ -1,4 +1,4 @@
-![ShakeUp표지](C:\ssafy\2학기\resource\로고_폰트\ShakeUp표지.png)
+![ShakeUp표지](/uploads/69a458d381e41f954ef49227219e5691/ShakeUp표지.png)
 
 
 
