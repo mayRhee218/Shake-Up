@@ -208,9 +208,9 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 ## 🌈CI/CD
 
-__Shake Up__은 __Jenkins__를 사용하여 자동 배포를 구축하였습니다.
+**Shake Up**은 **Jenkins**를 사용하여 자동 배포를 구축하였습니다.
 
-Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,** Gitlab의 __Master branch__에 Push가 되면 Frontend, Backend가 자동으로 Build가 되고 실행이 되어 배포가 가능하도록 구축하였습니다.
+Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,** Gitlab의 **Master branch**에 Push가 되면 Frontend, Backend가 자동으로 Build가 되고 실행이 되어 배포가 가능하도록 구축하였습니다.
 
 또한, Frontend에서 사용한 React.js는 Nginx를 사용하여 배포하고, Backend는 Build하여 나온 jar 파일을 nohup 명령어를 사용하여 백그라운드에서 실행하고 배포되도록 하였습니다.
 
