@@ -9,7 +9,7 @@ function WorldcupMain(props) {
       display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center' 
       , width: '100%', height: '88vh'
     }}>
-      <h3>2월 2주차 월드컵: 코믹댄스 최강자, 나야나</h3>
+      <h3>2월 3주차 월드컵: 코믹댄스 최강자, 나야나</h3>
       <br/>
       <img src='https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1645042733893?alt=media&amp;token=dab680ef-9185-4ee0-9374-a380b5738444' style={{ width: '90px', height: '90px' }}/>
       <br/>
