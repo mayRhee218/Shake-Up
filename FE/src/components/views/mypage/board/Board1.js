@@ -67,7 +67,7 @@ function Board1({id}) {
         style={{ flexDirection:'column'}}
         >
           <br/>
-          <video style={{width:'100vw', height:'30vh'}} src={bestVid.url}/>
+          <video style={{width:'100vw', height:'30vh'}} src={bestVid.url} controls/>
           {/* <img style={{width:'100vw', height:'30vh', objectFit:'cover'}} src={bestVid.thumbnail}/> */}
           <h3 className="name"
           style={{textAlign:'center'}}

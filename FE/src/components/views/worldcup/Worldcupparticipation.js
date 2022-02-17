@@ -100,12 +100,12 @@ function Worldcupparticipation(props) {
         {state.videos.map((video, index) => {
         return (
             <div style={{ display: 'flex', flexDirection:'column', marginBottom:'20px'}}>            
-              <img onClick={onClick(video)}
+              {/* <img onClick={onClick(video)}
               style={{width:'70px', height:'70px',  marginRight:'40px'}} 
-              src={video.thumbnail}/>
-              {/* <video 
+              src={video.thumbnail}/> */}
+              <video onClick={onClick(video)} poster={video.thumbnail}
               style={{width:'70px', height:'70px',  marginRight:'40px'}} 
-              src={video.url}/> */}
+              src={video.url}/>
               <p>{video.title}</p>
             </div>          
         );
