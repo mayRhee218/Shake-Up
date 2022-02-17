@@ -56,19 +56,6 @@ function DanddaResult(props) {
       <p>{vid}</p>
       <p>{alt}</p>
       <br />
-      <p>결과를 공유하기</p>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <div className="circle">
-          <img src={kakao} />
-        </div>
-        <div className="circle">
-          <img src={insta} />
-        </div>
-        <div className="circle">
-          <img src={face} />
-        </div>
-      </div>
-      <br />
       <div className={classes.root} style={{ textAlign: "center" }}>
         <p>이 영상을 내 채널에 업로드 하시겠습니까?</p>
         {/* <Link to={{pathname:'./upload', state:{vid:vid}}}> */}
