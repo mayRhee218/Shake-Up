@@ -3,10 +3,10 @@
 ## ⚡️Version
 
 - IDE 버전
-	IntelliJ IDEA 2021.3.1
+	- IntelliJ IDEA 2021.3.1
 
 - JVM, JDK 버전
-	Oracle OpenJDK Version 11.0.13
+	- Oracle OpenJDK Version 11.0.13
 
 
 
