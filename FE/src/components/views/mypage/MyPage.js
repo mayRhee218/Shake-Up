@@ -112,9 +112,9 @@ function MyPage() {
           > 
             <Tab label='댄따' {...a11yProps(0)} />
             <Tab label="월드컵" {...a11yProps(1)} />
-            <Tab label="업로드영상" {...a11yProps(2)} />
+            <Tab label="업로드" {...a11yProps(2)} />
             <Tab label="구독" {...a11yProps(3)} />
-            <Tab label="좋아요영상" {...a11yProps(4)} />
+            <Tab label="좋아요" {...a11yProps(4)} />
           </Tabs>
         </div>
         <TabPanel value={value} index={0}>
