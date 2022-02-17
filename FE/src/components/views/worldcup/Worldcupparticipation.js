@@ -89,7 +89,7 @@ function Worldcupparticipation(props) {
   
   return (
     <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignContent:'center' }}>
-      <p style={{textAlign:'center'}}>2월 2주차 월드컵: 코믹댄스 최강자, 나야나</p>  
+      <p style={{textAlign:'center'}}>2월 3주차 월드컵: 코믹댄스 최강자, 나야나</p>  
       <p style={{textAlign:'center'}}>내 채널의 영상으로 참여하기</p>  
       <br/>
       

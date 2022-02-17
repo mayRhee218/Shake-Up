@@ -92,7 +92,6 @@ function Signup() {
     });
   }
   const classes = useStyles();
-  // --------------------------------------------------------------------
   return (
     <div className={classes.div}>
       <form style={{ display: 'flex', flexDirection: 'column' }} autoComplete='off'
@@ -102,8 +101,6 @@ function Signup() {
           value=''
           propFunction={propOverlap}
         ></Overlap>
-        {/* axios로 보내면 응답이 이메일의 해쉬값이 오고, 저장해놨다가 같은값인지 확인*/}
-        
         <Email
           email=''
           propFunction={isEmail}
