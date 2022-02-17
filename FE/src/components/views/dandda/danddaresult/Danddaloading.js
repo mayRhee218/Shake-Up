@@ -699,6 +699,8 @@ function Danddaloading() {
       state: {
         maxPredictions: maxPredictions,
         correctCount: correctCount,
+        // original_vid: 
+        
       },
     });
     // return window.cancelAnimationFrame(animationFrame);
