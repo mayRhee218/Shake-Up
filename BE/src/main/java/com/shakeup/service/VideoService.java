@@ -36,7 +36,6 @@ public class VideoService {
     //영상 DB저장
     public String createVideo(VideoCreateRequest videoCreateRequest) {
         Videos temp = videoCreateRequest.toEntity();
-        System.out.println(videoCreateRequest.getTag());
         try {
             long vid = videoRepository.save(temp).getVid();
 
