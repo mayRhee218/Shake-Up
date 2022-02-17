@@ -109,31 +109,27 @@ function Vote(props) {
 
   return (
     <div>
-      <h1 className="title" style={{ textAlign:'center', marginTop:'10px', marginBottom:'15px' }}>코믹댄스 최강자, 나야나!</h1>
+      <h1 className="title" style={{ textAlign:'center', marginTop:'10px', marginBottom:'15px', color:'white', backgroundColor:'#6200EE' }}>코믹댄스 최강자, 나야나!</h1>
       {displays.length > 1 ? 
-    ( <div>{displays.map(d => (
+    ( <div style={{textAlign:'center'}}>
+      {displays.map(d => (
       <div className="flex-1" 
-      key={d.vid} 
-      onClick={clickHandler(d)}
-      style={{ flexDirection:'column' }}
+      style={{ flexDirection:'column', justifyContent:'center' }}
       >
         <video style={{width:'100vw', height:'30vh'}} src={d.url} controls/>
-        <h3 className="name"
-        style={{textAlign:'center'}}
-        >{d.title}</h3>
+        <Button className="name" 
+          key={d.vid}
+          onClick={clickHandler(d)}
+          style={{ backgroundColor:'#6200EE', width: '50vw', textAlign:'center', marginBottom:'10px', opacity:'0.6'}} color="primary" variant="contained">{d.title}</Button>
       <br/>
-      </div>))}</div>):
+      </div>))}
+      </div>):
        // displays에 있는 애들이면 마지막 1개 남을떄 빼고 다 +1해주기.
-       ( <div>{displays.map(d => (
+       ( <div style={{textAlign:'center'}}>{displays.map(d => (
         <div className="flex-1" 
-        key={d.vid}
-        onClick={clickHandler(d)}
         style={{ flexDirection:'column', marginTop:'100px' }}
         >
           <video style={{width:'100vw', height:'30vh'}} src={d.url} controls/>
-          <h3 className="name"
-          style={{textAlign:'center'}}
-          >{d.title}</h3>
         <br/>
         <div style={{
           display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center' 
@@ -144,7 +140,7 @@ function Vote(props) {
           <Button style={{  backgroundColor:'#6200EE', width: '50vw' }} color="primary" variant="contained" onClick={moveToResult}>전체 결과 보기</Button>
         </div>
         </div>))}</div>)
-    }                 
+    }                
     </div>
   );
 }

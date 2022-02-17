@@ -13,7 +13,7 @@ function WorldcupMain(props) {
       <br/>
       <img src='https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1645042733893?alt=media&amp;token=dab680ef-9185-4ee0-9374-a380b5738444' style={{ width: '90px', height: '90px' }}/>
       <br/>
-      <h4>참여영상 등록 가능 기간: 2022.02.06 ~ 2022.02.13</h4>
+      <h4>참여영상 등록 가능 기간: 2022.02.13 ~ 2022.02.19</h4>
 
       <br/>
 
