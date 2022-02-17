@@ -382,7 +382,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 ## 🌈ERD
 
-- [ShakeUp_DB_Dump.sql](ShakeUp_DB_Dump.sql) 
+- [ShakeUp_DB_Dump.sql](/uploads/c4b9eb925c747daf279c7b3efe317cfd/ShakeUp_DB_Dump.sql)
 
   
 
