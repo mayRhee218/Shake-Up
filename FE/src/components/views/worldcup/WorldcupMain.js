@@ -47,13 +47,15 @@ function WorldcupMain(props) {
         </Button>
       </Link>
       <br />
-      <Button
-        style={{ backgroundColor: "#6200EE", width: "50vw" }}
-        color="primary"
-        variant="contained"
-      >
-        지난 월드컵 보러가기
-      </Button>
+      <Link to="./vote/result" style={{ textDecoration: "none" }}>
+        <Button
+          style={{ backgroundColor: "#6200EE", width: "50vw" }}
+          color="primary"
+          variant="contained"
+        >
+          랭킹 보기
+        </Button>
+      </Link>
     </div>
   );
 }
