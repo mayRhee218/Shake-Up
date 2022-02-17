@@ -138,8 +138,7 @@ function DanddaUpload(props) {
       onChange={addTags}
       placeholder='태그를 입력해주세요'
       />
-      <br/>
-      <p>{original_vid}</p>      
+      <br/>   
       <FormControlLabel
         control={
           <Switch

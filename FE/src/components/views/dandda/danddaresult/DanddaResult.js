@@ -54,7 +54,6 @@ function DanddaResult(props) {
       <Progressbar bgcolor="#6200EE" height={30} progress = {score} />
       <h2>총 {maxPredictions}개 동작</h2>
       <h2>맞춘 동작: {correctCount}개 동작</h2>
-      <p>{original_vid}</p>
       <br />
       <div className={classes.root} style={{ textAlign: "center" }}>
         <p>이 영상을 내 채널에 업로드 하시겠습니까?</p>

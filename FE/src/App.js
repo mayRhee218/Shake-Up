@@ -57,10 +57,10 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={value}>
-      <BrowserRouter>
-        <Sidebar />
-        <Routes>
+    <UserContext.Provider value={value}>  
+      <BrowserRouter>   
+        <Sidebar />       
+          <Routes>      
           {/* <Route exact={true} path="/" element={<PrivateRoute component={Auth(MainPage)}/>}  /> */}
           <Route exact={true} path="/" element={<DanddaMain />} />
           <Route exact={true} path="/login" element={<LoginPage />} />
