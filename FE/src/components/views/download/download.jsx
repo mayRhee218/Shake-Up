@@ -3,7 +3,7 @@ import './download.css'
 
 function download() {
   const onclick = () => {
-    alert('엥이')
+    window.location.href = 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/app-debug.apk?alt=media&token=3f0ea939-6109-4201-940b-f29a226b9534'
   }
   return (
     <div className='body'>
