@@ -71,6 +71,7 @@ function Board2({id}) {
           }}>
           <video src={video.videos2.url} 
           poster={video.videos2.thumbnail} 
+          controls
           style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/>
           {/* <img src={video.videos2.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', textAlign:'center'}}/> */}
           <h4>{video.cupname}</h4>

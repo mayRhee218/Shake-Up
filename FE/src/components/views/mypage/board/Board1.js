@@ -89,7 +89,7 @@ function Board1({id}) {
         }}>
         {/* img는 썸네일이 이렇게 뜬다 보여주기용 */}
 
-          <video src={video.copy.url} poster={video.copy.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}}/>
+          <video src={video.copy.url} poster={video.copy.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}} controls/>
           {/* <img src={video.copy.thumbnail} style={{objectFit:'fill', width:'150px', height:'100px', marginBottom:'10px'}} /> */}
           <div style={{ 
           display: 'flex',
