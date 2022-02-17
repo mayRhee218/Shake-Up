@@ -128,9 +128,9 @@ function DanddaUpload(props) {
     , width: '100%', height: '88vh'}}>
     <FormGroup role="form">
       <TextField id="outlined-basic" variant="outlined"
-      onChange={titleChange}/>
+      onChange={titleChange} label="영상제목"/>
       <TextField id="outlined-basic" variant="outlined"
-      onChange={contentChange}/>
+      onChange={contentChange} label="상세설명"/>
       <br/>
       <ReactTagInput 
       tags={tags} 
