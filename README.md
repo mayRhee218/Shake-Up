@@ -92,7 +92,6 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 ## 💡주요 기능
 
-------
 
 ### 🤸‍♀️댄스 따라하기
 
@@ -104,13 +103,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 - 댄스를 따라 추고, 맞춘 동작을 확인 한 후, 결과를 볼 수 있습니다!
 
-   ![댄스](C:\ssafy\2학기\시나리오gif 및 README\댄스.gif)  ![춤_판독](C:\ssafy\2학기\시나리오gif 및 README\춤_판독.gif)  ![결과](C:\ssafy\2학기\시나리오gif 및 README\결과.gif)
+   ![댄스](/uploads/9790435a0ebe1c3d3d23660fee528c44/댄스.gif)  ![춤_판독](/uploads/12d055e7fc177463f94f2e072338e42b/춤_판독.gif)  ![결과](/uploads/bfec61ac92cc0a1cd62ee090ac46e27e/결과.gif)
 
 
 
 - 자신의 채널에 영상을 업로드할 수 있습니다!
 
-  ![업로드결과](C:\ssafy\2학기\시나리오gif 및 README\업로드결과.gif)  ![영상_업로드](C:\ssafy\2학기\시나리오gif 및 README\영상_업로드.gif)
+  ![업로드결과](/uploads/1f2ba3a5a6656b70feee7c2c93d34108/업로드결과.gif)  ![영상_업로드](/uploads/e69ee7f40cca92ad272a470218c6083f/영상_업로드.gif)
 
 
 
@@ -126,13 +125,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 - 월드컵에 참여하고, 랭킹을 볼 수 있어요!
 
-  <img src="C:\ssafy\2학기\시나리오gif 및 README\월드컵_참여.gif" alt="월드컵_참여" style="zoom:80%;" />  <img src="C:\ssafy\2학기\시나리오gif 및 README\월드컵_랭킹.gif" alt="월드컵_랭킹" style="zoom:80%;" />
+  ![월드컵_참여](/uploads/8e51a51f616f7c6f89487af7e432fdf0/월드컵_참여.gif)  ![월드컵_랭킹](/uploads/dcb6e7c0fe552deb3865071ea695a3d0/월드컵_랭킹.gif)
 
 
 
 - 월드컵에 투표하고 결과를 볼 수 있어요!
 
-    <img src="C:\ssafy\2학기\시나리오gif 및 README\월드컵_투표.gif" alt="월드컵_투표" style="zoom:80%;" />
+    ![월드컵_투표](/uploads/6e832a828191cdf4e7d7c646e64c9e0b/월드컵_투표.gif)
 
 
 
@@ -145,13 +144,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 - 댄따 참여 영상 목록, 댄스 월드컵에 참여한 자신의 영상 목록을 볼 수 있어요!
 
-   <img src="C:\ssafy\2학기\시나리오gif 및 README\마이페이지_댄따.gif" alt="마이페이지_댄따" style="zoom:80%;" />  <img src="C:\ssafy\2학기\시나리오gif 및 README\마이페이지_월드컵.gif" alt="마이페이지_월드컵" style="zoom:80%;" />
+   ![마이페이지_댄따](/uploads/504b5aa54a898db00f30724d77a4ff44/마이페이지_댄따.gif)  ![마이페이지_월드컵](/uploads/3521c4d39b744c280ae0a5fb41a11b98/마이페이지_월드컵.gif)
 
 
 
 - 업로드한 영상 목록, 구독한 사람의 영상 목록을 볼 수 있어요!
 
-  <img src="C:\ssafy\2학기\시나리오gif 및 README\마이페이지_업로드.gif" alt="마이페이지_업로드" style="zoom:80%;" />  <img src="C:\ssafy\2학기\시나리오gif 및 README\마이페이지_구독.gif" alt="마이페이지_구독" style="zoom:80%;" />
+  ![마이페이지_업로드](/uploads/0d1fc99e98645b5b49a3a1b4e7503dd1/마이페이지_업로드.gif)  ![마이페이지_구독](/uploads/7523fdd6fff8a39275c3bdfb8ba1184e/마이페이지_구독.gif)
 
 
 
@@ -164,8 +163,6 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 
 ## 🌈개발 환경
-
-------
 
 |                           Backend                            | Version |
 | :----------------------------------------------------------: | :-----: |
@@ -203,17 +200,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 ## 🌈서비스 아키텍처
 
-------
-
-![image-20220217230001134](C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220217230001134.png)
+![image-20220217230001134](/uploads/033443c62b124525e8da484f76947b51/image-20220217230001134.png)
 
 
 
 
 
 ## 🌈CI/CD
-
-------
 
 __Shake Up__은 __Jenkins__를 사용하여 자동 배포를 구축하였습니다.
 
@@ -228,8 +221,6 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 
 ## 🌈기술 특이점
-
-------
 
 #### Tensorflow.js
 
@@ -259,15 +250,11 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 ## 🌈협업 툴
 
-------
-
 ![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)<img src ="https://img.shields.io/badge/Mattermost-blue"></img><img src ="https://img.shields.io/badge/Webex-darkblue"></img><img src ="https://img.shields.io/badge/Gather Town-skyblue"></img>
 
 
 
 ### 💠Git
-
----
 
 #### ☠️Git 컨벤션
 
@@ -311,8 +298,6 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 ### 💁‍♀️Jira
 
-------
-
 - __애자일(Agile)__ 방식
 - __스프린트(Sprint)__ : 각 주의 월요일 오전 회의를 통해서 이번 주에 진행할 이슈 및 특이사항 들을 스프린트에 일주일 단위로 생성하여 진행하였습니다.
 - __데일리 스크럼(Daily Scrum)__ : 어제 진행했던 사항 및 이슈와 오늘 진행할 사항들에 대해서 5~10분 간 짧은 회의를 진행하였습니다.
@@ -327,79 +312,69 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
  #### Backlog
 
-![image-20220218020858128](C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218020858128.png)
+![image-20220218020858128](/uploads/b86f8e388d5136ccbb2ac1f05637517b/image-20220218020858128.png)
 
 
 
 #### Active Sprints
 
- <img src="C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218020607121.png" alt="image-20220218020607121" style="zoom:80%;" />
+ ![image-20220218020607121](/uploads/335a6a379c4bc6d8f61790e8f40166e2/image-20220218020607121.png)
 
 
 
 #### Burndown Chart
 
-<img src="C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218022001224.png" alt="image-20220218022001224" style="zoom:80%;" />
+![image-20220218022001224](/uploads/e57f5ae7d1453c3d8db6c8c8208a1e69/image-20220218022001224.png)
 
 
 
 ### 📒Notion
 
-------
-
 - 매일 회의록을 작성하고, 프로젝트를 정리 및 관리하기 위해 사용했습니다.
 
   
 
-  <img src="C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218022910131.png" alt="image-20220218022910131" style="zoom:80%;" />
+  ![image-20220218022910131](/uploads/c0f369f07c3c6ca429e4c713447f68c4/image-20220218022910131.png)
 
 
 
 ### 👂Discord
 
----
-
 - 일과 시간 이후, Webex를 대체하는 온라인 작업실로 사용했습니다.
 
   
 
-  ![image-20220218023123208](C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218023123208.png)
+  ![image-20220218023123208](/uploads/a2215bdbf19e440bb4faa554d1f6d2ae/image-20220218023123208.png)
 
 
 
 ### 🌀Mattermost
 
----
-
 - Git과 Jira를 연동해서 이슈 발생 시 Mattermost 를 통해 알림
 
   
 
-  ![image-20220218024317812](C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218024317812.png)
+  ![image-20220218024317812](/uploads/952ed5944d9e3e7c0fa8c98bc26d7be2/image-20220218024317812.png)
 
 
 
 ### 🌐Webex
 
----
-
 - 9 to 6 !  Webex를 통해 협업을 진행하였습니다.
 
   
 
-  ![image-20220218023915856](C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218023915856.png)
+  ![image-20220218023915856](/uploads/499d42d4284b4fb2fce22cdf8480e6fd/image-20220218023915856.png)
 
 
 
 ### 🏠Gather Town
 
----
-
 - 화이트보드 작성과 같은 협업을 위해 Gather Town을 사용하였습니다.
 
   
 
-  ![image-20220218024630294](C:\Users\김다은\AppData\Roaming\Typora\typora-user-images\image-20220218024630294.png)
+  ![image-20220218024630294](/uploads/10a78f85cf243ae53fa22b3b151b1aea/image-20220218024630294.png)
 
 
 
@@ -407,21 +382,17 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 ## 🌈ERD
 
-------
-
 - [ShakeUp_DB_Dump.sql](ShakeUp_DB_Dump.sql) 
 
   
 
-    ![ERD](C:\ssafy\2학기\resource\ERD.png)
+    ![ERD](/uploads/092605dcb8dc362da069c9c7c33e25c8/ERD.png)
 
 
 
 
 
 ## 🌈EC2 포트 정리
-
-------
 
 |         Server         | Port |
 | :--------------------: | :--: |
@@ -435,8 +406,6 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 
 ## 👬팀원 소개
-
-------
 
 #### Who are we? ####
 
