@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Overlap from '../Signup/OverLap';
 import Email from '../Signup/Email';
+import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+import {UserContext} from '../../../App'
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -12,10 +14,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PutCredentials(props) {
-  const [name, setName] = useState('name')
-  const [email, setEmail] = useState('email')
-  const [password, setPassword] = useState('password')
-  
+  const [user, setUser] = useState({})
+  const [password, setPassword] = useState('')
+  const { auth } = useContext(UserContext)
+
+  const getUser = () => {
+    axios.get(`/user/read/${auth.id}`)
+    .then(res => {
+      setUser(res.data)
+      console.log(res, auth.id)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   const onPut = () => {
 
   }
@@ -25,6 +37,9 @@ function PutCredentials(props) {
   const propEmailFunc = () => {
 
   }
+  useEffect( async () => {
+    getUser();
+  }, []); 
   const classes = useStyles();
   return (
     <div style={{
@@ -35,12 +50,12 @@ function PutCredentials(props) {
         className={classes.root} onSubmit={onPut}>
         <Overlap
           type='name'
-          value={name}
+          value={user.id}
           propFunction={propNameFunc}
         >
         </Overlap>
         <Email
-          email={email}
+          email={user.email}
           propFunction={propEmailFunc}
         >
         </Email>
@@ -56,6 +71,8 @@ function PutCredentials(props) {
         />
         <Button
           type='submit'
+          variant='contained'
+          color='primary'
         >
           수정하기
         </Button>

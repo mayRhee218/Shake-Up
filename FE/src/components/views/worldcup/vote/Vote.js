@@ -72,6 +72,8 @@ function Vote(props) {
 
       } else {
         let updatedvideo = [...winners, video];
+        console.log('update0', updatedvideo[0])
+        console.log('update1', updatedvideo[1])
         setVideos(updatedvideo);        
         setDisplays([updatedvideo[0], updatedvideo[1]]);
         // 노출했을 때 노출수 올라가게 요청.
@@ -114,7 +116,8 @@ function Vote(props) {
       setVideos(videos.slice(2));
     }
   };
-
+  console.log('display', displays)
+  console.log('videos', videos)
   return (
     <div>
       <h1 className="title">코믹댄스 최강자, 나야나!</h1>

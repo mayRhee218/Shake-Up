@@ -47,7 +47,6 @@ function Video({data, propFunction, key, index}) {
         <span>조회수 {views}</span>
         <span>좋아요 {likecnt}</span>
         <span>성공동작 {score}</span>
-
       </div>        
     </div>
   );

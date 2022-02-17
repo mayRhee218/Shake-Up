@@ -12,7 +12,8 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: '10px 0 0 0'
+    margin: '10px 0 0 0',
+    width: '120px'
   }
 }));
 
