@@ -15,7 +15,12 @@ import axios from 'axios';
 
 function Arrow(props) {
     const { direction, clickFunction } = props;
-    const icon = direction === 'left' ? <FaChevronLeft style={{color: '6200EE'}}/> : <FaChevronRight style={{color: '6200EE'}} />;
+    const icon = 
+    direction === 'left' ? (
+    <FaChevronLeft style={{color: '6200EE'}}/>
+    ) : (
+    <FaChevronRight style={{color: '6200EE'}} />
+    );
 
     return <div onClick={clickFunction}>{icon}</div>;
 }
@@ -60,7 +65,7 @@ const SLIDE_INFO = [
         id: 6,
         uid: 4,
         url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F1644629343168?alt=media&token=fd565c13-cefd-4262-abfa-3b581ad3aa22',
-        turl: ''
+        turl: 'https://teachablemachine.withgoogle.com/models/VDbRKik9o/'
       },
       { 
         backgroundImage: `url(${img1})`, 
@@ -72,7 +77,7 @@ const SLIDE_INFO = [
         url: 'https://firebasestorage.googleapis.com/v0/b/dance-704a8.appspot.com/o/videos%2F12345.mp4?alt=media&token=b2d33474-a957-49b1-946c-a699cc9f6209',
         turl: ''
       },
-    ]
+    ];
 
     const [index, setIndex] = useState(0);
     const content = SLIDE_INFO[index];
@@ -97,13 +102,6 @@ const SLIDE_INFO = [
             setSlideIn(true);
         }, 500);
     };
-
-    // const loadingPage = () => {
-    //     //이동할 페이지 작성
-    //     navigate("/danddaloading", {
-    //         state: {},
-    //     });
-    // };
 
     return (
         <div className='DanddaMain'>
