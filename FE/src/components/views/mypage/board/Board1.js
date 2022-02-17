@@ -32,6 +32,7 @@ function Board1({id}) {
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
+      console.log(res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -42,7 +43,6 @@ function Board1({id}) {
   const getBestVid = () => {
     axios.get(`/video/${uid}`)
     .then(res => {
-      console.log(res.data)
       setBestVid(res.data)
     })
     .catch(err =>{

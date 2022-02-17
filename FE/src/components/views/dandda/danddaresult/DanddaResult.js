@@ -31,11 +31,13 @@ function DanddaResult(props) {
   // vid 전 페이지에서 제공받음.
   const location = useLocation();
   const classes = useStyles();
-  const { alt, src, vid, maxPredictions, correctCount } = location.state;
+  const { original_vid, maxPredictions, correctCount } = location.state;
   const navigate = useNavigate();
+  const score = (correctCount / maxPredictions).toFixed(2) * 100
+
 
   const pushId = () => {
-    navigate(`./upload`, { state: { vid: vid } });
+    navigate(`./upload`, { state: { original_vid: original_vid, score: score } });
   };
 
   return (
@@ -49,12 +51,10 @@ function DanddaResult(props) {
         height: "88vh",
       }}
     >
-      {src ? <Avatar alt={alt} src={src} /> : <Avatar alt="" src="" />}
-      <Progressbar bgcolor="#6200EE" height={30} progress = {(correctCount / maxPredictions).toFixed(2) * 100} />
+      <Progressbar bgcolor="#6200EE" height={30} progress = {score} />
       <h2>총 {maxPredictions}개 동작</h2>
       <h2>맞춘 동작: {correctCount}개 동작</h2>
-      <p>{vid}</p>
-      <p>{alt}</p>
+      <p>{original_vid}</p>
       <br />
       <div className={classes.root} style={{ textAlign: "center" }}>
         <p>이 영상을 내 채널에 업로드 하시겠습니까?</p>

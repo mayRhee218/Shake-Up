@@ -48,7 +48,8 @@ function DanddaUpload(props) {
 
   const location = useLocation();
   const uid = localStorage.getItem('UserId')
-  const original_vid = location.state.vid
+  const original_vid = location.state.original_vid
+  const score = location.state.score
 
   const downloadFirebaseVideo = () => {
     const database = getDatabase();
@@ -84,7 +85,7 @@ function DanddaUpload(props) {
       category: 0,
       iscomment: state.is_comments,
       content: content,
-      score: 100,
+      score: score, 
       tag: [
         {
           tname: tags
