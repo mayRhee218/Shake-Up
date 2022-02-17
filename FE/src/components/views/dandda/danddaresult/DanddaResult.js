@@ -50,7 +50,7 @@ function DanddaResult(props) {
       }}
     >
       {src ? <Avatar alt={alt} src={src} /> : <Avatar alt="" src="" />}
-      <Progressbar bgcolor="#ff00ff" height={30} progress = {(correctCount / maxPredictions).toFixed(2) * 100} />
+      <Progressbar bgcolor="#6200EE" height={30} progress = {(correctCount / maxPredictions).toFixed(2) * 100} />
       <h2>총 {maxPredictions}개 동작</h2>
       <h2>맞춘 동작: {correctCount}개 동작</h2>
       <p>{vid}</p>
