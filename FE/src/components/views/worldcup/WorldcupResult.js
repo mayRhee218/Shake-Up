@@ -18,9 +18,6 @@ function WorldcupResult(props) {
     })
   }, [])
 
-  const location = useLocation(); 
-  const {vid} = location.state
-
   return (
     <div style={{
       display: 'flex', 

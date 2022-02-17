@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useHistory, useLocation } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
+import crown from '../img/crown.png'
 import "./Vote.css";
 
 function Vote(props) {
@@ -138,6 +139,7 @@ function Vote(props) {
         <div style={{ textAlign: "center" }}>
           {displays.map((d) => (
             <div className="flex-1" style={{ flexDirection: "column", marginTop: "100px" }}>
+              <img src={crown}  style={{width:'100px', height:'100px'}}/>
               <video style={{ width: "100vw", height: "30vh" }} src={d.url} controls />
               <br />
               <div
