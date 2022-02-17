@@ -57,16 +57,20 @@
   margin: 0px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 40px;
 }
 
 .user-info > span {
   font-size: 0.8rem;
+  margin: 2px;
 }
 .navbar {
   display: flex;
   width: 100vw;
   height: 10vh;
   position: fixed;
+  z-index: 999;
   justify-content: space-between;
   align-items: center;
   background-color: #6200ee;
@@ -98,8 +102,6 @@
   color: black;
   font-weight: bold;
 }
-.nav-text:hover {
-}
 .banner {
   display: flex;
   justify-content: center;
@@ -110,32 +112,5 @@
 
 .nav-link {
   text-decoration: none;
-}
-.underbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100vw;
-  height: 9vh;
-  background-color: #6200ee;
-  bottom: 0;
-  position: fixed;
-  font-size: 30px;
-}
-
-.underbar img {
-  width: 40px;
-  height: 40px;
-}
-.underbar span {
-  margin-left: 10px;
-  color: white;
-}
-.underbar-menu-items {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 

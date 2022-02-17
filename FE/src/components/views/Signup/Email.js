@@ -10,10 +10,12 @@ import axios from 'axios'
 import Vaildate from './Vaildate';
 import { makeStyles } from '@material-ui/core';
 import { event } from 'jquery';
+import { width } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
   botton: {
-    margin: '10px 0 0 0'
+    margin: '10px 0 0 0',
+    width: '120px'
   },
 }));
 function Email({email, propFunction}) {
@@ -33,14 +35,18 @@ function Email({email, propFunction}) {
   // 인증메일 보내기
   const sendAuthEmail = async () => {
     // 중복검사 
-    const emailDouble = await axios.get(`user/${email}`)
-    if (!emailDouble) {
-      axios.get(`/user/emailcheck/${inputEmail}`)
-        .then((res) => {
-          setHash(res.data)
-          setSendFlag(true)
-        })
-    }
+    axios.get(`user/${inputEmail}`)
+      .then((res) => {
+        if (!res.data) {
+          axios.get(`/user/emailcheck/${inputEmail}`)
+            .then((res) => {
+              console.log(res)
+              setHash(res.data)
+              setSendFlag(true)
+            })
+        }
+      })
+      
   }
 
   const onEmailHandler = ({target: {value}}) => {

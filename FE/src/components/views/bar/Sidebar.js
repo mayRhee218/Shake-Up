@@ -19,18 +19,6 @@ const SidebarData = [
   },
 ]
 
-const UndetbarData = [
-  {
-    title: '댄따',
-    path: '/',
-    icon: '/favicon/music-note.png',
-  },
-  {
-    title: '월드컵',
-    path: '/worldcup',
-    icon: '/favicon/trophy.png',
-  },
-]
 const anonyData = [
   {
     title:'로그인',
@@ -78,6 +66,7 @@ function Sidebar() {
       email: ''
     })
     setSideMenu([...anonyData, ...SidebarData])
+    navigate('/')
   }
   const goHome = () => {
     navigate('/')
@@ -110,9 +99,8 @@ function Sidebar() {
         </div>
         <hr/>
         <div className='user'>
-          {/* <Avatar src="/broken-image.jpg" ></Avatar> */}
           <div className='user-info'>
-            <span>{auth.name ? auth.name : "로그인해주세요"}</span>
+            <span>{auth.name ? auth.name+'님 반갑습니다.' : "로그인 해주세요"}</span>
             <span>{auth.email}</span>
           </div>
         </div>
@@ -140,18 +128,6 @@ function Sidebar() {
         </ul>
       </div>
     </div>
-    <footer className='underbar'>
-      {UndetbarData.map((item, index) => {
-        return(
-          <div className='underbar-menu-items' key={index} onClick={() => onNext(item.path)}>
-              <img src={item.icon}></img>
-              <span className='under-text'>
-                  {item.title}
-              </span>
-          </div>
-          );
-        })}
-    </footer>
     </>
   );
 }
