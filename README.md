@@ -1,4 +1,4 @@
-![ShakeUp표지](/uploads/69a458d381e41f954ef49227219e5691/ShakeUp표지.png)
+[![UCC 영상 보러가기](/uploads/69a458d381e41f954ef49227219e5691/ShakeUp표지.png)](https://www.youtube.com/watch?v=PecaFVn66D8)
 
 
 
