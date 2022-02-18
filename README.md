@@ -8,7 +8,7 @@ __Shake up 이란?__
 
 2. 큰 변화를 일으키다  
 
-#### 💃클릭 시 UCC 영상으로 이동!
+#### 👆클릭 시 UCC 영상으로 이동!
 [![UCC 영상 보러가기](/uploads/69a458d381e41f954ef49227219e5691/ShakeUp표지.png)](https://www.youtube.com/watch?v=PecaFVn66D8)
 
 
