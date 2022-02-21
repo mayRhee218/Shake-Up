@@ -310,19 +310,19 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
  #### Backlog
 
-![image-20220218020858128](/uploads/b86f8e388d5136ccbb2ac1f05637517b/image-20220218020858128.png)
+<!-- ![image-20220218020858128](/uploads/b86f8e388d5136ccbb2ac1f05637517b/image-20220218020858128.png) -->
 
 
 
 #### Active Sprints
 
- ![image-20220218020607121](/uploads/335a6a379c4bc6d8f61790e8f40166e2/image-20220218020607121.png)
+ <!-- ![image-20220218020607121](/uploads/335a6a379c4bc6d8f61790e8f40166e2/image-20220218020607121.png) -->
 
 
 
 #### Burndown Chart
 
-![image-20220218022001224](/uploads/e57f5ae7d1453c3d8db6c8c8208a1e69/image-20220218022001224.png)
+<!-- ![image-20220218022001224](/uploads/e57f5ae7d1453c3d8db6c8c8208a1e69/image-20220218022001224.png) -->
 
 
 
@@ -352,7 +352,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218024317812](/uploads/952ed5944d9e3e7c0fa8c98bc26d7be2/image-20220218024317812.png)
+  <!-- ![image-20220218024317812](/uploads/952ed5944d9e3e7c0fa8c98bc26d7be2/image-20220218024317812.png) -->
 
 
 
@@ -362,7 +362,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218023915856](/uploads/499d42d4284b4fb2fce22cdf8480e6fd/image-20220218023915856.png)
+  <!-- ![image-20220218023915856](/uploads/499d42d4284b4fb2fce22cdf8480e6fd/image-20220218023915856.png) -->
 
 
 
@@ -404,12 +404,6 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 
 ## 👬팀원 소개
-
-#### Who are we? ####
-
-`SSAFY 6기 구미 1반 3팀`
-
-
 
 __김다은__ 👑팀장
 
@@ -517,9 +511,9 @@ __최성석__
 [Shake Up 웹사이트](http://i6d103.p.ssafy.io/)
 
 
-## 발표 자료
+<!-- ## 발표 자료
 [PPT](/uploads/95e16b0b4fb3d8b5f1715f1eb2cbdd9f/0218_최종_발표.pptx)
-[PDF](/uploads/654a91e4430e86bdc1f7e52a817f4065/공통PJT_구미_1반_3팀_최종발표.pdf)
+[PDF](/uploads/654a91e4430e86bdc1f7e52a817f4065/공통PJT_구미_1반_3팀_최종발표.pdf) -->
 
 
 ## 📌문의
