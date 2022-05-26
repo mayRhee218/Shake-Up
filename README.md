@@ -9,7 +9,7 @@ __Shake up 이란?__
 2. 큰 변화를 일으키다  
 
 #### 👆클릭 시 UCC 영상으로 이동!
-[![UCC 영상 보러가기](/uploads/69a458d381e41f954ef49227219e5691/ShakeUp표지.png)](https://www.youtube.com/watch?v=PecaFVn66D8)
+[![ShakeUp표지](https://user-images.githubusercontent.com/56299114/170525394-2170f072-2a53-4351-a34e-b9953e6d2f1f.png)](https://www.youtube.com/watch?v=PecaFVn66D8)
 
 
 
@@ -68,15 +68,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 - [Shake_Up_와이어프레임.xd](/uploads/f54a700f6d0c57890a22386027b1d368/Shake_Up_와이어프레임.xd)  
 
-  
+  ![xd1](https://user-images.githubusercontent.com/56299114/170521682-e3d12481-9719-4ed4-8a10-f9312ca0399e.png)
 
-   ![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/467a8747-5870-4d2a-9232-36527a2bba06/xd1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220217T174725Z&X-Amz-Expires=86400&X-Amz-Signature=60640d12e6dddac8ba7434ac1cbc959fb69ecdf119ade31d1612ae59f7e0151f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22xd1.PNG.png%22&x-id=GetObject)
+   ![xd2](https://user-images.githubusercontent.com/56299114/170521685-9106a1c6-9c77-4ad0-9443-b8ffb721de02.png)
 
-   ![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4c361946-2b56-4fab-9af6-38dca7523a52/xd2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220217T174752Z&X-Amz-Expires=86400&X-Amz-Signature=8ec944db772d6ba64329ff909c75d8f85266fa316455faeb0d01e81ac4865183&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22xd2.PNG.png%22&x-id=GetObject)
+   ![xd3](https://user-images.githubusercontent.com/56299114/170521687-a5798d5a-8e1b-417b-92f6-34f93edddf2f.png)
 
-   ![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7674ce98-1e64-421d-a0ec-c84e1ec4b621/xd3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220217T174756Z&X-Amz-Expires=86400&X-Amz-Signature=8bfbe7c43491ade5d72e09f92e2db4ce6e0aae6657d8feb75ddca05642aaa70e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22xd3.PNG.png%22&x-id=GetObject)
-
-   ![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7f5768d0-b6e0-4bcb-b316-1174d5825e91/xd4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220217T174759Z&X-Amz-Expires=86400&X-Amz-Signature=ab57d1ca793227214022ea224185bb51ed1abfa762533355729f037aca52ef88&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22xd4.PNG.png%22&x-id=GetObject)
+![xd4](https://user-images.githubusercontent.com/56299114/170521691-02921e6b-d9bd-4891-9c1e-853e8af788d3.png)
 
 
 
@@ -97,17 +95,15 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 - 스마트폰 카메라에 나타난 춤을 따라 추고 나면, 인공지능이 동작의 정확도를 파악해 맞춘 동작 개수를 알려줍니다.
 
-  
-
 - 댄스를 따라 추고, 맞춘 동작을 확인 한 후, 결과를 볼 수 있습니다!
 
-   ![댄스](/uploads/9790435a0ebe1c3d3d23660fee528c44/댄스.gif)  ![춤_판독](/uploads/12d055e7fc177463f94f2e072338e42b/춤_판독.gif)  ![결과](/uploads/bfec61ac92cc0a1cd62ee090ac46e27e/결과.gif)
+   ![댄스](https://user-images.githubusercontent.com/56299114/170524831-ca254ed5-6a37-4533-9e19-6288ffab9106.gif)  ![춤_판독](https://user-images.githubusercontent.com/56299114/170524857-fbbf40f0-a2fe-4ba6-9f58-6bd1ee9e29c9.gif)  ![결과](https://user-images.githubusercontent.com/56299114/170524873-efefece3-2cd9-4c5e-81e5-20e7c43a4187.gif)
 
 
 
 - 자신의 채널에 영상을 업로드할 수 있습니다!
 
-  ![영상_업로드](/uploads/e69ee7f40cca92ad272a470218c6083f/영상_업로드.gif)   ![마이페이지_업로드](/uploads/5d10f2782e0f85ecd013a802293db085/마이페이지_업로드.gif)
+  ![영상_업로드](https://user-images.githubusercontent.com/56299114/170524878-f77e71bf-7dc0-47b1-9dcb-8f82d573901c.gif)   ![마이페이지_업로드](https://user-images.githubusercontent.com/56299114/170524879-3f99dba6-b69a-4f77-9922-826ca7e4442c.gif)
 
 
 
@@ -119,17 +115,13 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 - 현재 기간동안 열리는 댄스 월드컵에 참여 및 투표하기
 - 그 기간 동안 진행되는 댄스들에 대한 랭킹 보기
 
-
-
 - 월드컵에 참여하고, 랭킹을 볼 수 있어요!
 
-  ![월드컵_참여](/uploads/8e51a51f616f7c6f89487af7e432fdf0/월드컵_참여.gif)  ![월드컵_랭킹](/uploads/dcb6e7c0fe552deb3865071ea695a3d0/월드컵_랭킹.gif)
-
-
+  ![월드컵_참여](https://user-images.githubusercontent.com/56299114/170524888-dfa232b4-7665-4bb2-ba48-5ae8beee6c5d.gif)  ![월드컵_랭킹](https://user-images.githubusercontent.com/56299114/170524897-043d6d23-36b5-4263-980d-c89a8a8b275c.gif)
 
 - 월드컵에 투표하고 결과를 볼 수 있어요!
 
-    ![월드컵_투표](/uploads/6e832a828191cdf4e7d7c646e64c9e0b/월드컵_투표.gif)
+    ![월드컵_투표](https://user-images.githubusercontent.com/56299114/170524912-e4abc013-6ec9-49af-862f-8e36d39e3194.gif)
 
 
 
@@ -138,23 +130,19 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 - 내가 올린 영상과 댄스 따라하기, 댄스 월드컵의 점수를 볼 수 있습니다.
 - 관심 있는 댄서들의 채널을 팔로우해서 볼 수 있습니다.
 
-
-
 - 댄따 참여 영상 목록, 댄스 월드컵에 참여한 자신의 영상 목록을 볼 수 있어요!
 
-   ![마이페이지_댄따](/uploads/e7f6cbb76712439317c2e224688c9cbe/마이페이지_댄따.gif)  ![마이페이지_월드컵](/uploads/f229ec88ed4a342a6b164c1c1952a723/마이페이지_월드컵.gif)
-
-
+   ![마이페이지_댄따](https://user-images.githubusercontent.com/56299114/170524936-54ec6a05-603c-47f8-a975-acb10f3f7e2f.gif)![마이페이지_월드컵](https://user-images.githubusercontent.com/56299114/170524942-01698fb4-38f5-447a-90c0-8a4732732330.gif)
 
 - 업로드한 영상 목록, 구독한 사람의 영상 목록을 볼 수 있어요!
 
-  ![마이페이지_업로드](/uploads/39b8dd51f2c340a863c94fc4a09aed41/마이페이지_업로드.gif)  ![마이페이지_구독](/uploads/392707a4de996d3661aa92290cf0e02c/마이페이지_구독.gif)
+  ![마이페이지_업로드](https://user-images.githubusercontent.com/56299114/170524879-3f99dba6-b69a-4f77-9922-826ca7e4442c.gif) ![마이페이지_구독](https://user-images.githubusercontent.com/56299114/170524963-82dde5d5-fa9e-4ff4-b428-881124ed2b36.gif)
 
 
 
 #### 👀시연 시나리오
 
-- [시연 시나리오](https://lab.ssafy.com/s06-webmobile2-sub2/S06P12D103/-/blob/develop/exec/%EC%8B%9C%EC%97%B0%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.md)
+- [시연 시나리오](https://github.com/apdltpdl22/Shake-Up/blob/master/exec/%EC%8B%9C%EC%97%B0%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.md)
 
 
 
@@ -198,7 +186,7 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 ## 🌈서비스 아키텍처
 
-![image-20220217230001134](/uploads/033443c62b124525e8da484f76947b51/image-20220217230001134.png)
+![img](README.assets/154609961-fbdad059-1f99-4954-ac19-3152faf3d2d3.png)
 
 
 
@@ -332,7 +320,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218022910131](/uploads/c0f369f07c3c6ca429e4c713447f68c4/image-20220218022910131.png)
+  ![회의록](https://user-images.githubusercontent.com/56299114/170526868-de254e68-bd68-4a32-9cec-6287280c2a2a.png)
 
 
 
@@ -342,7 +330,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218023123208](/uploads/a2215bdbf19e440bb4faa554d1f6d2ae/image-20220218023123208.png)
+  ![Discord](https://user-images.githubusercontent.com/56299114/170526872-0b8735ae-c03b-4401-8d70-dd7714b0fd51.png)
 
 
 
@@ -350,19 +338,12 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 - Git과 Jira를 연동해서 이슈 발생 시 Mattermost 를 통해 알림
 
-  
-
-  <!-- ![image-20220218024317812](/uploads/952ed5944d9e3e7c0fa8c98bc26d7be2/image-20220218024317812.png) -->
 
 
 
 ### 🌐Webex
 
 - 9 to 6 !  Webex를 통해 협업을 진행하였습니다.
-
-  
-
-  <!-- ![image-20220218023915856](/uploads/499d42d4284b4fb2fce22cdf8480e6fd/image-20220218023915856.png) -->
 
 
 
@@ -372,7 +353,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218024630294](/uploads/10a78f85cf243ae53fa22b3b151b1aea/image-20220218024630294.png)
+  ![GatherTown](https://user-images.githubusercontent.com/56299114/170526874-c6756df2-726d-467b-acfb-a7e675a04869.png)
 
 
 
@@ -384,7 +365,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-    ![ERD](/uploads/092605dcb8dc362da069c9c7c33e25c8/ERD.png)
+    ![ERD](https://user-images.githubusercontent.com/56299114/170526876-e7f5f04e-263a-40a1-9973-7bf6e0a0d87d.png)
 
 
 
