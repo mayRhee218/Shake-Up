@@ -66,8 +66,6 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 #### 🖼와이어프레임
 
-- [Shake_Up_와이어프레임.xd](/uploads/f54a700f6d0c57890a22386027b1d368/Shake_Up_와이어프레임.xd)  
-
   ![xd1](https://user-images.githubusercontent.com/56299114/170521682-e3d12481-9719-4ed4-8a10-f9312ca0399e.png)
 
    ![xd2](https://user-images.githubusercontent.com/56299114/170521685-9106a1c6-9c77-4ad0-9443-b8ffb721de02.png)
