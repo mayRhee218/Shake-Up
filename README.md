@@ -330,7 +330,7 @@ __Kim Dae-eun__ 👑Team Leader
 - Backend / React / TensorFlow  
 - Responsibilities: Team management, API development, AI model integration, Firebase, UX integration
 
-__Lee Myung-sung__  
+__Rhee Myung-sung__  
 - 😍 Github: [@apdltpdl22](https://github.com/apdltpdl22)  
 - Frontend / Adobe XD  
 - Responsibilities: Planning, UI/UX design, main pages, CSS, presentation materials
